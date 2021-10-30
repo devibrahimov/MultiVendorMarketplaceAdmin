@@ -10,4 +10,5 @@ class GeneralController extends Controller
    public function dashboard(){
        return view('pages.dashboard');
    }
+
 }

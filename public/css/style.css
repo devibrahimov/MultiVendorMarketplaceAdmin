@@ -5067,6 +5067,9 @@ section.content {
     -ms-box-shadow: none !important;
     box-shadow: none !important; }
 
+.form-control::placeholder{
+    padding-left: 8px;
+}
 .input-group.input-group-sm .input-group-addon i {
   font-size: 14px; }
 
@@ -5092,7 +5095,7 @@ section.content {
   margin-bottom: 25px; }
   .form-group .form-control {
     width: 100%;
-    border: none;
+    /*border: none;*/
     box-shadow: none;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
