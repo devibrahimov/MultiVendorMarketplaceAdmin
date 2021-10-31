@@ -62,6 +62,7 @@
                         ['icon'=>'build','name' =>'Tənizmləmələr' , 'route'=>'setting'],
                         ['icon'=>'extension','name' =>'Entegrasiyalar' , 'route'=>'#'],
                         ['icon'=>'content_paste','name' =>'Korporativ Səhifələr' , 'route'=>'#'],
+                        ['icon'=>'content_paste','name' =>'Sözləşmələr' , 'route'=>'#'],
                         ['icon'=>'question_answer','name' =>'Sual-Cavab' , 'route'=>'#'],
                         ]
                     ],
