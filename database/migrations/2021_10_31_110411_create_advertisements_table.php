@@ -23,6 +23,7 @@ class CreateAdvertisementsTable extends Migration
             $table->string('line')->nullable();
             $table->dateTime('start_time');
             $table->dateTime('stop_time');
+
             $table->timestamps();
         });
     }
