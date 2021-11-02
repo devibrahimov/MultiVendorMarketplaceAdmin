@@ -34,30 +34,44 @@
                         <div class="row clearfix">
                             <div class="col-sm-3">
                                 <label class="card-inside-title">Logo (Rengli)</label>
+                                <span> File type: .png | width:300px ,height:100px</span>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" class="form-control" name="logo_color"   accept="image/png" required placeholder="col-sm-3" />
                                     </div>
+                                    @error('logo_color')
+                                    <div class="alert   alert-dismissible" role="alert" style="color: red!important">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                   <label class="card-inside-title">Logo (Qara)</label>
+                                <span> File type: .png | width:300px ,height:100px</span>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" class="form-control" name="logo_black" accept="image/png" required placeholder="col-sm-3" />
                                     </div>
+                                    @error('logo_black')
+                                    <div class="alert   alert-dismissible" role="alert" style="color: red!important">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                   <label class="card-inside-title">Logo (Ağ)</label>
+                                <span> File type: .png | width:300px ,height:100px</span>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" class="form-control" name="logo_white" accept="image/png" required placeholder="col-sm-3" />
                                     </div>
                                     @error('logo_white')
-                                    <div class="alert alert-danger"></div>
-                                    <div class="alert bg-pink alert-dismissible" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="alert   alert-dismissible" role="alert" style="color: red!important">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
                                         {{ $message }}
                                     </div>
                                     @enderror
@@ -65,14 +79,14 @@
                             </div>
                             <div class="col-sm-3">
                                   <label class="card-inside-title">Favicon</label>
+                                <span> File type: image| width:100px ,height:100px</span>
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="file" class="form-control" name="favicon"  required placeholder="col-sm-3" />
                                     </div>
                                     @error('favicon')
-                                    <div class="alert alert-danger"></div>
-                                    <div class="alert bg-pink alert-dismissible" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="alert alert-dismissible" role="alert" style="color: red!important">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
                                         {{ $message }}
                                     </div>
                                     @enderror
@@ -87,6 +101,12 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control" name="title" placeholder="Başlıq" required />
                                     </div>
+                                    @error('title')
+                                    <div class="alert   alert-dismissible" role="alert" style="color: red!important">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-12">
@@ -95,14 +115,27 @@
                                     <div class="form-line">
                                         <textarea rows="4" class="form-control no-resize"name="meta_description" required placeholder="Meta Açıqlama Mətini"></textarea>
                                     </div>
+                                    @error('meta_description')
+                                    <div class="alert   alert-dismissible" role="alert" style="color: red!important">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label class="card-inside-title">Sosial Mediyalar Meta Tagları</label>
+                                    @error('meta_tags')
+                                    <div class="alert   alert-dismissible" role="alert" style="color: red!important">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                     <div class="form-line">
                                         <textarea rows="9" class="form-control no-resize" name="meta_tags" style="background-color: #00183e;color: #6ee0f6;padding: 15px" placeholder="Sosial Mediyalar Meta Tagları"></textarea>
                                     </div>
+
                                 </div>
                             </div>
 

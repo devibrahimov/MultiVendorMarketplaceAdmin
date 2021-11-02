@@ -12,4 +12,5 @@ Route::group(['middleware'=>'auth'],function () {
     Route::get('/', [\App\Http\Controllers\General\GeneralController::class, 'dashboard'])->name('dashboard');
     Route::get('/setting',[\App\Http\Controllers\General\SettingController::class,'index'])->name('setting');
     Route::post('/setting',[\App\Http\Controllers\General\SettingController::class,'store']) ;
+    Route::post('/setting/update',[\App\Http\Controllers\General\SettingController::class,'update'])->name('setting_update');
 });
