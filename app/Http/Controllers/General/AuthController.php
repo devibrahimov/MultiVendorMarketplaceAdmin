@@ -29,7 +29,7 @@ class AuthController extends Controller
         if ( auth()->attempt([
             'email'=>$request->email,
             'password'=> $request->password,
-            'role'=> 1,
+            'aprovel'=> 1,
         ])){
             request()->session()->regenerate();
             return redirect()->intended(route('dashboard')) ;
