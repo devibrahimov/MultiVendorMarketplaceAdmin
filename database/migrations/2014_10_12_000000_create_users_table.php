@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
+            $table->enum('type',['user','shop','service'])->nullable();
             $table->unsignedBigInteger('region_id');
             $table->string('number')->nullable();
             $table->string('email')->unique();
