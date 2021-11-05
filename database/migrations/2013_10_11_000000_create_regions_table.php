@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCorporativePagesTable extends Migration
+class CreateRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCorporativePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('corporative_pages', function (Blueprint $table) {
+        Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('content');
+            $table->unsignedBigInteger('parent_id');
+            $table->string('name');
             $table->string('slug');
-            $table->string('image')->nullable();
+            $table->string('post_code');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateCorporativePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('corporative_pages');
+        Schema::dropIfExists('regions');
     }
 }

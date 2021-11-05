@@ -15,9 +15,9 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->longText('content')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('title');
+            $table->longText('content');
+            $table->string('slug');
             $table->timestamps();
         });
     }

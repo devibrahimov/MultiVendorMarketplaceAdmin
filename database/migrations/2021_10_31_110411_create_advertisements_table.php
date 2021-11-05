@@ -15,15 +15,15 @@ class CreateAdvertisementsTable extends Migration
     {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->string('company')->nullable();
-            $table->longText('url')->nullable();
-            $table->string('type')->nullable();
-            $table->string('page')->nullable();
-            $table->string('line')->nullable();
+            $table->string('image');
+            $table->string('company');
+            $table->longText('url');
+            $table->string('type');
+            $table->string('page');
+            $table->string('line');
             $table->dateTime('start_time');
             $table->dateTime('stop_time');
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

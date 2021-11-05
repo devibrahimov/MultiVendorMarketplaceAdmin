@@ -15,13 +15,13 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->longText('meta_description')->nullable();
-            $table->longText('meta_tags')->nullable();
-            $table->string('logo_color')->nullable();
-            $table->string('logo_white')->nullable();
-            $table->string('logo_black')->nullable();
-            $table->string('favicon')->nullable();
+            $table->string('title');
+            $table->longText('meta_description');
+            $table->longText('meta_tags');
+            $table->string('logo_color') ;
+            $table->string('logo_white');
+            $table->string('logo_black');
+            $table->string('favicon');
             $table->timestamps();
         });
     }
