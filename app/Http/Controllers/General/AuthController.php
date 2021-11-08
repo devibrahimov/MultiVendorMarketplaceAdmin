@@ -38,10 +38,7 @@ class AuthController extends Controller
             return back()->withErrors($errors);
         }
 
-
-
     }
-
 
     public function logout(){
         auth()->logout();
