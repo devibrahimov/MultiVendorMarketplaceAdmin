@@ -14,5 +14,7 @@ Route::group(['middleware'=>'auth' ],function () {
     Route::post('/setting',[\App\Http\Controllers\General\SettingController::class,'store']) ;
     Route::post('/setting/update',[\App\Http\Controllers\General\SettingController::class,'update'])->name('setting_update');
 
-    Route::resource('category',\App\Http\Controllers\General\CategoriesController::class);
+    Route::resource('category',\App\Http\Controllers\General\CategoriesController::class,['names' => [
+        'index' => 'categories.index',
+    ]]);
 });

@@ -15,8 +15,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('pages.general.categories');
+        return view('pages.category.categories');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -45,9 +46,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($category)
     {
-        //
+        return view('pages.category.categories');
     }
 
     /**

@@ -33,7 +33,7 @@
         $menu = [
                     ['icon'=>'home','name' =>'Ana Səhifə' , 'route'=>'dashboard'],
                     ['icon'=>'adb','name' =>'Administrator' , 'route'=>'#'],
-                    ['icon'=>'line_style','name' =>'Kategoriyalar' , 'route'=>'#'],
+                    ['icon'=>'line_style','name' =>'Kategoriyalar' , 'route'=>'categories.index'],
                     ['icon'=>'map','name' =>'Bölgə və Şəhərlər' , 'route'=>'#'],
                     ['icon'=>'dashboard','name' =>'Reklam İdarəsi' , 'route'=>'#'],
                      ['icon'=>'store','name' =>'Mağazaların İdarəsi','application' =>[
