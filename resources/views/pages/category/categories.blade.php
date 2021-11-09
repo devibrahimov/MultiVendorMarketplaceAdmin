@@ -32,7 +32,7 @@
 
 
                                 <div class=" col-lg-4 col-md-4  col-sm-12">
-                                    <form action="{{route('setting')}}" method="post" enctype="multipart/form-data">
+                                    <form action="{{route('categorystore')}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                        <div class="card">
 
@@ -43,7 +43,7 @@
                                             <span>  </span>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="name"  required placeholder=" " />
+                                                    <input type="text" class="form-control" name="name"  maxlength="25" required placeholder=" " />
                                                 </div>
                                                 @error('name')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -58,7 +58,7 @@
                                             <span>  </span>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="description" maxlength="30" placeholder=" " />
+                                                    <input type="text" class="form-control" name="description" maxlength="50" placeholder=" " />
                                                 </div>
                                                 @error('description')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -137,7 +137,7 @@
                                                         <button type="button" class="btn btn-success waves-effect" style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">check_circle</i>
                                                         </button>
-                                                        <a href="{{route('category.show',1)}}" type="button" class="btn bg-orange waves-effect" style="padding: 2px 3px!important;">
+                                                        <a href="{{route('subcategories',1)}}" type="button" class="btn bg-orange waves-effect" style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">play_for_work</i>
                                                             <span>Alt Kateqoriyalar</span>
                                                         </a>
@@ -149,7 +149,6 @@
                                                         </button>
                                                     </td>
                                                 </tr>
-
                                                 </tbody>
                                             </table>
                                         </div>

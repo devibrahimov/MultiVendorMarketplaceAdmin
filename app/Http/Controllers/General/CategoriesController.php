@@ -5,83 +5,75 @@ namespace App\Http\Controllers\General;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use PHPUnit\Exception;
 
 class CategoriesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    public function index(){
         return view('pages.category.categories');
     }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function subcategories(){
+        return view('pages.category.sub_categories');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+
+    public function store($parentid=null,Request $request){
+
+
+        try{
+            $icon= null;
+            $image = null;
+            $icon = $request->file('icon');
+            $image = $request->file('image');
+            $path = "/photos/site/categories";
+            $imagepath = public_path() . $path;
+
+            if ($icon) {
+
+                $newimagename = env('APP_NAME') .'-logo' . '.' . $icon->getClientOriginalExtension();
+                $imageurl = $path . '/' . $newimagename; //for DB
+                $icon->move($imagepath, $newimagename);
+                $icon = $imageurl;
+
+            }
+
+            if ($image) {
+                $newimagename = env('APP_NAME').'-logoblack' . '.' . $image->getClientOriginalExtension();
+                $imageurl = $path . '/' . $newimagename; //for DB
+                $image->move($imagepath, $newimagename);
+                $image = $imageurl;
+
+            }
+
+            $data = [
+                'parent_id' => $parentid,
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'description' => $request->description,
+                'meta_tags' => $request->meta_tags,
+                'icon' =>$icon,
+                'image' =>$image ,
+            ];
+            $category= new Category();
+            $category->insert($data);
+
+            $feedbackdata = ['title' => 'Uğurlu !',
+                'message' => 'Sayt məlumatları uğurla qeyd edildi',
+                'type' => 'success', ];
+            return back()->with('feedback', $feedbackdata);
+        }catch (\Exception $exception){
+            $feedbackdata = ['title' => 'Uğursuz !',
+                'message' => 'Sayt məlumatları yaddaşa yazılarkən xəta baş verdi. Xəta: '.$exception->getMessage(),
+                'type' => 'danger'];
+            return back()->with('feedback', $feedbackdata);
+        }
+
+
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show($category)
-    {
-        return view('pages.category.categories');
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Category $category)
-    {
-        //
-    }
 }
