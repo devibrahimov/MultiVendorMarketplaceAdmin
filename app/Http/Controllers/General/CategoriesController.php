@@ -10,16 +10,25 @@ use PHPUnit\Exception;
 
 class CategoriesController extends Controller
 {
-    public function index(){
-        return view('pages.category.categories');
+    public function index(int $parentid=null){
+        if ($parentid == null)
+            $categories = Category::where('parent_id' ,null)->get() ;
+
+        if ($parentid !=null)
+            $categories = Category::where('parent_id' ,$parentid)->get() ;
+
+        return view('pages.category.categories',compact(['categories']));
     }
+
+
+
     public function subcategories(){
-        return view('pages.category.sub_categories');
+
     }
 
 
 
-    public function store($parentid=null,Request $request){
+    public function store(int $parentid=null,Request $request){
 
 
         try{

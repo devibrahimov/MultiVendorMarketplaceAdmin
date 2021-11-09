@@ -114,6 +114,7 @@
 
                                         </div>
                                         <div class="body table-responsive">
+                                            @if(isset($categories) &&  !\PHPUnit\Framework\isEmpty($categories))
                                             <table class="table table-striped">
                                                 <thead>
                                                 <tr>
@@ -126,18 +127,20 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+
+                                                    @foreach($categories as $category)
                                                 <tr>
                                                     <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                    <td>Otto</td>
+                                                    <td><img src="{{$category->icon}}" width="35px" alt=""></td>
+                                                    <td><img src="{{$category->image}}" width="150px" alt=""></td>
+                                                    <td>{{$category->name}}</td>
+                                                    <td>{{$category->description}}</td>
                                                     <td>
 
                                                         <button type="button" class="btn btn-success waves-effect" style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">check_circle</i>
                                                         </button>
-                                                        <a href="{{route('subcategories',1)}}" type="button" class="btn bg-orange waves-effect" style="padding: 2px 3px!important;">
+                                                        <a href="{{route('categories',$category->id)}}" type="button" class="btn bg-orange waves-effect" style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">play_for_work</i>
                                                             <span>Alt Kateqoriyalar</span>
                                                         </a>
@@ -149,8 +152,15 @@
                                                         </button>
                                                     </td>
                                                 </tr>
+                                                    @endforeach
+
                                                 </tbody>
                                             </table>
+                                            @else
+                                                <center>
+                                                    <img src="https://i.pinimg.com/236x/cf/b6/43/cfb643ba7408b8bd35c8b45ca1c13704.jpg"  >
+                                                </center>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
