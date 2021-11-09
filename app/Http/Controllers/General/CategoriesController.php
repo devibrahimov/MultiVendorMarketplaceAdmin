@@ -32,7 +32,7 @@ class CategoriesController extends Controller
 
             if ($icon) {
 
-                $newimagename = env('APP_NAME') .'-logo' . '.' . $icon->getClientOriginalExtension();
+                $newimagename = env('APP_NAME') .Str::slug($request->name) . '.' . $icon->getClientOriginalExtension();
                 $imageurl = $path . '/' . $newimagename; //for DB
                 $icon->move($imagepath, $newimagename);
                 $icon = $imageurl;
@@ -40,7 +40,7 @@ class CategoriesController extends Controller
             }
 
             if ($image) {
-                $newimagename = env('APP_NAME').'-logoblack' . '.' . $image->getClientOriginalExtension();
+                $newimagename = env('APP_NAME').Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
                 $imageurl = $path . '/' . $newimagename; //for DB
                 $image->move($imagepath, $newimagename);
                 $image = $imageurl;
@@ -52,7 +52,6 @@ class CategoriesController extends Controller
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
                 'description' => $request->description,
-                'meta_tags' => $request->meta_tags,
                 'icon' =>$icon,
                 'image' =>$image ,
             ];

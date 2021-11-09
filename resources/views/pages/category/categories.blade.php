@@ -86,7 +86,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="card-inside-title">Fon Şəkili</label>
-                                            <span> File type: image| width:100px ,height:100px</span>
+                                            <span> File type: image| width:470px ,height:501px</span>
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="file" class="form-control" name="image"  required placeholder="col-sm-3" />
