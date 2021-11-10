@@ -12,9 +12,6 @@
         </div>
         <!-- Input -->
     @include('partials.alerts')
-
-
-
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
@@ -27,12 +24,9 @@
 
                         </div>
                         <div class="body">
-
                             <div class="row clearfix">
-
-
                                 <div class=" col-lg-4 col-md-4  col-sm-12">
-                                    <form action="{{route('categorystore')}}" method="post" enctype="multipart/form-data">
+                                    <form action="{{route('categorystore',$parentid)}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                        <div class="card">
 
@@ -58,7 +52,7 @@
                                             <span>  </span>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="description" maxlength="50" placeholder=" " />
+                                                    <input type="text" class="form-control" name="description" maxlength="50" placeholder="{{!isset($parentid)? 'required' :'as' }} " />
                                                 </div>
                                                 @error('description')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -68,7 +62,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-
+                        @if(!isset($parentid))
                                         <div class="col-sm-6">
                                             <label class="card-inside-title">Icon</label>
                                             <span> File type: image| width:100px ,height:100px</span>
@@ -89,7 +83,7 @@
                                             <span> File type: image| width:470px ,height:501px</span>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" class="form-control" name="image"  required placeholder="col-sm-3" />
+                                                    <input type="file" class="form-control" name="image" required placeholder="col-sm-3" />
                                                 </div>
                                                 @error('image')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -99,6 +93,7 @@
                                                 @enderror
                                             </div>
                                         </div>
+                            @endif
                                     </div>
                                             <button type="submit"  class="btn btn-success waves-effect">
                                                 <i class="material-icons " style="color: white">save</i>
@@ -114,7 +109,8 @@
 
                                         </div>
                                         <div class="body table-responsive">
-                                            @if(isset($categories) &&  !\PHPUnit\Framework\isEmpty($categories))
+                                            @if(isset($categories) )
+
                                             <table class="table table-striped">
                                                 <thead>
                                                 <tr>
@@ -132,7 +128,7 @@
                                                 <tr>
                                                     <th scope="row">1</th>
                                                     <td><img src="{{$category->icon}}" width="35px" alt=""></td>
-                                                    <td><img src="{{$category->image}}" width="150px" alt=""></td>
+                                                    <td><img src="{{$category->image}}" width="100px" alt=""></td>
                                                     <td>{{$category->name}}</td>
                                                     <td>{{$category->description}}</td>
                                                     <td>
@@ -147,15 +143,20 @@
                                                         <button type="button" class="btn bg-purple waves-effect" style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">mode_edit</i>
                                                         </button>
-                                                        <button type="button" class="btn bg-black waves-effect waves-light" style="padding: 2px 3px!important;">
+                                                        <button type="button" onclick="document.getElementById('deletecategory{{$category->id}}').submit()"  class="btn bg-black waves-effect waves-light" style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">delete</i>
                                                         </button>
+
+                                                        <form action="{{route('categorydelete',$category->id)}}" id="deletecategory{{$category->id}}" method="post" style="display: none">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
                                                     </td>
                                                 </tr>
                                                     @endforeach
-
                                                 </tbody>
                                             </table>
+
                                             @else
                                                 <center>
                                                     <img src="https://i.pinimg.com/236x/cf/b6/43/cfb643ba7408b8bd35c8b45ca1c13704.jpg"  >

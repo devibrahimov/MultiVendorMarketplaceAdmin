@@ -16,4 +16,5 @@ Route::group(['middleware'=>'auth' ],function () {
 
     Route::get('category/{id?}',[\App\Http\Controllers\General\CategoriesController::class,'index'])->name('categories');
     Route::post('category/store/{parentid?}',[\App\Http\Controllers\General\CategoriesController::class,'store'])->name('categorystore');
+    Route::delete('categorydelete/{id?}',[\App\Http\Controllers\General\CategoriesController::class,'categorydelete'])->name('categorydelete');
 });

@@ -10,27 +10,17 @@ use PHPUnit\Exception;
 
 class CategoriesController extends Controller
 {
-    public function index(int $parentid=null){
+    public function index(int $parentid=NULL){
         if ($parentid == null)
             $categories = Category::where('parent_id' ,null)->get() ;
 
         if ($parentid !=null)
             $categories = Category::where('parent_id' ,$parentid)->get() ;
-
-        return view('pages.category.categories',compact(['categories']));
-    }
-
-
-
-    public function subcategories(){
-
-    }
-
+        return view('pages.category.categories',compact(['categories','parentid']));
+    }//end index function
 
 
     public function store(int $parentid=null,Request $request){
-
-
         try{
             $icon= null;
             $image = null;
@@ -40,7 +30,6 @@ class CategoriesController extends Controller
             $imagepath = public_path() . $path;
 
             if ($icon) {
-
                 $newimagename = env('APP_NAME') .Str::slug($request->name) . '.' . $icon->getClientOriginalExtension();
                 $imageurl = $path . '/' . $newimagename; //for DB
                 $icon->move($imagepath, $newimagename);
@@ -78,10 +67,26 @@ class CategoriesController extends Controller
             return back()->with('feedback', $feedbackdata);
         }
 
+    }//end store function
 
 
 
-    }
+    public function categorydelete($id){
+        try {
+
+        Category::find($id)->delete();
+
+            $feedbackdata = ['title' => 'Uğurlu !',
+                'message' => 'Kategoriya uğurla silindi',
+                'type' => 'success', ];
+            return back()->with('feedback', $feedbackdata);
+        }catch (\Exception $exception){
+            $feedbackdata = ['title' => 'Uğursuz !',
+                'message' => 'Kateqoriya silinərkən xəta baş verdi. Xəta: '.$exception->getMessage(),
+                'type' => 'danger'];
+            return back()->with('feedback', $feedbackdata);
+        }
+    }//end delete function
 
 
 }
