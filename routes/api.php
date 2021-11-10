@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/v1', function (Request $request) {
-    return 123;
+Route::group(['middleware'=> ['apitoken']], function () {
+    //start API endpoints
+
+
+    Route::get('/test',function (){ return 123; });
+
+
+   //end API endpoints
 });
