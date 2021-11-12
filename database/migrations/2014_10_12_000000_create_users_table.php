@@ -17,13 +17,16 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->enum('type',['user','shop','service'])->nullable();
             $table->unsignedBigInteger('region_id');
             $table->string('number')->nullable();
             $table->string('email')->unique();
             $table->string('role')->default(0);
             $table->string('aprovel')->default(0);
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone_number');
+            $table->string('adress');
+            $table->string('avatar');
+            $table->string('token');
             $table->string('password');
             $table->rememberToken();
             $table->softDeletes();

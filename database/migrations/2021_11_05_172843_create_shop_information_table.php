@@ -13,16 +13,22 @@ class CreateShopInformationTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_information', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->primary();
-            $table->string('username');
-            $table->string('phone_number');
+        Schema::create('shops', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('surname');
+            $table->string('shopname');
+            $table->unsignedBigInteger('region_id');
+            $table->string('number')->unique();
+            $table->string('email')->unique();
+            $table->string('role')->default(0);
+            $table->string('aprovel')->default(0);
             $table->string('adress');
             $table->json('location')->nullable();
-            $table->json('work_time') ;
-            $table->string('avatar');
-            $table->string('serial_number')->unique();
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->json('work_time');
+            $table->string('avatar')->nullable();
+            $table->string('shop_serialnumber')->unique();
+            $table->foreign('region_id')->references('id')->on('regions')->cascadeOnDelete()->cascadeOnUpdate();
 
         });
     }
@@ -34,6 +40,6 @@ class CreateShopInformationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_information');
+        Schema::dropIfExists('shops');
     }
 }

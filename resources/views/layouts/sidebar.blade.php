@@ -42,22 +42,13 @@
                         ['icon'=>'warning','name' =>'Şikayətlər Qutusu' , 'route'=>'#'],
                         ['icon'=>'shopping_basket','name' =>'Mağaza Məhsulları' , 'route'=>'#'],]
                     ],
-                     ['icon'=>'local_hospital','name' =>'Baytar / Klinikalar','application' =>[
-                        ['icon'=>'assignment_ind','name' =>'Qeydiyyat' , 'route'=>'setting'],
-                        ['icon'=>'assignment','name' =>'Siyahısı' , 'route'=>'#']
-                         ]
-                    ],
+
                      ['icon'=>'perm_contact_calendar','name' =>'İstifadəçilər','application' =>[
                         ['icon'=>'assignment','name' =>'Siyahısı' , 'route'=>'#'],
                         ['icon'=>'warning','name' =>'Şikayətlər Qutusu' , 'route'=>'#'],
                        ]
                     ],
-                    ['icon'=>'layers','name' =>'Viktorina Bölməsi','application' =>[
-                        ['icon'=>'subject','name' =>'Kategoriyalar' , 'route'=>'#'],
-                        ['icon'=>'shop','name' =>'Paylaşımlar' , 'route'=>'#'],
-                        ['icon'=>'stars','name' =>'Qiymətləndirmələr' , 'route'=>'#'],
-                        ]
-                    ],
+
                      ['icon'=>'add_to_queue','name' =>'Web Sayt','application' =>[
                         ['icon'=>'build','name' =>'Tənizmləmələr' , 'route'=>'setting'],
                         ['icon'=>'extension','name' =>'Entegrasiyalar' , 'route'=>'#'],

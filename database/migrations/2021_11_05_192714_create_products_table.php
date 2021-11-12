@@ -15,19 +15,22 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('category_id');
+            $table->boolean('access');
             $table->string('name')->index('product_name');
             $table->string('slug')->index('product_slug');
             $table->string('price');
-            $table->string('sale_price')->nullable();
+            $table->string('sale_price')->index('product_price');
             $table->text('description');
-            $table->enum('delivery',['0','city','region','country']);
+            $table->integer('stock');
             $table->string('barkode')->nullable();
+            $table->string('sku')->nullable();
             $table->string('product_code')->unique('product_code');
+            $table->json('images');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('shop_id')->references('id')->on('shops')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate();
 
         });

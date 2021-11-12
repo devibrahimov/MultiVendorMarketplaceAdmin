@@ -20,7 +20,7 @@ class AdminSeed extends Seeder
             'surname' => 'Administrator',
             'role' => 1,
             'aprovel' => 1,
-            'email' => 'admin@gmail.com',
+            'email' => 'demo@admin.com',
             'password' => Hash::make(123456)
         ]);
     }
