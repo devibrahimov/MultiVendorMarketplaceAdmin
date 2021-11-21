@@ -20,4 +20,6 @@ Route::group(['middleware'=>'auth' ],function () {
 
     Route::resource('region', \App\Http\Controllers\General\RegionController::class);
 
+
 });
+
