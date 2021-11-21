@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use PHPUnit\Exception;
 
+
 class CategoriesController extends Controller
 {
     public function index(int $parentid=NULL){

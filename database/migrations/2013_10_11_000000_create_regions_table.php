@@ -15,10 +15,10 @@ class CreateRegionsTable extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id');
-            $table->string('name');
-            $table->string('slug');
-            $table->string('post_code');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('post_code')->nullable();
             $table->timestamps();
         });
     }
