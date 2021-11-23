@@ -14,11 +14,12 @@ Route::group(['middleware'=>'auth' ],function () {
     Route::post('/setting',[\App\Http\Controllers\General\SettingController::class,'store']) ;
     Route::post('/setting/update',[\App\Http\Controllers\General\SettingController::class,'update'])->name('setting_update');
 
-    Route::get('category/{id?}',[\App\Http\Controllers\General\CategoriesController::class,'index'])->name('categories');
-    Route::post('category/store/{parentid?}',[\App\Http\Controllers\General\CategoriesController::class,'store'])->name('categorystore');
-    Route::delete('categorydelete/{id?}',[\App\Http\Controllers\General\CategoriesController::class,'categorydelete'])->name('categorydelete');
+//    Route::get('category/{id?}',[\App\Http\Controllers\General\CategoriesController::class,'index'])->name('categories');
+//    Route::post('category/store/{parentid?}',[\App\Http\Controllers\General\CategoriesController::class,'store'])->name('categorystore');
+//    Route::delete('categorydelete/{id?}',[\App\Http\Controllers\General\CategoriesController::class,'categorydelete'])->name('categorydelete');
 
     Route::resource('region', \App\Http\Controllers\General\RegionController::class);
+    Route::resource('category', \App\Http\Controllers\General\CategoryController::class);
 
 
 });

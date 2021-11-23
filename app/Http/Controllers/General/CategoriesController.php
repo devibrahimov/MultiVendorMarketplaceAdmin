@@ -21,7 +21,7 @@ class CategoriesController extends Controller
     }//end index function
 
 
-    public function store(int $parentid=null,Request $request){
+    public function store(int $parentid = null,Request $request){
         try{
             $icon= null;
             $image = null;

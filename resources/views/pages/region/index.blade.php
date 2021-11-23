@@ -79,7 +79,7 @@
                                     <div class="body table-responsive">
                                         @if(isset($regions) )
 
-                                            <table class="table table-striped">
+                                            <table class="table table-striped" id="myTable">
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -134,7 +134,11 @@
 @endsection
 
 @section('js-libs')
-
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
 @endsection
 
 @section('js-script')

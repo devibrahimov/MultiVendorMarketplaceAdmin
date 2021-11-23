@@ -15,6 +15,7 @@
 
     <!-- Bootstrap Core Css -->
     <link href="/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
     <link href="/plugins/node-waves/waves.css" rel="stylesheet" />
