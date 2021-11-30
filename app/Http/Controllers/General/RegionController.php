@@ -32,7 +32,7 @@ class RegionController extends Controller
     {
         $validated = $request->validated();
 
-        $validated['slug'] = Str::slug($request->name);
+        $validated['slug'] = Str::slug($validated['name']);
 
         Region::create($validated);
 

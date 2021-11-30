@@ -18,6 +18,7 @@
 @yield('js-libs')
 
 <!-- Custom Js -->
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="/js/admin.js"></script>
 <script src="/js/pages/index.js"></script>
 
