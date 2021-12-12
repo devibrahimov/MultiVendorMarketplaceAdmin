@@ -11,6 +11,7 @@ class CreateAdvertisementsTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('advertisements', function (Blueprint $table) {
@@ -20,7 +21,6 @@ class CreateAdvertisementsTable extends Migration
             $table->longText('url');
             $table->string('type');
             $table->string('page');
-            $table->string('line');
             $table->dateTime('start_time');
             $table->dateTime('stop_time');
             $table->softDeletes();

@@ -18,8 +18,8 @@ class AuthController extends Controller
        $shopname  = $request->shopname;
        $region_id  = $request->region_id;
        $number  = $request->number ;
-       $email  = $request->email ;
-       $adress  = $request->adress ;
+       $email  = $request->email;
+       $adress  = $request->adress;
        $location  =  json_encode(['lat' => $request->lat,'lng' => $request->lng]);
        $work_time = json_encode(['start_time' => $request->start_time,'end_time' => $request->end_time]);
        $shop_serialnumber  = time().rand(10000,99999);
@@ -28,7 +28,7 @@ class AuthController extends Controller
         if ($avatar) {
             $path = "/photos/magazalar/avatarlar";
             $imagepath = public_path() . $path;
-            $newimagename = env('APP_NAME') .Str::slug($request->shopname) . '.' . $avatar->getClientOriginalExtension();
+            $newimagename = env('APP_NAME') .Str::slug($request->shopname).'.'.$avatar->getClientOriginalExtension();
             $imageurl = $path . '/' . $newimagename; //for DB
             $avatar->move($imagepath, $newimagename);
         }else{

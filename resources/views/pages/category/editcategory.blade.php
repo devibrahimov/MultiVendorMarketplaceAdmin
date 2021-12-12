@@ -1,7 +1,16 @@
 @extends('welcome')
 
 @section('css')
+    <!-- Bootstrap Select Css -->
+    <link href="/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
+    <style>
+        .bootstrap-select.btn-group .dropdown-menu li {
+
+            left: 21px!important;
+        ;
+        }
+    </style>
 @endsection
 
 
@@ -25,20 +34,20 @@
                     </div>
                     <div class="body">
                         <div class="row clearfix">
-                            <div class=" col-lg-4 col-md-4  col-sm-12">
-                                <form action="{{route('category.update', $category)}}" method="post" enctype="multipart/form-data">
+                            <div class=" col-lg-12 col-md-12  col-sm-12">
+                                <form action="{{route('categoryupdate',$category->id)}}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
                                     <div class="card">
-
                                         <div class="body table-responsive">
                                             <div class="row clearfix">
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-4">
                                                     <label class="card-inside-title">Kateqoriya adı</label>
                                                     <span>  </span>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" class="form-control" value="{{$category->name}}" name="name"  maxlength="25"  placeholder=" " />
+                                                            <input type="text" class="form-control" name="name"
+                                                                   maxlength="25" required
+                                                                   value="{{$category->name}}" />
                                                         </div>
                                                         @error('name')
                                                         <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -48,16 +57,14 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12">
-                                                    <label class="card-inside-title">Parent Kategoriya </label>
+                                                <div class="col-sm-4">
+                                                    <label class="card-inside-title">Kateqoriya Açıqlama Mətni</label>
                                                     <span>  </span>
                                                     <div class="form-group">
-                                                        <select name="parent_id" class="ms form-control" id="exampleFormControlSelect1">
-                                                            <option value="">Select</option>
-                                                            @foreach($parentCategories as $_category)
-                                                                <option  @if($_category->id == $category->parent_id) selected @endif value="{{$_category->getAttribute('id')}}">{{$_category->name}}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        <div class="form-line">
+                                                            <input type="text" class="form-control"
+                                                                   name="description" maxlength="50" value="{{$category->description}}" />
+                                                        </div>
                                                         @error('description')
                                                         <div class="alert alert-dismissible" role="alert" style="color: red!important">
                                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
@@ -67,12 +74,23 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-12">
-                                                    <label class="card-inside-title">Kateqoriya Açıqlama Mətni</label>
+
+                                                <div class="col-sm-4">
+                                                    <label class="card-inside-title">Üst Kateqoriyası </label>
                                                     <span>  </span>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" class="form-control" value="{{$category->description}}" name="description" maxlength="50" placeholder="" />
+
+                                                            <select class="form-control select"
+                                                                    data-live-search="true" name="parentid">
+
+                                                                <option value=""> Ana Kategoriya</option>
+                                                                @foreach($categories as $cat)
+                                                                    <option {{$cat->id==$category->parent_id?'selected':''}}
+                                                                        value="{{$cat->id}}">{{$cat->name}}</option>
+                                                                @endforeach
+                                                            </select>
+
                                                         </div>
                                                         @error('description')
                                                         <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -82,21 +100,15 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" @if($category->status == 1) checked  @endif name="status" type="checkbox"  id="flexCheckIndeterminate">
-                                                    <label class="form-check-label" for="flexCheckIndeterminate">
-                                                        STATUS
-                                                    </label>
-                                                </div>
-                                                </div>
-                                                @if(!isset($parentid))
+
+                                                @if(!isset($category->parent_id))
                                                     <div class="col-sm-6">
                                                         <label class="card-inside-title">Icon</label>
-                                                        <img src="{{$category->image}}" width="100px" alt="">                                                        <span> File type: image| width:100px ,height:100px</span>
+                                                        <span> File type: image| width:100px ,height:100px</span>
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="file" class="form-control" name="icon"   placeholder="col-sm-3" />
+                                                                <input type="file" class="form-control" name="icon"
+                                                                       required   />
                                                             </div>
                                                             @error('icon')
                                                             <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -111,7 +123,8 @@
                                                         <span> File type: image| width:470px ,height:501px</span>
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="file" class="form-control" name="image"  placeholder="col-sm-3" />
+                                                                <input type="file" class="form-control" name="image"
+                                                                       required />
                                                             </div>
                                                             @error('image')
                                                             <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -124,26 +137,19 @@
                                                 @endif
                                             </div>
                                             <button type="submit"  class="btn btn-success waves-effect">
-                                                <i class="material-icons " style="color:white">update</i>
-{{--                                                <span>EDIT</span>--}}
+                                                <i class="material-icons " style="color: white">save</i>
+                                                <span>Yadda Saxla</span>
                                             </button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                                </div>
-                            </div>
-
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
         <!-- #END# Input -->
-
     </div>
 
 
@@ -151,6 +157,9 @@
 
 @section('js-libs')
 
+    <!-- Custom Js -->
+    <script src="/js/admin.js"></script>
+    <script src="/js/pages/forms/advanced-form-elements.js"></script>
 @endsection
 
 @section('js-script')

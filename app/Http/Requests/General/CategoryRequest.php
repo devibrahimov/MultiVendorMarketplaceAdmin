@@ -24,8 +24,6 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'icon' => 'nullable|mimes:png',
-            'image' => 'nullable|mimes:png',
 //            'image' => 'nullable|mimes:png|dimensions:max_width=470,max_height=501',
 //            'icon' => 'nullable|mimes:png|dimensions:max_width=100,max_height=100',
             'name' => 'required|max:25',

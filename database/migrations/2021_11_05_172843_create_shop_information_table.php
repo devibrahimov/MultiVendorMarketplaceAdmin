@@ -18,18 +18,29 @@ class CreateShopInformationTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('shopname');
-            $table->unsignedBigInteger('region_id');
+            $table->unsignedBigInteger('shopcategory');
             $table->string('number')->unique();
             $table->string('email')->unique();
-            $table->string('role')->default(0);
             $table->string('aprovel')->default(0);
             $table->string('adress');
             $table->json('location')->nullable();
             $table->json('work_time');
             $table->string('avatar')->nullable();
             $table->string('shop_serialnumber')->unique();
-            $table->foreign('region_id')->references('id')->on('regions')->cascadeOnDelete()->cascadeOnUpdate();
 
+/*
+ *  Ad ,
+ *  Soyad ,
+ *  Mağaza adı ,
+ *  Bölgə / Şəhər ,
+ *  Telefon nömrəsi ,
+ *  Email adresi ,
+ *  Mağaza Kategoriyası ,(Geyim , Mebel, Məişət əşyaları ,və s.)
+ *  Adres (Tam adres) ,
+ * İş saatları , (3 input olacaq , biri select olacaq (Rəsmi Tətil günləri xaric)(hefte içi ,6-ün , hər gün) iş başlama
+ * saatı ,İş bitiş saatı)
+ *
+ */
         });
     }
 

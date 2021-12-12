@@ -1,7 +1,65 @@
 @extends('welcome')
 
 @section('css')
+<style>
 
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 22px;
+        top: 15px;
+    }
+
+    .switch input {display:none;}
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+</style>
 @endsection
 
 
@@ -37,7 +95,8 @@
                                             <span>  </span>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="name"  maxlength="25" required placeholder=" " />
+                                                    <input type="text" class="form-control" name="name"
+                                                           maxlength="25" required  />
                                                 </div>
                                                 @error('name')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -52,7 +111,8 @@
                                             <span>  </span>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="description" maxlength="50" placeholder="{{!isset($parentid)? 'required' :'as' }} " />
+                                                    <input type="text" class="form-control" name="description"
+                                                           maxlength="50"   />
                                                 </div>
                                                 @error('description')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -62,17 +122,18 @@
                                                 @enderror
                                             </div>
                                         </div>
-                        @if(!isset($parentid))
+                                    @if(!isset($parentid))
                                         <div class="col-sm-6">
                                             <label class="card-inside-title">Icon</label>
                                             <span> File type: image| width:100px ,height:100px</span>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" class="form-control" name="icon"  required placeholder="col-sm-3" />
+                                                    <input type="file" class="form-control" name="icon"  required   />
                                                 </div>
                                                 @error('icon')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
@@ -83,7 +144,7 @@
                                             <span> File type: image| width:470px ,height:501px</span>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="file" class="form-control" name="image" required placeholder="col-sm-3" />
+                                                    <input type="file" class="form-control" name="image" required  />
                                                 </div>
                                                 @error('image')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -93,7 +154,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                            @endif
+                                    @endif
                                     </div>
                                             <button type="submit"  class="btn btn-success waves-effect">
                                                 <i class="material-icons " style="color: white">save</i>
@@ -123,7 +184,6 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-
                                                     @foreach($categories as $category)
                                                 <tr>
                                                     <th scope="row">1</th>
@@ -132,17 +192,25 @@
                                                     <td>{{$category->name}}</td>
                                                     <td>{{$category->description}}</td>
                                                     <td>
+{{--                                                        <button type="button" class="btn btn-success waves-effect" style="padding: 2px 3px!important;">--}}
+{{--                                                            <i class="material-icons" style="font-size:16px; top:2px;">check_circle</i>--}}
+{{--                                                        </button>--}}
 
-                                                        <button type="button" class="btn btn-success waves-effect" style="padding: 2px 3px!important;">
-                                                            <i class="material-icons" style="font-size:16px; top:2px;">check_circle</i>
-                                                        </button>
+                                                        <label class="switch">
+                                                            <input type="checkbox" name="status" class="switchStatus"
+                                                                   data-id="{{$category->id}}" >
+                                                            <span class="slider round"></span>
+                                                        </label>
+
                                                         <a href="{{route('categories',$category->id)}}" type="button" class="btn bg-orange waves-effect" style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">play_for_work</i>
                                                             <span>Alt Kateqoriyalar</span>
                                                         </a>
-                                                        <button type="button" class="btn bg-purple waves-effect" style="padding: 2px 3px!important;">
+                                                        <a href="{{route('categoryedit',$category->id)}}" class="btn bg-purple
+                                                        waves-effect"
+                                                           style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">mode_edit</i>
-                                                        </button>
+                                                        </a>
                                                         <button type="button" onclick="document.getElementById('deletecategory{{$category->id}}').submit()"  class="btn bg-black waves-effect waves-light" style="padding: 2px 3px!important;">
                                                             <i class="material-icons" style="font-size:16px; top:2px;">delete</i>
                                                         </button>
@@ -156,7 +224,6 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-
                                             @else
                                                 <center>
                                                     <img src="https://i.pinimg.com/236x/cf/b6/43/cfb643ba7408b8bd35c8b45ca1c13704.jpg"  >
@@ -165,12 +232,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
                         </div>
-
                 </div>
             </div>
         </div>
@@ -186,5 +249,9 @@
 @endsection
 
 @section('js-script')
-
+    <script>
+        $(document).on('click','.switchStatus',function () {
+            
+        })
+    </script>
 @endsection
