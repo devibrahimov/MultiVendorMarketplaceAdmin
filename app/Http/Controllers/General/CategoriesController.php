@@ -83,36 +83,36 @@ class CategoriesController extends Controller
 
     public function update(int $id , Request $request){
         try{
-            $icon= null;
-            $image = null;
+
             $icon = $request->file('icon');
             $image = $request->file('image');
             $path = "/photos/site/categories";
             $parentid = $request->parentid;
             $imagepath = public_path() . $path;
-
-            if ($icon) {
-                $newimagename = env('APP_NAME') .Str::slug($request->name) . '.' . $icon->getClientOriginalExtension();
-                $imageurl = $path . '/' . $newimagename; //for DB
-                $icon->move($imagepath, $newimagename);
-                $icon = $imageurl;
-            }
-
-            if ($image) {
-                $newimagename = env('APP_NAME').Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
-                $imageurl = $path . '/' . $newimagename; //for DB
-                $image->move($imagepath, $newimagename);
-                $image = $imageurl;
-            }
-
             $data = [
                 'parent_id' => $parentid,
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
                 'description' => $request->description,
-                'icon' =>$icon,
-                'image' =>$image ,
             ];
+
+            if ($icon) {
+                $newimagename = env('APP_NAME') .Str::slug($request->name) . '.' . $icon->getClientOriginalExtension();
+                $imageurl = $path . '/' . $newimagename; //for DB
+                $icon->move($imagepath, $newimagename);
+
+                $data['icon'] = $imageurl;;
+            }
+
+            if ($image ) {
+                $newimagename = env('APP_NAME').Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
+                $imageurl = $path . '/' . $newimagename; //for DB
+                $image->move($imagepath, $newimagename);
+
+                $data['image'] = $imageurl;
+            }
+
+
             $category=   Category::find($id);
             $category->update($data);
 

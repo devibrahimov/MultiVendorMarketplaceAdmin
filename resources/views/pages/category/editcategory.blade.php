@@ -107,8 +107,7 @@
                                                         <span> File type: image| width:100px ,height:100px</span>
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="file" class="form-control" name="icon"
-                                                                       required   />
+                                                                <input type="file" class="form-control" name="icon" />
                                                             </div>
                                                             @error('icon')
                                                             <div class="alert alert-dismissible" role="alert" style="color: red!important">
@@ -123,8 +122,7 @@
                                                         <span> File type: image| width:470px ,height:501px</span>
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="file" class="form-control" name="image"
-                                                                       required />
+                                                                <input type="file" class="form-control" name="image" />
                                                             </div>
                                                             @error('image')
                                                             <div class="alert alert-dismissible" role="alert" style="color: red!important">

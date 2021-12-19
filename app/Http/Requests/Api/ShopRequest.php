@@ -27,9 +27,11 @@ class ShopRequest extends FormRequest
             'name'=> 'required|max:50|string',
             'surname'=> 'required|max:50|string',
             'shopname'=> 'required|max:50|string',
-            'region_id'=> 'required|max:50|number',
+            'shopcategory'=> 'required|max:50|number',
             'number'=> 'required|max:50|string',
             'email'=> 'required|max:50|email',
+            'adress'=> 'required|max:150|string',
+
         ];
     }
 }
