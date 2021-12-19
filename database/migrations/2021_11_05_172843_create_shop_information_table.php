@@ -27,7 +27,8 @@ class CreateShopInformationTable extends Migration
             $table->json('work_time');
             $table->string('avatar')->nullable();
             $table->string('shop_serialnumber')->unique();
-
+            $table->softDeletes();
+            $table->timestamps();
 /*
  *  Ad ,
  *  Soyad ,

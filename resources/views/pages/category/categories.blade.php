@@ -197,8 +197,9 @@
 {{--                                                        </button>--}}
 
                                                         <label class="switch">
-                                                            <input type="checkbox" name="status" class="switchStatus"
-                                                                   data-id="{{$category->id}}" >
+                                                            <input type="checkbox" name="status" class="categoryStatus"
+                                                               {{$category->status==1?'checked':'' }}
+                                                               data-id="{{$category->id}}" >
                                                             <span class="slider round"></span>
                                                         </label>
 
@@ -250,8 +251,39 @@
 
 @section('js-script')
     <script>
-        $(document).on('click','.switchStatus',function () {
-            
-        })
+        $(document).on('click', '.categoryStatus', function () {
+
+            var dataid = $(this).attr('data-id');
+            {{--var ariapressed = $(this).attr('aria-pressed');--}}
+            if( $(this).is(':checked') ){
+                var status = 1;
+            }  else{
+                var status = 0;
+            }
+
+            $.ajax({
+                url: "{{route('categoryactivestatus')}}",
+                type: "post",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    'categoryid': dataid,
+                    'status': status
+                },
+                success: function (response) {
+                    console.log(response.feedback)
+                    // You will get response from your PHP page (what you echo or print)
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        });
+
+        // $('.productActive').on('click',function () {
+        //     var ariapressed = $(this).attr('aria-pressed');
+        //     var dataid = $(this).attr('data-id');
+        //     console.log(ariapressed)
+        //     console.log(dataid)
+        // })
     </script>
 @endsection

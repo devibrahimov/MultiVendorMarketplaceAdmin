@@ -147,4 +147,13 @@ class CategoriesController extends Controller
     }//end delete function
 
 
+
+    public function categoryactivestatus(Request $request)
+    {
+        $category = Category::find($request->categoryid);
+        $category->status = $request->status;
+        $category->save();
+    }
+
+
 }
