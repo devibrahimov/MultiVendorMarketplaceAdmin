@@ -35,7 +35,7 @@
                     ['icon'=>'adb','name' =>'Administrator' , 'route'=>'#'],
                     ['icon'=>'line_style','name' =>'Kategoriyalar' , 'route'=>'categories'],
                     ['icon'=>'map','name' =>'Bölgə və Şəhərlər' , 'route'=>'region.index'],
-                    ['icon'=>'dashboard','name' =>'Reklam İdarəsi' , 'route'=>'#'],
+                    ['icon'=>'dashboard','name' =>'Reklam İdarəsi' , 'route'=>'advertisments'],
                      ['icon'=>'store','name' =>'Mağazaların İdarəsi','application' =>[
                         ['icon'=>'assignment_ind','name' =>'Qeydiyyat' , 'route'=>'setting'],
                         ['icon'=>'assignment','name' =>'Siyahısı' , 'route'=>'#'],

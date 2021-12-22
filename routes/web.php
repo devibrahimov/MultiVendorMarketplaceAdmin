@@ -24,6 +24,17 @@ Route::group(['middleware'=>'auth' ],function () {
     Route::delete('/categorydelete/{id?}',[\App\Http\Controllers\General\CategoriesController::class,
         'categorydelete'])->name('categorydelete');
 
+    //advertisment
+    Route::get('/advertisment/{id?}',[\App\Http\Controllers\General\AdvertismentController::class,'index'])->name('advertisments');
+    Route::post('/advertisment/store',[\App\Http\Controllers\General\AdvertismentController::class,'store'])
+        ->name('advertismentstore');
+    Route::get('/advertisment/edit/{id}',[\App\Http\Controllers\General\AdvertismentController::class , 'edit'])->name('advertismentedit');
+    Route::post('/advertisment/update/{id}',[\App\Http\Controllers\General\AdvertismentController::class , 'update'])->name
+    ('advertismentupdate');
+    Route::delete('/advertismentdelete/{id?}',[\App\Http\Controllers\General\AdvertismentController::class,
+        'advertismentdelete'])->name('advertismentdelete');
+
+
     Route::resource('region', \App\Http\Controllers\General\RegionController::class);
 
 
