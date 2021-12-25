@@ -46,8 +46,8 @@ Route::group(['middleware'=> ['apitoken']], function () {
     //middleware auth:apiuser start
     Route::group(['middleware'=> ['auth:apiuser']], function () {
 
-        Route::get('/user',[App\Http\Controllers\Api\Shop\AuthController::class ,'userdata']) ;
-        Route::get('/user-logout',[App\Http\Controllers\Api\Shop\AuthController::class ,'logout']) ;
+        Route::get('/userdata',[App\Http\Controllers\Api\USer\AuthController::class ,'userdata']) ;
+        Route::get('/user-logout',[App\Http\Controllers\Api\User\AuthController::class ,'logout']) ;
 
 
     });//middleware auth:apiuser stop

@@ -31,6 +31,7 @@ class ShopRequest extends FormRequest
             'number'=> 'required|max:50|string',
             'email'=> 'required|max:50|email|unique:shops',
             'adress'=> 'required|max:150|string',
+            'password'=> 'required|max:150|string|confirmed',
 
         ];
     }
