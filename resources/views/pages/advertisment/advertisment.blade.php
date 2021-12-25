@@ -79,7 +79,6 @@
                             Reklam
                             <small>Sayt Reklam Tənzimləmələri</small>
                         </h2>
-
                     </div>
                     <div class="body">
                         <div class="row clearfix">
@@ -91,7 +90,7 @@
                                         <div class="body table-responsive">
                                             <div class="row clearfix">
                                                 <div class="col-sm-12">
-                                                    <label class="card-inside-title">Company</label>
+                                                    <label class="card-inside-title">Şirkət adı</label>
                                                     <span>  </span>
                                                     <div class="form-group">
                                                         <div class="form-line">
@@ -123,13 +122,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <label class="card-inside-title">Page</label>
-                                                    <span>  </span>
+                                                    <label class="card-inside-title">Səhifə</label>
+
                                                     <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="number" class="form-control" name="page"
-                                                                   maxlength="25" required  />
-                                                        </div>
+                                                        <select name="page"  class="form-control"  id="">
+                                                            <option value="home">Ana Səhifə</option>
+                                                            <option value="products">Məsullar</option>
+                                                            <option value="allpages">Bütün Səhifələr</option>
+                                                        </select>
                                                         @error('page')
                                                         <div class="alert alert-dismissible" role="alert" style="color: red!important">
                                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
@@ -139,7 +139,27 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <label class="card-inside-title">Line</label>
+                                                    <label class="card-inside-title">Reklam Səhifədəki Tipi</label>
+
+                                                    <div class="form-group">
+                                                        <select name="type"  class="form-control"  id="">
+                                                            <option value="header">Əsas</option>
+{{--                                                            @foreach($types as $type)--}}
+{{--                                                            <option {{$advertisment->type == \Illuminate\Support\Str::slug($type->name)? 'selected':'' }}--}}
+{{--                                                            value="{{\Illuminate\Support\Str::slug($type->name)--}}
+{{--                                                            }}">{{$type->name}}</option>--}}
+{{--                                                            @endforeach--}}
+                                                        </select>
+                                                        @error('page')
+                                                        <div class="alert alert-dismissible" role="alert" style="color: red!important">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
+                                                            {{ $message }}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <label class="card-inside-title">Sətir sırası</label>
                                                     <span>  </span>
                                                     <div class="form-group">
                                                         <div class="form-line">

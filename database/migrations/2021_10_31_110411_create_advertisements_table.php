@@ -20,6 +20,7 @@ class CreateAdvertisementsTable extends Migration
             $table->string('company');
             $table->longText('url');
             $table->string('type');
+            $table->tinyInteger('line');
             $table->string('page');
             $table->dateTime('start_time');
             $table->dateTime('stop_time');

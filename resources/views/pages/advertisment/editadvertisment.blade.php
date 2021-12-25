@@ -90,6 +90,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-4">
                                                     <label class="card-inside-title">Page</label>
                                                     <span>  </span>
@@ -107,6 +108,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-4">
                                                     <label class="card-inside-title">Line</label>
                                                     <span>  </span>

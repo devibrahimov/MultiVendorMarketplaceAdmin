@@ -37,13 +37,14 @@ class AdvertismentController extends Controller
                 'url' => $request->url,
                 'page' => $request->page,
                 'line' => $request->line,
+                'type' => $request->type,
                 'start_time' => $request->start_time,
                 'stop_time' => $request->stop_time,
                 'image' =>$image ,
             ];
 
             $advertisment= new Advertisement();
-            $advertisment->insert($data);
+            $advertisment->create($data);
 
             $feedbackdata = ['title' => 'Uğurlu !',
                 'message' => 'Sayt məlumatları uğurla qeyd edildi',
@@ -84,6 +85,7 @@ class AdvertismentController extends Controller
                 'url' => $request->url,
                 'page' => $request->page,
                 'line' => $request->line,
+                'type' => $request->type,
                 'start_time' => $request->start_time,
                 'stop_time' => $request->stop_time,
                 'image' =>$image ,

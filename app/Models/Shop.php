@@ -18,6 +18,8 @@ class Shop extends Model
     protected $table = 'shops';
     protected $dates = ['deleted_at'];
     protected $guarded = [];
+    protected $hidden = ['password','email'];
+
 
    public function  createnewShop($request){
        try{
@@ -51,12 +53,12 @@ class Shop extends Model
         DB::table('shop_information')->insert($data);
 
            DB::commit();
-        $token = $shop->createToken('shoptoken', ['server:update'])->plainTextToken;
+        $token = $shop->createToken('shop', ['server:update'])->plainTextToken;
 
 
         $response = [
         'status' =>1,
-        'user' => $shop,
+        'data' => $shop,
         'token' =>$token,
         'message'=> 'Təbriklər Qeydiyyatınız uğurla başa çatmışdır.Artıq Sizində mağazanız var'
         ];
@@ -67,7 +69,7 @@ class Shop extends Model
            DB::rollback();
            $response = [
                'status' => 0,
-               'user' => $shop,
+               'data' => $shop,
                'token' => null,
                'message' =>$e->getMessage()
                ];
