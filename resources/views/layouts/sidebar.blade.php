@@ -36,16 +36,17 @@
                     ['icon'=>'line_style','name' =>'Kategoriyalar' , 'route'=>'categories'],
                     ['icon'=>'map','name' =>'Bölgə və Şəhərlər' , 'route'=>'region.index'],
                     ['icon'=>'dashboard','name' =>'Reklam İdarəsi' , 'route'=>'advertisments'],
-                     ['icon'=>'store','name' =>'Mağazaların İdarəsi','application' =>[
-                        ['icon'=>'assignment_ind','name' =>'Qeydiyyat' , 'route'=>'setting'],
-                        ['icon'=>'assignment','name' =>'Siyahısı' , 'route'=>'#'],
-                        ['icon'=>'warning','name' =>'Şikayətlər Qutusu' , 'route'=>'#'],
+                    ['icon'=>'store','name' =>'Mağazaların İdarəsi','application' =>[
+                        ['icon'=>'assignment_ind','name' =>'Yeni Mağaza yarat' , 'route'=>'setting'],
+                        ['icon'=>'assignment','name' =>'Yeni qeydiyyatların Siyahısı' , 'route'=>'newregistershops'],
+                        ['icon'=>'warning','name' =>'Tesdiq edilmeyen Mağazalar' , 'route'=>'#'],
+
                         ['icon'=>'shopping_basket','name' =>'Mağaza Məhsulları' , 'route'=>'#'],]
                     ],
 
                      ['icon'=>'perm_contact_calendar','name' =>'İstifadəçilər','application' =>[
                         ['icon'=>'assignment','name' =>'Siyahısı' , 'route'=>'#'],
-                        ['icon'=>'warning','name' =>'Şikayətlər Qutusu' , 'route'=>'#'],
+                      //  ['icon'=>'warning','name' =>'Şikayətlər Qutusu' , 'route'=>'#'],
                        ]
                     ],
 
