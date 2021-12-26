@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('category_id');
-            $table->boolean('access');
+            $table->boolean('access')->default(false);
             $table->string('name')->index('product_name');
             $table->string('slug')->index('product_slug');
             $table->string('price');
