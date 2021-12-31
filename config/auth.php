@@ -41,6 +41,7 @@ return [
             'provider' => 'administrator',
         ],
 
+
         'apishop'=>[
             'driver' => 'sanctum',
             'provider' => 'shop'
@@ -48,6 +49,15 @@ return [
 
         'apiuser'=>[
             'driver' => 'sanctum',
+            'provider' => 'users'
+        ],
+        'shop'=>[
+            'driver' => 'session',
+            'provider' => 'shop'
+        ],
+
+        'user'=>[
+            'driver' => 'session',
             'provider' => 'users'
         ]
     ],
