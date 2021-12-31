@@ -60,23 +60,17 @@ class AuthController extends Controller
                 'message'=>$validator->errors()
             ],422);
         }
-        $shop=User::where('email',$request->email)->first();
-        if($shop){
-            if(Hash::check($request->password,$shop->password)){
-                $token = $shop->createToken('shop')->plainTextToken;
-                return response()->json([
-                    'message'=>'success',
-                    'data'=>$shop,
-                    'token'=>$token
-                ],201);
-            }
-            return response()->json([
-                'message'=>'Şifrə yanlışdır',
-            ]);
+        if ( auth('user')->attempt([
+            'email'=>$request->email,
+            'password'=> $request->password,
+            'aprovel'=> 1,
+        ])){
+            request()->session()->regenerate();
+            return redirect()->intended(route('shop')) ;
+        }else{
+            $errors = ['email'=>'Hatalı Giriş'];
+            return back()->withErrors($errors);
         }
-        return response()->json([
-            'message'=>'E-Poçt adreisniz yanlışdır'
-        ]);
     }
 
 

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function login(){
-        if (Auth::check()){
+        if (\auth('administrator')->check()){
             return redirect()->route('dashboard');
         }else{
             return view('administrator.login');
@@ -26,7 +26,7 @@ class AuthController extends Controller
             'password.required'=>'Email alanını boş bırakamazsınız'
         ]);
 
-        if ( auth()->attempt([
+        if ( auth('administrator')->attempt([
             'email'=>$request->email,
             'password'=> $request->password,
             'aprovel'=> 1,

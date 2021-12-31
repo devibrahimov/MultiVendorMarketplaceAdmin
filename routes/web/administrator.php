@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 
 //    __________ ADMINISTRATOR ROUTES ____________
-Route::get('/login',function (){  return view('login'); })->name('login');
-Route::post('/login', [\App\Http\Controllers\Administrator\AuthController::class, 'logincontrol']) ;
+Route::get('/login',[\App\Http\Controllers\Administrator\AuthController::class, 'login'])->prefix('adminpanel')->name('login');
+Route::post('/login', [\App\Http\Controllers\Administrator\AuthController::class, 'logincontrol'])->prefix('adminpanel') ;
 
-Route::group(['middleware'=>'auth' ,'prefix'=>'adminpanel'],function () {
+Route::group(['middleware'=>'auth:administrator' ,'prefix'=>'adminpanel'],function () {
     Route::post('/exit', [\App\Http\Controllers\Administrator\AuthController::class, 'logout'])->name('logout');
 
     Route::get('/', [\App\Http\Controllers\Administrator\GeneralController::class, 'dashboard'])->name('dashboard');
