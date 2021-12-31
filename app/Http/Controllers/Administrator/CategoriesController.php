@@ -18,7 +18,7 @@ class CategoriesController extends Controller
 
         if ($parentid !=null)
             $categories = Category::where('parent_id' ,$parentid)->get() ;
-        return view('pages.category.categories',compact(['categories','parentid']));
+        return view('administrator.pages.category.categories',compact(['categories','parentid']));
     }//end index function
 
 
@@ -76,7 +76,7 @@ class CategoriesController extends Controller
     public function edit(int $id){
         $category = Category::find($id) ;
         $categories = Category::all();
-        return view('pages.category.editcategory',compact(['category','categories']));
+        return view('administrator.pages.category.editcategory',compact(['category','categories']));
     }
 
 

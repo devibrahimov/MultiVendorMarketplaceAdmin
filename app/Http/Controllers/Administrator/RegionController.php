@@ -18,7 +18,7 @@ class RegionController extends Controller
     public function index()
     {
         $regions = Region::all();
-        return view('pages.region.index',compact('regions'));
+        return view('administrator.pages.region.index',compact('regions'));
     }
 
 
@@ -49,7 +49,7 @@ class RegionController extends Controller
 
     public function edit(Region  $region)
     {
-        return view('pages.region.edit',compact('region'));
+        return view('administrator.pages.region.edit',compact('region'));
 
     }
 

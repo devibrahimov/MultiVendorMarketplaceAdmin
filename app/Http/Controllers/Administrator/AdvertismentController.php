@@ -13,7 +13,7 @@ class AdvertismentController extends Controller
 {
     public function  index(){
          $advertisments = Advertisement::all();
-        return view('pages.advertisment.advertisment',compact('advertisments'));
+        return view('administrator.pages.advertisment.advertisment',compact('advertisments'));
     }
     public function store(AdvertismentRequest $request){
         try{
@@ -62,7 +62,7 @@ class AdvertismentController extends Controller
     public function edit(int $id){
         $advertisment = Advertisement::find($id) ;
         $advertisments = Advertisement::all();
-        return view('pages.advertisment.editadvertisment',compact(['advertisment','advertisments']));
+        return view('administrator.pages.advertisment.editadvertisment',compact(['advertisment','advertisments']));
     }
     public function update(int $id , Request $request){
         try{

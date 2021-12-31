@@ -1,4 +1,4 @@
-﻿@extends('welcome')
+﻿@extends('administrator.welcome')
 
 @section('css')
 

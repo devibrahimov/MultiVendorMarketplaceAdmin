@@ -67,15 +67,15 @@
 </div>
 <!-- #END# Search Bar -->
 <!-- Top Bar -->
-@include('layouts.header')
+@include('administrator.layouts.header')
 <!-- #Top Bar -->
 
-@include('layouts.sidebar')
+@include('administrator.layouts.sidebar')
 
 <section class="content">
    @yield('content')
 </section>
-@include('layouts.footer')
+@include('administrator.layouts.footer')
 </body>
 
 </html>

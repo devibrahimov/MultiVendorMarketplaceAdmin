@@ -17,7 +17,7 @@ class SettingController extends Controller
         if ($setting == null){
             return view('pages.general.setting');
         }else{
-            return view('pages.general.settingedit',compact(['setting']));
+            return view('administrator.pages.general.settingedit',compact(['setting']));
         }
 
 
