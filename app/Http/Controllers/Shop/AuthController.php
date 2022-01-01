@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ShopRequest;
+use App\Models\Category;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,19 +15,31 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
 
-    public function register(ShopRequest $request){
+
+
+    public function register(){
+        $categories = Category::where('parent_id',null)->get();
+          return view('site.pages.shop.register',compact('categories'));
+    }
+
+    public function registerstore(ShopRequest $request){
 
            $response = Shop::createnewShop($request);
 
            if ($response['status'] == 1){
-               return response($response,201);
+               return redirect()->route('home');
            }else{
-               return response($response,200);
+               return redirect()->route('shop.register');
            }
     }
 
 
-    public function login(Request $request){
+    public function login(){
+        return view('site.pages.shop.login');
+    }
+
+
+    public function logincontrol(Request $request){
 
         $validator = Validator::make($request->all(),[
             'email'=>'required|email|max:70',

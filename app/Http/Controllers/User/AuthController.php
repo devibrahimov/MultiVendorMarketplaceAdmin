@@ -13,8 +13,13 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
-    //
-    public function register(UserRegisterRequest $request){
+
+
+    public function register(){
+
+          return view('site.pages.user.register');
+    }
+    public function registerstore(UserRegisterRequest $request){
 
             try{
 
@@ -50,7 +55,12 @@ class AuthController extends Controller
     }
 
 
-    public function login(Request $request){
+
+    public function login(){
+        return view('site.pages.user.login');
+    }
+
+    public function logincontrol(Request $request){
         $validator = Validator::make($request->all(),[
             'email'=>'required|email|max:70',
             'password'=>'required|string|max:30'
