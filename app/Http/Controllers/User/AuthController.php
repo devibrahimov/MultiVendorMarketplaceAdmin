@@ -48,7 +48,7 @@ class AuthController extends Controller
                     'message'=> 'Təbriklər Qeydiyyatınız uğurla başa çatmışdır.Artıq Sistemimizdə Sizində profiliniz var'
                 ];
 
-                return $response;
+                return redirect()->route('home');
             }
 
             catch (\Exception $e){
@@ -59,7 +59,8 @@ class AuthController extends Controller
                     'token' => null,
                     'message' =>$e->getMessage()
                 ];
-                return $response;
+
+                return redirect()->route('user.register');
             }
 
     }
