@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 //    __________ SHOP ROUTES ____________
-
+use App\Http\Controllers\Shop\AuthController;
 //middleware auth:apishop start
 Route::group(['middleware'=> ['shop']], function () {
 
-    Route::get('/shop-profil',[App\Http\Controllers\Shop\AuthController::class ,'shop'])->name('shop') ;
-    Route::get('/shop-logout',[App\Http\Controllers\Shop\AuthController::class ,'logout']) ;
+    Route::get('/shop-profil',[AuthController::class ,'shop'])->name('shop.profil') ;
+    Route::get('/shop-logout',[AuthController::class ,'logout']) ->name('shop.logout') ;
 
 });//middleware auth:apishop end
 

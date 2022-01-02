@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
 
-
-
     public function register(){
         $categories = Category::where('parent_id',null)->get();
           return view('site.pages.shop.register',compact('categories'));
@@ -35,6 +33,10 @@ class AuthController extends Controller
 
 
     public function login(){
+        if (Auth::guard('shop')->check())
+            return redirect()->route('shop.profil');
+
+
         return view('site.pages.shop.login');
     }
 

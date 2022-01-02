@@ -2,14 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+use App\Http\Controllers\User\AuthController;
 
 //    __________ USER ROUTES ____________
 
 Route::group(['middleware'=> ['user']], function () {
 
-    Route::get('/user-profil',[App\Http\Controllers\USer\AuthController::class ,'userdata']) ;
-    Route::get('/user-logout',[App\Http\Controllers\User\AuthController::class ,'logout']) ;
+    Route::get('/user-logout',[AuthController::class ,'logout'])->name('user.logout') ;
+
+
+    Route::get('/user-profil',[AuthController::class ,'userprofil'])->name('user.profil') ;
 
 
 });//middleware auth:apiuser stop

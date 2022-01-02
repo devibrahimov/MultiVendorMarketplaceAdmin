@@ -15,7 +15,7 @@
                     <button class="market bg-current" id="market-btn">Mağaza</button>
                 </div>
                 <div class="card-body rounded-0 text-start p-4">
-                    <h2 class="fw-700 display1-size display2-md-size mb-4 mt-0 white-text text-grey-900">Hesabını Yarat
+                    <h2 class="fw-700 display1-size display2-md-size mb-4 mt-0 white-text text-grey-900">Hesabına Giriş Et
                     </h2>
                     <form action="{{route('shop.login')}}" method="post">
 
