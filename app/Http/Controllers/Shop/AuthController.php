@@ -58,25 +58,24 @@ class AuthController extends Controller
             request()->session()->regenerate();
             return redirect()->intended(route('shop')) ;
         }else{
-            $errors = ['email'=>'Hatalı Giriş'];
+            $errors = ['email'=>'Hatalı Email'];
             return back()->withErrors($errors);
         }
     }
 
     public function shop(Request $request)
     {
-        return response()->json([
-            'message'=>'User melumatlari',
-            'data'=> $request->user()
-        ]);
+
+        return view('site.pages.shop.profil');
+
     }
 
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();//laravel sanctum sehifesinden geldi
-        return response()->json([
-            'message'=>'Logout'
-        ]);
+        auth()->guard('shop')->logout();
+        \request()->session()->flush();
+        \request()->session()->regenerate();
+        return redirect()->route('home');
     }
 
 
