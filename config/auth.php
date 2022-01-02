@@ -36,10 +36,11 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'administrator' => [
             'driver' => 'session',
             'provider' => 'administrator',
         ],
+
 
         'apishop'=>[
             'driver' => 'sanctum',
@@ -48,6 +49,15 @@ return [
 
         'apiuser'=>[
             'driver' => 'sanctum',
+            'provider' => 'users'
+        ],
+        'shop'=>[
+            'driver' => 'session',
+            'provider' => 'shop'
+        ],
+
+        'user'=>[
+            'driver' => 'session',
             'provider' => 'users'
         ]
     ],

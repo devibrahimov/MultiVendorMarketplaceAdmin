@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware'=> ['apitoken']], function () {
     //start API endpoints
 
+<<<<<<< HEAD
 
 //    __________ SHOP ROUTES ____________
 
@@ -55,5 +56,7 @@ Route::group(['middleware'=> ['apitoken']], function () {
 
 
 
+=======
+>>>>>>> master
    //end API endpoints
 });
