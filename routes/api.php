@@ -20,6 +20,7 @@ Route::group(['middleware'=> ['apitoken']], function () {
 
 //    __________ SHOP ROUTES ____________
 
+
     //Registers and logins
     Route::post('/shop-register',[App\Http\Controllers\Api\Shop\AuthController::class ,'register'])->name('shopregister');
     Route::post('/shop-login',[App\Http\Controllers\Api\Shop\AuthController::class ,'login']);

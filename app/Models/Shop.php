@@ -20,7 +20,7 @@ class Shop extends Model
     protected $guarded = [];
     protected $hidden = ['password','email'];
 
-
+            //https://react-marketplace0.netlify.app/
    public function  createnewShop($request){
        try{
            DB::beginTransaction();
@@ -75,6 +75,7 @@ class Shop extends Model
                ];
            return $response;
        }
+       
     }
 
 
