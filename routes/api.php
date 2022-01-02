@@ -18,49 +18,5 @@ Route::group(['middleware'=> ['apitoken']], function () {
 
     //start API endpoints
 
-    //    __________ SITE ROUTES ____________
-
-
-
-
-
-
-
-//    __________ SHOP ROUTES ____________
-
-    //Registers and logins
-    Route::post('/shop-register',[App\Http\Controllers\Api\Shop\AuthController::class ,'register'])->name('shopregister');
-    Route::post('/shop-login',[App\Http\Controllers\Api\Shop\AuthController::class ,'login']);
-
-    //middleware auth:apishop start
-    Route::group(['middleware'=> ['auth:apishop']], function () {
-
-        Route::get('/shop-user',[App\Http\Controllers\Api\Shop\AuthController::class ,'shop']) ;
-        Route::get('/shop-logout',[App\Http\Controllers\Api\Shop\AuthController::class ,'logout']) ;
-        // Route Product elave etme
-
-    });//middleware auth:apishop end
-
-
-
-
-
-
-
-
-//    __________ USER ROUTES ____________
-    //Registers and logins
-    Route::post('/user-register',[App\Http\Controllers\Api\User\AuthController::class ,'register']);
-    Route::post('/user-login',[App\Http\Controllers\Api\User\AuthController::class ,'login']);
-    //middleware auth:apiuser start
-    Route::group(['middleware'=> ['auth:apiuser']], function () {
-
-        Route::get('/userdata',[App\Http\Controllers\Api\USer\AuthController::class ,'userdata']) ;
-        Route::get('/user-logout',[App\Http\Controllers\Api\User\AuthController::class ,'logout']) ;
-
-    });//middleware auth:apiuser stop
-
-
-
    //end API endpoints
 });

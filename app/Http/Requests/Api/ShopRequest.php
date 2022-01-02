@@ -36,5 +36,17 @@ class ShopRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'name'=> 'required|max:50|string',
+            'surname'=> 'required|max:50|string',
+            'shopname'=> 'required|max:50|string',
+            'shopcategory'=> 'required|max:50|integer',
+            'number'=> 'required|max:50|string',
 
+            'adress'=> 'required|max:150|string',
+
+        ];
+    }
 }

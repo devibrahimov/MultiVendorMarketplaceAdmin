@@ -36,10 +36,30 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'administrator' => [
             'driver' => 'session',
             'provider' => 'administrator',
         ],
+
+
+        'apishop'=>[
+            'driver' => 'sanctum',
+            'provider' => 'shop'
+        ],
+
+        'apiuser'=>[
+            'driver' => 'sanctum',
+            'provider' => 'users'
+        ],
+        'shop'=>[
+            'driver' => 'session',
+            'provider' => 'shop'
+        ],
+
+        'user'=>[
+            'driver' => 'session',
+            'provider' => 'users'
+        ]
     ],
 
     /*
@@ -60,13 +80,19 @@ return [
     */
 
     'providers' => [
-//        'users' => [
-//            'driver' => 'eloquent',
-//            'model' => App\Models\User::class,
-//        ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+
          'administrator' => [
                     'driver' => 'eloquent',
                     'model' => App\Models\Administrator::class,
+                ],
+
+         'shop' => [
+                    'driver' => 'eloquent',
+                    'model' => App\Models\Shop::class,
                 ],
 
         // 'users' => [

@@ -13,22 +13,18 @@ class CreateShopInformationTable extends Migration
      */
     public function up()
     {
-        Schema::create('shops', function (Blueprint $table) {
-            $table->id();
+        Schema::create('shop_information', function (Blueprint $table) {
+            $table->increments('info_id');
+            $table->unsignedBigInteger('shop_id');
             $table->string('name');
             $table->string('surname');
-            $table->string('shopname');
-            $table->unsignedBigInteger('shopcategory');
             $table->string('number')->unique();
-            $table->string('email')->unique();
-            $table->string('aprovel')->default(0);
             $table->string('adress');
             $table->json('location')->nullable();
-            $table->json('work_time');
+            $table->json('work_time')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('shop_serialnumber')->unique();
-            $table->softDeletes();
-            $table->timestamps();
+
+            $table->foreign('shop_id')->on('shops')->references('id')->cascadeOnUpdate();
 /*
  *  Ad ,
  *  Soyad ,

@@ -14,6 +14,7 @@ class ApiRequestControlMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
+
     public function handle(Request $request, Closure $next)
     {
         if ($request->header('header_token') !== 'A_D*3S)M765_+=N19.05Y43-*/TKN_1SUM09BA'){

@@ -30,7 +30,7 @@ class Shop extends Model
         $shopcategory  = $request->shopcategory;
         $password =$request->password;
 
-        $name   = $request->name;
+        $name  = $request->name;
         $surname  = $request->surname;
         $number  = $request->number ;
         $adress  = $request->adress;
@@ -54,6 +54,7 @@ class Shop extends Model
 
            DB::commit();
         $token = $shop->createToken('shop', ['server:update'])->plainTextToken;
+
 
         $response = [
         'status' =>1,
