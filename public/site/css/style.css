@@ -11,7 +11,7 @@
 
 
 /*-----------------------------------------------------------
-    Table of Content: 
+    Table of Content:
 
 
 
@@ -14263,9 +14263,9 @@ select.sort {
 }
 
 [type=file] {
-    height: 0;
-    overflow: hidden;
-    width: 0;
+    /*height: 0;*/
+    /*overflow: hidden;*/
+    /*width: 0;*/
 }
 
 [type=file]+label {
@@ -17501,7 +17501,7 @@ select.sort {
     .ad-add #images{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        
+
     }
     #images img:nth-child(6){
         display: grid;
@@ -17588,7 +17588,7 @@ select.sort {
         width: 170px !important;
         height: 140px !important;
     }
-    
+
     .ad-info{
         width: 100% !important;
     }

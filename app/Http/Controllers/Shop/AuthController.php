@@ -58,7 +58,7 @@ class AuthController extends Controller
             'aprovel'=> 1,
         ])){
             request()->session()->regenerate();
-            return redirect()->intended(route('shop')) ;
+            return redirect()->intended(route('shop.profil')) ;
         }else{
             $errors = ['email'=>'Hatalı Email'];
             return back()->withErrors($errors);

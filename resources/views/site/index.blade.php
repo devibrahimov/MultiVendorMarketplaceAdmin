@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
           integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    @yield('css')
 </head>
 
 <body class="color-theme-green mont-font" style="background-image: url(https://via.placeholder.com/1960x3000.jpg);">
@@ -351,10 +353,11 @@
 
 
 
-
-
+@yield('shop-create-product-page')
 <script src="/site/js/plugin.js"></script>
 <script src="/site/js/scripts.js"></script>
+
+@yield('js')
 
 <script>
 
