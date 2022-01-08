@@ -294,227 +294,195 @@
 @endsection
 
 
-@section('content')
-    <!-- HEADER WRAPPER -->
-    <div className='container mx-auto min-vh-100 my-2 ms-md-5 ms-1 ad-add'>
-        <div class="ad-info row  m-4 ms-3">
-            <div class="col ">
-                <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Asanlıqla pulsuz elan yerləşdirin
-                </h3>
-                <p class="fw-600 text-grey-800  mb-0 text-capitalize mt-3">
-                    <b class="font-xsss">Şəkilləri yükləyin</b>
-                    <span class="font-xssss">(30 şəkilə qədər)</span>
-                </p>
-            </div>
-            <div class=" d-flex flex-wrap justify-content-between mt-2 ">
-                <div class=" w-75 p-3 left_images ">
-                    <ul class="d-flex flex-wrap image-uploader">
-                        <!-- <li>
-                            <img src="./images//12.png" />
-                            <div class="action-btn">
-                                <span><i class="fas fa-times"></i></span>
-                                <p>
-                                    <a>esas wekil et</a>
-                                </p>
-                            </div>
-                        </li> -->
-                        <li>
-                            <label for='files' class="addImg">
-                                <p><span><i class="far fa-plus-square"></i></span></p>
-                                wekil elave et
-                                <input type="file" id="files" name="images[]" class="input"  style="width: auto; height: auto; display: none;" multiple
-                                       accept="image/png, image/jpeg image/jpg">
-                            </label>
-                        </li>
 
-                    </ul>
-                </div>
-                <div class=" w-25 p-3 right_text bg-lightgrey">
-                    <p class="font-xsss p-2 text-grey-800">Keyfiyyətli fotoşəkilləri olan elanlar daha tez satılır!
-                        Eyni anda bir neçə şəkil seçmək üçün Ctrl düyməsini sıxıb
-                        saxlayın</p>
-                    <p class="font-xsss p-2 text-grey-800">1 elan = 1 məhsul, xidmət və ya vakansiya. Şəkilləri və
-                        təsviri nömrəsiz və linksiz yerləşdirin</p>
+
+
+
+@section('content')
+
+    <div class="das-nav md-mt-6 p-0 bg-current-shade bg-image-bottomcenter bg-image-cover" style="background-image: url(https://via.placeholder.com/1900x250.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 ps-4 offset-lg-4 d-flex align-items-start flex-column h-250">
+                    <h1 class="mt-lg-auto mb-4 mt-5 display3-size display1-sm-size text-grey-900 fw-700">Dashboard</h1>
                 </div>
             </div>
-            <div class="w-75 mt-4">
-                <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Təsvir
-                </h3>
-                <div class="form-group mt-2">
+        </div>
+    </div>
+
+    <div class="main-div pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    @include('site.pages.shop.partials.navbar')
+                </div>
+                <div class="col-lg-8 pt-5 ps-4">
+
+
+                    <div class="row">
+
+
+                        <nav class="nav nav-pills nav-fill">
+                            <a class="nav-link " aria-current="page" href="{{route('shop.products')}}">Məhsullar</a>
+                            <a class="nav-link active " href="{{route('shop.createproduct')}}">Yeni Məhsul Əlavə Et</a>
+                            <a class="nav-link" href="#">Deaktiv Məhsullar </a>
+
+                        </nav>
+
+                        <div class="col-lg-12 ps-2 pe-2">
+                            <div class="card border-0 mt-3">
+                                <!-- HEADER WRAPPER -->
+                                <div className='  mx-auto min-vh-100 my-2 ms-md-5 ms-1 ad-add'>
+                                    <div class="ad-info row  m-4 ms-3">
+                                        <div class="col ">
+                                            <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Asanlıqla pulsuz elan yerləşdirin
+                                            </h3>
+                                            <p class="fw-600 text-grey-800  mb-0 text-capitalize mt-3">
+                                                <b class="font-xsss">Şəkilləri yükləyin</b>
+                                                <span class="font-xssss">(30 şəkilə qədər)</span>
+                                            </p>
+                                        </div>
+                                        <form action="{{route('shop.createproduct')}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                        <div class=" d-flex flex-wrap justify-content-between mt-2 ">
+                                            <div class=" w-75 p-3 left_images ">
+                                                <style>
+                                                    .image-uploader__content-item {
+                                                        margin-left: 8px;
+                                                        margin-bottom: 8px;
+                                                        width: 130px;
+                                                        height: 106px;
+                                                    }
+                                                    .image-uploader__content-item {
+                                                         position: relative;
+                                                         float: left;
+                                                         overflow: hidden;
+                                                         width: calc(25vw - 9px);
+                                                         height: calc(25vw - 9px);
+                                                         border-radius: 6px;
+                                                         margin-left: 1px;
+                                                         margin-bottom: 1px;
+                                                     }
+                                                      .image-upload-button.sticky {
+                                                          width: 152px;
+                                                          height: 189px;
+                                                          padding: 31px;
+                                                        }
+
+                                                      .image-upload-button {
+                                                         display: inline-flex;
+                                                         -webkit-box-align: center;
+                                                         align-items: center;
+                                                         -webkit-box-pack: center;
+                                                         justify-content: center;
+                                                         width: calc(25vw - 9px);
+                                                         height: calc(25vw - 9px);
+                                                         background: rgb(240, 242, 247);
+                                                         border-radius: 6px;
+                                                         cursor: pointer;
+                                                     }
+                                                     .image-upload-button__content {
+                                                        display: flex;
+                                                        flex-direction: column;
+                                                        -webkit-box-align: center;
+                                                        align-items: center;
+                                                    }
+                                                    .image-upload-button__content-title.Caption {
+                                                        margin-top: 22px;
+                                                        font-weight: 700;
+                                                        line-height: 1.5;
+                                                        color: rgb(10, 19, 49);
+                                                    }
+                                                </style>
+                                                <ul class="d-flex flex-wrap image-uploader ul ">
+
+
+{{--                                                    <li class="image-uploader__content-item">--}}
+{{--                                                        <img src="" id="imagepreview" alt="">--}}
+{{--                                                    </li>--}}
+
+                                                    <li class="image-uploader__content-item"><div class="ImageUploaderButton css-1nw0pht">
+                                                            <label for="imageuploadinput" class="image-upload-button sticky image">
+                                                                <div class="image-upload-button__content">
+                                                   <span class="Caption primary image-upload-button__content-title">
+                                                     <i class="fas fa-camera"></i>
+                                                                        Fotoşəkil əlavə edin</span>
+                                                                </div>
+                                                                <input id="imageuploadinput" class="d-none"
+                                                                      name="images" type="file" multiple >
+                                                            </label>
+
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+                                            <div class="w-50 mt-2 mb-5">
+                                                <button type="submit" class="btnSubmit">Elanı dərc edin!</button>
+                                            </div>
+                                        </form>
+                                        <div class="w-75 mt-4">
+                                            <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Təsvir
+                                            </h3>
+                                            <div class="form-group mt-2">
                         <textarea style="border:1px solid #ccc;" class=" p-2 font-xssss w-100 " rows="4"
                                   placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
-                </div>
-            </div>
-            <div class="w-75 mt-4">
-                <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span
-                        style="color: red;">*</span> </h3>
+                                            </div>
+                                        </div>
+                                        <div class="w-75 mt-4">
+                                            <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span
+                                                    style="color: red;">*</span> </h3>
 
-                <div class="w-75">
-                    <div class=" d-flex mt-2 ">
-                        <ul class="d-flex flex-wrap image-uploader list_category">
-                            <!-- <span>telvizor >></span> -->
-                        </ul>
-                        <div class="CategoryList">
-                            <button type="button" data-bs-toggle="modal"
-                                    data-bs-target="#savedmodal2" class="btnModal">secmek</button>
+                                            <div class="w-75">
+                                                <div class=" d-flex mt-2 ">
+                                                    <ul class="d-flex flex-wrap image-uploader list_category">
+                                                        <!-- <span>telvizor >></span> -->
+                                                    </ul>
+                                                    <div class="CategoryList">
+                                                        <button type="button" data-bs-toggle="modal"
+                                                                data-bs-target="#savedmodal2" class="btnModal">secmek</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-75 mt-4">
+                                            <h3 class="fw-600 text-grey-900 font-xss mb-3 text-capitalize">Şəhər</h3>
+                                            <select class="citySelect">
+                                                <option>Baki</option>
+                                            </select>
+                                        </div>
+                                        <div class="w-75 mt-4">
+                                            <h3 class="fw-600 text-grey-900 font-xss mb-3 text-capitalize">Qiymet (AZN)</h3>
+                                            <div class="input-group">
+                                                <input type="number" maxlength="8" placeholder="Razılaşma yolu ilə">
+                                            </div>
+                                        </div>
+                                        <div class="w-75 mt-5  d-flex flex-wrap justify-content-between">
+                                            <div class=" w-50  mb-3">
+                                                <div class="inp-group">
+                                                    <input type="text" placeholder="+994xx" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="w-50 mt-2 mb-5">
+                                            <button type="button" class="btnSubmit">Elanı dərc edin!</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
-            </div>
-            <div class="w-75 mt-4">
-                <h3 class="fw-600 text-grey-900 font-xss mb-3 text-capitalize">Şəhər</h3>
-                <select class="citySelect">
-                    <option>Baki</option>
-                </select>
-            </div>
-            <div class="w-75 mt-4">
-                <h3 class="fw-600 text-grey-900 font-xss mb-3 text-capitalize">Qiymet (AZN)</h3>
-                <div class="input-group">
-                    <input type="number" maxlength="8" placeholder="Razılaşma yolu ilə">
-                </div>
-            </div>
-            <div class="w-75 mt-5  d-flex flex-wrap justify-content-between">
-                <div class=" w-50  mb-3">
-                    <div class="inp-group">
-                        <input type="text" placeholder="+994xx" />
-                    </div>
-                </div>
-                <div class=" w-50 p-3 right_text bg-lightgrey mb-4">
-                    <p class="font-xsss p-2 text-grey-800">Telefon nömrənizi beynəlxalq formatda daxil edin. Nümunə:
-                        +994551234567 Nömrənin doğru olduğundan əmin olun! Bu nömrəni
-                        istifadə edərək profilinizə daxil ola bilərsiniz</p>
-                </div>
-            </div>
-            <div class="w-50 mt-2 mb-5">
-                <button type="button" class="btnSubmit">Elanı dərc edin!</button>
             </div>
         </div>
     </div>
 
-@endsection
-
-
-@section('shop-create-product-page')
-<!-- category modal -->
-<div class="modal fade  modal-scrollable" id="savedmodal2" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content theme-dark-bg p-0 border-0 rounded-0 categoryModal"
-             style="height: 80vh; overflow: auto;">
-            <button type="button"
-                    class="btn-close category-close z-index-5 bg-grey font-xsssss w-26 h-26 text-center rounded-circle posa right-0 top-0 mt-3 me-3"
-                    data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="cart-boxCategory vh-80 p-4">
-                <h3>Kategory Secin</h3>
-                <div class=" d-flex justify-content-between mt-2 ">
-                    <div class=" w-100 p-3 left-category ">
-                        <ul class="d-flex flex-wrap ">
-                            <li>
-                                <img src="./images//12.png" />
-                                <p> <a href="#">televizorrrrr</a></p>
-                            </li>
-                            <li>
-                                <img src="./images/map-marker.png" />
-                                <p> <a href="#">mawinlar</a></p>
-                            </li>
-                            <li>
-                                <img src="./images//12.png" />
-                                <p> <a href="#">televizorrrrr</a></p>
-                            </li>
-                            <li>
-                                <img src="./images//12.png" />
-                                <p> <a href="#">televizorrrrr</a></p>
-                            </li>
-                            <li>
-                                <img src="./images//12.png" />
-                                <p> <a href="#">televizorrrrr</a></p>
-                            </li>
-                            <li>
-                                <img src="./images//12.png" />
-                                <p> <a href="#">televizorrrrr</a></p>
-                            </li>
-                            <li>
-                                <img src="./images//12.png" />
-                                <p> <a href="#">televizorrrrr</a></p>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-            <div class="cart-boxCategory2 vh-80 p-4">
-                <div class="d-flex w-50 justify-content-between ">
-                    <h3>category2</h3>
-                </div>
-                <ul class=" d-flex flex-wrap justify-content-between mt-2 ">
-                    <li>
-                        <a href="#">category1 </a>
-                    </li>
-                    <li>
-                        <a href="#">category2 </a>
-                    </li>
-                    <li>
-                        <a href="#">category3 </a>
-                    </li>
-                    <li>
-                        <a href="#">category4 </a>
-                    </li>
-                    <li>
-                        <a href="#">category5 </a>
-                    </li>
-                    <li>
-                        <a href="#">category6 </a>
-                    </li>
-                    <li>
-                        <a href="#">category7 </a>
-                    </li>
-                    <li>
-                        <a href="#">category8 </a>
-                    </li>
-                    <li>
-                        <a href="#">category9 </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="cart-boxCategory3 vh-80 p-4">
-                <div class="d-flex w-50 justify-content-between ">
-                    <h3>category3</h3>
-                </div>
-                <ul class=" d-flex flex-wrap justify-content-between mt-2 ">
-                    <li>
-                        <a data-bs-dismiss="modal"  class="category-close" href="#">category end1 </a>
-                    </li>
-                    <li>
-                        <a data-bs-dismiss="modal" class="category-close"  href="#">category end2 </a>
-                    </li>
-                    <li>
-                        <a data-bs-dismiss="modal" class="category-close" href="#">category end3 </a>
-                    </li>
-                    <li>
-                        <a data-bs-dismiss="modal" class="category-close" href="#">category end4 </a>
-                    </li>
-                    <li>
-                        <a data-bs-dismiss="modal" class="category-close" href="#">category end56 </a>
-                    </li>
-                    <li>
-                        <a data-bs-dismiss="modal" class="category-close" href="#">category 75 </a>
-                    </li>
-                    <li>
-                        <a data-bs-dismiss="modal"class="category-close"  href="#">category end65 </a>
-                    </li>
-                    <li>
-                        <a data-bs-dismiss="modal" class="category-close" href="#">category end6y5 </a>
-                    </li>
-                    <li>
-                        <a data-bs-dismiss="modal" class="category-close" href="#">category end6y56 </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="category-down">
-                <!-- <a href="#">category <span><i class="fas fa-arrow-right"></i></span></a> -->
-            </div>
-        </div>
-    </div>
-</div>
 
 
 @endsection
@@ -525,63 +493,110 @@
 
     <script>
 
-        let input=document.querySelector(".input");
 
-        if (window.File && window.FileList && window.FileReader) {
-            //var filesInput = document.getElementById("files");
-            input.addEventListener("change", function (event) {
-                var files = event.target.files; //FileList object
-                var output = document.querySelector(".image-uploader ");
+        $(document).ready(function () {
 
-                // var output = document.getElementById("result");
-                for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    //Only pics
 
-                    var picReader = new FileReader();
-                    picReader.addEventListener("load", function (event) {
 
-                        var picFile = event.target;
+
+        $(document).on('change','#imageuploadinput',function(){
+            var error_images = '';
+            var form_data = new FormData();
+            form_data.append( "_token",'{{ csrf_token() }}' );
+            var files = $('#imageuploadinput')[0].files;
+             //console.log(files)
+
+            if(files.length > 20){
+
+                error_images += '10 dan cox shekil yukleye bilmersiniz'
+
+            }else{
+                var output = document.querySelector(".ul");
+                for(var i=0;i<files.length;i++){
+                    var imageFile =document.getElementById('imageuploadinput').files[i]
+                    var name = imageFile.name;
+                    var ext = name.split('.').pop().toLowerCase();
+
+                    //bu hissede istifadeci terefinden secilmish shekilleri review olaraq gostereceyik
+                     //console.log(imageFile)
+
+                    //yeni Object yaradiriq
+                    var reader = new FileReader();
+
+
+                    reader.onload = function (e,i) {
+
                         var li = document.createElement("li");
-                        li.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
-                            "title='" + picFile.name + "'/> <div class='action-btn'> <span onclick='del(this)' data-name="+ file.name+">x</span> </div> "
-                        output.insertBefore(li, null);
-                    });
-                    //Read the image
-                    picReader.readAsDataURL(file);
-                }
-                // console.log(document.getElementById('files').files, document.getElementById('files').files.length)
-            });
-        } else {
-            console.log("Your browser does not support File API");
-        }
+                        li.innerHTML = "<img id='image"+i+"' class='thumbnail' src='" + e.target.result + "'" +
+                            "title=' '/> <div class='action-btn'> <span onclick='del(this)'>x</span> </div> "
+                         output.insertBefore(li, null);
 
-        function del(e) {
-            // let imageArr = document.getElementById('files').files;
-            let imageArr = $('input:file#files')[0].files
-            var result = Object.entries(imageArr);
-            let image = e.dataset.name;
+                            $(li).insertBefore('.iputadd');
+                      //  $('#imagepreview').attr('src', e.target.result);
 
-            console.log(result,111, typeof(result))
+                    }
 
-            for (let i = 0; i < result.length; i++) {
-                const element = result[i][1];
+                    reader.readAsDataURL(imageFile);
 
-                if (element['name'] == image) {
-                    console.log(222,i, element)
-                    result.splice(i,1);
+
+
+                    // $(reviewImages).insertBefore('.iputadd');
+
+                    if(jQuery.inArray(ext,['jpg','jpeg','png']) == -1){
+                        error_images += 'Formata uyğun olmayan '+i+'Fayl yükləməyə çalışırsınız'
+                        console.log(error_images)
+                    }else{
+                        form_data.append('file[]',document.getElementById('imageuploadinput').files[i]);
+
+
+                    }//endelse
+                }//endfor
+
+                if(error_images == ''){//xeta boshdursa
+                    $.ajax({
+                        url: "{{route('shop.imageupload')}}",
+                        method: "POST",
+                        data:form_data,
+                        contentType:false,
+                        cache:false,
+                        processData:false,
+                        beforeSend:function(){
+
+                            //bura shekiller yuklenir loadingi qoymaq
+                        },
+                        success:function (){
+                           // shekillerin yuklenmish oldugunu gostermek
+                        }
+
+
+                    })
+
+                }else{
+                    console.log(error_images)
+                    // $('#imageuploadinput').val(null);
+                    // $('#error_messages_for_files').html('Error mesajiniz'+error_images)
                 }
 
             }
 
-            console.log(333,result)
-            e.parentElement.parentElement.remove()
-        }
+           // $( a).insertBefore('.iputadd');
+
+        });
+
+
+
+
+        });
+
+
 
     </script>
 
     <script>
         $(document).ready(function () {
+
+
+
             var ListCategory= document.querySelector(".list_category")
             $(".cart-boxCategory ul li").on("click", function (e) {
                 ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
