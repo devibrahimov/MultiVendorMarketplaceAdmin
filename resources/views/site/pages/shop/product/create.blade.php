@@ -2,9 +2,21 @@
 
 @section('css')
     <style>
+
+        .overLoad {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.54);
+            min-width: 100%;
+            min-height: 100%;
+        }
+        .overLoad img{
+            margin-top: 27px;
+            text-align:center
+        }
+
         .image-uploader li {
-            flex-basis: 23%;
-            height: 200px;
+            flex-basis: 31%;
+            height: 161px;
             margin-right: 2%;
             margin-bottom: 30px;
             position: relative;
@@ -286,11 +298,14 @@
             .cart-boxCategory ul li img {
                 width: 60px;
             }
+
             .cart-boxCategory ul li p {
                 font-size: 14px;
             }
         }
     </style>
+
+
 @endsection
 
 
@@ -394,6 +409,9 @@
                                                         color: rgb(10, 19, 49);
                                                     }
                                                 </style>
+
+                                                <button type="button" onclick="updateReferenceList()">Fayllari
+                                                    listele</button>
                                                 <ul class="d-flex flex-wrap image-uploader ul ">
 
 
@@ -402,27 +420,28 @@
 {{--                                                    </li>--}}
 
                                                     <li class="image-uploader__content-item"><div class="ImageUploaderButton css-1nw0pht">
-                                                            <label for="imageuploadinput" class="image-upload-button sticky image">
+                                                            <label for="fronUpload" class="image-upload-button sticky image">
                                                                 <div class="image-upload-button__content">
                                                    <span class="Caption primary image-upload-button__content-title">
                                                      <i class="fas fa-camera"></i>
                                                                         Fotoşəkil əlavə edin</span>
                                                                 </div>
-                                                                <input id="imageuploadinput" class="d-none"
-                                                                      name="images" type="file" multiple >
-                                                            </label>
+                                                                <input type="file" id="fronUpload"  class="d-none"
+                                                                       onchange="updateInputFile(event)" multiple>
 
+                                                            </label>
+                                                            <input id="imageuploadinput" class="d-none"
+                                                                   name="images" type="file" multiple  onchange="updateReferenceList()">
                                                         </div>
                                                     </li>
 
                                                 </ul>
 
+                                                <div id="imagelistbb"></div>
                                             </div>
 
                                         </div>
-                                            <div class="w-50 mt-2 mb-5">
-                                                <button type="submit" class="btnSubmit">Elanı dərc edin!</button>
-                                            </div>
+
                                         </form>
                                         <div class="w-75 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Təsvir
@@ -493,102 +512,256 @@
 
     <script>
 
+            function delRef(index) {
+                //  e.parentElement.parentElement.remove()
+                var filesa = $('#imageuploadinput')[0].files;
 
-        $(document).ready(function () {
+
+                var dt = new DataTransfer()
+                var input = document.getElementById('imageuploadinput')
+                var {files} = input
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i]
+                    if (index !== i) dt.items.add(file)
+                    input.files = dt.files
+                }
+
+                var resource = document.getElementById('image' + index);
+                resource.parentElement.remove()
+                var a = $('#imageuploadinput')[0].files;
+                console.log(a)
+            }
+
+            function updateReferenceList() {
+                var ref_input = document.getElementById('imageuploadinput');
+                var output = document.querySelector(".image-uploader ");
+                let reqem = 0;
+                var a = (ref_input.files.length - 1);
+                hasimagelist = document.getElementById('image'+a);
+                console.log(hasimagelist)
+                for (var i = 0; i < ref_input.files.length; ++i) {
+                    let imageFile = ref_input.files[i]
 
 
-
-
-        $(document).on('change','#imageuploadinput',function(){
-            var error_images = '';
-            var form_data = new FormData();
-            form_data.append( "_token",'{{ csrf_token() }}' );
-            var files = $('#imageuploadinput')[0].files;
-             //console.log(files)
-
-            if(files.length > 20){
-
-                error_images += '10 dan cox shekil yukleye bilmersiniz'
-
-            }else{
-                var output = document.querySelector(".ul");
-                for(var i=0;i<files.length;i++){
-                    var imageFile =document.getElementById('imageuploadinput').files[i]
-                    var name = imageFile.name;
-                    var ext = name.split('.').pop().toLowerCase();
-
-                    //bu hissede istifadeci terefinden secilmish shekilleri review olaraq gostereceyik
-                     //console.log(imageFile)
-
-                    //yeni Object yaradiriq
                     var reader = new FileReader();
-
-
-                    reader.onload = function (e,i) {
-
+                    reader.onload = function (e) {
                         var li = document.createElement("li");
-                        li.innerHTML = "<img id='image"+i+"' class='thumbnail' src='" + e.target.result + "'" +
-                            "title=' '/> <div class='action-btn'> <span onclick='del(this)'>x</span> </div> "
-                         output.insertBefore(li, null);
+                        li.innerHTML = "<img  id='image" + reqem + "' class='thumbnail' src='" + e.target
+                                .result + "'" +
+                            "title=' '/> <div class='overLoad' id='overlay'> <img src='https://i0.wp" +
+                            ".com/itcats" +
+                            ".in/images/ajax-loader.gif' alt=''> " +
+                            "</div> <div class='action-btn'> <span " +
+                            "onclick='delRef(" + reqem + ")' >x</span> </div>"
 
-                            $(li).insertBefore('.iputadd');
-                      //  $('#imagepreview').attr('src', e.target.result);
+                        output.insertBefore(li, null);
+                        reqem++
 
-                    }
 
+                    }//end reader.onload
                     reader.readAsDataURL(imageFile);
 
 
-
-                    // $(reviewImages).insertBefore('.iputadd');
-
-                    if(jQuery.inArray(ext,['jpg','jpeg','png']) == -1){
-                        error_images += 'Formata uyğun olmayan '+i+'Fayl yükləməyə çalışırsınız'
-                        console.log(error_images)
-                    }else{
-                        form_data.append('file[]',document.getElementById('imageuploadinput').files[i]);
-
-
-                    }//endelse
-                }//endfor
-
-                if(error_images == ''){//xeta boshdursa
-                    $.ajax({
-                        url: "{{route('shop.imageupload')}}",
-                        method: "POST",
-                        data:form_data,
-                        contentType:false,
-                        cache:false,
-                        processData:false,
-                        beforeSend:function(){
-
-                            //bura shekiller yuklenir loadingi qoymaq
-                        },
-                        success:function (){
-                           // shekillerin yuklenmish oldugunu gostermek
-                        }
-
-
-                    })
-
-                }else{
-                    console.log(error_images)
-                    // $('#imageuploadinput').val(null);
-                    // $('#error_messages_for_files').html('Error mesajiniz'+error_images)
                 }
-
+                console.log(ref_input.files.length)
             }
 
-           // $( a).insertBefore('.iputadd');
+            function updateInputFile(event) {
+                var dt = new DataTransfer();
+                var input = document.getElementById('imageuploadinput');
+                var {files} = input;
 
-        });
+                for (var i = 0; i < files.length; i++) {
+
+                    var file = files[i]
+
+                    dt.items.add(file)
+
+                    input.files = dt.files
+                }
+
+                newfiles = event.target.files;
+                console.log(newfiles)
+                // if(newfiles.length>0){
+                for (var q = 0; q < newfiles.length; q++) {
+
+                    var newfile = newfiles[q]
+                    console.log('file: ' + newfile)
+                    dt.items.add(newfile)
+                    console.log('dt.items: ' + dt.items)
+                    input.files = dt.files
+                }
+                // }
+
+
+                updateReferenceList()
+            }
 
 
 
 
-        });
 
 
+
+
+        // $(document).ready(function () {
+
+
+
+            //yuklenen fayllarini ayrd edib spesifik ishler gore bilmek ucun
+            //her yukelenen shekile gore sayini artiracaqiq ve image de id olaraq cagiracaqiq
+            //hemde response ucun apiye gondereceyik
+            // let imagefilecount = 0;
+
+
+
+        {{--$(document).on('change','#imageuploadinput',function(){--}}
+        {{--    var error_images = '';--}}
+        {{--    var form_data = new FormData();--}}
+        {{--    form_data.append( "_token",'{{ csrf_token() }}' );--}}
+        {{--    var files = $('#imageuploadinput')[0].files;--}}
+
+
+
+        {{--    var filesMeatdata = [];--}}
+
+
+
+        {{--    if(files.length > 20){--}}
+
+        {{--        error_images += '10 dan cox shekil yukleye bilmersiniz'--}}
+
+        {{--    }else{--}}
+        {{--        var output = document.querySelector(".ul");--}}
+
+        {{--        for(let i=0; i<files.length; i++){--}}
+
+        {{--            let imageFile =document.getElementById('imageuploadinput').files[i]--}}
+
+        {{--            let name = imageFile.name;--}}
+        {{--          //  console.log(imageFile)--}}
+
+        {{--            let ext = name.split('.').pop().toLowerCase();--}}
+
+        {{--            //bu hissede istifadeci terefinden secilmish shekilleri review olaraq gostereceyik--}}
+        {{--             //console.log(imageFile)--}}
+
+        {{--            if(jQuery.inArray(ext,['jpg','jpeg','png']) == -1){--}}
+        {{--                error_images += 'Formata uyğun olmayan '+i+' Fayl yükləməyə çalışırsınız';--}}
+        {{--                alert(error_images)--}}
+        {{--            }else{--}}
+
+        {{--                //faylimizin size ini yoxlayiriq--}}
+        {{--                if(imageFile.size > 9897545){--}}
+
+        {{--                //burda daha duzgun bir alert cixacaq ve hansi faylin boyuk oldugunu gosterecek--}}
+        {{--                    alert('bu dosya cok buyuktur:'+ imageFile.name)--}}
+
+        {{--                }else{--}}
+
+        {{--                    //yeni Object yaradiriq--}}
+        {{--                    var reader = new FileReader();--}}
+
+        {{--                    //daha sonradan shekili sile ve loadiri qaldira bilmek ucun--}}
+        {{--                    // shekilin bezi melumatlarinida  formda gonderirik--}}
+        {{--                    filesMeatdata.push({--}}
+        {{--                        name: imageFile.name,--}}
+        {{--                        index: imagefilecount--}}
+        {{--                    });--}}
+
+        {{--                  //  console.log('---'+imagefilecount)--}}
+
+        {{--                    //on goruntu fayllarini elave edirik--}}
+        {{--                    reader.onload = function (e) {--}}
+        {{--                        var li = document.createElement("li");--}}
+        {{--                        li.innerHTML = "<img id='"+imagefilecount+"' class='thumbnail' src='" + e.target.result + "'" +--}}
+        {{--                            "title=' '/> <div class='overLoad' id='overlay'> <img src='https://i0.wp" +--}}
+        {{--                            ".com/itcats" +--}}
+        {{--                            ".in/images/ajax-loader.gif' alt=''> " +--}}
+        {{--                            "</div> <div class='action-btn'> <span " +--}}
+        {{--                            "onclick='del(this)' data-id='"+imagefilecount+"'>x</span> </div>"--}}
+
+        {{--                        output.insertBefore(li,null );--}}
+        {{--                        // // en yuxarida yaratdigimiz deyishkenin sayini artiririq--}}
+        {{--                        imagefilecount++;--}}
+        {{--                     //   console.log(e)--}}
+        {{--                    }//end reader.onload--}}
+
+
+        {{--                     //imagefilecount--;--}}
+        {{--                    //yuklenmeden onceki gorunumler burda doma elave edilid--}}
+        {{--                    reader.readAsDataURL(imageFile);--}}
+
+
+        {{--                     //image faylimizi file[] adi ile formumuza elave ediirik.--}}
+        {{--                    form_data.append('file[]',document.getElementById('imageuploadinput').files[i]);--}}
+
+
+        {{--                    // en yuxarida yaratdigimiz deyishkenin sayini artiririq--}}
+        {{--                    //  imagefilecount++;--}}
+
+        {{--                }//endelse maxsize--}}
+
+        {{--            }//endelse--}}
+        {{--        }//endfor--}}
+
+        {{--        //meta datamizi forma push edirik--}}
+        {{--        filesMeatdata=JSON.stringify(filesMeatdata);--}}
+        {{--        form_data.append( "filesMeatdata", filesMeatdata );--}}
+
+
+        {{--        if(error_images == ''){ //xeta boshdursa--}}
+
+        {{--            $.ajax({--}}
+        {{--                url: "{{route('shop.imageupload')}}",--}}
+        {{--                method: "POST",--}}
+        {{--                data:form_data,--}}
+        {{--                contentType:false,--}}
+        {{--                cache:false,--}}
+        {{--                processData:false,--}}
+        {{--                beforeSend:function(){--}}
+
+        {{--                    //bura shekiller yuklenir loadingi qoymaq--}}
+
+        {{--                },--}}
+        {{--                success:function (data){--}}
+        {{--                    //response gelen datamiz json oldugu ucun ellevce decode edirik--}}
+        {{--                    data = $.parseJSON(data);--}}
+
+        {{--                    //gelen datani jquerynin each functionu ile dondururuk--}}
+        {{--                    $.each(data , function(k, v) {--}}
+
+        {{--                        //console.log('index:'+v.index + 'name:'+v.name);--}}
+
+        {{--                         $('#'+v.index).attr("src",v.link)--}}
+        {{--                      //  $('#'+imagefilecount).attr("src",v.link);--}}
+        {{--                        $('#'+v.index).next('#overlay').remove();--}}
+
+
+        {{--                    });--}}
+
+        {{--                   // shekillerin yuklenmish oldugunu gostermek--}}
+        {{--                }--}}
+
+
+        {{--            })--}}
+
+        {{--        }else{--}}
+        {{--            console.log(error_images)--}}
+        {{--            // $('#imageuploadinput').val(null);--}}
+        {{--            // $('#error_messages_for_files').html('Error mesajiniz'+error_images)--}}
+        {{--        }--}}
+
+        {{--    }--}}
+
+        {{--   // $( a).insertBefore('.iputadd');--}}
+
+        {{--});--}}
+
+
+
+
+//        });
 
     </script>
 

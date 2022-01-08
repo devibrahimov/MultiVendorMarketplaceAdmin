@@ -103,7 +103,7 @@
         <div class="row">
             <div class="col-lg-12 d-flex">
                 <!-- <a href="#" class="nav-icon ps-0 ms-0 ms-n1" data-bs-toggle="modal" data-bs-target="#categorymodal"><i class="feather-menu font-lg text-grey-500"></i></a> -->
-                <a href="#"><img src="images/logo.png" alt="logo" class="logo"></a>
+                <a href="#"><img src="/site/images/logo.png" alt="logo" class="logo"></a>
                 <div class="header-search ms-auto me-2 d-flex">
                     <!-- <a href="#" class="location me-3" data-bs-toggle="modal" data-bs-target="#locationmodal">
                         <span class="fw-600 font-xssss text-grey-400">Delivery to</span>

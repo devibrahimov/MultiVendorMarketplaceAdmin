@@ -10,15 +10,31 @@ class ImageUploadController extends Controller
      public function imageupload(Request $request){
 
          $files = request()->file('file');
-         foreach ($files as $file){
+         $filesMeatdata = json_decode($request->filesMeatdata);
+         $responsedata = [] ;
+         foreach ($files as $key => $file){
+
              //$this->validate(request(), ['file' => 'image|mimes:jpg,jpeg,png']);
+
              $filename = $file->getClientOriginalName();
              $imageDestinationPath = 'uploads/';
              $postImage = rand(0,12312312312). "." . $file->getClientOriginalExtension();
-             $file->move($imageDestinationPath, $postImage);
 
-             echo $filename ;
+             if($filename == $filesMeatdata[$key]->name){
+
+                 $file->move($imageDestinationPath, $postImage);
+
+                 $response = [
+                     'index' => $filesMeatdata[$key]->index,
+                     'name' =>$filesMeatdata[$key]->name,
+                     'newname' => $postImage,
+                     'link' => '/'.$imageDestinationPath.$postImage,
+                 ];
+                 array_push($responsedata,$response);
+             }
 
          }
+
+         return json_encode($responsedata);
      }
 }

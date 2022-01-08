@@ -216,7 +216,7 @@
         <button class="close-btn"><i class="ti ti-close"></i></button>
 
         <ul class="categories posr h-100 mt-3">
-            <li><img src="cute-dog-headshot.jpg" alt="">
+            <li><img src="https://yaaz.az/wp-content/uploads/2016/11/92618716_7fb38fd1-387d-48bf-b24d-7dd91bb8e8f6.jpg" alt="">
                 <div class="category-name"><a class="" href="#">Pişiklər</a><span>Pişik mamaları, pişik yuvaları,
                             pişik oyuncağı</span> </div>
             </li>

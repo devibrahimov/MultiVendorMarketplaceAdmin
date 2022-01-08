@@ -96,7 +96,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 text-center text-sm-start xs-mb-3">
-                <a href="#"><img src="images/logo.png" alt="logo" class="w-125"></a>
+                <a href="#"><img src="/site/images/logo.png" alt="logo" class="w-125"></a>
             </div>
             <div class="col-md-8 text-center text-sm-end xs-mb-3">
                 <a href="#" class="d-none d-md-inline-block d-lg-inline-block me-2"><img
