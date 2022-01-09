@@ -14,95 +14,6 @@
             text-align:center
         }
 
-        .image-uploader li {
-            flex-basis: 31%;
-            height: 161px;
-            margin-right: 2%;
-            margin-bottom: 30px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .image-uploader li img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .action-btn {
-            position: absolute;
-            width: 100%;
-            top: 0px;
-            left: 0px;
-            height: 100%;
-            opacity: 0;
-        }
-
-        .action-btn span {
-            font-weight: bolder;
-            cursor: pointer;
-            right: 10px;
-            position: absolute;
-            top: 8px;
-            width: 25px;
-            height: 25px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            color: #000;
-            z-index: 9999;
-            border: 1px solid #ccc;
-
-        }
-
-        .action-btn p {
-            display: flex;
-            justify-content: center;
-        }
-
-        .action-btn p a {
-            display: inline-block;
-            position: absolute;
-            bottom: 20px;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 14px;
-            background: #fff;
-            cursor: pointer;
-        }
-
-        .image-uploader li:hover .action-btn {
-            opacity: 1;
-            transition: 0.5s;
-        }
-
-        .image-uploader li:nth-child(1) .action-btn {
-            opacity: 1 !important;
-        }
-
-        .addImg {
-            background-color: rebeccapurple;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .addImg p {
-            margin-bottom: 0px !important;
-        }
-
-        .addImg p span {
-            font-size: 25px;
-        }
-
         .CategoryList button {
             color: #22ca46;
             border: 1px solid #22ca46;
@@ -303,6 +214,21 @@
                 font-size: 14px;
             }
         }
+        .upload-img {
+            width: 97%;
+
+        }
+
+        .upload-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        @media only screen and (max-width: 600px) {
+                .upload-item{
+                    height: 230px;
+                }
+        }
     </style>
 
 
@@ -357,97 +283,38 @@
                                                 <span class="font-xssss">(30 şəkilə qədər)</span>
                                             </p>
                                         </div>
-                                        <form action="{{route('shop.createproduct')}}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                        <div class=" d-flex flex-wrap justify-content-between mt-2 ">
-                                            <div class=" w-75 p-3 left_images ">
-                                                <style>
-                                                    .image-uploader__content-item {
-                                                        margin-left: 8px;
-                                                        margin-bottom: 8px;
-                                                        width: 130px;
-                                                        height: 106px;
-                                                    }
-                                                    .image-uploader__content-item {
-                                                         position: relative;
-                                                         float: left;
-                                                         overflow: hidden;
-                                                         width: calc(25vw - 9px);
-                                                         height: calc(25vw - 9px);
-                                                         border-radius: 6px;
-                                                         margin-left: 1px;
-                                                         margin-bottom: 1px;
-                                                     }
-                                                      .image-upload-button.sticky {
-                                                          width: 152px;
-                                                          height: 189px;
-                                                          padding: 31px;
-                                                        }
-
-                                                      .image-upload-button {
-                                                         display: inline-flex;
-                                                         -webkit-box-align: center;
-                                                         align-items: center;
-                                                         -webkit-box-pack: center;
-                                                         justify-content: center;
-                                                         width: calc(25vw - 9px);
-                                                         height: calc(25vw - 9px);
-                                                         background: rgb(240, 242, 247);
-                                                         border-radius: 6px;
-                                                         cursor: pointer;
-                                                     }
-                                                     .image-upload-button__content {
-                                                        display: flex;
-                                                        flex-direction: column;
-                                                        -webkit-box-align: center;
-                                                        align-items: center;
-                                                    }
-                                                    .image-upload-button__content-title.Caption {
-                                                        margin-top: 22px;
-                                                        font-weight: 700;
-                                                        line-height: 1.5;
-                                                        color: rgb(10, 19, 49);
-                                                    }
-                                                </style>
-
-                                                <button type="button" onclick="updateReferenceList()">Fayllari
-                                                    listele</button>
-                                                <ul class="d-flex flex-wrap image-uploader ul ">
 
 
-{{--                                                    <li class="image-uploader__content-item">--}}
-{{--                                                        <img src="" id="imagepreview" alt="">--}}
-{{--                                                    </li>--}}
+                                        <div class="row imagelistdivrow" >
 
-                                                    <li class="image-uploader__content-item"><div class="ImageUploaderButton css-1nw0pht">
-                                                            <label for="fronUpload" class="image-upload-button sticky image">
-                                                                <div class="image-upload-button__content">
-                                                   <span class="Caption primary image-upload-button__content-title">
-                                                     <i class="fas fa-camera"></i>
-                                                                        Fotoşəkil əlavə edin</span>
-                                                                </div>
-                                                                <input type="file" id="fronUpload"  class="d-none"
-                                                                       onchange="updateInputFile(event)" multiple>
-
-                                                            </label>
-                                                            <input id="imageuploadinput" class="d-none"
-                                                                   name="images" type="file" multiple  onchange="updateReferenceList()">
-                                                        </div>
-                                                    </li>
-
-                                                </ul>
-
-                                                <div id="imagelistbb"></div>
-                                            </div>
 
                                         </div>
 
-                                        </form>
+                                        <label for="fronUpload" class="col-lg-4 col-md-4 col-sm-4 p-0 overflow-hidden
+                                            align-items-center justify-content-center d-flex mb-2 upload-item"
+                                               style="height: 150px" >
+                                            <input type="file" id="fronUpload"  class="d-none"
+                                                   onchange="updateInputFile(event)" multiple>
+                                            <div class="overflow-hidden rounded-10 h-100 upload-img"  >
+                                                <div   class="card border-0 text-center alert-success
+                                                    align-items-center h-100 d-flex align-items-center justify-content-center"
+                                                       style="cursor: pointer" >
+                                                    <i class="psor feather-plus text-white btn-round-md
+                                                        bg-success font-xs"  ></i>
+                                                    <span class="font-xs ls-0 text-grey-700 fw-600 mt-0" >
+                                                            Şəkil əlavə et</span >
+                                                </div>
+                                            </div>
+                                        </label>
+
+                                        <input id="imageuploadinput" class="d-none"
+                                               name="images" type="file" multiple  onchange="updateReferenceList()">
+
                                         <div class="w-75 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Təsvir
                                             </h3>
                                             <div class="form-group mt-2">
-                        <textarea style="border:1px solid #ccc;" class=" p-2 font-xssss w-100 " rows="4"
+                                  <textarea style="border:1px solid #ccc;" class=" p-2 font-xssss w-100 " rows="4"
                                   placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
                                             </div>
                                         </div>
@@ -467,6 +334,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="w-75 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-3 text-capitalize">Şəhər</h3>
                                             <select class="citySelect">
@@ -488,7 +356,7 @@
 
                                         </div>
                                         <div class="w-50 mt-2 mb-5">
-                                            <button type="button" class="btnSubmit">Elanı dərc edin!</button>
+                                            <button type="button"   id="postbutton" class="btnSubmit">Elanı dərc edin!</button>
                                         </div>
                                     </div>
                                 </div>
@@ -534,27 +402,36 @@
 
             function updateReferenceList() {
                 var ref_input = document.getElementById('imageuploadinput');
-                var output = document.querySelector(".image-uploader ");
+                var output = document.querySelector(".imagelistdivrow");
                 let reqem = 0;
+
                 var a = (ref_input.files.length - 1);
                 hasimagelist = document.getElementById('image'+a);
+                imageuploader = document.querySelector('.imagelistdivrow');
+                imageuploader.innerHTML = "";
                 console.log(hasimagelist)
+
                 for (var i = 0; i < ref_input.files.length; ++i) {
                     let imageFile = ref_input.files[i]
 
 
                     var reader = new FileReader();
                     reader.onload = function (e) {
-                        var li = document.createElement("li");
-                        li.innerHTML = "<img  id='image" + reqem + "' class='thumbnail' src='" + e.target
-                                .result + "'" +
-                            "title=' '/> <div class='overLoad' id='overlay'> <img src='https://i0.wp" +
-                            ".com/itcats" +
-                            ".in/images/ajax-loader.gif' alt=''> " +
-                            "</div> <div class='action-btn'> <span " +
-                            "onclick='delRef(" + reqem + ")' >x</span> </div>"
+                        var div = document.createElement("div");
+                        div.classList = `col-lg-3 col-md-3 col-sm-3 p-0 overflow-hidden align-items-center
+                            justify-content-center d-flex mb-2 upload-item`;
+                        div.style = `height: 150px;`;
+                        div.innerHTML =
 
-                        output.insertBefore(li, null);
+                            `<div  class="overflow-hidden rounded-10 h-100 upload-img  position-relative"  >
+                    <i onclick="delRef(${reqem})" class="psor feather-trash text-white btn-round-md
+                                  bg-success  font-xs position-absolute top-0 right-0 m-1 d-flex justify-content-center align-items-center"
+                                      style="width: 35px; height: 35px;cursor:pointer;" ></i>
+                        <div class='overLoad' id='overlay'> <img src="https://i0.wp.com/itcats.in/images/ajax-loader.gif" alt=""> </div>
+                                  <img id="image${reqem}" src="${e.target.result}"   alt="flame"  />
+                              </div>  `;
+
+                        output.insertBefore(div, null);
                         reqem++
 
 
@@ -597,13 +474,58 @@
                 updateReferenceList()
             }
 
+    </script>
 
 
 
+    <script>
+        $(document).on('click','#postbutton',function(){
+
+            var form_data = new FormData();
+            form_data.append( "_token",'{{ csrf_token() }}' );
+            var files = $('#imageuploadinput')[0].files;
+
+            for(let i=0; i<files.length; i++){
+                let imageFile =document.getElementById('imageuploadinput').files[i]
+                  //image faylimizi file[] adi ile formumuza elave ediirik.
+                 form_data.append('file[]',document.getElementById('imageuploadinput').files[i]);
+            }//endfor
 
 
+            $.ajax({
+                url:"{{route('shop.createproduct')}}",
+                method: "POST",
+                data:form_data,
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function (data){
+                    //response gelen datamiz json oldugu ucun ellevce decode edirik
+                    data = $.parseJSON(data);
+                    console.log(data)
+                    //
+                    // //gelen datani jquerynin each functionu ile dondururuk
+                    // $.each(data , function(k, v) {
+                    //
+                    //     //console.log('index:'+v.index + 'name:'+v.name);
+                    //
+                    //      $('#'+v.index).attr("src",v.link)
+                    //   //  $('#'+imagefilecount).attr("src",v.link);
+                    //     $('#'+v.index).next('#overlay').remove();
+                    //
+                    //
+                    // });
+
+                   // shekillerin yuklenmish oldugunu gostermek
+                }
+            });//endajax
+
+              });//endajax
 
 
+    </script>
+
+            <script>
         // $(document).ready(function () {
 
 
@@ -759,16 +681,12 @@
         {{--});--}}
 
 
-
-
 //        });
 
     </script>
 
     <script>
         $(document).ready(function () {
-
-
 
             var ListCategory= document.querySelector(".list_category")
             $(".cart-boxCategory ul li").on("click", function (e) {

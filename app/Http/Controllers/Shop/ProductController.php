@@ -17,8 +17,9 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-
+         //   return $request->all();
         $files = request()->file('file');
+
         foreach ($files as $file){
             //$this->validate(request(), ['file' => 'image|mimes:jpg,jpeg,png']);
             $filename = $file->getClientOriginalName();
