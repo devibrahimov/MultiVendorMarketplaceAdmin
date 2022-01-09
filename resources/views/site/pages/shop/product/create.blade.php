@@ -88,8 +88,10 @@
         }
 
         .input-group {
-            border-bottom: 1px solid #ccc;
+            border: 1px solid #dbdbdb;
+            padding: 5px;
             width: 300px;
+            border-radius: 2px;
         }
 
         .input-group input {
@@ -229,13 +231,23 @@
                     height: 230px;
                 }
         }
+        .addtechbtn{ color: #22ca46;
+            border: 1px solid #22ca46;
+            border-radius: 25px;
+            padding: 1px 10px;
+            background: #fff;
+            margin-right: 20px;}
+
+        .removetechbtn{ color: #22ca46;
+            border: 1px solid #22ca46;
+            border-radius: 25px;
+            padding: 1px 10px;
+            background: #fff;
+            margin-right: 20px;}
     </style>
 
 
 @endsection
-
-
-
 
 
 
@@ -261,13 +273,10 @@
 
 
                     <div class="row">
-
-
                         <nav class="nav nav-pills nav-fill">
                             <a class="nav-link " aria-current="page" href="{{route('shop.products')}}">Məhsullar</a>
                             <a class="nav-link active " href="{{route('shop.createproduct')}}">Yeni Məhsul Əlavə Et</a>
                             <a class="nav-link" href="#">Deaktiv Məhsullar </a>
-
                         </nav>
 
                         <div class="col-lg-12 ps-2 pe-2">
@@ -290,7 +299,7 @@
 
                                         </div>
 
-                                        <label for="fronUpload" class="col-lg-4 col-md-4 col-sm-4 p-0 overflow-hidden
+                                        <label for="fronUpload" class="col-lg-3 col-md-3 col-sm-3 p-0 overflow-hidden
                                             align-items-center justify-content-center d-flex mb-2 upload-item"
                                                style="height: 150px" >
                                             <input type="file" id="fronUpload"  class="d-none"
@@ -310,7 +319,7 @@
                                         <input id="imageuploadinput" class="d-none"
                                                name="images" type="file" multiple  onchange="updateReferenceList()">
 
-                                        <div class="w-75 mt-4">
+                                        <div class="w-100 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Təsvir
                                             </h3>
                                             <div class="form-group mt-2">
@@ -318,11 +327,19 @@
                                   placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
                                             </div>
                                         </div>
-                                        <div class="w-75 mt-4">
+                                        <div class="w-50 mt-4">
+                                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymet
+                                                (AZN)</h3>
+                                            <div class="input-group">
+                                                <input type="number" maxlength="8" placeholder="Razılaşma yolu ilə">
+                                            </div>
+                                        </div>
+                                        <div class="w-100 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span
                                                     style="color: red;">*</span> </h3>
 
-                                            <div class="w-75">
+                                            <input type="hidden" name="category" id="category_id" value="1">
+                                                        <div class="w-75">
                                                 <div class=" d-flex mt-2 ">
                                                     <ul class="d-flex flex-wrap image-uploader list_category">
                                                         <!-- <span>telvizor >></span> -->
@@ -335,18 +352,37 @@
                                             </div>
                                         </div>
 
-                                        <div class="w-75 mt-4">
-                                            <h3 class="fw-600 text-grey-900 font-xss mb-3 text-capitalize">Şəhər</h3>
-                                            <select class="citySelect">
-                                                <option>Baki</option>
-                                            </select>
-                                        </div>
-                                        <div class="w-75 mt-4">
-                                            <h3 class="fw-600 text-grey-900 font-xss mb-3 text-capitalize">Qiymet (AZN)</h3>
-                                            <div class="input-group">
-                                                <input type="number" maxlength="8" placeholder="Razılaşma yolu ilə">
-                                            </div>
-                                        </div>
+
+                                       <div @class('row p-5 mt-3')style="border:1px solid #e7e7e7"
+                                            id="techniquelinputs">
+                                           <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                               Məhsul Məlumatları
+                                             </h3>
+                                           <div class="row" id="0">
+                                               <div class="w-200 mt-4">
+                                                   <div class="input-group" style="width: 178px!important;">
+                                                       <input type="text" maxlength="58" name="techkey[]"
+                                                              placeholder="Məslən : Rəng">
+                                                   </div>
+                                               </div>
+
+                                               <div class="w-200 mt-4">
+                                                   <div class="input-group" style="width: 258px!important;">
+                                                       <input type="text"  maxlength="58" name="techvalue[]"
+                                                              placeholder="
+                                                       Yaşıl">
+                                                   </div>
+                                               </div>
+
+                                               <div class="w-20 mt-4" style="margin-left: 74px">
+
+                                                       <button type="button"   style="width:90px!important;"
+                                                               class="addtechbtn">Əlavə et</button>
+
+                                               </div>
+                                           </div>
+
+                                       </div>
                                         <div class="w-75 mt-5  d-flex flex-wrap justify-content-between">
                                             <div class=" w-50  mb-3">
                                                 <div class="inp-group">
@@ -363,17 +399,138 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-
-
-
 @endsection
 
+
+@section('shop-create-product-page')
+    <div class="modal fade  modal-scrollable" id="savedmodal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content theme-dark-bg p-0 border-0 rounded-0 categoryModal"
+                 style="height: 80vh; overflow: auto;">
+                <button type="button"
+                        class="btn-close category-close z-index-5 bg-grey font-xsssss w-26 h-26 text-center rounded-circle posa right-0 top-0 mt-3 me-3"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="cart-boxCategory vh-80 p-4">
+                    <h3>Kategory Secin</h3>
+                    <div class=" d-flex justify-content-between mt-2 ">
+                        <div class=" w-100 p-3 left-category ">
+
+                            <ul class="d-flex flex-wrap ">
+                                <li>
+                                    <img src="/site/images//12.png" />
+                                    <p> <a href="#">televizorrrrr</a></p>
+                                </li>
+                                <li>
+                                    <img src="/site/images/map-marker.png" />
+                                    <p> <a href="#">mawinlar</a></p>
+                                </li>
+                                <li>
+                                    <img src="/site/images//12.png" />
+                                    <p> <a href="#">televizorrrrr</a></p>
+                                </li>
+                                <li>
+                                    <img src="/site/images//12.png" />
+                                    <p> <a href="#">televizorrrrr</a></p>
+                                </li>
+                                <li>
+                                    <img src="/site/images//12.png" />
+                                    <p> <a href="#">televizorrrrr</a></p>
+                                </li>
+                                <li>
+                                    <img src="/site/images//12.png" />
+                                    <p> <a href="#">televizorrrrr</a></p>
+                                </li>
+                                <li>
+                                    <img src="/site/images//12.png" />
+                                    <p> <a href="#">televizorrrrr</a></p>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="cart-boxCategory2 vh-80 p-4">
+                    <div class="d-flex w-50 justify-content-between mobileMargin">
+                        <span class="backsub2"><i class="fas fa-chevron-left"></i></span>
+                        <h3>category2</h3>
+                    </div>
+                    <ul class=" d-flex flex-wrap justify-content-between mt-2 ">
+                        <li>
+                            <a href="#">category1 </a>
+                        </li>
+                        <li>
+                            <a href="#">category2 </a>
+                        </li>
+                        <li>
+                            <a href="#">category3 </a>
+                        </li>
+                        <li>
+                            <a href="#">category4 </a>
+                        </li>
+                        <li>
+                            <a href="#">category5 </a>
+                        </li>
+                        <li>
+                            <a href="#">category6 </a>
+                        </li>
+                        <li>
+                            <a href="#">category7 </a>
+                        </li>
+                        <li>
+                            <a href="#">category8 </a>
+                        </li>
+                        <li>
+                            <a href="#">category9 </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cart-boxCategory3 vh-80 p-4">
+                    <div class="d-flex w-50 justify-content-between mobileMargin">
+                        <span class="backsub3"><i class="fas fa-chevron-left"></i></span>
+                        <h3>category3</h3>
+                    </div>
+                    <ul class=" d-flex flex-wrap justify-content-between mt-2 ">
+                        <li>
+                            <a data-bs-dismiss="modal" aria-label="Close" href="#">category end1 </a>
+                        </li>
+                        <li>
+                            <a data-bs-dismiss="modal"  href="#">category end2 </a>
+                        </li>
+                        <li>
+                            <a data-bs-dismiss="modal"  href="#">category end3 </a>
+                        </li>
+                        <li>
+                            <a data-bs-dismiss="modal"  href="#">category end4 </a>
+                        </li>
+                        <li>
+                            <a data-bs-dismiss="modal"  href="#">category end56 </a>
+                        </li>
+                        <li>
+                            <a data-bs-dismiss="modal"  href="#">category 75 </a>
+                        </li>
+                        <li>
+                            <a data-bs-dismiss="modal"  href="#">category end65 </a>
+                        </li>
+                        <li>
+                            <a data-bs-dismiss="modal"  href="#">category end6y5 </a>
+                        </li>
+                        <li>
+                            <a data-bs-dismiss="modal"  href="#">category end6y56 </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="category-down">
+                    <!-- <a href="#">category <span><i class="fas fa-arrow-right"></i></span></a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 
 
 @section('js')
@@ -422,7 +579,6 @@
                             justify-content-center d-flex mb-2 upload-item`;
                         div.style = `height: 150px;`;
                         div.innerHTML =
-
                             `<div  class="overflow-hidden rounded-10 h-100 upload-img  position-relative"  >
                     <i onclick="delRef(${reqem})" class="psor feather-trash text-white btn-round-md
                                   bg-success  font-xs position-absolute top-0 right-0 m-1 d-flex justify-content-center align-items-center"
@@ -523,17 +679,53 @@
               });//endajax
 
 
+        var techrowid = 1 ;
+        $('.addtechbtn').on('click',function (){
+
+            var thisIputHtmls = `<div class="row" id="techrowid${techrowid}">
+                                               <div class="w-200 mt-4">
+                                                   <div class="input-group" style="width: 178px!important;">
+                                                       <input type="text" required maxlength="58" name="techkey[]"
+                                                              placeholder="Məslən : Rəng">
+                                                   </div>
+                                               </div>
+
+                                               <div class="w-200 mt-4">
+                                                   <div class="input-group" style="width: 258px!important;">
+                                                       <input type="text" required maxlength="58" name="techvalue[]"
+                                                              placeholder="
+                                                       Yaşıl">
+                                                   </div>
+                                               </div>
+
+                                               <div class="w-20 mt-4" style="margin-left: 74px">
+
+                                                       <button type="button"   style="width:90px!important;"
+                                                               class="removetechbtn">Sil</button>
+
+                                               </div>
+                                           </div>`;
+            $('#techniquelinputs').append(thisIputHtmls);
+            techrowid++;
+        });
+
+        $(document).on('click','.removetechbtn',function (){
+            $(this).parent().parent().remove()
+        })
+
     </script>
 
-            <script>
-        // $(document).ready(function () {
+
+{{--    file uploadin ajaxla yazildigi kodlar icinde filesize controll falanda var--}}
+      <script>
+{{--        // $(document).ready(function () {--}}
 
 
 
-            //yuklenen fayllarini ayrd edib spesifik ishler gore bilmek ucun
-            //her yukelenen shekile gore sayini artiracaqiq ve image de id olaraq cagiracaqiq
-            //hemde response ucun apiye gondereceyik
-            // let imagefilecount = 0;
+{{--            //yuklenen fayllarini ayrd edib spesifik ishler gore bilmek ucun--}}
+{{--            //her yukelenen shekile gore sayini artiracaqiq ve image de id olaraq cagiracaqiq--}}
+{{--            //hemde response ucun apiye gondereceyik--}}
+{{--            // let imagefilecount = 0;--}}
 
 
 
@@ -681,7 +873,7 @@
         {{--});--}}
 
 
-//        });
+{{--//        });--}}
 
     </script>
 
@@ -696,6 +888,7 @@
                 $(this).parent().parent().parent().parent().fadeOut("fast")
                 $(".cart-boxCategory2").show("fast")
             })
+
             $(".cart-boxCategory2 ul li a").on("click", function (e) {
                 ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
                 document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
@@ -703,6 +896,7 @@
                 $(".cart-boxCategory3").show("fast")
 
             })
+
             $(".cart-boxCategory3 ul li a").on("click", function (e) {
                 ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
                 document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`

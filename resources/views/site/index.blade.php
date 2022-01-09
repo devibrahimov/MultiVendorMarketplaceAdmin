@@ -354,6 +354,7 @@
 
 
 @yield('shop-create-product-page')
+
 <script src="/site/js/plugin.js"></script>
 <script src="/site/js/scripts.js"></script>
 
