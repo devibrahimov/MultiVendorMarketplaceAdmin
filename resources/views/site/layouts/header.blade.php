@@ -37,14 +37,16 @@
                 <ul class="navbar-nav float-end">
                     <ul class="navbar-nav ms-auto">
 
-
+                      @guest('shop') @guest('user')
                         <li class="nav-item  nav-item-toggle active dropdown mr-5">
                             <a class="nav-link dropdown-toggle text-current" href="#" data-bs-toggle="dropdown"
                                aria-expanded="false">Mağaza</a>
+
                             <ul class="dropdown-menu border-0 shadow-xss">
                                 <li><a class="dropdown-item" href="{{route('shop.register')}}"> Qeydiyyat</a></li>
                                 <li><a class="dropdown-item" href="{{route('shop.login')}}"> Giriş </a></li>
                             </ul>
+
                         </li>
 
                         <li class="nav-item nav-item-toggle  active dropdown">
@@ -55,6 +57,39 @@
                                 <li><a class="dropdown-item" href="{{route('user.login')}}"> Giriş </a></li>
                             </ul>
                         </li>
+                        @endguest
+                        @endguest
+
+                    @auth('shop')
+                                <li class="nav-item  nav-item-toggle active dropdown mr-5">
+                                    <a class="nav-link dropdown-toggle text-current" href="#" data-bs-toggle="dropdown"
+                                       aria-expanded="false">{{auth('shop')->user()->shopname}}</a>
+
+                                    <ul class="dropdown-menu border-0 shadow-xss">
+                                        <li><a class="dropdown-item" href="{{route('shop.profil')}}"> Profilim</a></li>
+                                        <li><a class="dropdown-item" href="{{route('shop.logout')}}"> Çıxış et </a></li>
+                                    </ul>
+
+                                </li>
+                            @endauth
+
+                            @auth('user')
+                                <li class="nav-item  nav-item-toggle active dropdown mr-5">
+                                    <a class="nav-link dropdown-toggle text-current" href="#" data-bs-toggle="dropdown"
+                                       aria-expanded="false">{{auth('user')->user()->name}}</a>
+
+
+                                    <ul class="dropdown-menu border-0 shadow-xss">
+                                        <li><a class="dropdown-item" href="{{route('user.profil')}}"> Profilim</a></li>
+                                        <li><a class="dropdown-item" href="{{route('user.logout')}}"> Çıxış et </a></li>
+                                    </ul>
+
+                                </li>
+                            @endauth
+
+
+
+
                     </ul>
 
                 </ul>
@@ -68,7 +103,7 @@
         <div class="row">
             <div class="col-lg-12 d-flex">
                 <!-- <a href="#" class="nav-icon ps-0 ms-0 ms-n1" data-bs-toggle="modal" data-bs-target="#categorymodal"><i class="feather-menu font-lg text-grey-500"></i></a> -->
-                <a href="#"><img src="images/logo.png" alt="logo" class="logo"></a>
+                <a href="#"><img src="/site/images/logo.png" alt="logo" class="logo"></a>
                 <div class="header-search ms-auto me-2 d-flex">
                     <!-- <a href="#" class="location me-3" data-bs-toggle="modal" data-bs-target="#locationmodal">
                         <span class="fw-600 font-xssss text-grey-400">Delivery to</span>
