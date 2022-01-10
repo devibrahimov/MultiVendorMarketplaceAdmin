@@ -21,7 +21,7 @@ class Shop extends Model
     protected $hidden = ['password','email'];
 
 
-   public function  createnewShop($request){
+   public static function  createnewShop($request){
        try{
            DB::beginTransaction();
         $email  = $request->email;
