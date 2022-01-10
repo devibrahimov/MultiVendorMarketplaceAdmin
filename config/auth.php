@@ -42,15 +42,16 @@ return [
         ],
 
 
-        'apishop'=>[
-            'driver' => 'sanctum',
-            'provider' => 'shop'
-        ],
+//        'apishop'=>[
+//            'driver' => 'sanctum',
+//            'provider' => 'shop'
+//        ],
+//
+//        'apiuser'=>[
+//            'driver' => 'sanctum',
+//            'provider' => 'users'
+//        ],
 
-        'apiuser'=>[
-            'driver' => 'sanctum',
-            'provider' => 'users'
-        ],
         'shop'=>[
             'driver' => 'session',
             'provider' => 'shop'

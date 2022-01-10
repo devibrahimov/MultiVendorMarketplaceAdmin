@@ -21,8 +21,8 @@ class Shop extends Authenticatable
     protected $guarded = [];
     protected $hidden = ['password','email','aprovel'];
 
-
    public static function  createnewShop($request){
+
        try{
            DB::beginTransaction();
         $email  = $request->email;
@@ -56,7 +56,6 @@ class Shop extends Authenticatable
            DB::commit();
         $token = $shop->createToken('shop', ['server:update'])->plainTextToken;
 
-
         $response = [
         'status' =>1,
         'data' => $shop,
@@ -66,6 +65,7 @@ class Shop extends Authenticatable
 
             return $response;
         }
+
        catch (\Exception $e){
            DB::rollback();
            $response = [
@@ -76,6 +76,7 @@ class Shop extends Authenticatable
                ];
            return $response;
        }
+
     }
 
 

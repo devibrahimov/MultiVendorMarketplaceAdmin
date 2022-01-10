@@ -3,12 +3,21 @@
 @section('css')
     <style>
 
+       #overlayout {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.54);
+           display: none;
+            min-width: 100%;
+            min-height: 100%;
+           z-index: 999999999999999;
+        }
         .overLoad {
             position: absolute;
             background-color: rgba(0, 0, 0, 0.54);
             min-width: 100%;
             min-height: 100%;
         }
+
         .overLoad img{
             margin-top: 27px;
             text-align:center
@@ -222,6 +231,8 @@
         }
 
         .upload-img img{
+            border: 0.5px solid gray;
+            padding: 0px;
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -269,8 +280,8 @@
                 <div class="col-lg-4">
                     @include('site.pages.shop.partials.navbar')
                 </div>
-                <div class="col-lg-8 pt-5 ps-4">
-
+                <div class="col-lg-8 pt-5 ps-4" id="allinputs">
+                <div id="overlayout" ></div>
 
                     <div class="row">
                         <nav class="nav nav-pills nav-fill">
@@ -294,7 +305,7 @@
                                         </div>
 
 
-                                        <div class="row imagelistdivrow" >
+                                        <div class="row imagelistdivrow " >
 
 
                                         </div>
@@ -315,30 +326,30 @@
                                                 </div>
                                             </div>
                                         </label>
-
                                         <input id="imageuploadinput" class="d-none"
                                                name="images" type="file" multiple  onchange="updateReferenceList()">
 
                                         <div class="w-100 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Təsvir
                                             </h3>
-                                            <div class="form-group mt-2">
-                                  <textarea style="border:1px solid #ccc;" class=" p-2 font-xssss w-100 " rows="4"
-                                  placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
+
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> Məhsul Adı</h3>
+                                                <div class="input-group">
+                                                    <input type="text" maxlength="100" id="name" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="w-50 mt-4">
-                                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymet
-                                                (AZN)</h3>
-                                            <div class="input-group">
-                                                <input type="number" maxlength="8" placeholder="Razılaşma yolu ilə">
+
+                                            <div class="form-group mt-2">
+                                  <textarea style="border:1px solid #ccc;" class=" p-2 font-xssss w-100 " rows="4" id="description"
+                                  placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
                                             </div>
                                         </div>
                                         <div class="w-100 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span
                                                     style="color: red;">*</span> </h3>
 
-                                            <input type="hidden" name="category" id="category_id" value="1">
+                                            <input type="hidden"  id="category_id" value="1">
                                                         <div class="w-75">
                                                 <div class=" d-flex mt-2 ">
                                                     <ul class="d-flex flex-wrap image-uploader list_category">
@@ -352,25 +363,82 @@
                                             </div>
                                         </div>
 
+                                      <div class="row">
+                                          <div class="w-50 mt-4">
+                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymet
+                                                  (AZN)</h3>
+                                              <div class="input-group">
+                                                  <input type="number" maxlength="8" id="price" required>
+                                              </div>
+                                          </div>
+
+                                          <div class="w-50 mt-4">
+                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Endirimli Qiymet
+                                                  (AZN)</h3>
+                                              <div class="input-group">
+                                                  <input type="number" maxlength="8"  id="sale_price">
+                                              </div>
+                                          </div>
+
+
+                                          <div class="w-50 mt-4">
+                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Stok Sayısı
+                                                  (AZN)</h3>
+                                              <div class="input-group">
+                                                  <input type="number" maxlength="8" id="stock" placeholder="Razılaşma yolu ilə">
+                                              </div>
+                                          </div>
+                                          <div class="w-50 mt-4">
+                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> SKU kodu  </h3>
+                                              <div class="input-group">
+                                                  <input type="number" maxlength="8" id="sku" placeholder="Razılaşma yolu ilə">
+                                              </div>
+                                          </div>
+
+                                          <div class="w-50 mt-4">
+                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> barkode kodu  </h3>
+                                              <div class="input-group">
+                                                  <input type="number" maxlength="8" id="barkode" placeholder="barkode">
+                                              </div>
+                                          </div>
+
+
+                                      </div>
+
+
+
 
                                        <div @class('row p-5 mt-3')style="border:1px solid #e7e7e7"
                                             id="techniquelinputs">
                                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
                                                Məhsul Məlumatları
                                              </h3>
-                                           <div class="row" id="0">
+                                           <div class="row" >
+
                                                <div class="w-200 mt-4">
                                                    <div class="input-group" style="width: 178px!important;">
-                                                       <input type="text" maxlength="58" name="techkey[]"
+                                                       <input type="text" maxlength="58"class="techkey"
+                                                              value="İstehsalatçı Ölkə" required disabled="">
+                                                   </div>
+                                               </div>
+
+                                               <div class="w-200 mt-4">
+                                                   <div class="input-group" style="width: 258px!important;">
+                                                       <input type="text" required maxlength="58" class="techvalue" >
+                                                   </div>
+                                               </div>
+
+                                               <div class="w-200 mt-4">
+                                                   <div class="input-group" style="width: 178px!important;">
+                                                       <input type="text"  required maxlength="58" class="techkey"
                                                               placeholder="Məslən : Rəng">
                                                    </div>
                                                </div>
 
                                                <div class="w-200 mt-4">
                                                    <div class="input-group" style="width: 258px!important;">
-                                                       <input type="text"  maxlength="58" name="techvalue[]"
-                                                              placeholder="
-                                                       Yaşıl">
+                                                       <input type="text" required class="techvalue"  maxlength="58"
+                                                              placeholder=" Yaşıl">
                                                    </div>
                                                </div>
 
@@ -383,14 +451,7 @@
                                            </div>
 
                                        </div>
-                                        <div class="w-75 mt-5  d-flex flex-wrap justify-content-between">
-                                            <div class=" w-50  mb-3">
-                                                <div class="inp-group">
-                                                    <input type="text" placeholder="+994xx" />
-                                                </div>
-                                            </div>
 
-                                        </div>
                                         <div class="w-50 mt-2 mb-5">
                                             <button type="button"   id="postbutton" class="btnSubmit">Elanı dərc edin!</button>
                                         </div>
@@ -566,7 +627,7 @@
                 hasimagelist = document.getElementById('image'+a);
                 imageuploader = document.querySelector('.imagelistdivrow');
                 imageuploader.innerHTML = "";
-                console.log(hasimagelist)
+
 
                 for (var i = 0; i < ref_input.files.length; ++i) {
                     let imageFile = ref_input.files[i]
@@ -578,13 +639,13 @@
                         div.classList = `col-lg-3 col-md-3 col-sm-3 p-0 overflow-hidden align-items-center
                             justify-content-center d-flex mb-2 upload-item`;
                         div.style = `height: 150px;`;
-                        div.innerHTML =
-                            `<div  class="overflow-hidden rounded-10 h-100 upload-img  position-relative"  >
+                        div.innerHTML = `<div  class="overflow-hidden h-100 upload-img  position-relative"  >
                     <i onclick="delRef(${reqem})" class="psor feather-trash text-white btn-round-md
                                   bg-success  font-xs position-absolute top-0 right-0 m-1 d-flex justify-content-center align-items-center"
                                       style="width: 35px; height: 35px;cursor:pointer;" ></i>
-                        <div class='overLoad' id='overlay'> <img src="https://i0.wp.com/itcats.in/images/ajax-loader.gif" alt=""> </div>
+
                                   <img id="image${reqem}" src="${e.target.result}"   alt="flame"  />
+
                               </div>  `;
 
                         output.insertBefore(div, null);
@@ -596,7 +657,7 @@
 
 
                 }
-                console.log(ref_input.files.length)
+
             }
 
             function updateInputFile(event) {
@@ -614,15 +675,22 @@
                 }
 
                 newfiles = event.target.files;
-                console.log(newfiles)
+
                 // if(newfiles.length>0){
                 for (var q = 0; q < newfiles.length; q++) {
 
                     var newfile = newfiles[q]
-                    console.log('file: ' + newfile)
+
+
+                    if(newfile.size != 339404){
+
+
                     dt.items.add(newfile)
-                    console.log('dt.items: ' + dt.items)
+
                     input.files = dt.files
+                    }else{
+                        alert(newfile.size)
+                    }
                 }
                 // }
 
@@ -635,17 +703,40 @@
 
 
     <script>
+
+
         $(document).on('click','#postbutton',function(){
+
+            $('#overlayout').css('display:block')
 
             var form_data = new FormData();
             form_data.append( "_token",'{{ csrf_token() }}' );
-            var files = $('#imageuploadinput')[0].files;
+            form_data.append( "price", $('#price').val());
+            form_data.append( "sale_price", $('#sale_price').val());
+            form_data.append( "stock", $('#stock').val());
+            form_data.append( "sku", $('#sku').val());
+            form_data.append( "name", $('#name').val());
+            form_data.append( "barkode", $('#barkode').val());
+            form_data.append( "sku", $('#sku').val());
+            form_data.append( "category_id", $('#category_id').val());
+            form_data.append( "description", $('#description').val());
 
+            var files = $('#imageuploadinput')[0].files;
             for(let i=0; i<files.length; i++){
                 let imageFile =document.getElementById('imageuploadinput').files[i]
                   //image faylimizi file[] adi ile formumuza elave ediirik.
-                 form_data.append('file[]',document.getElementById('imageuploadinput').files[i]);
+                 form_data.append('file[]',imageFile);
             }//endfor
+
+            let informationtechvalue = $('#techniquelinputs .input-group .techvalue')
+            let informationtechkey = $('#techniquelinputs .input-group .techkey')
+
+            $( informationtechvalue ).each(function( index ) {
+                form_data.append( "techvalue[]",$(this).val());
+            });
+            $( informationtechkey ).each(function( index ) {
+                form_data.append( "techkey[]",$(this).val());
+            });
 
 
             $.ajax({
@@ -658,7 +749,12 @@
                 success:function (data){
                     //response gelen datamiz json oldugu ucun ellevce decode edirik
                     data = $.parseJSON(data);
-                    console.log(data)
+                    if(data == true){
+                        $('#overlayout').css('display:none')
+
+                    }
+                    }
+                  //  console.log(data)
                     //
                     // //gelen datani jquerynin each functionu ile dondururuk
                     // $.each(data , function(k, v) {
@@ -673,26 +769,26 @@
                     // });
 
                    // shekillerin yuklenmish oldugunu gostermek
-                }
+                // }
             });//endajax
 
               });//endajax
 
 
-        var techrowid = 1 ;
+
         $('.addtechbtn').on('click',function (){
 
-            var thisIputHtmls = `<div class="row" id="techrowid${techrowid}">
+            var thisIputHtmls = `<div class="row"  >
                                                <div class="w-200 mt-4">
                                                    <div class="input-group" style="width: 178px!important;">
-                                                       <input type="text" required maxlength="58" name="techkey[]"
+                                                       <input type="text" required maxlength="58" class="techkey"
                                                               placeholder="Məslən : Rəng">
                                                    </div>
                                                </div>
 
                                                <div class="w-200 mt-4">
                                                    <div class="input-group" style="width: 258px!important;">
-                                                       <input type="text" required maxlength="58" name="techvalue[]"
+                                                       <input type="text" required maxlength="58" class="techvalue"
                                                               placeholder="
                                                        Yaşıl">
                                                    </div>
@@ -706,7 +802,7 @@
                                                </div>
                                            </div>`;
             $('#techniquelinputs').append(thisIputHtmls);
-            techrowid++;
+
         });
 
         $(document).on('click','.removetechbtn',function (){
@@ -715,12 +811,65 @@
 
     </script>
 
+    <script>
+        $(document).ready(function () {
+
+            var ListCategory= document.querySelector(".list_category")
+            $(".cart-boxCategory ul li").on("click", function (e) {
+                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
+                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
+
+                $(this).parent().parent().parent().parent().fadeOut("fast")
+                $(".cart-boxCategory2").show("fast")
+            })
+
+            $(".cart-boxCategory2 ul li a").on("click", function (e) {
+                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
+                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
+                $(this).parent().parent().parent().fadeOut("fast")
+                $(".cart-boxCategory3").show("fast")
+
+            })
+
+            $(".cart-boxCategory3 ul li a").on("click", function (e) {
+                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
+                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
+
+            })
+
+            $(".category-close").on("click", function () {
+                $(".cart-boxCategory2").fadeOut("fast")
+                $(".cart-boxCategory3").fadeOut("fast")
+                $(".cart-boxCategory").show("fast")
+            })
+            $(".btnModal").on("click", function () {
+                if ($(".list_category").children().length >= 1) {
+                    $(".list_category").html("")
+                }
+            })
+            $(".btnModal").on("click", function () {
+                if ($(".category-down").children().length >= 1) {
+                    $(".category-down").html("")
+                }
+            })
+
+
+            $(".backsub2").on("click", function () {
+                $(this).parent().parent().fadeOut("fast")
+                $(".cart-boxCategory").show("fast")
+            })
+            $(".backsub3").on("click", function () {
+                $(this).parent().parent().fadeOut("fast")
+                $(".cart-boxCategory2").show("fast")
+            })
+
+
+        });
+    </script>
 
 {{--    file uploadin ajaxla yazildigi kodlar icinde filesize controll falanda var--}}
       <script>
 {{--        // $(document).ready(function () {--}}
-
-
 
 {{--            //yuklenen fayllarini ayrd edib spesifik ishler gore bilmek ucun--}}
 {{--            //her yukelenen shekile gore sayini artiracaqiq ve image de id olaraq cagiracaqiq--}}
@@ -877,59 +1026,4 @@
 
     </script>
 
-    <script>
-        $(document).ready(function () {
-
-            var ListCategory= document.querySelector(".list_category")
-            $(".cart-boxCategory ul li").on("click", function (e) {
-                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
-                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
-
-                $(this).parent().parent().parent().parent().fadeOut("fast")
-                $(".cart-boxCategory2").show("fast")
-            })
-
-            $(".cart-boxCategory2 ul li a").on("click", function (e) {
-                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
-                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
-                $(this).parent().parent().parent().fadeOut("fast")
-                $(".cart-boxCategory3").show("fast")
-
-            })
-
-            $(".cart-boxCategory3 ul li a").on("click", function (e) {
-                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
-                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
-
-            })
-
-            $(".category-close").on("click", function () {
-                $(".cart-boxCategory2").fadeOut("fast")
-                $(".cart-boxCategory3").fadeOut("fast")
-                $(".cart-boxCategory").show("fast")
-            })
-            $(".btnModal").on("click", function () {
-                if ($(".list_category").children().length >= 1) {
-                    $(".list_category").html("")
-                }
-            })
-            $(".btnModal").on("click", function () {
-                if ($(".category-down").children().length >= 1) {
-                    $(".category-down").html("")
-                }
-            })
-
-
-            $(".backsub2").on("click", function () {
-                $(this).parent().parent().fadeOut("fast")
-                $(".cart-boxCategory").show("fast")
-            })
-            $(".backsub3").on("click", function () {
-                $(this).parent().parent().fadeOut("fast")
-                $(".cart-boxCategory2").show("fast")
-            })
-
-
-        });
-    </script>
 @endsection
