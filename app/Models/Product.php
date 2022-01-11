@@ -11,4 +11,6 @@ class Product extends Model
     protected $table = 'products';
     protected $dates = ['deleted_at'];
     protected $guarded = [] ;
+
+
 }

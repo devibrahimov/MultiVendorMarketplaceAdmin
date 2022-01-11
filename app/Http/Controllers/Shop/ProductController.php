@@ -11,12 +11,15 @@ class ProductController extends Controller
 {
 
     public function index(){
-        return view('site.pages.shop.product.index');
+        $products = Product::where('shop_id',auth('shop')->user()->id)->paginate(3); //15;
+        return view('site.pages.shop.product.index',compact(['products']));
     }
 
     public function create(){
         return view('site.pages.shop.product.create');
     }
+
+
 
     public function store(Request $request){
      // return $request->all();
@@ -41,7 +44,7 @@ class ProductController extends Controller
             $postImage = rand(0,12312312312). "." . $file->getClientOriginalExtension();
             $file->move($imageDestinationPath, $postImage);
 
-           array_push($images,$filename)  ;
+           array_push($images,$postImage)  ;
 
         }
         $images = json_encode($images,JSON_UNESCAPED_UNICODE) ;
@@ -94,4 +97,29 @@ class ProductController extends Controller
 
 
     }
+
+
+    public function edit($id){
+        return view('site.pages.shop.product.edit');
+    }
+
+
+    public function active(Request $request){
+        $id = $request->id;
+        $status = $request->status;
+        var_dump($status);
+       $product =  Product::find($id);
+
+       if ( $status == "true" ){
+           $status = 1;
+       }  if ( $status == "false" ){
+           $status = 0;
+       }
+
+       $product->access = $status;
+        $product->save();
+
+
+    }
+
 }

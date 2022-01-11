@@ -15,7 +15,7 @@ class SettingController extends Controller
     public function index(){
         $setting = DB::table('settings')->first();
         if ($setting == null){
-            return view('pages.general.setting');
+            return view('administrator.pages.general.setting');
         }else{
             return view('administrator.pages.general.settingedit',compact(['setting']));
         }

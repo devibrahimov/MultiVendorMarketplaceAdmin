@@ -11,9 +11,12 @@ Route::group(['middleware'=> ['shop']], function () {
     Route::get('/shop-profil',[AuthController::class ,'shop'])->name('shop.profil') ;
     Route::get('/shop-logout',[AuthController::class ,'logout']) ->name('shop.logout') ;
 
-});//middleware auth:apishop end
+    Route::get('/mehsullar',[ProductController::class ,'index']) ->name('shop.products') ;
+    Route::get('/mehsul-elave-et',[ProductController::class ,'create']) ->name('shop.createproduct') ;
+    Route::post('/mehsul-elave-et',[ProductController::class ,'store'])  ;
+    Route::post('/m-a-t-e',[ProductController::class ,'active'])  ->name('shop.productActive') ;//mehsul activliyini teyin et
+    Route::get('/mehsul-{id}-{slug}',[ProductController::class ,'edit'])->name('shop.editproduct') ;
+    Route::get('/mehsul-elave-et',[ProductController::class ,'create']) ->name('shop.createproduct') ;
 
-Route::get('/mehsullar',[ProductController::class ,'index']) ->name('shop.products') ;
-Route::get('/mehsul-elave-et',[ProductController::class ,'create']) ->name('shop.createproduct') ;
-Route::post('/mehsul-elave-et',[ProductController::class ,'store'])  ;
-Route::post('/mehsul-shekillerini-yukle',[ImageUploadController::class ,'imageupload'])->name('shop.imageupload') ;
+
+});//middleware auth:apishop end

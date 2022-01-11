@@ -1,7 +1,7 @@
 @extends('administrator.welcome')
 
 @section('css')
-    <link href="/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <link href="/administrator/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
     <style>
         .bootstrap-select.btn-group .dropdown-menu li {
@@ -183,8 +183,8 @@
 @section('js-libs')
 
     <!-- Custom Js -->
-    <script src="/js/admin.js"></script>
-    <script src="/js/pages/forms/advanced-form-elements.js"></script>
+    <script src="/administrator/js/admin.js"></script>
+    <script src="/administrator/js/pages/forms/advanced-form-elements.js"></script>
 @endsection
 
 @section('js-script')

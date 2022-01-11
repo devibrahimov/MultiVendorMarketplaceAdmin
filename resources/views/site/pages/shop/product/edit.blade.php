@@ -3,13 +3,13 @@
 @section('css')
     <style>
 
-       #overlayout {
+        #overlayout {
             position: absolute;
             background-color: rgba(0, 0, 0, 0.54);
-           display: none;
+            display: none;
             min-width: 100%;
             min-height: 100%;
-           z-index: 999999999999999;
+            z-index: 999999999999999;
         }
         .overLoad {
             position: absolute;
@@ -238,9 +238,9 @@
             object-fit: contain;
         }
         @media only screen and (max-width: 600px) {
-                .upload-item{
-                    height: 230px;
-                }
+            .upload-item{
+                height: 230px;
+            }
         }
         .addtechbtn{ color: #22ca46;
             border: 1px solid #22ca46;
@@ -281,7 +281,7 @@
                     @include('site.pages.shop.partials.navbar')
                 </div>
                 <div class="col-lg-8 pt-5 ps-4" id="allinputs">
-                <div id="overlayout" ></div>
+                    <div id="overlayout" ></div>
 
                     <div class="row">
                         <nav class="nav nav-pills nav-fill">
@@ -342,7 +342,7 @@
 
                                             <div class="form-group mt-2">
                                   <textarea style="border:1px solid #ccc;    height: 300px;" class=" p-2 font-xssss w-100 " rows="4" id="description"
-                                  placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
+                                            placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
                                             </div>
                                         </div>
 
@@ -370,9 +370,9 @@
 
                                             <input type="hidden"  id="category_id" value="1">
 
-                                               <div class="w-100">
+                                            <div class="w-100">
                                                 <div class=" d-flex mt-2 ">
-{{--                                                    Ana Katgoriyalar bu ashaqidaki ul icne siyahilanir--}}
+                                                    {{--                                                    Ana Katgoriyalar bu ashaqidaki ul icne siyahilanir--}}
                                                     <ul class="d-flex  image-uploader list_category">
                                                     </ul>
 
@@ -384,94 +384,94 @@
                                             </div>
                                         </div>
 
-                                      <div class="row">
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymət
-                                                  (AZN)</h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8" id="price" required>
-                                              </div>
-                                          </div>
+                                        <div class="row">
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymət
+                                                    (AZN)</h3>
+                                                <div class="input-group">
+                                                    <input type="number" maxlength="8" id="price" required>
+                                                </div>
+                                            </div>
 
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Endirimli Qiymət
-                                                  (AZN)</h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8"  id="sale_price">
-                                              </div>
-                                          </div>
-
-
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Stok Sayısı
-                                                  (AZN)</h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8" id="stock" placeholder="Razılaşma yolu ilə">
-                                              </div>
-                                          </div>
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> SKU kodu  </h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8" id="sku" placeholder="Razılaşma yolu ilə">
-                                              </div>
-                                          </div>
-
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> barkode kodu  </h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8" id="barkode" placeholder="barkode">
-                                              </div>
-                                          </div>
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Endirimli Qiymət
+                                                    (AZN)</h3>
+                                                <div class="input-group">
+                                                    <input type="number" maxlength="8"  id="sale_price">
+                                                </div>
+                                            </div>
 
 
-                                      </div>
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Stok Sayısı
+                                                    (AZN)</h3>
+                                                <div class="input-group">
+                                                    <input type="number" maxlength="8" id="stock" placeholder="Razılaşma yolu ilə">
+                                                </div>
+                                            </div>
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> SKU kodu  </h3>
+                                                <div class="input-group">
+                                                    <input type="number" maxlength="8" id="sku" placeholder="Razılaşma yolu ilə">
+                                                </div>
+                                            </div>
+
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> barkode kodu  </h3>
+                                                <div class="input-group">
+                                                    <input type="number" maxlength="8" id="barkode" placeholder="barkode">
+                                                </div>
+                                            </div>
+
+
+                                        </div>
 
 
 
 
-                                       <div @class('row p-5 mt-3')style="border:1px solid #e7e7e7"
-                                            id="techniquelinputs">
-                                           <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
-                                               Məhsul Məlumatları
-                                             </h3>
-                                           <div class="row" >
+                                        <div @class('row p-5 mt-3')style="border:1px solid #e7e7e7"
+                                             id="techniquelinputs">
+                                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                                Məhsul Məlumatları
+                                            </h3>
+                                            <div class="row" >
 
-                                               <div class="w-200 mt-4">
-                                                   <div class="input-group" style="width: 178px!important;">
-                                                       <input type="text" maxlength="58"class="techkey"
-                                                              value="İstehsalatçı Ölkə" required disabled="">
-                                                   </div>
-                                               </div>
+                                                <div class="w-200 mt-4">
+                                                    <div class="input-group" style="width: 178px!important;">
+                                                        <input type="text" maxlength="58"class="techkey"
+                                                               value="İstehsalatçı Ölkə" required disabled="">
+                                                    </div>
+                                                </div>
 
-                                               <div class="w-200 mt-4">
-                                                   <div class="input-group" style="width: 258px!important;">
-                                                       <input type="text" required maxlength="58" class="techvalue" >
-                                                   </div>
-                                               </div>
+                                                <div class="w-200 mt-4">
+                                                    <div class="input-group" style="width: 258px!important;">
+                                                        <input type="text" required maxlength="58" class="techvalue" >
+                                                    </div>
+                                                </div>
 
-                                               <div class="w-200 mt-4">
-                                                   <div class="input-group" style="width: 178px!important;">
-                                                       <input type="text"  required maxlength="58" class="techkey"
-                                                              placeholder="Məslən : Rəng">
-                                                   </div>
-                                               </div>
+                                                <div class="w-200 mt-4">
+                                                    <div class="input-group" style="width: 178px!important;">
+                                                        <input type="text"  required maxlength="58" class="techkey"
+                                                               placeholder="Məslən : Rəng">
+                                                    </div>
+                                                </div>
 
-                                               <div class="w-200 mt-4">
-                                                   <div class="input-group" style="width: 258px!important;">
-                                                       <input type="text" required class="techvalue"  maxlength="58"
-                                                              placeholder=" Yaşıl">
-                                                   </div>
-                                               </div>
+                                                <div class="w-200 mt-4">
+                                                    <div class="input-group" style="width: 258px!important;">
+                                                        <input type="text" required class="techvalue"  maxlength="58"
+                                                               placeholder=" Yaşıl">
+                                                    </div>
+                                                </div>
 
-                                               <div class="w-20 mt-4" style="margin-left: 74px">
+                                                <div class="w-20 mt-4" style="margin-left: 74px">
 
-                                                       <button type="button"   style="width:90px!important;"
-                                                               class="addtechbtn">Əlavə et</button>
+                                                    <button type="button"   style="width:90px!important;"
+                                                            class="addtechbtn">Əlavə et</button>
 
-                                               </div>
-                                           </div>
+                                                </div>
+                                            </div>
 
-                                       </div>
+                                        </div>
 
                                         <div class="w-50 mt-2 mb-5">
                                             <button type="button"   id="postbutton" class="btnSubmit">Elanı dərc edin!</button>
@@ -493,48 +493,48 @@
 
     <script>
 
-            function delRef(index) {
-                //  e.parentElement.parentElement.remove()
-                var filesa = $('#imageuploadinput')[0].files;
+        function delRef(index) {
+            //  e.parentElement.parentElement.remove()
+            var filesa = $('#imageuploadinput')[0].files;
 
 
-                var dt = new DataTransfer()
-                var input = document.getElementById('imageuploadinput')
-                var {files} = input
-                for (var i = 0; i < files.length; i++) {
-                    var file = files[i]
-                    if (index !== i) dt.items.add(file)
-                    input.files = dt.files
-                }
-
-                var resource = document.getElementById('image' + index);
-                resource.parentElement.remove()
-                var a = $('#imageuploadinput')[0].files;
-                console.log(a)
+            var dt = new DataTransfer()
+            var input = document.getElementById('imageuploadinput')
+            var {files} = input
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i]
+                if (index !== i) dt.items.add(file)
+                input.files = dt.files
             }
 
-            function updateReferenceList() {
-                var ref_input = document.getElementById('imageuploadinput');
-                var output = document.querySelector(".imagelistdivrow");
-                let reqem = 0;
+            var resource = document.getElementById('image' + index);
+            resource.parentElement.remove()
+            var a = $('#imageuploadinput')[0].files;
+            console.log(a)
+        }
 
-                var a = (ref_input.files.length - 1);
-                hasimagelist = document.getElementById('image'+a);
-                imageuploader = document.querySelector('.imagelistdivrow');
-                imageuploader.innerHTML = "";
+        function updateReferenceList() {
+            var ref_input = document.getElementById('imageuploadinput');
+            var output = document.querySelector(".imagelistdivrow");
+            let reqem = 0;
+
+            var a = (ref_input.files.length - 1);
+            hasimagelist = document.getElementById('image'+a);
+            imageuploader = document.querySelector('.imagelistdivrow');
+            imageuploader.innerHTML = "";
 
 
-                for (var i = 0; i < ref_input.files.length; ++i) {
-                    let imageFile = ref_input.files[i]
+            for (var i = 0; i < ref_input.files.length; ++i) {
+                let imageFile = ref_input.files[i]
 
 
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        var div = document.createElement("div");
-                        div.classList = `col-lg-3 col-md-3 col-sm-3 p-0 overflow-hidden align-items-center
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var div = document.createElement("div");
+                    div.classList = `col-lg-3 col-md-3 col-sm-3 p-0 overflow-hidden align-items-center
                             justify-content-center d-flex mb-2 upload-item`;
-                        div.style = `height: 150px;`;
-                        div.innerHTML = `<div  class="overflow-hidden h-100 upload-img  position-relative"  >
+                    div.style = `height: 150px;`;
+                    div.innerHTML = `<div  class="overflow-hidden h-100 upload-img  position-relative"  >
                     <i onclick="delRef(${reqem})" class="psor feather-trash text-white btn-round-md
                                   bg-success  font-xs position-absolute top-0 right-0 m-1 d-flex justify-content-center align-items-center"
                                       style="width: 35px; height: 35px;cursor:pointer;" ></i>
@@ -543,55 +543,55 @@
 
                               </div>  `;
 
-                        output.insertBefore(div, null);
-                        reqem++
+                    output.insertBefore(div, null);
+                    reqem++
 
 
-                    }//end reader.onload
-                    reader.readAsDataURL(imageFile);
+                }//end reader.onload
+                reader.readAsDataURL(imageFile);
 
-
-                }
 
             }
 
-            function updateInputFile(event) {
-                var dt = new DataTransfer();
-                var input = document.getElementById('imageuploadinput');
-                var {files} = input;
+        }
 
-                for (var i = 0; i < files.length; i++) {
+        function updateInputFile(event) {
+            var dt = new DataTransfer();
+            var input = document.getElementById('imageuploadinput');
+            var {files} = input;
 
-                    var file = files[i]
+            for (var i = 0; i < files.length; i++) {
 
-                    dt.items.add(file)
+                var file = files[i]
 
-                    input.files = dt.files
-                }
+                dt.items.add(file)
 
-                newfiles = event.target.files;
+                input.files = dt.files
+            }
 
-                // if(newfiles.length>0){
-                for (var q = 0; q < newfiles.length; q++) {
+            newfiles = event.target.files;
 
-                    var newfile = newfiles[q]
+            // if(newfiles.length>0){
+            for (var q = 0; q < newfiles.length; q++) {
+
+                var newfile = newfiles[q]
 
 
-                    if(newfile.size != 339404){
+                if(newfile.size != 339404){
 
 
                     dt.items.add(newfile)
 
                     input.files = dt.files
-                    }else{
-                        alert(newfile.size)
-                    }
+                }else{
+                    alert(newfile.size)
                 }
-                // }
-
-
-                updateReferenceList()
             }
+            // }
+
+
+            updateReferenceList()
+        }
 
     </script>
 
@@ -620,8 +620,8 @@
 
             for(let i=0; i<files.length; i++){
                 let imageFile =document.getElementById('imageuploadinput').files[i]
-                  //image faylimizi file[] adi ile formumuza elave ediirik.
-                 form_data.append('file[]',imageFile);
+                //image faylimizi file[] adi ile formumuza elave ediirik.
+                form_data.append('file[]',imageFile);
             }//endfor
 
             let informationtechvalue = $('#techniquelinputs .input-group .techvalue')
@@ -647,27 +647,28 @@
                     data = $.parseJSON(data);
                     if(data == true){
                         window.location.href = "{{route('shop.products')}}";
-                        }
-                    }
-                  //  console.log(data)
-                    //
-                    // //gelen datani jquerynin each functionu ile dondururuk
-                    // $.each(data , function(k, v) {
-                    //
-                    //     //console.log('index:'+v.index + 'name:'+v.name);
-                    //
-                    //      $('#'+v.index).attr("src",v.link)
-                    //   //  $('#'+imagefilecount).attr("src",v.link);
-                    //     $('#'+v.index).next('#overlay').remove();
-                    //
-                    //
-                    // });
 
-                   // shekillerin yuklenmish oldugunu gostermek
+                    }
+                }
+                //  console.log(data)
+                //
+                // //gelen datani jquerynin each functionu ile dondururuk
+                // $.each(data , function(k, v) {
+                //
+                //     //console.log('index:'+v.index + 'name:'+v.name);
+                //
+                //      $('#'+v.index).attr("src",v.link)
+                //   //  $('#'+imagefilecount).attr("src",v.link);
+                //     $('#'+v.index).next('#overlay').remove();
+                //
+                //
+                // });
+
+                // shekillerin yuklenmish oldugunu gostermek
                 // }
             });//endajax
 
-              });//endajax
+        });//endajax
 
 
 
@@ -712,11 +713,11 @@
         $(document).ready(function () {
             let allcategories = {!! json_encode(\App\Models\Category::all(),JSON_UNESCAPED_UNICODE) !!}
 
-            parentCategoriesJson = allcategories.filter(c=> c.parent_id == null)
+                parentCategoriesJson = allcategories.filter(c=> c.parent_id == null)
 
             for(var i = 0; i < parentCategoriesJson.length ; i++){
                 let category = parentCategoriesJson[i];
-               let li = `<li class="categoriya getsubcat" data-id="${category.id}">
+                let li = `<li class="categoriya getsubcat" data-id="${category.id}">
                          <img style="width: 55px" src="${category.icon}" alt="">
                           <p style="font-size: 12px; font-weight: bold;">${category.name}</p> </li>`;
                 $('.list_category').append(li)
@@ -730,7 +731,7 @@
 
                 //listSubCategory div-inin icini boshaldiriq
                 if($(this).hasClass('categoriya')){
-                   Uldataindex = 0;
+                    Uldataindex = 0;
                     $('.listSubCategory').html('')
                 }
 
@@ -748,7 +749,7 @@
                 });//ana kategoriya klikleyende sublari qalir hala gelir yene .
 
 
-               // console.log(subCategoriesJson) ;
+                // console.log(subCategoriesJson) ;
                 if(subCategoriesJson.length != 0){
                     var listSubCategoryHTML = `<ul class="mt-3 " style="margin-left:5px;float: left" data-index="${Uldataindex}">`;
                     for(var i = 0; i < subCategoriesJson.length ; i++){
@@ -767,7 +768,7 @@
                 //eger kliklenen sub categoriyadirsa
                 if($(this).hasClass('subcategoriya')){
 
-                   let selected = $('.listSubCategory').find('.selected');
+                    let selected = $('.listSubCategory').find('.selected');
 
                     if(selected[0] != undefined){
                         if(selected.children()[1] !=undefined){
@@ -776,9 +777,9 @@
 
                     }
 
-                   $(this).parent().children().removeClass('selected')
+                    $(this).parent().children().removeClass('selected')
 
-                   $(this).addClass('selected')
+                    $(this).addClass('selected')
 
                     if(subCategoriesJson.length == 0){
 
@@ -797,17 +798,17 @@
 
             });//end on click
 
-              });
+        });
     </script>
 
-{{--    file uploadin ajaxla yazildigi kodlar icinde filesize controll falanda var--}}
-      <script>
-{{--        // $(document).ready(function () {--}}
+    {{--    file uploadin ajaxla yazildigi kodlar icinde filesize controll falanda var--}}
+    <script>
+        {{--        // $(document).ready(function () {--}}
 
-{{--            //yuklenen fayllarini ayrd edib spesifik ishler gore bilmek ucun--}}
-{{--            //her yukelenen shekile gore sayini artiracaqiq ve image de id olaraq cagiracaqiq--}}
-{{--            //hemde response ucun apiye gondereceyik--}}
-{{--            // let imagefilecount = 0;--}}
+        {{--            //yuklenen fayllarini ayrd edib spesifik ishler gore bilmek ucun--}}
+        {{--            //her yukelenen shekile gore sayini artiracaqiq ve image de id olaraq cagiracaqiq--}}
+        {{--            //hemde response ucun apiye gondereceyik--}}
+        {{--            // let imagefilecount = 0;--}}
 
 
 
@@ -955,7 +956,7 @@
         {{--});--}}
 
 
-{{--//        });--}}
+        {{--//        });--}}
 
     </script>
 

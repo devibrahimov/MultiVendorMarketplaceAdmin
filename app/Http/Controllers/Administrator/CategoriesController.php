@@ -80,10 +80,8 @@ class CategoriesController extends Controller
     }
 
 
-
     public function update(int $id , Request $request){
         try{
-
             $icon = $request->file('icon');
             $image = $request->file('image');
             $path = "/photos/site/categories";
