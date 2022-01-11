@@ -333,33 +333,86 @@
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Təsvir
                                             </h3>
 
-                                            <div class="w-50 mt-4">
+                                            <div class="w-100 mt-4">
                                                 <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> Məhsul Adı</h3>
-                                                <div class="input-group">
+                                                <div class="input-group" style="width: 100%;">
                                                     <input type="text" maxlength="100" id="name" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group mt-2">
-                                  <textarea style="border:1px solid #ccc;" class=" p-2 font-xssss w-100 " rows="4" id="description"
+                                  <textarea style="border:1px solid #ccc;    height: 300px;" class=" p-2 font-xssss w-100 " rows="4" id="description"
                                   placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
                                             </div>
                                         </div>
+
+
                                         <div class="w-100 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span
                                                     style="color: red;">*</span> </h3>
+                                            <style>
+                                                .list_category{
+                                                    overflow: auto!important;
+                                                }
+                                                .categoriya{
+                                                    margin-left: 15px;padding: 5px;border: 0.5px solid #e3e3e3
+                                                }
+                                                .subcategoriya{
+                                                    padding: 5px;
+                                                    border: 0.5px solid #f3f3f3;
+                                                    margin-top: 3px;
+                                                    font-size: smaller;
+                                                }
+                                                .selected{
+                                                    background-color: #ebebeb;
+                                                }
+                                            </style>
 
                                             <input type="hidden"  id="category_id" value="1">
-                                                        <div class="w-75">
+                                               <div class="w-100">
                                                 <div class=" d-flex mt-2 ">
-                                                    <ul class="d-flex flex-wrap image-uploader list_category">
-                                                        <!-- <span>telvizor >></span> -->
+                                                    <ul class="d-flex  image-uploader list_category">
                                                     </ul>
-                                                    <div class="CategoryList">
-                                                        <button type="button" data-bs-toggle="modal"
-                                                                data-bs-target="#savedmodal2" class="btnModal">secmek</button>
-                                                    </div>
+
                                                 </div>
+                                            </div>
+
+
+                                            <div class="w-100 mt-2 listSubCategory" style="border:1px solid #eeeeee;height: 300px;padding-left: 30px">
+{{--                                                <ul class="mt-3 " style="margin-left:5px;float: left">--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya selected"><span> Sub categoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 2</span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 312</span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Subcategoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 123 </span> </li>--}}
+{{--                                                </ul>--}}
+{{--                                                <ul class="mt-3 " style="margin-left:5px;float: left">--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 2</span> </li>--}}
+{{--                                                    <li class="subcategoriya selected"><span> Sub categoriya 312</span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Subcategoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 123 </span> </li>--}}
+{{--                                                </ul>--}}
+{{--                                                <ul class="mt-3 " style="margin-left:5px;float: left">--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya selected"><span  > Sub categoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 2</span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 312</span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Subcategoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 123 </span> </li>--}}
+{{--                                                </ul>--}}
+{{--                                                <ul class="mt-3 " style="margin-left:5px;float: left">--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 2</span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 312</span>  <i class="text-current fas fa-check-circle"></i> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Subcategoriya </span> </li>--}}
+{{--                                                    <li class="subcategoriya"><span> Sub categoriya 123 </span>  </li>--}}
+{{--                                                </ul>--}}
+
+
                                             </div>
                                         </div>
 
@@ -722,6 +775,7 @@
             form_data.append( "description", $('#description').val());
 
             var files = $('#imageuploadinput')[0].files;
+
             for(let i=0; i<files.length; i++){
                 let imageFile =document.getElementById('imageuploadinput').files[i]
                   //image faylimizi file[] adi ile formumuza elave ediirik.
@@ -812,59 +866,93 @@
     </script>
 
     <script>
+
+
         $(document).ready(function () {
+            let allcategories = {!! json_encode(\App\Models\Category::all(),JSON_UNESCAPED_UNICODE) !!}
 
-            var ListCategory= document.querySelector(".list_category")
-            $(".cart-boxCategory ul li").on("click", function (e) {
-                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
-                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
+            parentCategoriesJson = allcategories.filter(c=> c.parent_id == null)
 
-                $(this).parent().parent().parent().parent().fadeOut("fast")
-                $(".cart-boxCategory2").show("fast")
-            })
+            for(var i = 0; i < parentCategoriesJson.length ; i++){
+                let category = parentCategoriesJson[i];
+               let li = `<li class="categoriya getsubcat" data-id="${category.id}">
+                         <img style="width: 55px" src="${category.icon}" alt="">
+                          <p style="font-size: 12px; font-weight: bold;">${category.name}</p> </li>`;
+                $('.list_category').append(li)
+            }
 
-            $(".cart-boxCategory2 ul li a").on("click", function (e) {
-                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
-                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
-                $(this).parent().parent().parent().fadeOut("fast")
-                $(".cart-boxCategory3").show("fast")
 
-            })
+            let Uldataindex = 0;
+            $(document).on('click','.getsubcat',function(){
+                let cat_id = $(this).attr('data-id')
+                subCategoriesJson = allcategories.filter(sc=> sc.parent_id == cat_id);
 
-            $(".cart-boxCategory3 ul li a").on("click", function (e) {
-                ListCategory.innerHTML += `<span style="margin-right:10px">${e.target.innerHTML} <i class="fas fa-arrow-right"></i> </span>`
-                document.querySelector(".category-down").innerHTML += ` <a style="margin-right:10px" href="#">${e.target.innerHTML} <span><i class="fas fa-arrow-right"></i></span></a>`
-
-            })
-
-            $(".category-close").on("click", function () {
-                $(".cart-boxCategory2").fadeOut("fast")
-                $(".cart-boxCategory3").fadeOut("fast")
-                $(".cart-boxCategory").show("fast")
-            })
-            $(".btnModal").on("click", function () {
-                if ($(".list_category").children().length >= 1) {
-                    $(".list_category").html("")
+                //listSubCategory div-inin icini boshaldiriq
+                if($(this).hasClass('categoriya')){
+                   Uldataindex = 0;
+                    $('.listSubCategory').html('')
                 }
-            })
-            $(".btnModal").on("click", function () {
-                if ($(".category-down").children().length >= 1) {
-                    $(".category-down").html("")
+
+
+                let dataindex = $(this).parent().attr('data-index')
+
+                let ulList = $('.listSubCategory').children()
+
+                ulList.each( function (index){
+                    // console.log( dataindex )
+                    if( dataindex < index ){
+                        ulList[index].remove()
+                    }
+
+                });//ana kategoriya klikleyende sublari qalir hala gelir yene .
+
+
+               // console.log(subCategoriesJson) ;
+                if(subCategoriesJson.length != 0){
+                    var listSubCategoryHTML = `<ul class="mt-3 " style="margin-left:5px;float: left" data-index="${Uldataindex}">`;
+                    for(var i = 0; i < subCategoriesJson.length ; i++){
+                        let category = subCategoriesJson[i];
+                        let li = `<li class="subcategoriya getsubcat" data-id="${category.id}"><span> ${category.name} </span> </li>`;
+                        listSubCategoryHTML+=li
+                        //   $('.listSubCategory').append(li)
+                    }
+                    listSubCategoryHTML+=`</ul>`
+                    $('.listSubCategory').append(listSubCategoryHTML);
+                    Uldataindex++
                 }
-            })
 
 
-            $(".backsub2").on("click", function () {
-                $(this).parent().parent().fadeOut("fast")
-                $(".cart-boxCategory").show("fast")
-            })
-            $(".backsub3").on("click", function () {
-                $(this).parent().parent().fadeOut("fast")
-                $(".cart-boxCategory2").show("fast")
-            })
+                //eger kliklenen sub categoriyadirsa
+                if($(this).hasClass('subcategoriya')){
+
+                   let selected = $('.listSubCategory').find('.selected');
+
+                    if(selected[0] != undefined){
+                        if(selected.children()[1] !=undefined){
+                            selected.children('i').remove()
+                        }
+
+                    }
+
+                   $(this).parent().children().removeClass('selected')
+
+                   $(this).addClass('selected')
+
+                    if(subCategoriesJson.length == 0){
+
+                        current =   `<i class="text-current fas fa-check-circle"></i>`
+                        $(this).append(current)
+                    }else{
+                        console.log("elseee")
+
+                    }
+
+                }
 
 
-        });
+            });//end on click
+
+              });
     </script>
 
 {{--    file uploadin ajaxla yazildigi kodlar icinde filesize controll falanda var--}}
