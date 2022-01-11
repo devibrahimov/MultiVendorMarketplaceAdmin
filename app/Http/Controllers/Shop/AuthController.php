@@ -65,12 +65,6 @@ class AuthController extends Controller
         }
     }
 
-    public function shop(Request $request)
-    {
-
-        return view('site.pages.shop.profil');
-
-    }
 
     public function logout(Request $request)
     {
