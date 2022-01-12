@@ -41,8 +41,8 @@ Route::group(['middleware'=>'administrator' ,'prefix'=>'adminpanel'],function ()
 
 
     Route::resource('region', \App\Http\Controllers\Administrator\RegionController::class);
-    Route::get('/shop/list',[\App\Http\Controllers\Administrator\Shop\AuthController::class,'newregistershops'])->name
-    ('newregistershops');
+//    Route::get('/shop/list',[\App\Http\Controllers\Administrator\Shop\AuthController::class,'newregistershops'])->name
+//    ('newregistershops');
 
 
     //faq
@@ -77,6 +77,17 @@ Route::group(['middleware'=>'administrator' ,'prefix'=>'adminpanel'],function ()
         ('contractsupdate');
     Route::delete('/contracts/{id?}',[\App\Http\Controllers\Administrator\ContractsController::class,'contractdelete'])->name('contractdelete');
 
+
+
+    //users
+    Route::resource('users', \App\Http\Controllers\Administrator\UserController::class);
+
+    //shop_information
+    Route::resource('shop_informations', \App\Http\Controllers\Administrator\ShopİnformationController::class);
+
+
+    //shop_information
+    Route::resource('shops', \App\Http\Controllers\Administrator\ShopsController::class);
 
 });
 

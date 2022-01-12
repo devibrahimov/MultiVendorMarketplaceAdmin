@@ -6,10 +6,9 @@
 
 
 @section('content')
-
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Dashboard / Shop İnformation </h2>
+            <h2>Dashboard / Users </h2>
         </div>
         <!-- Input -->
         @include('administrator.partials.alerts')
@@ -19,8 +18,8 @@
 
                     <div class="header">
                         <h2>
-                            Magaza Mehsullari
-                            <small>Sayt  Magaza Mehsullari Tənzimləmələri</small>
+                            Istifadeciler
+                            <small>Sayt Istifadeciler Tənzimləmələri</small>
                         </h2>
 
                     </div>
@@ -30,34 +29,29 @@
                             <div class=" col-sm-12 col-xs-12">
                                 <div class="card">
                                     <div class="body table-responsive">
-                                        @if(count($shops) )
+                                        @if(isset($users) )
+
                                             <table class="table table-striped" id="myTable">
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Magaza Adı</th>
-                                                    <th>Magaza Seriya Nomresi</th>
-                                                    <th>Kategoriyası</th>
-                                                    <th>Emaili</th>
-                                                    <th>Status</th>
+                                                    <th>Ad</th>
+                                                    <th>Soyad</th>
+                                                    <th>Email</th>
+                                                    <th>Nömrə</th>
+                                                    <th>Şəhər</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
 
-                                                @foreach($shops as $shop)
-
+                                                @foreach($users as $user)
                                                     <tr>
                                                         <th scope="row">{{$loop->iteration}}</th>
-                                                        <td>{{$shop->shopname}}</td>
-                                                        <td>{{$shop->shop_serialnumber}}</td>
-                                                        <td>{{$shop->category->name}}</td>
-                                                        <td>{{$shop->email}}</td>
-                                                        <td>
-                                                            <div class="form-check form-switch">
-                                                                <input class="form-check-input status" name="status[]" type="checkbox"  id="flexSwitchCheckDefault">
-                                                                <label class="form-check-label" for="flexSwitchCheckDefault">Tesdiq Edirəm</label>
-                                                            </div>
-                                                        </td>
+                                                        <td>{{$user->name}}</td>
+                                                        <td>{{$user->surname}}</td>
+                                                        <td>{{$user->email}}</td>
+                                                        <td>{{$user->number}}</td>
+                                                        <td>{{$user->region->name}}</td>
 
                                                     </tr>
                                                 @endforeach
@@ -65,9 +59,9 @@
                                             </table>
 
                                         @else
-                                            <div style="text-align: center;">
+                                            <center>
                                                 <img src="https://i.pinimg.com/236x/cf/b6/43/cfb643ba7408b8bd35c8b45ca1c13704.jpg"  >
-                                            </div>
+                                            </center>
                                         @endif
                                     </div>
                                 </div>
@@ -92,19 +86,6 @@
     <script>
         $(document).ready( function () {
             $('#myTable').DataTable();
-
-            $('.status').on('click', function() {
-                $.ajax({
-                    type:'POST',
-                    url: {{ route('shops.store') }},
-                    data: {
-                        'aprovel': $('.status:checked').val(),
-                    },
-                    success: function(data) {
-                       console.log(data.success)
-                    },
-                });
-            });
         } );
     </script>
 @endsection

@@ -32,6 +32,7 @@ class ShopRequest extends FormRequest
             'email'=> 'required|max:50|email|unique:shops',
             'adress'=> 'required|max:150|string',
             'password'=> 'required|max:150|string|confirmed',
+            'aprovel' => 'nullable'
 
         ];
     }
@@ -44,7 +45,6 @@ class ShopRequest extends FormRequest
             'shopname'=> 'required|max:50|string',
             'shopcategory'=> 'required|max:50|integer',
             'number'=> 'required|max:50|string',
-
             'adress'=> 'required|max:150|string',
 
         ];
