@@ -18,7 +18,7 @@ class Product extends Model
 
 
 
-    public static function createProduct(ShopCreateProduct $request){
+    public static function createProduct(Request $request){
 
         try {
             $files = request()->file('file');

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CorporativePages extends Model
 {
-    use HasFactory;
+    protected $table = 'corporative_pages';
+    protected $guarded = [] ;
 }

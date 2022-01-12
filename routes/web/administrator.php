@@ -45,8 +45,37 @@ Route::group(['middleware'=>'administrator' ,'prefix'=>'adminpanel'],function ()
     ('newregistershops');
 
 
-    //Shop
+    //faq
+    Route::resource('faqs', \App\Http\Controllers\Administrator\FaqController::class);
 
+
+    //corporative page
+    Route::get('/corporative/{id?}',[\App\Http\Controllers\Administrator\CorporativePagesController::class,'index'])->name
+    ('corporative');
+    Route::post('/corporative/store',[\App\Http\Controllers\Administrator\CorporativePagesController::class,'store'])->name
+    ('corporativestore');
+    Route::get('/corporative/edit/{id}',[\App\Http\Controllers\Administrator\CorporativePagesController::class , 'edit'])
+        ->name
+        ('corporativeedit');
+    Route::post('/corporative/update/{id}',[\App\Http\Controllers\Administrator\CorporativePagesController::class , 'update'])
+        ->name
+        ('corporativeupdate');
+    Route::delete('/corporative/{id?}',[\App\Http\Controllers\Administrator\CorporativePagesController::class,'corporativedelete'])->name('corporativedelete');
+
+
+
+    //contracts
+    Route::get('/contracts/{id?}',[\App\Http\Controllers\Administrator\ContractsController::class,'index'])->name
+    ('contracts');
+    Route::post('/contracts/store',[\App\Http\Controllers\Administrator\ContractsController::class,'store'])->name
+    ('contractsstore');
+    Route::get('/contracts/edit/{id}',[\App\Http\Controllers\Administrator\ContractsController::class , 'edit'])
+        ->name
+        ('contractsedit');
+    Route::post('/contracts/update/{id}',[\App\Http\Controllers\Administrator\ContractsController::class , 'update'])
+        ->name
+        ('contractsupdate');
+    Route::delete('/contracts/{id?}',[\App\Http\Controllers\Administrator\ContractsController::class,'contractdelete'])->name('contractdelete');
 
 
 });

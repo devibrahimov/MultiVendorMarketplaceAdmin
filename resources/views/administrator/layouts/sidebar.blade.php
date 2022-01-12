@@ -53,9 +53,9 @@
                      ['icon'=>'add_to_queue','name' =>'Web Sayt','application' =>[
                         ['icon'=>'build','name' =>'Tənizmləmələr' , 'route'=>'setting'],
                         ['icon'=>'extension','name' =>'Entegrasiyalar' , 'route'=>'#'],
-                        ['icon'=>'content_paste','name' =>'Korporativ Səhifələr' , 'route'=>'#'],
-                        ['icon'=>'content_paste','name' =>'Sözləşmələr' , 'route'=>'#'],
-                        ['icon'=>'question_answer','name' =>'Sual-Cavab' , 'route'=>'#'],
+                        ['icon'=>'content_paste','name' =>'Korporativ Səhifələr' , 'route'=>'corporative'],
+                        ['icon'=>'content_paste','name' =>'Sözləşmələr' , 'route'=>'contracts'],
+                        ['icon'=>'question_answer','name' =>'Sual-Cavab' , 'route'=>'faqs.index'],
                         ]
                     ],
 
