@@ -334,7 +334,8 @@
                                             </h3>
 
                                             <div class="w-100 mt-4">
-                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> Məhsul Adı</h3>
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                                    Məhsul Adı <span style="color: red;">*</span></h3>
                                                 <div class="input-group" style="width: 100%;">
                                                     <input type="text" maxlength="100" id="name" required>
                                                 </div>
@@ -387,7 +388,7 @@
                                       <div class="row">
                                           <div class="w-50 mt-4">
                                               <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymət
-                                                  (AZN)</h3>
+                                                  (AZN)    <span style="color: red;">*</span></h3>
                                               <div class="input-group">
                                                   <input type="number" maxlength="8" id="price" required>
                                               </div>
@@ -403,36 +404,32 @@
 
 
                                           <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Stok Sayısı
-                                                  (AZN)</h3>
+                                          <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                              Stok Sayısı    <span style="color: red;">*</span> </h3>
                                               <div class="input-group">
-                                                  <input type="number" maxlength="8" id="stock" placeholder="Razılaşma yolu ilə">
+                                                  <input type="number" maxlength="8" id="stock" placeholder="0">
                                               </div>
                                           </div>
                                           <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> SKU kodu  </h3>
+                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> SKU kodu    <span style="color: red;">*</span> </h3>
                                               <div class="input-group">
-                                                  <input type="number" maxlength="8" id="sku" placeholder="Razılaşma yolu ilə">
+                                                  <input type="text" max="8" id="sku" placeholder="EM90DT31012022">
                                               </div>
                                           </div>
 
                                           <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> barkode kodu  </h3>
+                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> Barkode
+                                                  kodu     <span style="color: red;">*</span></h3>
                                               <div class="input-group">
-                                                  <input type="number" maxlength="8" id="barkode" placeholder="barkode">
+                                                  <input type="number" maxlength="8" id="barkode"
+                                                         placeholder="9786052998380">
                                               </div>
                                           </div>
-
-
                                       </div>
-
-
-
-
                                        <div @class('row p-5 mt-3')style="border:1px solid #e7e7e7"
                                             id="techniquelinputs">
                                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
-                                               Məhsul Məlumatları
+                                               Məhsul Məlumatları   <span style="color: red;">*</span>
                                              </h3>
                                            <div class="row" >
 

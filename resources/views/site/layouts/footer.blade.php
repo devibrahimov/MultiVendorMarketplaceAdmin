@@ -134,3 +134,9 @@
     </div>
 </div>
 <!-- FOOTER WRAPPER -->
+
+
+<div class="card-body mb-3 bg-lightblue p-4 rounded-10">
+    <h4 class="fw-700 mt-2 font-xss text-grey-900 d-flex mb-0">Hurin Seary <span class="bg-primary text-white font-xsssss fw-600 ls-3 p-2 rounded-6 ms-auto">HOME</span></h4>
+    <h6 class="fw-500 font-xssss text-grey-600 lh-22 mb-0">Manikpur, Thakurpara PO Ital Gacha 2 no Airport Gate <br> Thakur Para United Club, Kolkata <br> West Bengal - 700079</h6>
+</div>

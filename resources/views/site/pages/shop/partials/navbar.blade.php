@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="list-inline-item d-block me-0">
-                <a href="coupon.html" class="pt-2 pb-2 d-flex align-items-center">
+                <a href="{{route('shop.profiledit')}}" class="pt-2 pb-2 d-flex align-items-center">
                     <i class="btn-round-sm bg-skype text-white feather-award font-xss me-3"></i>
                     <h4 class="fw-600 font-xsss ls-0 text-grey-700 mb-0 mt-0">Profil Məlumatları</h4>
                     <i class="ti-angle-right font-xsssss text-grey-500 ms-auto mt-1"></i>

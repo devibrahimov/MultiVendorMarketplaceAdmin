@@ -26,6 +26,7 @@
                 </div>
                 <div class="col-lg-8 pt-5 ps-4">
                     <div class="row">
+
                         <div class="col-lg-3 ps-2 pe-2 mb-3">
                             <div class="card border-0 pt-4 pb-4 text-center alert-warning align-items-center rounded-10">
                                 <i class="psor mt-n5 feather-hard-drive text-white btn-round-md bg-warning font-xs"></i>

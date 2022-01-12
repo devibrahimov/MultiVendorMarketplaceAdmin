@@ -285,8 +285,8 @@
 
                     <div class="row">
                         <nav class="nav nav-pills nav-fill">
-                            <a class="nav-link " aria-current="page" href="{{route('shop.products')}}">Məhsullar</a>
-                            <a class="nav-link active " href="{{route('shop.createproduct')}}">Yeni Məhsul Əlavə Et</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('shop.products')}}">Məhsullar</a>
+                            <a class="nav-link  " href="{{route('shop.createproduct')}}">Yeni Məhsul Əlavə Et</a>
                             <a class="nav-link" href="#">Deaktiv Məhsullar </a>
                         </nav>
 
@@ -303,10 +303,41 @@
                                                 <span class="font-xssss">(30 şəkilə qədər)</span>
                                             </p>
                                         </div>
-
-
                                         <div class="row imagelistdivrow " >
 
+                                            <style>
+                                                .mainimagetag{
+                                                    background-color: #cff7e4;
+                                                    padding: 1px 15px 1px 15px;
+                                                    border-radius: 29px;
+                                                    color: black;
+                                                    border: 0.5px solid black;
+                                                    bottom: 13px;
+                                                    position: absolute;
+                                                    left: 24px;
+                                                    font-size: small;
+                                                }
+                                            </style>
+                                            @foreach(json_decode($product->images) as $key => $image)
+                                            <div style="height: 150px;" class="col-lg-3 col-md-3 col-sm-3 p-0 overflow-hidden
+                                            align-items-center
+                                            justify-content-center d-flex mb-2 upload-item">
+                                                <div  class="overflow-hidden h-100 upload-img  position-relative"  >
+                                                    <i onclick="{{$key}}" class="psor feather-trash text-dark
+                                                    btn-round-md show-on-medium-and-down border border-dark
+                                                     bg-light  font-xs position-absolute top-0 right-0 m-1 d-flex
+                                                     justify-content-center align-items-center"
+                                                       style="width: 35px; height: 35px;cursor:pointer;" ></i>
+                                                    @if($loop->first)
+                                                    <span class=" mainimagetag justify-content-center
+                                                    align-items-center">Əsas Şəkil</span>
+                                                    @endif
+                                                    <img id="image{{$key}}" src="/uploads/{{$image}}"   alt="flame"  />
+
+                                                </div>
+                                            </div>
+
+                                            @endforeach
 
                                         </div>
 
@@ -336,39 +367,43 @@
                                             <div class="w-100 mt-4">
                                                 <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> Məhsul Adı</h3>
                                                 <div class="input-group" style="width: 100%;">
-                                                    <input type="text" maxlength="100" id="name" required>
+                                                    <input type="text" maxlength="100" id="name" required
+                                                           value="{{$product->name}}">
                                                 </div>
                                             </div>
 
                                             <div class="form-group mt-2">
-                                  <textarea style="border:1px solid #ccc;    height: 300px;" class=" p-2 font-xssss w-100 " rows="4" id="description"
-                                            placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
+                                  <textarea style="border:1px solid #ccc;    height: 300px;" class=" p-2 font-xssss
+                                  w-100 " rows="5" id="description" >{!!$product->description!!}</textarea>
                                             </div>
                                         </div>
 
+                                        <style>
+                                            .list_category{
+                                                overflow: auto!important;
+                                            }
+                                            .categoriya{
+                                                margin-left: 15px;padding: 5px;border: 0.5px solid #e3e3e3
+                                            }
+                                            .subcategoriya{
+                                                padding: 5px;
+                                                border: 0.5px solid #f3f3f3;
+                                                margin-top: 3px;
+                                                font-size: smaller;
+                                            }
+                                            .selected{
+                                                background-color: #ebebeb;
+                                            }
+                                        </style>
 
                                         <div class="w-100 mt-4">
-                                            <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span
-                                                    style="color: red;">*</span> </h3>
-                                            <style>
-                                                .list_category{
-                                                    overflow: auto!important;
-                                                }
-                                                .categoriya{
-                                                    margin-left: 15px;padding: 5px;border: 0.5px solid #e3e3e3
-                                                }
-                                                .subcategoriya{
-                                                    padding: 5px;
-                                                    border: 0.5px solid #f3f3f3;
-                                                    margin-top: 3px;
-                                                    font-size: smaller;
-                                                }
-                                                .selected{
-                                                    background-color: #ebebeb;
-                                                }
-                                            </style>
+                                            <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya
+                                                <span style="color: red;">*</span> </h3>
 
-                                            <input type="hidden"  id="category_id" value="1">
+
+
+                                            <input type="hidden"  id="category_id" value="{{$product->category_id}}">
+
 
                                             <div class="w-100">
                                                 <div class=" d-flex mt-2 ">
@@ -378,8 +413,12 @@
 
                                                 </div>
                                             </div>
+                                            <h4 class="mt-4 fw-600 text-grey-900 font-xss mb-0
+                                                text-capitalize">Seçili olan Kateqoriya
+                                                <span style="color: red;">*</span> </h4>
+                                            <div class="CurrentCategoriesList">
 
-
+                                            </div>
                                             <div class="w-100 mt-2 listSubCategory" style="border:1px solid #eeeeee;height: 300px;padding-left: 30px">
                                             </div>
                                         </div>
@@ -389,7 +428,7 @@
                                                 <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymət
                                                     (AZN)</h3>
                                                 <div class="input-group">
-                                                    <input type="number" maxlength="8" id="price" required>
+                                                    <input type="number"    value="{{$product->price}}"  maxlength="8" id="price" required>
                                                 </div>
                                             </div>
 
@@ -397,7 +436,9 @@
                                                 <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Endirimli Qiymət
                                                     (AZN)</h3>
                                                 <div class="input-group">
-                                                    <input type="number" maxlength="8"  id="sale_price">
+                                                    <input type="number"
+                                                           value="{{$product->price!= $product->sale_price?$product->sale_price : null}}"
+                                                           maxlength="8"  id="sale_price">
                                                 </div>
                                             </div>
 
@@ -406,20 +447,23 @@
                                                 <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Stok Sayısı
                                                     (AZN)</h3>
                                                 <div class="input-group">
-                                                    <input type="number" maxlength="8" id="stock" placeholder="Razılaşma yolu ilə">
+                                                    <input type="number" maxlength="8" id="stock"
+                                                           value="{{$product->stock}}" >
                                                 </div>
                                             </div>
                                             <div class="w-50 mt-4">
                                                 <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> SKU kodu  </h3>
                                                 <div class="input-group">
-                                                    <input type="number" maxlength="8" id="sku" placeholder="Razılaşma yolu ilə">
+                                                    <input type="number" maxlength="8" id="sku"
+                                                           value="{{$product->sku}}" >
                                                 </div>
                                             </div>
 
                                             <div class="w-50 mt-4">
                                                 <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> barkode kodu  </h3>
                                                 <div class="input-group">
-                                                    <input type="number" maxlength="8" id="barkode" placeholder="barkode">
+                                                    <input type="number" maxlength="8" id="barkode"
+                                                           value="{{$product->barkode}}" >
                                                 </div>
                                             </div>
 
@@ -711,6 +755,7 @@
 
 
         $(document).ready(function () {
+
             let allcategories = {!! json_encode(\App\Models\Category::all(),JSON_UNESCAPED_UNICODE) !!}
 
                 parentCategoriesJson = allcategories.filter(c=> c.parent_id == null)
@@ -728,7 +773,8 @@
             $(document).on('click','.getsubcat',function(){
                 let cat_id = $(this).attr('data-id')
                 subCategoriesJson = allcategories.filter(sc=> sc.parent_id == cat_id);
-
+                $('.CurrentCategoriesList').html('')
+                getCurrentCategoryParentTree(cat_id)
                 //listSubCategory div-inin icini boshaldiriq
                 if($(this).hasClass('categoriya')){
                     Uldataindex = 0;
@@ -773,6 +819,7 @@
                     if(selected[0] != undefined){
                         if(selected.children()[1] !=undefined){
                             selected.children('i').remove()
+
                         }
 
                     }
@@ -788,9 +835,12 @@
                         catid = $(this).attr('data-id');
                         catid = $(this).attr('data-id');
                         $('#category_id').val(catid)
-
+                        $('.CurrentCategoriesList').html('')
+                        getCurrentCategoryParentTree(catid)
                     } else{
                         $('#category_id').val(null)
+                        $('.CurrentCategoriesList').html('')
+                        getCurrentCategoryParentTree(catid)
                     }
 
                 }
@@ -798,7 +848,31 @@
 
             });//end on click
 
-        });
+
+
+            function getCurrentCategoryParentTree(currentCat){
+
+                currentCat = allcategories.filter(c=> c.id == currentCat)
+                // console.log(currentCat[0])
+
+                hasNotChild = allcategories.filter(cc => cc.parent_id == currentCat)
+                console.log(hasNotChild)
+                if(hasNotChild.length == 0){
+                    // console.log(currentCat[0])
+                    var cat =   `</span> <span class="nav-item text-current fw-500 ">${currentCat[0].name} > </span>`
+                }
+
+                if(currentCat[0].parent_id != null){
+                  //  console.log(currentCat[0])
+                var cat = ` <span class="nav-item text-grey-500 fw-500  ">${currentCat[0].name} >`
+                    getCurrentCategoryParentTree(currentCat[0].parent_id)
+                }
+
+                $('.CurrentCategoriesList').append(cat)
+
+            }
+            getCurrentCategoryParentTree({{$product->category_id}})
+        });//end page load
     </script>
 
     {{--    file uploadin ajaxla yazildigi kodlar icinde filesize controll falanda var--}}

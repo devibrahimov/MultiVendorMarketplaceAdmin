@@ -80,4 +80,55 @@ class Shop extends Authenticatable
     }
 
 
+
+   public static function updateInformations($request){
+
+       try {
+
+           $name = $request->name;
+           $surname = $request->surname;
+           $email = $request->email;
+           $number = $request->number;
+           $category = $request->category;
+           $adress = $request->address;
+           $work_time = $request->work_time ;
+
+           $id = auth('shop')->user()->id;
+
+
+           $shop =   Shop::find($id);
+
+           $shop->email  = $email;
+           $shop->shopcategory  = $category;
+
+           $shop->save();
+
+           $data = [
+               'work_time'  => $work_time,
+               'name' => $name,
+               'surname' => $surname,
+               'number' => $number,
+               'adress' => $adress
+           ];
+           DB::table('shop_information')->where('shop_id',$id)->update($data);
+
+         $response = [
+                'status' =>1,
+                'message'=> 'Təbriklər Qeydiyyatınız uğurla başa çatmışdır.Artıq Sizində mağazanız var'
+                ];
+
+            return $response;
+       }catch (\Exception $e){
+
+              $response = [
+               'status' => 0,
+               'message' =>$e->getMessage()
+               ];
+
+           return $response;
+       }
+
+   }
+
+
 }

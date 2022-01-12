@@ -18,7 +18,7 @@ class Product extends Model
 
 
 
-    public static function createProduct(Request $request){
+    public static function createProduct($request){
 
         try {
             $files = request()->file('file');
@@ -28,7 +28,6 @@ class Product extends Model
             foreach ($techkeys as $k => $v){
                 $data =[ $v => $techvalues[$k] ];
                 array_push($information ,$data  );
-
             }
             $informations = json_encode($information,JSON_UNESCAPED_UNICODE);
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\ShopCreateProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -21,7 +22,7 @@ class ProductController extends Controller
 
 
 
-    public function store(Request $request){
+    public function store(ShopCreateProduct $request){
      // return $request->all();
 
 
@@ -98,12 +99,17 @@ class ProductController extends Controller
 
 
 
-
     }
 
 
     public function edit($id){
-        return view('site.pages.shop.product.edit');
+        $product = Product::find($id);
+        return view('site.pages.shop.product.edit',compact(['product']));
+    }
+
+
+    public function update($id, Request $request){
+
     }
 
 
