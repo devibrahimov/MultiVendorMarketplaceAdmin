@@ -61,9 +61,8 @@
                                                     <span>Metn</span>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" class="form-control" name="content"
-                                                                   maxlength="25"
-                                                                   value="{{$contract->content}}" />
+                                                            <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Metn">{{$contract->content}}</textarea>
+
                                                         </div>
                                                         @error('content')
                                                         <div class="alert alert-dismissible" role="alert" style="color: red!important">
