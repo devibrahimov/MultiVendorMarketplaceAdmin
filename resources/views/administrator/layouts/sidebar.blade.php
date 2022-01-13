@@ -38,14 +38,14 @@
                     ['icon'=>'dashboard','name' =>'Reklam İdarəsi' , 'route'=>'advertisments'],
                     ['icon'=>'store','name' =>'Mağazaların İdarəsi','application' =>[
                         ['icon'=>'assignment_ind','name' =>'Yeni Mağaza yarat' , 'route'=>'setting'],
-                        ['icon'=>'assignment','name' =>'Yeni qeydiyyatların Siyahısı' , 'route'=>'newregistershops'],
+                        ['icon'=>'assignment','name' =>'Yeni qeydiyyatların Siyahısı' , 'route'=>'shops.index'],
                         ['icon'=>'warning','name' =>'Tesdiq edilmeyen Mağazalar' , 'route'=>'#'],
 
-                        ['icon'=>'shopping_basket','name' =>'Mağaza Məhsulları' , 'route'=>'#'],]
+                        ['icon'=>'shopping_basket','name' =>'Mağaza Məhsulları' , 'route'=>'shop_informations.index'],]
                     ],
 
                      ['icon'=>'perm_contact_calendar','name' =>'İstifadəçilər','application' =>[
-                        ['icon'=>'assignment','name' =>'Siyahısı' , 'route'=>'#'],
+                        ['icon'=>'assignment','name' =>'Siyahısı' , 'route'=>'users.index'],
                       //  ['icon'=>'warning','name' =>'Şikayətlər Qutusu' , 'route'=>'#'],
                        ]
                     ],

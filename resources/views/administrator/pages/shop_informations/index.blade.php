@@ -30,34 +30,29 @@
                             <div class=" col-sm-12 col-xs-12">
                                 <div class="card">
                                     <div class="body table-responsive">
-                                        @if(count($shops) )
+                                        @if(count($shop_informations) )
                                             <table class="table table-striped" id="myTable">
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Magaza Adı</th>
-                                                    <th>Magaza Seriya Nomresi</th>
-                                                    <th>Kategoriyası</th>
-                                                    <th>Emaili</th>
-                                                    <th>Status</th>
+                                                    <th>Ad</th>
+                                                    <th>Soyad</th>
+                                                    <th>Nömrə</th>
+                                                    <th>Unvan</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
 
-                                                @foreach($shops as $shop)
+                                                @foreach($shop_informations as $shop_information)
 
                                                     <tr>
                                                         <th scope="row">{{$loop->iteration}}</th>
-                                                        <td>{{$shop->shopname}}</td>
-                                                        <td>{{$shop->shop_serialnumber}}</td>
-                                                        <td>{{$shop->category->name}}</td>
-                                                        <td>{{$shop->email}}</td>
-                                                        <td>
-                                                            <div class="form-check form-switch">
-                                                                <input class="form-check-input status" name="status[]" type="checkbox"  id="flexSwitchCheckDefault">
-                                                                <label class="form-check-label" for="flexSwitchCheckDefault">Tesdiq Edirəm</label>
-                                                            </div>
-                                                        </td>
+                                                        <td>{{$shop_information->shop->shopname}}</td>
+                                                        <td>{{$shop_information->name}}</td>
+                                                        <td>{{$shop_information->surname}}</td>
+                                                        <td>{{$shop_information->number}}</td>
+                                                        <td>{{$shop_information->adress}}</td>
 
                                                     </tr>
                                                 @endforeach
@@ -92,19 +87,6 @@
     <script>
         $(document).ready( function () {
             $('#myTable').DataTable();
-
-            $('.status').on('click', function() {
-                $.ajax({
-                    type:'POST',
-                    url: {{ route('shops.store') }},
-                    data: {
-                        'aprovel': $('.status:checked').val(),
-                    },
-                    success: function(data) {
-                       console.log(data.success)
-                    },
-                });
-            });
         } );
     </script>
 @endsection
