@@ -9,6 +9,7 @@ use App\Models\Region;
 use App\Models\Shop;
 use App\Models\Shopİnformation;
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -29,8 +30,7 @@ class ShopsController extends Controller
 
     public function store(ShopRequest $request)
     {
-//        $status = $request->aprovel=="true" ? 1 : 0 ;
-//        $status->save();
+
     }
 
     public function show($id)
@@ -44,13 +44,14 @@ class ShopsController extends Controller
 
     }
 
-    public function update(Request $request)
+    public function update(ShopRequest $request,Shop $shop)
     {
-//       $status = $request->aprovel=="true" ? 1 : 0 ;
-//       $status->save();
+        $validated['aprovel'] = $request->has('aprovel');
 
+        $shop->update($validated);
+
+         return  \response()->json(["status"=>200]);
     }
-
 
     public function destroy(Region $region)
     {
