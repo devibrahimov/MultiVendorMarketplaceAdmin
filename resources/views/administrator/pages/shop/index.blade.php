@@ -54,7 +54,7 @@
                                                         <td>{{$shop->email}}</td>
                                                         <td>
                                                             <div class="form-check form-switch">
-                                                                <input class="form-check-input status" name="status[]" type="checkbox"  id="flexSwitchCheckDefault">
+                                                                <input class="form-check-input status" name="status" data-id="{{$shop->id}}" type="checkbox"  id="flexSwitchCheckDefault">
                                                                 <label class="form-check-label" for="flexSwitchCheckDefault">Tesdiq Edirəm</label>
                                                             </div>
                                                         </td>
@@ -95,10 +95,11 @@
 
             $('.status').on('click', function() {
                 $.ajax({
-                    type:'POST',
-                    url: {{ route('shops.store') }},
+                    type:'PUT',
+                    url: "{{ route('shops.update', 'shop-id') }}".replace('shop-id', $(this).data('id')),
                     data: {
                         'aprovel': $('.status:checked').val(),
+                        "_token": "{{ csrf_token() }}",
                     },
                     success: function(data) {
                        console.log(data.success)
