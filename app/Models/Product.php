@@ -26,9 +26,12 @@ class Product extends Model
             $techkeys = $request->techkey ;
             $information = [];
             foreach ($techkeys as $k => $v){
-                $data =[ $v => $techvalues[$k] ];
+                echo
+                $data =[ 'key' => $v,'value' => $techvalues[$k] ];
                 array_push($information ,$data  );
+
             }
+
             $informations = json_encode($information,JSON_UNESCAPED_UNICODE);
 
             $images = [] ;

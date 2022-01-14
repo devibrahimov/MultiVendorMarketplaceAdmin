@@ -42,7 +42,7 @@
                             <li class="list-inline-item"><a href="https://klbtheme.com/bacola/product-category/meats-seafood/">Meats &amp; Seafood</a></li>
                             <li class="list-inline-item">Wheat Maida</li>
                         </ul>
-                        <h2 class="fw-700 text-grey-800 font-sm ls-0 mt-0 mb-2 tag-name lh-3">Orgomart Wheat Maida</h2>
+                        <h2 class="fw-700 text-grey-800 font-sm ls-0 mt-0 mb-2 tag-name lh-3">{{$product->name}}</h2>
                         <div class="star d-inline text-left">
                             <i class="fas fa-star w-10 me-2  float-start text-yellow"></i>
                             <i class="fas fa-star w-10 me-2  float-start text-yellow"></i>
@@ -124,9 +124,8 @@
                             <i class="check  fas fa-check"></i></span>
 
 
-                        <h5 class="font-xssss fw-500 text-grey-500 mt-4 d-flex"><i class="feather-bookmark font-xs text-current me-2 mt-n1"></i> <b class="text-grey-700 me-1">2 Month</b> Brand Warranty </h5>
-                        <h5 class="font-xssss fw-500 text-grey-500 mt-3 d-flex"><i class="feather-help-circle font-xs text-current me-2 mt-n1"></i> <b class="text-grey-700 me-1">100% </b> Orgomart Product</h5>
-                        <h5 class="font-xssss fw-500 text-grey-500 mt-3 d-flex mb-4"><i class="feather-alert-triangle font-xs text-current me-2 mt-n1"></i> <b class="text-grey-700 me-1">30 Days </b> Money back Return</h5>
+                        <h5 class="font-xssss fw-500 text-grey-500 mt-4 d-flex"><i class="feather-bookmark font-xs
+                        text-current me-2 mt-n1"></i> <b class="text-grey-700 me-1">2 Ay</b> Qarantiya verilir </h5>
                         <div class="cart-card d-flex border-0">
                             <div class="cart-count float-end me-2">
                                 <div class="number">
@@ -135,15 +134,9 @@
                                     <span class="plus">+</span>
                                 </div>
                             </div>
-                            <a href="#" class="bg-current text-white rounded-6 btn-cart">ADD to Cart</a>
+                            <a href="#" class="bg-current text-white rounded-6 btn-cart">Səbətə At</a>
                         </div>
-                        <div class="share-card d-flex mt-lg-5 mt-3">
-                            <h5 class="fw-600 text-grey-700 me-3 mt-2 lh-26 font-xssss">Share :</h5>
-                            <a href="#" class="btn-round btn-round-md ms-1 z-index-1 bg-facebook"><i class="ti-facebook text-white"></i></a>
-                            <a href="#" class="btn-round btn-round-md ms-1 z-index-1 bg-twiiter"><i class="ti-twitter-alt text-white"></i></a>
-                            <a href="#" class="btn-round btn-round-md ms-1 z-index-1 bg-linkedin"><i class="ti-linkedin text-white"></i></a>
-                            <a href="#" class="btn-round btn-round-md ms-1 z-index-1 bg-instagram"><i class="ti-instagram text-white"></i></a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-3 ps-5 d-none d-lg-block">
@@ -203,11 +196,10 @@
         <div class="tab-pane p-3  fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
             <ul class="detail-attr-container">
-                <li class="detail-attr-item"><span>Materyal</span> <span><b>Ahşap</b></span></li>
-                <li class="detail-attr-item"><span>Model</span> <span><b>Sehpalı Lambaderler</b></span></li>
-                <li class="detail-attr-item"><span>Renk</span> <span><b>Kahverengi</b></span></li>
-                <li class="detail-attr-item"><span>Avize Başlık Sayısı</span> <span><b>2</b></span></li>
-                <li class="detail-attr-item"><span>Duy Tipi</span> <span><b>E27</b></span></li>
+                @foreach(json_decode($product->informations,true)  as   $item)
+                    <li class="detail-attr-item"><span>{{$item['key']}} </span> <span><b>
+                                {{$item['value']}}</b></span></li>
+                @endforeach
             </ul>
         </div>
         <div class="tab-pane p-3 fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
