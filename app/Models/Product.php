@@ -57,8 +57,9 @@ class Product extends Model
                 $sale_price= $sale_price ;
             }
 
+            $key = md5(md5( Str::slug($name).$sku.$barkode)) ;
             $dbdata=[
-
+                'key' => $key,
                 'shop_id'   => auth('shop')->user()->id,
                 'category_id'   => $request->category_id ,
                 'access'    => 0,
@@ -87,4 +88,9 @@ class Product extends Model
 
     }
 
+    public static function getFindProduct($key){
+
+       return Product::where('key',$key)->first();
+
+    }
 }

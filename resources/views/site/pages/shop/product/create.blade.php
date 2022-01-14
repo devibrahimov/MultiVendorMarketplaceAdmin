@@ -256,8 +256,6 @@
             background: #fff;
             margin-right: 20px;}
     </style>
-
-
 @endsection
 
 
@@ -305,10 +303,7 @@
                                         </div>
 
 
-                                        <div class="row imagelistdivrow " >
-
-
-                                        </div>
+                                        <div class="row imagelistdivrow " >  </div>
 
                                         <label for="fronUpload" class="col-lg-3 col-md-3 col-sm-3 p-0 overflow-hidden
                                             align-items-center justify-content-center d-flex mb-2 upload-item"
@@ -342,8 +337,8 @@
                                             </div>
 
                                             <div class="form-group mt-2">
-                                  <textarea style="border:1px solid #ccc;    height: 300px;" class=" p-2 font-xssss w-100 " rows="4" id="description"
-                                  placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
+                                      <textarea style="border:1px solid #ccc;    height: 300px;" class=" p-2 font-xssss w-100 " rows="4" id="description"
+                                      placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
                                             </div>
                                         </div>
 
