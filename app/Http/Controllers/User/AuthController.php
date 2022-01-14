@@ -98,9 +98,6 @@ class AuthController extends Controller
     }
 
 
-    public function userprofil(Request $request){
-
-    }
 
     public function logout(Request $request){
         auth()->guard('user')->logout();

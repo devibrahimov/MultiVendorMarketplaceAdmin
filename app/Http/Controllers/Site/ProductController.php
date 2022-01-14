@@ -10,7 +10,8 @@ class ProductController extends Controller
 {
 
     public function allproducts(){
-        $products = Product::where('access',1)->select(['images', 'slug', 'sku', 'barkode', 'name', 'sale_price', 'price',])->get();
+        $products = Product::where('access',1)->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price',
+        'price',])->get();
          return view('site.pages.general.productsListPage',compact(['products']));
     }
 

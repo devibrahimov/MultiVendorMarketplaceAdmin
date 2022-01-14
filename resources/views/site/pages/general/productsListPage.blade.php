@@ -167,7 +167,7 @@
                             @foreach($products as $product)
                             <div class="my-card pb-4">
                               <span class="wish-list">
-                                  <i class='colorSuccess bx bx-heart'></i>
+                                  <i data-key="{{$product->key}}" class='mywishproduct colorSuccess bx bx-heart'></i>
                               </span>
                                 <div class="cardImg">
                                     <img src="/uploads/{{\GuzzleHttp\json_decode($product->images)[0]}}"
@@ -217,5 +217,22 @@
 @endsection
 
 @section('js')
+    <script>
 
+
+           $('.mywishproduct').on('click',function () {
+               $.ajax({
+                   url: "{{route('user.wishproduct')}}",
+                   method:'GET',
+                   data: {
+                       id:$(this).attr('data-key'),
+                   },
+                   success: function (data){
+                       console.log(data)
+                   },
+               });
+        });
+
+
+    </script>
 @endsection

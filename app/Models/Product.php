@@ -96,4 +96,10 @@ class Product extends Model
        return Product::where('key',$key)->first();
 
     }
+
+    public static function getFindProductID($key){
+
+       return Product::where('key',$key)->select(['key','id'])->first();
+
+    }
 }

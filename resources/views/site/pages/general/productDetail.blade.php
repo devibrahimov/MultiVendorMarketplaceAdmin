@@ -36,11 +36,10 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="product-card border-0">
-
                         <ul class="breadcrumb-link list-inline">
                             <li class="list-inline-item"><a href="https://klbtheme.com/bacola">Home</a></li>
                             <li class="list-inline-item"><a href="https://klbtheme.com/bacola/product-category/meats-seafood/">Meats &amp; Seafood</a></li>
-                            <li class="list-inline-item">Wheat Maida</li>
+                            <li class="list-inline-item">{{$product->category_id}}</li>
                         </ul>
                         <h2 class="fw-700 text-grey-800 font-sm ls-0 mt-0 mb-2 tag-name lh-3">{{$product->name}}</h2>
                         <div class="star d-inline text-left">
