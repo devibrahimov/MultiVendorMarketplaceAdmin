@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TableProducts extends Migration
+class CreateProductOptions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class TableProducts extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('key')->index('key')->after('id');
-            $table->string('warranty')->nullable();
-
+        Schema::create('product_options', function (Blueprint $table) {
+            $table->bigIncrements('option_id');
+            $table->unsignedBigInteger('product_id');
+            $table->string('options');
+            $table->timestamps();
         });
     }
 
@@ -27,8 +28,6 @@ class TableProducts extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('product_options');
     }
 }

@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/site/images/favicon.ico">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="/site/css/style.css">
-
+    <link rel="stylesheet" href="/site/toastr-notification/toastr.min.css">
 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -374,8 +374,41 @@
 @yield('shop-create-product-page')
 
 <script src="/site/js/plugin.js"></script>
+<script src="/site/toastr-notification/toastr.min.js"></script>
+
 <script src="/site/js/scripts.js"></script>
 
+
+{{--<script type="text/javascript">--}}
+{{--    @if( session()->has('message') )--}}
+
+{{--    var type = "{{session()->get('alert-type','info')}}";--}}
+
+{{--    switch (type) {--}}
+{{--        case "success":--}}
+{{--            toastr.success("{{session()->get('message')}}");--}}
+{{--            break;--}}
+{{--        case "info":--}}
+{{--            toastr.info("{{session()->get('message')}}");--}}
+{{--            break;--}}
+{{--        case "warning":--}}
+{{--            toastr.warning("{{session()->get('message')}}");--}}
+{{--            break;--}}
+{{--        case "error":--}}
+{{--            toastr.error("{{session()->get('message')}}");--}}
+{{--            break;--}}
+{{--    }--}}
+
+{{--    @endif--}}
+
+{{--    @if ($errors->any())--}}
+
+{{--    @foreach ($errors->all() as $error)--}}
+{{--    console.log( '{{$error}}' );--}}
+{{--    toastr.error("HATA MESAJI ! {{$error}}");--}}
+{{--    @endforeach--}}
+{{--    @endif--}}
+{{--</script>--}}
 @yield('js')
 
 <script>
