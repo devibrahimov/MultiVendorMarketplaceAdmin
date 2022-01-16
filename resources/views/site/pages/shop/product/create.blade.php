@@ -471,7 +471,7 @@
 
                                                <div class="w-200 mt-4">
                                                    <div class="input-group" style="width: 178px!important;">
-                                                       <input type="text" maxlength="58"class="techkey"
+                                                       <input type="text" maxlength="58" class="techkey"
                                                               value="İstehsalatçı Ölkə" required disabled="">
                                                    </div>
                                                </div>
@@ -527,10 +527,29 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  selectler burada yer alacaq
+
+                    <div class="row">
+
+
+                        <div class="w-50 mt-4">
+                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> Barkode
+                                kodu     <span style="color: red;">*</span></h3>
+                            <div class="input-group w-100">
+                                <input type="text" maxlength="20"   id="option1"
+                                       placeholder="varyantın adı məsələn: Ölçü">
+                            </div>
+                        </div>
+                        <div class="w-100 mt-4">
+
+                        </div>
+                    </div>
+
+
+
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Varyantları Əlavə Et</button>
                 </div>
             </div>
         </div>
