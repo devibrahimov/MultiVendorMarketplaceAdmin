@@ -16,7 +16,6 @@ class AuthController extends Controller
 {
 
 
-
     public function register(){
         $categories = Category::where('parent_id',null)->get();
           return view('site.pages.shop.register',compact('categories'));
@@ -24,7 +23,7 @@ class AuthController extends Controller
 
     public function registerstore(ShopRequest $request){
 
-           $response = Shop::createnewShop($request);
+           $response = (new Shop)->createnewShop($request);
 
            if ($response['status'] == 1){
                return redirect()->route('home');

@@ -31,7 +31,7 @@
                             </div>
                             <div class="form-group icon-input mb-3 w-50">
                                 <i class="font-sm ti-user text-grey-500 pe-0 ms-3  "></i>
-                                <input type="text" name="surname" class="style2-input ps-5 form-control text-grey-900
+                                <input value="" type="text" name="surname" class="style2-input ps-5 form-control text-grey-900
                                 white-text
                                 font-xsss fw-600" placeholder="Soyad" required>
                                 @if ($errors->has('surname'))

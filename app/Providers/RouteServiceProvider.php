@@ -48,8 +48,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
-
-
+ 
             //yeni rout yuklenme function-i
             foreach (glob(base_path('routes/web/*.php')) as $file) {
                 Route::middleware('web')

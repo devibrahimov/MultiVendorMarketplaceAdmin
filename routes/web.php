@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Shop\AuthController;
 
 Route::get('/' ,[App\Http\Controllers\Site\GeneralController::class,'index'])->name('home');
 
 //Shop Registers and logins
-Route::get('/magaza-qeydiyyati',[App\Http\Controllers\Shop\AuthController::class ,'register'])->name('shop.register');
-Route::post('/magaza-qeydiyyati',[App\Http\Controllers\Shop\AuthController::class ,'registerstore']) ;
+Route::get('/magaza-qeydiyyati',[AuthController::class ,'register'])->name('shop.register');
+Route::post('/magaza-qeydiyyati',[AuthController::class ,'registerstore']) ;
 Route::get('/magaza-girisi',[App\Http\Controllers\Shop\AuthController::class ,'login'])->name('shop.login');
 Route::post('/magaza-girisi',[App\Http\Controllers\Shop\AuthController::class ,'logincontrol']) ;
 

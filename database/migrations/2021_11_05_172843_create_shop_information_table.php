@@ -24,8 +24,9 @@ class CreateShopInformationTable extends Migration
             $table->json('work_time')->nullable();
             $table->string('avatar')->nullable();
 
-            $table->foreign('shop_id')->on('shops')->references('id')->cascadeOnUpdate();
+           $table->foreign('shop_id')->on('shops')->references('id')->cascadeOnUpdate();
 /*
+biz kecen defe nece cekmishdim mainden?yadimda deyil ki qaqa.o cox qeliz oldu uzun cekdi
  *  Ad ,
  *  Soyad ,
  *  Mağaza adı ,

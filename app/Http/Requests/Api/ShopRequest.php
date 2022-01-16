@@ -27,7 +27,7 @@ class ShopRequest extends FormRequest
             'name'=> 'required|max:50|string',
             'surname'=> 'required|max:50|string',
             'shopname'=> 'required|max:50|string',
-            'shopcategory'=> 'required|max:50|integer',
+            'shopcategory'=> 'required|integer',
             'number'=> 'required|max:50|string',
             'email'=> 'required|max:50|email|unique:shops',
             'adress'=> 'required|max:150|string',
