@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/site/images/favicon.ico">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="/site/css/style.css">
-
+    <link rel="stylesheet" href="/site/toastr-notification/toastr.min.css">
 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -21,7 +21,8 @@
     @yield('css')
 </head>
 
-<body class="color-theme-green mont-font" style="background-image: url(https://via.placeholder.com/1960x3000.jpg);">
+{{--<body class="color-theme-green mont-font" style="background-image: url(https://via.placeholder.com/1960x3000.jpg);">--}}
+<body class="color-theme-green mont-font" style="background-image: url(https://img5.lalafo.com/i/banners/70/4d/ab/67fd6d2e307e3c14cfb14d2fd1.jpg);">
 
 <div class="preloader"></div>
 <!-- main wrapper  -->
@@ -29,12 +30,11 @@
 @include('site.layouts.header')
   @yield('content')
 @include('site.layouts.footer')
-
 </div>
 
 
 
-
+{{--MOBIL MENU --}}
 <!-- MENU MODAL -->
 <div class="modal fade left modal-scrollable" id="menumodal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -48,7 +48,7 @@
 
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="index.html">Əsas Səhifə</a>
                         </li>
 
                         <li class="nav-item">
@@ -283,9 +283,8 @@
 <!-- Category Menu for mobile and tablet  -->
 
 
-
 <!-- SINGLE PRODUCT MODAL -->
-<div class="modal fade right modal-scrollable" id="productmodal" tabindex="-1" aria-hidden="true">
+<div   class=" modal fade right modal-scrollable" id="productmodal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="width: 350px;">
         <div class="modal-content theme-dark-bg border-0 rounded-0">
             <button type="button"
@@ -353,11 +352,63 @@
 
 
 
+{{--<style>--}}
+{{--    .feedbackModal{--}}
+
+{{--        position: absolute;--}}
+{{--        bottom: 0px;--}}
+{{--        width: 50%;--}}
+{{--        height: 75px;--}}
+{{--        text-align: center;--}}
+{{--        left:10%;--}}
+{{--        z-index: 99999999999999;--}}
+{{--    }--}}
+
+{{--</style>--}}
+{{--<div class="feedbackModal card-body mb-3 bg-lightblue p-4 rounded-10">--}}
+{{--    <h4 class="fw-700 mt-2 font-xss text-grey-900 d-flex mb-0">Hurin Seary <span class="bg-primary text-white font-xsssss fw-600 ls-3 p-2 rounded-6 ms-auto">HOME</span></h4>--}}
+{{--    <h6 >Manikpur, Thakurpara PO Ital Gacha 2 no Airport Gate <br> Thakur Para United Club, Kolkata <br> West--}}
+{{--        Bengal - 700079</h6>--}}
+{{--</div>--}}
+
 @yield('shop-create-product-page')
 
 <script src="/site/js/plugin.js"></script>
+<script src="/site/toastr-notification/toastr.min.js"></script>
+
 <script src="/site/js/scripts.js"></script>
 
+
+{{--<script type="text/javascript">--}}
+{{--    @if( session()->has('message') )--}}
+
+{{--    var type = "{{session()->get('alert-type','info')}}";--}}
+
+{{--    switch (type) {--}}
+{{--        case "success":--}}
+{{--            toastr.success("{{session()->get('message')}}");--}}
+{{--            break;--}}
+{{--        case "info":--}}
+{{--            toastr.info("{{session()->get('message')}}");--}}
+{{--            break;--}}
+{{--        case "warning":--}}
+{{--            toastr.warning("{{session()->get('message')}}");--}}
+{{--            break;--}}
+{{--        case "error":--}}
+{{--            toastr.error("{{session()->get('message')}}");--}}
+{{--            break;--}}
+{{--    }--}}
+
+{{--    @endif--}}
+
+{{--    @if ($errors->any())--}}
+
+{{--    @foreach ($errors->all() as $error)--}}
+{{--    console.log( '{{$error}}' );--}}
+{{--    toastr.error("HATA MESAJI ! {{$error}}");--}}
+{{--    @endforeach--}}
+{{--    @endif--}}
+{{--</script>--}}
 @yield('js')
 
 <script>
@@ -385,6 +436,8 @@
 
         })
     })
+
+
 
 </script>
 

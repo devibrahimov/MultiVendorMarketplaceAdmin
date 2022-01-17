@@ -7,7 +7,7 @@ use \App\Http\Controllers\Shop\ProductController;
 
 use \App\Http\Controllers\Shop\ShopController ;
 //middleware auth:apishop start
-Route::group(['middleware'=> ['shop']], function () {
+Route::group(['middleware'=> ['shop'] , 'prefix' => 'magaza'], function () {
 
     Route::get('/profilim',[ShopController::class ,'profil'])->name('shop.profil') ;
     Route::get('/cixis-et',[AuthController::class ,'logout']) ->name('shop.logout') ;

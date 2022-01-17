@@ -26,9 +26,12 @@ class Product extends Model
             $techkeys = $request->techkey ;
             $information = [];
             foreach ($techkeys as $k => $v){
-                $data =[ $v => $techvalues[$k] ];
+                echo
+                $data =[ 'key' => $v,'value' => $techvalues[$k] ];
                 array_push($information ,$data  );
+
             }
+
             $informations = json_encode($information,JSON_UNESCAPED_UNICODE);
 
             $images = [] ;
@@ -57,8 +60,9 @@ class Product extends Model
                 $sale_price= $sale_price ;
             }
 
+            $key = md5(md5( Str::slug($name).$sku.$barkode)) ;
             $dbdata=[
-
+                'key' => $key,
                 'shop_id'   => auth('shop')->user()->id,
                 'category_id'   => $request->category_id ,
                 'access'    => 0,
@@ -87,4 +91,15 @@ class Product extends Model
 
     }
 
+    public static function getFindProduct($key){
+
+       return Product::where('key',$key)->first();
+
+    }
+
+    public static function getFindProductID($key){
+
+       return Product::where('key',$key)->select(['key','id'])->first();
+
+    }
 }

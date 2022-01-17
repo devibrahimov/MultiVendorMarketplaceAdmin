@@ -255,9 +255,14 @@
             padding: 1px 10px;
             background: #fff;
             margin-right: 20px;}
+
+       .addproductoption{ color: #22ca46;
+           border: 1px solid #22ca46;
+           border-radius: 25px;
+           padding: 1px 10px;
+           background: #fff;
+           margin-right: 20px;}
     </style>
-
-
 @endsection
 
 
@@ -281,7 +286,6 @@
                     @include('site.pages.shop.partials.navbar')
                 </div>
                 <div class="col-lg-8 pt-5 ps-4" id="allinputs">
-                <div id="overlayout" ></div>
 
                     <div class="row">
                         <nav class="nav nav-pills nav-fill">
@@ -293,7 +297,7 @@
                         <div class="col-lg-12 ps-2 pe-2">
                             <div class="card border-0 mt-3">
                                 <!-- HEADER WRAPPER -->
-                                <div className='  mx-auto min-vh-100 my-2 ms-md-5 ms-1 ad-add'>
+                                <div className='mx-auto min-vh-100 my-2 ms-md-5 ms-1 ad-add'>
                                     <div class="ad-info row  m-4 ms-3">
                                         <div class="col ">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Asanlıqla pulsuz elan yerləşdirin
@@ -305,10 +309,7 @@
                                         </div>
 
 
-                                        <div class="row imagelistdivrow " >
-
-
-                                        </div>
+                                        <div class="row imagelistdivrow " >  </div>
 
                                         <label for="fronUpload" class="col-lg-3 col-md-3 col-sm-3 p-0 overflow-hidden
                                             align-items-center justify-content-center d-flex mb-2 upload-item"
@@ -329,11 +330,34 @@
                                         <input id="imageuploadinput" class="d-none"
                                                name="images" type="file" multiple  onchange="updateReferenceList()">
 
-                                        <div class="w-100 mt-4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-12 pt-5 ps-4" >
+                    <div id="overlayout" ></div>
+
+                    <div class="row">
+
+
+                        <div class="col-lg-12 ps-2 pe-2">
+                            <div class="card border-0 mt-3">
+                                <!-- HEADER WRAPPER -->
+                                <div className='mx-auto min-vh-100 my-2 ms-md-5 ms-1 ad-add'>
+                                    <div class="ad-info row  m-4 ms-3">
+
+                                        <div class="w-100 ">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Təsvir
                                             </h3>
 
-                                            <div class="w-100 mt-4">
+                                            <div class="w-100  ">
                                                 <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
                                                     Məhsul Adı <span style="color: red;">*</span></h3>
                                                 <div class="input-group" style="width: 100%;">
@@ -342,13 +366,65 @@
                                             </div>
 
                                             <div class="form-group mt-2">
-                                  <textarea style="border:1px solid #ccc;    height: 300px;" class=" p-2 font-xssss w-100 " rows="4" id="description"
-                                  placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
+                                      <textarea style="border:1px solid #ccc;    height: 300px;" class=" p-2 font-xssss w-100 " rows="4" id="description"
+                                      placeholder="Nümunə: Dəbdə olan Samsung Galaxy S9! Rəng - qara brilyant. Super parlaq ekran, 12 Mp kamera. 1 il əvvəl alınıb, vəziyyəti - yeni kimi. Yaxşı işləyir."></textarea>
                                             </div>
                                         </div>
 
+                                        <div class="row w-50 mt-4">
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymət
+                                                    (AZN)    <span style="color: red;">*</span></h3>
+                                                <div class="input-group w-100">
+                                                    <input type="number" maxlength="8" id="price" required>
+                                                </div>
+                                            </div>
 
-                                        <div class="w-100 mt-4">
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Endirimli Qiymət
+                                                    (AZN)</h3>
+                                                <div class="input-group w-100">
+                                                    <input type="number" maxlength="8"  id="sale_price">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                                    Stok Sayısı    <span style="color: red;">*</span> </h3>
+                                                <div class="input-group w-100">
+                                                    <input type="number" maxlength="8" id="stock" placeholder="0">
+                                                </div>
+                                            </div>
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                                    SKU kodu    <span style="color: red;">*</span> </h3>
+                                                <div class="input-group w-100">
+                                                    <input type="text" max="8" id="sku" placeholder="EM90DT31012022">
+                                                </div>
+                                            </div>
+
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> Barkode
+                                                    kodu     <span style="color: red;">*</span></h3>
+                                                <div class="input-group w-100">
+                                                    <input type="number" maxlength="8" id="barkode"
+                                                           placeholder="9786052998380">
+                                                </div>
+                                            </div>
+                                            <div class="w-50 mt-4">
+                                                <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                                    Qarantiya müddəti </h3>
+                                                <div class="input-group"   style="width: 100px;float: left;
+                                              margin-right: 10px">
+                                                    <input type="number" maxlength="8" id="warranty"
+                                                           placeholder="0">
+                                                </div>
+                                                <h3 class="fw-500 text-grey-900 font-xss text-capitalize">İl Qarantiya</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-50 mt-4">
                                             <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span
                                                     style="color: red;">*</span> </h3>
                                             <style>
@@ -385,51 +461,11 @@
                                             </div>
                                         </div>
 
-                                      <div class="row">
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Qiymət
-                                                  (AZN)    <span style="color: red;">*</span></h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8" id="price" required>
-                                              </div>
-                                          </div>
 
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">Endirimli Qiymət
-                                                  (AZN)</h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8"  id="sale_price">
-                                              </div>
-                                          </div>
-
-
-                                          <div class="w-50 mt-4">
-                                          <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
-                                              Stok Sayısı    <span style="color: red;">*</span> </h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8" id="stock" placeholder="0">
-                                              </div>
-                                          </div>
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> SKU kodu    <span style="color: red;">*</span> </h3>
-                                              <div class="input-group">
-                                                  <input type="text" max="8" id="sku" placeholder="EM90DT31012022">
-                                              </div>
-                                          </div>
-
-                                          <div class="w-50 mt-4">
-                                              <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize"> Barkode
-                                                  kodu     <span style="color: red;">*</span></h3>
-                                              <div class="input-group">
-                                                  <input type="number" maxlength="8" id="barkode"
-                                                         placeholder="9786052998380">
-                                              </div>
-                                          </div>
-                                      </div>
-                                       <div @class('row p-5 mt-3')style="border:1px solid #e7e7e7"
+                                       <div class='   p-5 mt-3' style=" width:60%; border:1px solid #e7e7e7"
                                             id="techniquelinputs">
                                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
-                                               Məhsul Məlumatları   <span style="color: red;">*</span>
+                                               Məhsul Xüsusiyyətləri   <span style="color: red;">*</span>
                                              </h3>
                                            <div class="row" >
 
@@ -446,20 +482,6 @@
                                                    </div>
                                                </div>
 
-                                               <div class="w-200 mt-4">
-                                                   <div class="input-group" style="width: 178px!important;">
-                                                       <input type="text"  required maxlength="58" class="techkey"
-                                                              placeholder="Məslən : Rəng">
-                                                   </div>
-                                               </div>
-
-                                               <div class="w-200 mt-4">
-                                                   <div class="input-group" style="width: 258px!important;">
-                                                       <input type="text" required class="techvalue"  maxlength="58"
-                                                              placeholder=" Yaşıl">
-                                                   </div>
-                                               </div>
-
                                                <div class="w-20 mt-4" style="margin-left: 74px">
 
                                                        <button type="button"   style="width:90px!important;"
@@ -469,19 +491,51 @@
                                            </div>
 
                                        </div>
+                                        <div class=' p-5 mt-3' style=" width:40%; border:1px solid #e7e7e7"
+                                             id="techniquelinputs">
+                                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                                Məhsul Varyatı
+                                            </h3>
+                                            <div class="row" >
+                                            <button type="button"   style="width:90%!important;"
+                                           data-bs-toggle="modal" data-bs-target="#productoptions"
+                                            class="addproductoption">Məhsul Varyatı Əlavə Et</button>
+                                            </div>
 
-                                        <div class="w-50 mt-2 mb-5">
-                                            <button type="button"   id="postbutton" class="btnSubmit">Elanı dərc edin!</button>
                                         </div>
+{{--                                        --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+{{--                --}}
+                <div class="w-50 mt-2 mb-5 ">
+                    <button type="button"   id="postbutton" class="btnSubmit">Elanı dərc edin!</button>
+                </div>
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="productoptions" aria-hidden="true" aria-labelledby="productoptionsLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Modal 1</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  selectler burada yer alacaq
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 

@@ -24,8 +24,8 @@ class CreateProductsTable extends Migration
             $table->string('sale_price')->index('product_price');
             $table->text('description');
             $table->integer('stock');
-            $table->string('barkode')->nullable();
-            $table->string('sku')->nullable();
+            $table->string('barkode')->index('barkode') ;
+            $table->string('sku')->index('sku') ;
             $table->json('informations') ;
             $table->json('images');
             $table->timestamps();

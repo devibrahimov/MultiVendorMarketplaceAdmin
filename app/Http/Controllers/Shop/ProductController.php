@@ -33,10 +33,12 @@ class ProductController extends Controller
             $techkeys = $request->techkey ;
             $information = [];
             foreach ($techkeys as $k => $v){
-                $data =[ $v => $techvalues[$k] ];
+
+                $data =[ 'key' => $v,'value' => $techvalues[$k] ];
                 array_push($information ,$data  );
 
             }
+
             $informations = json_encode($information,JSON_UNESCAPED_UNICODE);
 
             $images = [] ;
@@ -64,9 +66,9 @@ class ProductController extends Controller
             }else{
                 $sale_price= $sale_price ;
             }
-
+            $key = md5(md5( Str::slug($name).$sku.$barkode)) ;
             $dbdata=[
-
+                'key' => $key,
                 'shop_id'   => auth('shop')->user()->id,
                 'category_id'   => $request->category_id ,
                 'access'    => 0,
@@ -100,6 +102,9 @@ class ProductController extends Controller
 
 
     }
+
+
+
 
 
     public function edit($id){

@@ -22,6 +22,10 @@ class Shop extends Authenticatable
     protected $guarded = [];
     protected $hidden = ['password','email','aprovel'];
 
+    protected $casts = [
+        'aprovel' => 'boolean'
+    ];
+
    public static function  createnewShop($request){
 
        try{
@@ -84,10 +88,6 @@ class Shop extends Authenticatable
     {
         return $this->belongsTo(Category::class, 'shopcategory')->withDefault();
     }
-
-    protected $casts = [
-        'aprovel' => 'boolean'
-    ];
 
    public static function updateInformations($request){
 
