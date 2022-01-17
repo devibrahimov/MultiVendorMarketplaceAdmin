@@ -17,7 +17,7 @@ class CreateSettingsTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('meta_description');
-            $table->longText('meta_tags');
+            $table->longText('meta_tags')->nullable();
             $table->string('logo_color') ;
             $table->string('logo_white');
             $table->string('logo_black');

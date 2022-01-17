@@ -115,15 +115,18 @@
                 <div class="header-search ms-auto me-2 d-flex">
                     <div class="form-group mb-0 icon-input d-none d-xl-block me-2">
                         <i class="feather-search font-sm text-grey-400"></i>
-                        <input type="text" placeholder="Start typing to search.."
+                        <input type="text" placeholder="İstədiyiniz məhsulu buradan axtarın"
                                class="lh-38 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl posr">
                     </div>
                     <a href="#" class="nav-icon"><span class="dot-count bg-warning"></span><i
-                            class="feather-bell text-grey-500"></i></a>
+                            class="feather-bell text-grey-500"></i>
+                    </a>
                     <a href="#" class="nav-icon" data-bs-toggle="modal" data-bs-target="#savedmodal"><i
-                            class="feather-heart text-grey-500"></i></a>
+                            class="feather-heart text-grey-500"></i>
+                    </a>
                     <a href="#" class="nav-icon" data-bs-toggle="modal" data-bs-target="#cartmodal"><i
-                            class="feather-shopping-bag text-grey-500"></i></a>
+                            class="feather-shopping-bag text-grey-500"></i>
+                    </a>
 {{--                    <a href="dashboard.html" class="nav-icon p-0">--}}
 {{--                        <img src="https://via.placeholder.com/50x50.png"  alt="user" class="w-40 mt-1"></a>--}}
                 </div>
