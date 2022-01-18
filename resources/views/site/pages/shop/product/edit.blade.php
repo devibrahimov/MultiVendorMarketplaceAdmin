@@ -853,22 +853,35 @@
             function getCurrentCategoryParentTree(currentCat){
 
                 currentCat = allcategories.filter(c=> c.id == currentCat)
-                // console.log(currentCat[0])
 
-                hasNotChild = allcategories.filter(cc => cc.parent_id == currentCat)
-                console.log(hasNotChild)
-                if(hasNotChild.length == 0){
-                    // console.log(currentCat[0])
-                    var cat =   `</span> <span class="nav-item text-current fw-500 ">${currentCat[0].name} > </span>`
-                }
 
-                if(currentCat[0].parent_id != null){
+                if(currentCat[0].parent_id == null){
                   //  console.log(currentCat[0])
                 var cat = ` <span class="nav-item text-grey-500 fw-500  ">${currentCat[0].name} >`
                     getCurrentCategoryParentTree(currentCat[0].parent_id)
                 }
 
-                $('.CurrentCategoriesList').append(cat)
+
+                //
+                // hasNotChild = allcategories.filter(cc => cc.parent_id == currentCat[0].id)
+                // console.log(hasNotChild  )
+                // if(hasNotChild.length > 0){
+                //     console.log(currentCat[0])
+                //     var cat = ` <span class="nav-item text-grey-500 fw-500  ">${currentCat[0].name} >`
+                // }else{
+                //
+                //     console.log(currentCat[0])
+                //     var cat =   `</span> <span class="nav-item text-current fw-500 ">${currentCat[0].name} > </span>`
+                // }
+                // if(currentCat[0].parent_id == null){
+                //   //  console.log(currentCat[0])
+                // var cat = ` <span class="nav-item text-grey-500 fw-500  ">${currentCat[0].name} >`
+                //     getCurrentCategoryParentTree(currentCat[0].parent_id)
+                // }else{
+                //     console.log(currentCat[0])
+                // }
+                // console.log(currentCat[0])
+                // $('.CurrentCategoriesList').append(cat)
 
             }
             getCurrentCategoryParentTree({{$product->category_id}})

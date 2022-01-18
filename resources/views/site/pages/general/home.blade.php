@@ -76,29 +76,15 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div
-                        class="owl-carousel slider-banner banner-wrap owl-theme ovh nav-none owl-arrow-center arrow-container">
+                    <div   class="owl-carousel slider-banner banner-wrap owl-theme ovh nav-none owl-arrow-center arrow-container" style="height: 400px;">
                         <div class="item rounded-6 bg-image-cover ovh style3 d-flex justify-content-start"
-                             style="background-image: url(https://via.placeholder.com/738x450.jpg);">
-                            <div class="slide-content text-left w-75">
-                                <span class="text-grey-700">All natural products</span>
-                                <h2 class="text-grey-900"><b>Healty Food Pure</b> Orgomart Market</h2>
-                                <p class="text-grey-600">Orgomart food is food produced by methods that comply with
-                                    the standard of farming.</p>
-                                <div class="clearfix"></div>
-                                <a href="#" class="btn-lg rounded-25 btn bg-current">SHOP NOW</a>
-                            </div>
+                             style="background-image: url('/photos/site/advertisment/56955552319916953170.jpg');  height: 400px;object-fit: cover;">
+
                         </div>
                         <div class="item rounded-6 bg-image-cover ovh style3 d-flex justify-content-start"
-                             style="background-image: url(https://via.placeholder.com/738x450.jpg);">
-                            <div class="slide-content text-left w-75">
-                                <span class="text-grey-700">All natural products</span>
-                                <h2 class="text-grey-900"><b class="d-block">Special offer </b>of the week</h2>
-                                <p class="text-grey-600">Orgomart food is food produced by methods that comply with
-                                    the standard of farming.</p>
-                                <div class="clearfix"></div>
-                                <a href="#" class="btn-lg rounded-25 btn bg-current">SHOP NOW</a>
-                            </div>
+                             style="background-image: url('/photos/site/advertisment/7490921857081625191.webp');
+                             height: 400px;object-fit: cover;">
+
                         </div>
 
 
@@ -106,52 +92,32 @@
                 </div>
                 <div class="col-lg-3 ps-lg-0 d-none d-lg-block d-xs-block sm-mt-3">
                     <div class="card w-100 border-0 shadow-none mb-0 ovh rounded-6 hover-zoom-image">
-                        <img src="https://via.placeholder.com/260x397.jpg" alt="" class="w-100">
-                        <div class="p-4 posa top-0 w-100">
-                                <span
-                                    class="fw-700 ls-3 text-white bg-current ps-2 pe-2 lh-24 rounded-6 d-inline-block font-xsssss">30%
-                                    OFF</span>
-                            <h4 class="font-md fw-700 lh-28 text-grey-900 mb-1 mt-3 ls-0">High Quality <br> Products
-                            </h4>
-                            <a href="#"
-                               class="fw-700 ls-1 border-bottom border-dark lh-20 d-inline-block text-grey-900 font-xsssss">SHOP
-                                NOW</a>
-                        </div>
+                        <img src="/photos/site/advertisment/67263602817816347316.jpg" style="height: 400px;object-fit: cover;" alt="" class="w-100">
+
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-4 pe-2">
                     <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4"
-                         style="background-image: url(https://via.placeholder.com/400x250.jpg);">
-                        <div class="p-0 pe-3 mt-auto w-100">
-                            <span class="fw-700 ls-3 text-current font-xsssss">30% OFF</span>
-                            <h4 class="font-sm fw-700 lh-2 text-grey-900 mb-3">Fresh <br> vegitable</h4>
-                            <a href="#" class="fw-700 ls-3 text-grey-900 font-xsssss">SHOP NOW</a>
-                        </div>
+                         style="background-image: url('/photos/site/advertisment/25526083225695925704.jpg'); height: 250px;object-fit: cover;">
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 ps-2">
+                    <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4"
+                         style="background-image: url('/photos/site/advertisment/88491380093258218572.webp');">
+
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 pe-2 ps-2">
                     <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4"
-                         style="background-image: url(https://via.placeholder.com/400x250.jpg);">
-                        <div class="p-0 pe-3 mt-auto w-100">
-                            <span class="fw-700 ls-3 text-current font-xsssss">30% OFF</span>
-                            <h4 class="font-sm fw-700 lh-2 text-grey-900 mb-3">Healty <br> vegitable</h4>
-                            <a href="#" class="fw-700 ls-3 text-grey-900 font-xsssss">SHOP NOW</a>
-                        </div>
+                         style="background-image: url('/photos/site/advertisment/14570210466170451914.webp');">
+
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-4 ps-2">
-                    <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4"
-                         style="background-image: url(https://via.placeholder.com/400x250.jpg);">
-                        <div class="p-0 pe-3 mt-auto w-100">
-                            <span class="fw-700 ls-3 text-current font-xsssss">30% OFF</span>
-                            <h4 class="font-sm fw-700 lh-2 text-grey-900 mb-3">Bread <br> 50% OFF</h4>
-                            <a href="#" class="fw-700 ls-3 text-grey-900 font-xsssss">SHOP NOW</a>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
         </div>

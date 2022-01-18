@@ -88,43 +88,17 @@
         </div>
     </div>
 </div>
-<div class="lower-footer bg-white pt-5 pb-3">
+
+<div class="lower-footer bg-white pb-3 pt-3">
     <div class="container">
         <div class="row">
             <div class="col-md-4 text-center text-sm-start xs-mb-3">
                 <a href="#"><img src="/site/images/logo.png" alt="logo" class="w-125"></a>
             </div>
-            <div class="col-md-8 text-center text-sm-end xs-mb-3">
-                <a href="#" class="d-none d-md-inline-block d-lg-inline-block me-2"><img
-                        src="https://via.placeholder.com/116x38.png" alt="play"></a>
-                <a href="#" class="d-none d-md-inline-block d-lg-inline-block me-2"><img
-                        src="https://via.placeholder.com/116x38.png" alt="play"></a>
-                <a href="#" class="btn-round btn-round-md z-index-1 bg-facebook"><i
-                        class="ti-facebook text-white"></i></a>
-                <a href="#" class="btn-round btn-round-md z-index-1 bg-twiiter"><i
-                        class="ti-twitter-alt text-white"></i></a>
-                <a href="#" class="btn-round btn-round-md z-index-1 bg-linkedin"><i
-                        class="ti-linkedin text-white"></i></a>
-                <a href="#" class="btn-round btn-round-md z-index-1 bg-instagram"><i
-                        class="ti-instagram text-white"></i></a>
-            </div>
-            <div class="col-md-8 text-center d-none d-xs-block ">
-                <a href="#" class="me-2"><img src="https://via.placeholder.com/116x38.png" alt="play"></a>
-                <a href="#" class="me-2"><img src="https://via.placeholder.com/116x38.png" alt="play"></a>
-            </div>
-            <div class="col-lg-12">
-                <div class="border-bottom-light mt-5"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="lower-footer bg-white pb-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center text-sm-start xs-mb-3">
+            <div class="col-md-4 text-center text-sm-start xs-mb-3">
                 <p class="text-grey-500 fw-500 font-xssss mb-0">@ Copyright 2021 Bütün Hüquqları Qorunmaqdadır.</p>
             </div>
-            <div class="col-md-6 text-center text-sm-end"><img src="https://via.placeholder.com/320x28.png"
+            <div class="col-md-4 text-center text-sm-end"><img src="https://via.placeholder.com/320x28.png"
                                                                alt="payment"></div>
         </div>
     </div>
