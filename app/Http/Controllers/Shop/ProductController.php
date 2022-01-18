@@ -58,6 +58,7 @@ class ProductController extends Controller
             $sale_price = $request->sale_price;
             $stock = $request->stock;
             $sku = $request->sku;
+            $warranty = $request->warranty;
             $barkode = $request->barkode;
             $name = $request->name;
             $description = $request->description;
@@ -80,6 +81,7 @@ class ProductController extends Controller
                 'stock' =>  $stock,
                 'barkode'   => $barkode,
                 'sku'   => $sku,
+                'warranty'   => $warranty,
                 'informations'  => $informations,
                 'images'    => $images,
             ] ;

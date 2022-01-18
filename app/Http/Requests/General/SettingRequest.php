@@ -24,13 +24,13 @@ class SettingRequest extends FormRequest
     public function rules()
     {
         return [
-        'logo_color' => 'required|mimes:png|dimensions:max_width=300,max_height=100',
-        'logo_black' => 'required|mimes:png|dimensions:max_width=300,max_height=100',
-        'logo_white' => 'required|mimes:png|dimensions:max_width=300,max_height=100',
-        'favicon' => 'required|mimes:png|dimensions:max_width=100,max_height=100',
+        'logo_color' => 'required|mimes:png,jpeg,jpg',//|dimensions:max_width=300,max_height=100
+        'logo_black' => 'required|mimes:png,jpeg,jpg',//|dimensions:max_width=300,max_height=100
+        'logo_white' => 'required|mimes:png,jpeg,jpg',//|dimensions:max_width=300,max_height=100
+        'favicon' => 'required|mimes:png,jpeg,jpg',//|dimensions:max_width=100,max_height=100
         'title' => 'required|max:120',
         'meta_description' => 'required|max:250',
-        'meta_tags' => 'required|max:3000'
+        //'meta_tags' => 'required|max:3000'
         ];
     }
 

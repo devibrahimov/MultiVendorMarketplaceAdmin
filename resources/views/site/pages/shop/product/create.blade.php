@@ -471,7 +471,7 @@
 
                                                <div class="w-200 mt-4">
                                                    <div class="input-group" style="width: 178px!important;">
-                                                       <input type="text" maxlength="58"class="techkey"
+                                                       <input type="text" maxlength="58" class="techkey"
                                                               value="İstehsalatçı Ölkə" required disabled="">
                                                    </div>
                                                </div>
@@ -527,10 +527,59 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  selectler burada yer alacaq
+
+                    <div class="row">
+
+
+                        <div class="w-50 mt-4">
+                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                Varyant 1 <span style="color: red;">*</span></h3>
+                            <div class="input-group w-100">
+                                <input type="text" maxlength="20"   id="option1"
+                                       placeholder="varyantın adı məsələn: Ölçü">
+                            </div>
+                        </div>
+                        <div class="w-50 mt-4">
+                          <div class="option1" style="float: left">
+                            <div>
+                                <input type="text" placeholder="varyant">
+                                <input type="text" placeholder="stok sayisi">
+                            </div>
+                          </div>
+                            <button type="button" class="btn btn-circle btn-primary" id="addnewoption1"
+                                    style="float:left; margin-left:10px"> + </button>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button type="button" @class('col-3')  id="addnewtooptions2"> İkinci Varyant Əlavə et </button>
+
+                        <div class="w-50 mt-4">
+                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
+                                Varyant 2 <span style="color: red;">*</span></h3>
+                            <div class="input-group w-100">
+                                <input type="text" maxlength="20"   id="option1"
+                                       placeholder="varyantın adı məsələn: Ölçü">
+                            </div>
+                        </div>
+                        <div class="w-50 mt-4">
+                            <div class="option1" style="float: left">
+                                <div>
+                                    <input type="text" placeholder="varyant">
+                                    <input type="text" placeholder="stok sayisi">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-circle btn-primary" id="addnewoption1"
+                                    style="float:left; margin-left:10px"> + </button>
+
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Varyantları Əlavə Et</button>
                 </div>
             </div>
         </div>
@@ -541,6 +590,17 @@
 
 
 @section('js')
+
+    <script>
+        $(document).on('click','#addnewoption1',function() {
+            let option =` <div>
+                 <input type="text" placeholder="varyant">
+                 <input type="text" placeholder="stok sayisi">
+             </div> `;
+            $('.option1').append(option);
+        })
+    </script>
+
 
     <script>
 
@@ -664,6 +724,7 @@
             form_data.append( "name", $('#name').val());
             form_data.append( "barkode", $('#barkode').val());
             form_data.append( "sku", $('#sku').val());
+            form_data.append( "warranty", $('#warranty').val());
             form_data.append( "category_id", $('#category_id').val());
             form_data.append( "description", $('#description').val());
 

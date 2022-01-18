@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\ProductController ;
+use App\Http\Controllers\Site\GeneralController ;
 
-Route::get('/' ,[App\Http\Controllers\Site\GeneralController::class,'index'])->name('home');
+
+Route::get('/' ,[GeneralController::class,'index'])->name('home');
 
 //Shop Registers and logins
 Route::get('/magaza-qeydiyyati',[App\Http\Controllers\Shop\AuthController::class ,'register'])->name('shop.register');
@@ -21,3 +23,5 @@ Route::post('/istifadeci-girisi',[App\Http\Controllers\User\AuthController::clas
 
 Route::get('/mehsullar',[ProductController::class,'allproducts'])->name('site.products');
 Route::get('/mehsul-m={m}&key={key}',[ProductController::class,'productdetail'])->name('site.productdetail');
+
+Route::get('/korporativ/{slug}',[GeneralController::class,'corporativ'])->name('site.corporativ');
