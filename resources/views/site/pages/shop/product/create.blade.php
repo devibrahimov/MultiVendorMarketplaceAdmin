@@ -671,34 +671,59 @@
                 var input = document.getElementById('imageuploadinput');
                 var {files} = input;
 
-                for (var i = 0; i < files.length; i++) {
+              //  if(files.length < 10){
+                    for (var i = 0; i < files.length; i++) {
 
-                    var file = files[i]
+                        var file = files[i]
 
-                    dt.items.add(file)
+                        if(file.size < 103889){
+                            dt.items.add(file)
 
-                    input.files = dt.files
-                }
+                            input.files = dt.files
+                        }else{
+
+                            toastr.error(`secdiyiniz <img src="${file}" width="100px">`)
+                        }
+
+
+                    }
+                // }else{
+                //     toastr.warning(`Yüləməyə çalışdığınız fayl sayı 10dən çox ola bilməz `)
+                // }
+
 
                 newfiles = event.target.files;
 
-                // if(newfiles.length>0){
+                console.log(newfiles.length)
+               // if(newfiles.length < 10){
                 for (var q = 0; q < newfiles.length; q++) {
 
                     var newfile = newfiles[q]
 
+                    let name = newfile.name;
 
-                    if(newfile.size != 339404){
+                    if( newfile.type == 'image/jpg' || newfile.type == 'image/png' || newfile.type == 'image/jpeg'|| newfile.type == 'image/webp' ){
 
 
-                    dt.items.add(newfile)
+                        if(newfile.size < 103889){
 
-                    input.files = dt.files
+
+                            dt.items.add(newfile)
+
+                            input.files = dt.files
+                        }else{
+                            toastr.warning(`secdiyiniz  ${name} adlı  Şəkilin ölçüləri standartdan böyükdür `)
+
+                        }
+
                     }else{
-                        alert(newfile.size)
+                        toastr.warning( 'Şəkil Formatına uyğun olmayan '+name+' adlı Fayl yükləməyə çalışırsınız')
                     }
+
                 }
-                // }
+              // }else{
+              //      toastr.warning(`Yüləməyə çalışdığınız fayl sayı 10dən çox ola bilməz `)
+              //  }
 
 
                 updateReferenceList()
