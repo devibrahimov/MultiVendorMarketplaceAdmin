@@ -20,8 +20,25 @@ class ProductController extends Controller
        if ($product ==null or $product == false or $product == false){
            return redirect()->route('site.products');
        }else{
+
+           //burda product hitini +1 artirmaq
+           //yeni tablede product_id ve hit sutunlari
            return view('site.pages.general.productDetail',compact(['product']));
        }
 
     }
+
+    public function trendProducts(){
+        $products =[] ; //sorgu bashka gedir ;
+        return view('site.pages.general.productsListPage',compact(['products']));
+
+
+    }
+
+    public function searchResults(){
+        $products = []; //sorgu bashka gedir ;
+        return view('site.pages.general.productsListPage',compact(['products']));
+    }
+
+
 }

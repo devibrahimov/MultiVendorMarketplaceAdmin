@@ -638,7 +638,6 @@
                 for (var i = 0; i < ref_input.files.length; ++i) {
                     let imageFile = ref_input.files[i]
 
-
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         var div = document.createElement("div");
