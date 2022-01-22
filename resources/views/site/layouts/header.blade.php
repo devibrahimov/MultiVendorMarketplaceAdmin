@@ -114,9 +114,13 @@
                 <a href="#"><img src="{{setting()->logo_color}}" alt="logo" class="logo"></a>
                 <div class="header-search ms-auto me-2 d-flex">
                     <div class="form-group mb-0 icon-input d-none d-xl-block me-2">
-                        <i class="feather-search font-sm text-grey-400"></i>
-                        <input type="text" placeholder="İstədiyiniz məhsulu buradan axtarın"
-                               class="lh-38 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl posr">
+                        <form action="{{route('search')}}" method="get">
+                            <input type="text" name="search" placeholder="İstədiyiniz məhsulu buradan axtarın"
+                                   class="lh-38 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl posr">
+                           <button type="submit"><i class="feather-search "></i></button>
+                        </form>
+
+
                     </div>
                     <a href="#" class="nav-icon"><span class="dot-count bg-warning"></span><i
                             class="feather-bell text-grey-500"></i>

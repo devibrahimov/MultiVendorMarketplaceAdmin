@@ -39,7 +39,13 @@ class ProductController extends Controller
 
     public function search(Request  $request){
 
-        $products = Product::where('name','ILIKE','%'.$request->name.'%')->get();
+        $search = $request->input('search');
+
+        $products = Product::where('name','LIKE',"%{$search}%")
+                            ->orWhere('description','LIKE',"%{$search}%")
+                             ->orWhere('price','LIKE',"%{$search}%")
+                             ->orWhere('sale_price','LIKE',"%{$search}%")
+                            ->get();
         return view('site.pages.general.productsListPage', compact('products'));
 
     }
