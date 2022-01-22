@@ -164,7 +164,7 @@
                     </div>
                     <div class="row border rounded-6 m-0">
                         <div class="productList">
-                            @foreach($products as $product)
+                                @foreach($products as $product)
                             <div class="my-card pb-4">
                               <span class="wish-list">
                                   <i data-key="{{$product->key}}" class='mywishproduct colorSuccess bx bx-heart'></i>

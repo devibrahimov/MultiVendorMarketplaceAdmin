@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductStatistics;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,6 +24,23 @@ class ProductController extends Controller
        }else{
            return view('site.pages.general.productDetail',compact(['product']));
        }
+
+    }
+    public function trend(){
+
+        $products = ProductStatistics::where('hit','>',6)
+            ->join('products','products.id','=','product_statistics.product_id')
+            ->where('access',1)
+            ->get();
+
+        return view('site.pages.general.productsListPage', compact( 'products'));
+    }
+
+
+    public function search(Request  $request){
+
+        $products = Product::where('name','ILIKE','%'.$request->name.'%')->get();
+        return view('site.pages.general.productsListPage', compact('products'));
 
     }
 }

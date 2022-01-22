@@ -4,13 +4,17 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\CorporativePages;
+use App\Models\Product;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
     public function index(){
-        return view('site.pages.general.home');
+        $settings = Setting::query()->get();
+        return view('site.pages.general.home',compact('settings'));
     }
+
 
     public function corporativ(Request $request){
         $slug = $request->slug ;
@@ -18,4 +22,6 @@ class GeneralController extends Controller
         $corporative = CorporativePages::where('slug',$slug)->first();
         return view('site.pages.general.corporative',compact(['corporative']));
     }
+
+
 }
