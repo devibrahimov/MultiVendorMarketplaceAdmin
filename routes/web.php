@@ -25,3 +25,5 @@ Route::get('/mehsullar',[ProductController::class,'allproducts'])->name('site.pr
 Route::get('/mehsul-m={m}&key={key}',[ProductController::class,'productdetail'])->name('site.productdetail');
 
 Route::get('/korporativ/{slug}',[GeneralController::class,'corporativ'])->name('site.corporativ');
+Route::get('/trend',[ProductController::class,'trend'])->name('trend');
+Route::get('/search',[ProductController::class,'search'])->name('search');

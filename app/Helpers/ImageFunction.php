@@ -1,6 +1,5 @@
 <?php
 
-
     function makedirectory($dirpath){
 
         $direcoties =  explode('/',$dirpath);

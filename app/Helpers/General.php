@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Setting;
+
+
 function setting(){
-    return \App\Models\Setting::first();
+    return Setting::first();
 }
