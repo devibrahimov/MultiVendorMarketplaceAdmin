@@ -46,16 +46,11 @@
                 </ul>
             </div>
             <div class="col-md-3 col-xs-6 sm-mb-3">
-                <h3>BREAKFAST & DAIRY</h3>
+                <h3>Sözləşmələr</h3>
                 <ul class="menu">
-                    <li><a href="#">Fresh Vegetables</a></li>
-                    <li><a href="#">Herbs &amp; Seasonings</a></li>
-                    <li><a href="#">Fresh Fruits</a></li>
-                    <li><a href="#">Cuts &amp; Sprouts</a></li>
-                    <li><a href="#">Exotic Fruits &amp; Veggies</a></li>
-                    <li><a href="#">Packaged Produce</a></li>
-                    <li><a href="#">Party Trays</a></li>
-                </ul>
+                    @foreach(\App\Models\Contract::select(['id','title','slug'])->get() as $page)
+                        <li><a href="{{route('site.contract',$page->slug)}}">{{$page->title}}</a></li>
+                    @endforeach                </ul>
             </div>
 
             <div class="col-md-3 col-xs-6 sm-mb-3">

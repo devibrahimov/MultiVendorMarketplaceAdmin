@@ -32,9 +32,6 @@ class ProductController extends Controller
 
     }
 
-
-
-
     public function trend(){
 
         $products = ProductStatistics::where('hit','>',0)

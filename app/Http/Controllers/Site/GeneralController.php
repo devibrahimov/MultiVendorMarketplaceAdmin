@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contract;
 use App\Models\CorporativePages;
 use App\Models\Product;
 use App\Models\Setting;
@@ -23,5 +24,11 @@ class GeneralController extends Controller
         return view('site.pages.general.corporative',compact(['corporative']));
     }
 
+    public function contract(Request $request){
+        $slug = $request->slug ;
+
+        $contracts = Contract::where('slug',$slug)->first();
+        return view('site.pages.general.contract',compact('contracts'));
+    }
 
 }
