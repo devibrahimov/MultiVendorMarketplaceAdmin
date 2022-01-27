@@ -84,7 +84,7 @@ class AuthController extends Controller
                 'message'=>$validator->errors()
             ],422);
         }
-        if ( auth('user')->attempt([
+        if (auth('user')->attempt([
             'email'=>$request->email,
             'password'=> $request->password,
             'aprovel'=> 1,
@@ -92,7 +92,7 @@ class AuthController extends Controller
             request()->session()->regenerate();
             return redirect()->intended(route('user.profil')) ;
         }else{
-            $errors = ['email'=>'Hatalı Giriş'];
+            $errors = ['email'=>'Emailiniz və ya Şifrəniz Yanlışdır!','password'=>'Emailiniz və ya Şifrəniz Yanlışdır!' ];
             return back()->withErrors($errors);
         }
     }
@@ -104,5 +104,20 @@ class AuthController extends Controller
         \request()->session()->flush();
         \request()->session()->regenerate();
         return redirect()->route('home');
+    }
+
+
+    public function edit(User $user)
+    {
+        $user = Auth::user();
+        return view('site.pages.user.profiledit', compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+
+        $save =  User::updateInformations($request);
+
+        return redirect()->back() ;
     }
 }

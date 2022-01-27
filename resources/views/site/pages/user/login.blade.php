@@ -27,11 +27,9 @@
                                 <i class="font-sm ti-email text-grey-500 pe-0 ms-3"></i>
                                 <input type="email" name="email" class="style2-input ps-5 form-control text-grey-900
                             white-text font-xsss fw-600" placeholder="E-poçt ünvanı" required>
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                                @endif
+                                @error('email')
+                                <div class="error">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group icon-input mb-3 w-100">
@@ -39,11 +37,9 @@
                             white-text
                             font-xss ls-3" placeholder="Şifrə" required>
                                 <i class="font-sm ti-lock text-grey-500 pe-0 ms-3"></i>
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                                @endif
+                                @error('password')
+                                <div class="error">{{ $message }}</div>
+                                @enderror
                             </div>
 
                         </div>

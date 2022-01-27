@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -48,4 +49,50 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Region::class)->withDefault();
     }
+
+    public static function updateInformations($request){
+
+        try {
+
+            $name = $request->name;
+            $surname = $request->surname;
+            $email = $request->email;
+            $number = $request->number;
+
+
+            $id = auth('user')->user()->id;
+
+
+            $user =   User::find($id);
+
+            $user->email  = $email;
+
+            $user->save();
+
+            $data = [
+                'name' => $name,
+                'email' => $email,
+                'surname' => $surname,
+                'number' => $number,
+            ];
+            DB::table('users')->where('id',$id)->update($data);
+
+            $response = [
+                'status' =>1,
+                'message'=> 'Təbriklər Qeydiyyatınız uğurla başa çatmışdır.Artıq Sizində mağazanız var'
+            ];
+
+            return $response;
+        }catch (\Exception $e){
+
+            $response = [
+                'status' => 0,
+                'message' =>$e->getMessage()
+            ];
+
+            return $response;
+        }
+
+    }
+
 }
