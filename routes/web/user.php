@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\User\AuthController;
@@ -16,6 +17,8 @@ Route::group(['middleware'=> ['user'],'prefix' => 'istifadeci'], function () {
     Route::get('/beyendiklerim',[WishlistController::class ,'wishlist'])->name('user.wishlist') ;
     Route::get('/beyendiyim-mehsul',[WishlistController::class ,'wishproduct'])->name('user.wishproduct') ;
 
+    Route::get('reset-password', [ResetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [ResetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 });//middleware auth:apiuser stop
 
