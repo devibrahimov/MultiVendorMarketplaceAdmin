@@ -1,9 +1,85 @@
 @extends('site.index')
 
 @section('css')
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <style>
 
-       #overlayout {
+
+        .variant{
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .variant select{
+            max-width: 350px;
+        }
+        .variant button{
+            margin-left: 12px;
+            background: #41ec82;
+            height: 37px;
+            width: 40px;
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            font-size: 30px;
+        }
+        .variant button:hover{
+            background: white;
+            border: 2px solid #41ec8281;
+            color: #41ec82;
+        }
+        .variant  .size{
+            margin: 15px 0;
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+        }
+        .variant  .size-variant select{
+            width: 100px;
+        }
+        .variant  .size-variant input{
+            width: 100px;
+        }
+        .variant  .size-variant button{
+            position: relative;
+            top: 38px;
+        }
+        .variant .bx-x{
+            position: relative;
+            cursor: pointer;
+            top: 6px;
+            left: 35px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            font-size: 30px;
+            color: red;
+            background: rgb(255, 189, 189);
+        }
+        .variant .ad-head .bx-x{
+            position: relative;
+            top: 3px;
+            left: 12px;
+        }
+        .variant .size-box{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .variant .sizes{
+            width: 80px;
+            margin-right: 15px;
+            height: auto;
+        }
+        .variant .sizes span{
+            font-size: 20px;
+        }
+        #overlayout {
             position: absolute;
             background-color: rgba(0, 0, 0, 0.54);
            display: none;
@@ -11,7 +87,7 @@
             min-height: 100%;
            z-index: 999999999999999;
         }
-        .overLoad {
+        .variant  .overLoad {
             position: absolute;
             background-color: rgba(0, 0, 0, 0.54);
             min-width: 100%;
@@ -23,6 +99,14 @@
             text-align:center
         }
 
+        button.addnewvaryantbtn {
+            color: #22ca46;
+            border: 1px solid #22ca46;
+            border-radius: 25px;
+            padding: 1px 10px;
+            background: #fff;
+            margin-right: 20px;
+        }
         .CategoryList button {
             color: #22ca46;
             border: 1px solid #22ca46;
@@ -523,60 +607,35 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" >Modal 1</h5>
+                    <h5 class="modal-title" >Məhsul Varyantları</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="variant">
+                        <h3> Ölçü </h3>
 
-                    <div class="row">
-
-
-                        <div class="w-50 mt-4">
-                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
-                                Varyant 1 <span style="color: red;">*</span></h3>
-                            <div class="input-group w-100">
-                                <input type="text" maxlength="20"   id="option1"
-                                       placeholder="varyantın adı məsələn: Ölçü">
-                            </div>
-                        </div>
-                        <div class="w-50 mt-4">
-                          <div class="option1" style="float: left">
-                            <div>
-                                <input type="text" placeholder="varyant">
-                                <input type="text" placeholder="stok sayisi">
-                            </div>
-                          </div>
-                            <button type="button" class="btn btn-circle btn-primary" id="addnewoption1"
-                                    style="float:left; margin-left:10px"> + </button>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <button type="button" @class('col-3')  id="addnewtooptions2"> İkinci Varyant Əlavə et </button>
-
-                        <div class="w-50 mt-4">
-                            <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
-                                Varyant 2 <span style="color: red;">*</span></h3>
-                            <div class="input-group w-100">
-                                <input type="text" maxlength="20"   id="option1"
-                                       placeholder="varyantın adı məsələn: Ölçü">
-                            </div>
-                        </div>
-                        <div class="w-50 mt-4">
-                            <div class="option1" style="float: left">
-                                <div>
-                                    <input type="text" placeholder="varyant">
-                                    <input type="text" placeholder="stok sayisi">
+                        <div class="size-variant d-flex mt-3 border rounded p-3">
+                            <div class="size-box">
+                                <div class="size mr-2">
+                                    <input type="text" class="form-control mt-2 text-center" placeholder="Varyant">
+                                    <input type="text" class="form-control mt-2 text-center" placeholder="Stok Sayı">
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-circle btn-primary" id="addnewoption1"
-                                    style="float:left; margin-left:10px"> + </button>
 
+
+                            <button class="btn  " id="size-add">
+                                <i class='bx bx-plus'></i>
+                            </button>
                         </div>
-                    </div>
+                        <button class="  addnewvaryantbtn" id="variant-add">
 
+                            <i class='bx bx-plus'> Rəng Əlavə Et </i>
+                        </button>
+
+                    </div>
                 </div>
+
+
                 <div class="modal-footer">
                     <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
                             data-bs-dismiss="modal">Varyantları Əlavə Et</button>
@@ -594,12 +653,69 @@
     <script>
         $(document).on('click','#addnewoption1',function() {
             let option =` <div>
-                 <input type="text" placeholder="varyant">
+                 <input type="text" class="form-control" placeholder="varyant">
                  <input type="text" placeholder="stok sayisi">
              </div> `;
             $('.option1').append(option);
         })
     </script>
+
+    <script>
+        $(document).ready(function () {
+
+
+
+                $("#variant-add").one("click", function () {
+                    console.log($("#variant-select option:selected"))
+                    $(".variant").append(`
+                <div class="variant2">
+                <h3 class="mt-5"> Rəng</h3>
+
+                <div class="size-variant d-flex mt-3 border rounded p-3">
+
+                    <div class="size-box">
+                        <div class="sizes d-flex justify-content-center align-items-center">
+                            <span class="text-secondary">L</span>
+                        </div>
+                        <div class="size mr-2">
+
+                            <input type="text" class="form-control mt-2 text-center" placeholder="varyant">
+                            <input type="text" class="form-control mt-2 text-center" placeholder="Stok Sayı">
+
+
+                        </div>
+                    </div>
+                    <button class="btn" id="size-add">
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                </div>
+                </div>
+            `)
+                    $(".bx-x").on("click", function () {
+                        $(this).parent().parent().remove();
+                    });
+                });
+
+
+
+                $(".size-variant #size-add").on('click', function () {
+                    $(this).parent().children(".size-box").append(`<div class="size ml-2 mr-2">
+
+                    <input type="text" class="form-control mt-2 text-center" placeholder="varyant">
+                    <input type="text" class="form-control mt-2 text-center" placeholder="Stok Sayı">
+                    <i class='bx bx-x'></i>
+                </div>`)
+                    $(".bx-x").on("click", function () {
+                        $(this).parent(".size").remove();
+                    });
+                })
+
+            }
+        )
+
+    </script>
+
 
 
     <script>

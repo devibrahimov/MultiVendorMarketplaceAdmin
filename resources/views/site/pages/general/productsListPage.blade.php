@@ -218,23 +218,27 @@
 
 @section('js')
     <script>
-
-
            $('.mywishproduct').on('click',function () {
-               $.ajax({
-                   url: "{{route('user.wishproduct')}}",
-                   method:'GET',
-                   data: {
-                       id:$(this).attr('data-key'),
-                   },
-                   success: function (data){
-                       if(data != true){
-                           toastr.warning(" Bu məhsulu Bəyəndiklərinizə əlavə edə bilmək üçün əvvəlcə istifadəçi " +
-                   "olaraq Giriş etməlisiniz. Giriş ucun  <a href='{{route('user.login')}}'> <b>GIRIŞ ET</b></a> ")
 
-                       }
-                   },
-               });
+               @guest('user')
+               toastr.warning(" Bu məhsulu Bəyəndiklərinizə əlavə edə bilmək üçün əvvəlcə istifadəçi " +
+                   "olaraq Giriş etməlisiniz. Giriş ucun  <a href='{{route('user.login')}}'> <b>GIRIŞ ET</b></a> ")
+               @endguest
+
+                @auth('user')
+                   $.ajax({
+                       url: "{{route('user.wishproduct')}}",
+                       method:'GET',
+                       data: {
+                           id:$(this).attr('data-key'),
+                       },
+                       success: function (data){
+                           if(data != false){
+                               toastr.warning(data)
+                           }
+                       },
+                   });
+               @endauth
         });
 
 

@@ -17329,7 +17329,7 @@ select.sort {
     right: 10px;
     top: 10px;
     z-index: 2;
-    box-shadow: 0rem 0.1rem .2rem rgba(0, 0, 0, .15);
+    box-shadow: 0rem 0.08rem .1rem rgba(0, 0, 0, .15);
     background: #fff;
     width: 35px;
     height: 35px;
@@ -17341,10 +17341,6 @@ select.sort {
 .wish-list i {
     font-size: 22px;
     transition: all 0.5s ease;
-}
-
-.wish-list:active {
-    transform: scale(1.2);
 }
 
 .wish-list i.active::before {

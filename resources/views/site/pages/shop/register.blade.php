@@ -7,15 +7,15 @@
 
 @section('content')
 
-    <div class="row min-vh-100">
-        <div class="col-xl-12 min-vh-100 align-items-center  bg-dark-black rounded-3 overflow-hidden py-5">
-            <div class="card shadow-lg border-0 ms-auto me-auto login-card mt-auto mb-auto zindex-100 rounded-10
+    <div class="row min-vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-xl-7 min-vh-100 align-items-center  bg-dark-black rounded-3 overflow-hidden py-5">
+            <div class="card border-2 ms-auto me-auto login-card mt-auto mb-auto zindex-100 rounded-10
             theme-dark-bg" style="max-width: 860px;">
                 <div class="select-user">
                     <button class="market bg-current" id="market-btn">Mağaza</button>
                 </div>
                 <div class="card-body rounded-0 text-start p-4">
-                    <h2 class="fw-700 display1-size display2-md-size mb-4 mt-0 white-text text-grey-900">Hesabını Yarat
+                    <h2 class="fw-700 font-xl display2-md-size mb-4 mt-0 white-text text-grey-900">Hesabını Yarat
                     </h2>
                     <form action="{{route('shop.register')}}" method="post">
                         <div class="row">
@@ -43,13 +43,13 @@
                         </div>
                         @csrf
                        <div class="row">
-                           <div class="form-group icon-input mb-3 w-50">
-                               <i class="font-sm ti-user text-grey-500 pe-0 ms-3"></i>
+                           <div class="form-group icon-input mb-3 w-100">
+                               <i class="font-sm ti-home text-grey-500 pe-0 ms-3"></i>
                                <input type="text" name="shopname" class="style2-input ps-5 form-control text-grey-900 white-text
                                font-xsss fw-600" placeholder="Mağaza Adı" required>
                            </div>
-                           <div class="form-group select-location icon-input mb-3 w-50">
-                               <i class="font-sm ti-location-pin text-grey-500 pe-0 ms-3"></i>
+                           <div class="form-group select-location icon-input mb-3 w-100">
+                               <i class="font-sm ti-menu-alt text-grey-500 pe-0 ms-3"></i>
                                <select name="shopcategory" class="style2-input ps-5 form-control text-grey-900 white-text font-xsss
                                fw-600" required>
                                    <option value="" selected>Mağaza Kateqoriyası</option>
@@ -65,7 +65,7 @@
                            </div>
                        </div>
                        <div class="row">
-                           <div class="form-group icon-input mb-3 w-50">
+                           <div class="form-group icon-input mb-3 w-100">
                                <i class="font-sm ti-mobile text-grey-500 pe-0 ms-3"></i>
                                <input type="number" name="number" class="style2-input ps-5 form-control text-grey-900 white-text
                             font-xsss fw-600" placeholder="Telefon nömrəsi" required>
@@ -75,7 +75,7 @@
                                 </span>
                                @endif
                            </div>
-                           <div class="form-group icon-input mb-3 w-50">
+                           <div class="form-group icon-input mb-3 w-100">
                                <i class="font-sm ti-email text-grey-500 pe-0 ms-3"></i>
                                <input type="email" name="email" class="style2-input ps-5 form-control text-grey-900
                             white-text font-xsss fw-600" placeholder="E-poçt ünvanı" required>
@@ -132,7 +132,7 @@
                         <div class="col-sm-12 p-0 text-start">
                             <div class="form-group mb-1"><button type="submit" class="text-center style2-input
                             text-white
-                            fw-600 bg-current border-0 p-0 ">Qeydiyyatdan keç</button>
+                            fw-600 bg-current border-0 px-3" style="height: 50px !important; line-height: 0px !important; ">Qeydiyyatdan keç</button>
                             </div>
                             <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32 white-text">Daha Əvvəlcədən
                                 Mağazan varsa
