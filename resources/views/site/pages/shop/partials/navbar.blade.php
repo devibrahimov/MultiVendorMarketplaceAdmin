@@ -1,18 +1,30 @@
 <div class="card rounded-10 shadow-xss p-4 border-0 mt-n10">
     <div class="card-body text-center">
         <figure class="avatar ms-auto me-auto mb-0 mt-0 w100 posr">
-            <img src="https://via.placeholder.com/100x100.jpg" alt="product"
+            @php
+            $shop = \App\Models\Shopİnformation::where('shop_id',auth('shop')->user()->id)->select('avatar')->first();
+            if( $shop->avatar != null && file_exists($shop->avatar)){
+                  $avatar = $shop->avatar ;
+            }else{
+                $avatar = '/uploads/shop/shop-default-avatar.png';
+            }
+            @endphp
+            <img src="{{$avatar}}" alt="product" id="avatarimage"
                  class="shadow-sm rounded-circle w-125" />
-            <button class="edit_photo bg-secondary btn posa">
-                <i class='bx bxs-camera'></i>
-            </button>
+
+            <form  enctype="multipart/form-data" method="post">
+                <label class="edit_photo bg-secondary btn posa" for="avatar">
+                    <i class='bx bxs-camera'></i>
+                    <input type="file" style="display:none;" id="avatar" name="image" accept="image/*" onchange="loadFile(event)">
+                </label>
+            </form>
         </figure>
         <h4 class="fw-700 text-grey-900 white-text font-sm mb-0 mt-3">
-            Hurin Seary
+            {{auth('shop')->user()->shopname}}
         </h4>
         <span class="fw-600 font-xssss text-grey-500 mt-0 d-block">
-                                    @ swrryhurry
-                                </span>
+           @ {{auth('shop')->user()->shop_serialnumber}}
+        </span>
     </div>
     <div class="card-body p-0 mt-4">
         <ul class="list-inline mb-0">

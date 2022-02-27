@@ -170,9 +170,8 @@
                                   <i data-key="{{$product->key}}" class='mywishproduct colorSuccess bx bx-heart'></i>
                               </span>
                                 <div class="cardImg">
-                                    <img src="/uploads/{{\GuzzleHttp\json_decode($product->images)[0]}}"
-                                         class="card-img-top"
-                                         alt="">
+                                    <img src="{{\GuzzleHttp\json_decode($product->images)[0]}}"
+                                         class="card-img-top" alt="{{$product->name}}" title="{{$product->name}}" >
                                 </div>
                                 <div class="cardBody px-2">
                                     <h5 class="card-text py-2">

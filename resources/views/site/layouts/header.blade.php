@@ -163,8 +163,16 @@
 {{--                        <a href="#" class="nav-icon">--}}
 {{--                            <span class="dot-count bg-warning"></span><i class="feather-bell text-grey-500"></i>--}}
 {{--                        </a>--}}
+                        @php
+                            $shop = \App\Models\Shopİnformation::where('shop_id',auth('shop')->user()->id)->select('avatar')->first();
+                            if( $shop->avatar != null && file_exists($shop->avatar)){
+                                 $avatar = $shop->avatar ;
+                            }else{
+                                $avatar = '/uploads/shop/shop-default-avatar.png';
+                            }
+                        @endphp
                         <a href="{{route('shop.profil')}}" class="nav-icon p-0">
-                            <img src="https://via.placeholder.com/50x50.png"  alt="user" class="w-40 mt-1"></a>
+                            <img src="{{$avatar}}"  alt="user" class="w-40 mt-1"></a>
                     @endauth
                 </div>
             </div>

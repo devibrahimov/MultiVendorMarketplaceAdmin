@@ -27,4 +27,5 @@ Route::group(['middleware'=> ['shop'] , 'prefix' => 'magaza'], function () {
 
     Route::get('sifreni-yeniler',[AuthController::class,'changepassword'])->name('changepassword');
     Route::post('sifreni-yeniler',[AuthController::class,'resetpassword']);
+    Route::post('shop-changeAvatar',[ShopController::class,'changeAvatar'])->name('shop.changeAvatar');
 });//middleware auth:apishop end

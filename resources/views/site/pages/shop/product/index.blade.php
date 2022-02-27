@@ -48,7 +48,7 @@
                                       @foreach($products as $product)
                                         <tr>
                                             <td class="product-thumbnail text-start ps-0">
-                                                <img src="/uploads/{{json_decode($product->images)[0]}}" alt="product-image" class="w-80 d-inline-block pt-3 pb-3 bg-greylight rounded-6">
+                                                <img src="{{json_decode($product->images)[0]}}" alt="product-image" class="w-80 d-inline-block pt-3 pb-3 bg-greylight rounded-6">
                                             </td>
 
                                             <td class="product-p">

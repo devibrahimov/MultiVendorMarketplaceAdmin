@@ -53,9 +53,9 @@ class ProductController extends Controller
                 if ($request->coverimage == $key){
                     //cover olacaq image fayi arrayin ilk evveline qoyulur
                     //0 ci index coverdir herzaman
-                    array_unshift($images , $postImage);
+                    array_unshift($images ,'/'.$imageDestinationPath. $postImage);
                 }else{
-                    array_push($images,$postImage);
+                    array_push($images,'/'.$imageDestinationPath. $postImage);
                 }
             }
             $images = json_encode($images,JSON_UNESCAPED_UNICODE) ;

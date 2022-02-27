@@ -93,4 +93,40 @@
 
 @section('js')
 
+    <script>
+        var loadFile = function(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('avatarimage');
+                output.src = reader.result;
+            };
+
+            reader.readAsDataURL(event.target.files[0]);
+
+            event.preventDefault();
+            var formData = new FormData();
+
+            formData.append("_token", '{{ csrf_token() }}');
+            formData.append('image',event.target.files[0]);
+            $.ajax({
+                type:'POST',
+                url: '{{route('shop.changeAvatar')}}',
+                data:formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success:function(data){
+                    console.log("success");
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log("error");
+                    console.log(data);
+                }
+            });
+
+        };
+
+    </script>
+
 @endsection
