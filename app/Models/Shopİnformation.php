@@ -10,7 +10,7 @@ class Shopİnformation extends Model
 {
     use HasFactory;
     protected $table = 'shop_information';
-
+    protected $primaryKey = 'info_id';
 
     public function shop(): BelongsTo
     {
