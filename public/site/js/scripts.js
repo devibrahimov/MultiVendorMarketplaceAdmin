@@ -5,9 +5,6 @@ $(document).ready(function () {
 
     PageScroll();
 
-
-
-
     // Loading Box (Preloader)
     function handlePreloader() {
         if ($('.preloader').length > 0) {
@@ -21,14 +18,38 @@ $(document).ready(function () {
 
     // Category MENU
 
-    $(".my-menu ul li, .overlay")
-        .mouseenter(function() {
+    $(".my-menu").mouseenter(function () {
             $(".overlay").addClass("active")
         })
-        .mouseleave(function() {
+
+    $(".my-menu").mouseleave(function () {
             $(".overlay").removeClass("active")
         })
 
+
+
+    // var myJson = $.getJSON("../data/db.json", function (data) {
+    //     $(".my-menu>ul>li:nth-child(1)").mouseenter(data, function () {
+    //         $(".overlay>ul>li").remove();
+    //         $.each(data[0].Children, function (i) {
+    //             $(".overlay>ul").append(`<li><a href="">${data[0].Children[i].name}</a></li>`)
+    //         })
+    //         $(".sub-menu-name").text(data[0].name);
+    //         $(".overlay").css("background", data[0].background)
+
+    //     })
+
+    //     $(".my-menu>ul>li:nth-child(2)").mouseenter(data, function () {
+    //         $(".overlay>ul>li").remove();
+    //         $.each(data[1].Children, function (i) {
+    //             $(".overlay>ul").append(`<li><a href="">${data[1].Children[i].name}</a></li>`)
+    //         })
+    //         console.log(data[1].name)
+    //         $(".overlay").css("background", data[1].background)
+    //         $(".sub-menu-name").text(data[1].name);
+
+    //     })
+    // })
 
 
     $(function () {
@@ -51,12 +72,6 @@ $(document).ready(function () {
     })
 
 
-    $(".categories li").on("click", () => {
-        $(".subcategories").addClass("active");
-    })
-    $(".back").on("click", () => {
-        $(".subcategories").removeClass("active");
-    })
 
 
 
@@ -290,5 +305,20 @@ function PageScroll() {
 
     });
 }
+
+
 // LAST
 
+var search = document.getElementById("search-input");
+var suggestions = document.getElementById("suggestions");
+
+search.addEventListener("focus", () => {
+    suggestions.classList.add("active");
+});
+
+search.addEventListener("blur", () => {
+    suggestions.classList.remove("active");
+});
+document.getElementById("clear_suggestions_box").addEventListener("click", () => {
+    document.getElementById("suggestions-box").innerHTML = "";
+})

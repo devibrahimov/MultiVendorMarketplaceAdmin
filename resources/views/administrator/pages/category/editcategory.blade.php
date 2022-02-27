@@ -117,21 +117,21 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <label class="card-inside-title">Fon Şəkili</label>
-                                                        <span> File type: image| width:470px ,height:501px</span>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <input type="file" class="form-control" name="image" />
-                                                            </div>
-                                                            @error('image')
-                                                            <div class="alert alert-dismissible" role="alert" style="color: red!important">
-                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
-                                                                {{ $message }}
-                                                            </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
+{{--                                                    <div class="col-sm-6">--}}
+{{--                                                        <label class="card-inside-title">Fon Şəkili</label>--}}
+{{--                                                        <span> File type: image| width:470px ,height:501px</span>--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <div class="form-line">--}}
+{{--                                                                <input type="file" class="form-control" name="image" />--}}
+{{--                                                            </div>--}}
+{{--                                                            @error('image')--}}
+{{--                                                            <div class="alert alert-dismissible" role="alert" style="color: red!important">--}}
+{{--                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>--}}
+{{--                                                                {{ $message }}--}}
+{{--                                                            </div>--}}
+{{--                                                            @enderror--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
                                                 @endif
                                             </div>
                                             <button type="submit"  class="btn btn-success waves-effect">

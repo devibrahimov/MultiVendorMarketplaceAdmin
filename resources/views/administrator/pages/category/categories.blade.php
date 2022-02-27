@@ -139,21 +139,21 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="card-inside-title">Fon Şəkili</label>
-                                            <span> File type: image| width:470px ,height:501px</span>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="file" class="form-control" name="image" required  />
-                                                </div>
-                                                @error('image')
-                                                <div class="alert alert-dismissible" role="alert" style="color: red!important">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
+{{--                                        <div class="col-sm-6">--}}
+{{--                                            <label class="card-inside-title">Fon Şəkili</label>--}}
+{{--                                            <span> File type: image| width:470px ,height:501px</span>--}}
+{{--                                            <div class="form-group">--}}
+{{--                                                <div class="form-line">--}}
+{{--                                                    <input type="file" class="form-control" name="image" required  />--}}
+{{--                                                </div>--}}
+{{--                                                @error('image')--}}
+{{--                                                <div class="alert alert-dismissible" role="alert" style="color: red!important">--}}
+{{--                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>--}}
+{{--                                                    {{ $message }}--}}
+{{--                                                </div>--}}
+{{--                                                @enderror--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                     @endif
                                     </div>
                                             <button type="submit"  class="btn btn-success waves-effect">
@@ -177,7 +177,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>İcon</th>
-                                                    <th>Şəkil</th>
+{{--                                                    <th>Şəkil</th>--}}
                                                     <th>Kateqoriya adı</th>
                                                     <th>Açıqlama Mətni</th>
                                                     <th>--</th>
@@ -188,7 +188,7 @@
                                                 <tr>
                                                     <th scope="row">1</th>
                                                     <td><img src="{{$category->icon}}" width="35px" alt=""></td>
-                                                    <td><img src="{{$category->image}}" width="100px" alt=""></td>
+{{--                                                    <td><img src="{{$category->image}}" width="100px" alt=""></td>--}}
                                                     <td>{{$category->name}}</td>
                                                     <td>{{$category->description}}</td>
                                                     <td>

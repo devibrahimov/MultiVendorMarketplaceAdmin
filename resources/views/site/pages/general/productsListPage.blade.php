@@ -195,18 +195,9 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 mt-5 mb-4">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item disabled"><a class="page-link" href="#"><i
-                                                class="feather-chevron-left"></i></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i
-                                                class="feather-chevron-right"></i></a></li>
-                                </ul>
-                            </nav>
+
+                            {{$products->links('vendor.pagination.mypagination')}}
+
                         </div>
                     </div>
                 </div>

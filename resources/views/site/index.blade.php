@@ -10,7 +10,7 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{setting()->favicon}}">
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="/site/css/style.css">
+    <link rel="stylesheet" href="/site/css/__style.css?v={{rand(0,9999999)}}">
     <link rel="stylesheet" href="/site/toastr-notification/toastr.min.css">
 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -24,12 +24,19 @@
             background-position: center 10px !important;
         }
 
+        @media (max-width: 768px) {
+            .form-group .style2-input[type="submit"] {
+                padding-left: 0 !important;
+            }
+        }
+
         .main-wrapper {
-            max-width: 1000px !important;
+            max-width: 1150px !important;
         }
 
         .form-group .style2-input {
             height: 55px !important;
+            line-height: normal;
 
         }
 
@@ -98,15 +105,30 @@
         .header-wrapper .form-group input {
             width: 540px !important;
         }
-        .upper-header{
+
+        .upper-header {
             z-index: 9999999;
+        }
+
+        .anothernav {
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .anothernav li a {
+            color: #6d6d6d;
+        }
+
+        .anothernav li {
+            margin-left: 10px;
         }
     </style>
 </head>
 
 {{--<body class="color-theme-green mont-font" style="background-image: url(https://via.placeholder.com/1960x3000.jpg);">--}}
 
-<body class="color-theme-green mont-font" style="background-image: url(https://img5.lalafo.com/i/banners/70/4d/ab/67fd6d2e307e3c14cfb14d2fd1.jpg);">
+<body class="color-theme-green mont-font" style="background-image: url('/photos/site/advertisment/allpagesads');">
 
     <div class="preloader"></div>
     <!-- main wrapper  -->
@@ -129,33 +151,20 @@
                         <h4 class="fw-700 font-lg text-grey-900 text-start mb-3 d-block ls-0"> Menu</h4>
 
                         <ul class="navbar-nav">
+                            <li class="nav-item"><a class=" ps-0" href="{{route('trend')}}">Trend Məhsullar</a></li>
+                            <li class="nav-item"><a href="{{route('trend')}}">Ən Çox Satanlar</a></li>
+                            <li class="nav-item"><a href="{{route('site.shops')}}"  >Mağazalar</a></li>
+                            <li class="nav-item"><a href="{{route('site.products')}}">Bütün Məhsullar</a></li>
+                            <li class="nav-item"><a href="#">Xəritələr</a></li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Əsas Səhifə</a>
+                                <a href="{{route('selectedProducts')}}">Seçilmiş Məhsullar</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="shop-list-1.html">Shop </a>
-
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="dashboard.html">Dashboard</a>
-
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="single-product-1.html">Product</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Pages</a>
+                                <a href="{{route('searchedProducts')}}">Axtarılan Məhsullar</a>
                             </li>
                         </ul>
-                        <div class="card h-auto mt-auto p-4 w-100 rounded-10 theme-bg border-0 text-center bg-image-cover" style="background-image: url(https://via.placeholder.com/1071x319.png);">
-                            <div class="card-body text-center p-2 mb-2">
-                                <h4 class="text-grey-900 white-text mb-3 font-xs fw-500">Hesabında<b class="text-grey-900 white-text"> Deyilsən ?</b></h4>
-                                <a href="login-one.html" class="btn rounded-25 bg-current white-text text-white w-150">Daxil Ol</a>
-                                <a href="register-one.html" class="btn rounded-25 bg-current white-text text-white w-200 mt-1">Qeydiyyatdan
-                                    Keç</a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -163,16 +172,16 @@
     </div>
     <!-- MENU MODAL-->
 
-
+    @auth('user')
     <!-- SAVED MODAL -->
-    <div class="modal fade right modal-scrollable" id="savedmodal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade right modal-scrollable" id="cartmodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 350px;">
             <div class="modal-content theme-dark-bg p-0 border-0 rounded-0">
                 <button type="button" class="btn-close z-index-5 bg-grey font-xsssss w-26 h-26 text-center rounded-circle posa right-0 top-0 mt-3 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="cart-box vh-100">
                     <div class="modal-body vh-100 text-start p-0 d-flex align-items-start flex-column">
                         <div class="card w-100 p-4 pb-0 border-0 text-start">
-                            <h4 class="fw-700 font-lg text-grey-900 text-start mb-3 mt-n2 d-block"> Saved</h4>
+                            <h4 class="fw-700 font-lg text-grey-900 text-start mb-3 mt-n2 d-block"> Səbətim</h4>
                             <div class="row mb-3">
                                 <div class="col-md-5 col-xs-5">
                                     <a href="#" class="d-block text-center" data-bs-toggle="modal" data-bs-target="#productmodal"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a>
@@ -248,10 +257,14 @@
             </div>
         </div>
     </div>
-
+    @endauth
 
 
     <!-- Category Menu for mobile and tablet  -->
+
+
+
+
 
     <div class="mobile-overlay">
         <div class="mobile-menu">
@@ -260,67 +273,15 @@
             </div>
             <button class="close-btn"><i class="ti ti-close"></i></button>
 
-            <ul class="categories posr h-100 mt-3">
-                <li><img src="https://yaaz.az/wp-content/uploads/2016/11/92618716_7fb38fd1-387d-48bf-b24d-7dd91bb8e8f6.jpg" alt="">
-                    <div class="category-name"><a class="" href="#">Pişiklər</a><span>Pişik mamaları, pişik yuvaları,
-                            pişik oyuncağı</span> </div>
-                </li>
-                <li><i class="fas fa-dog"></i>
-                    <div class="category-name"><a class="" href="#">İtlər</a><span>İt mamaları, İt yuvaları, İt
-                            oyuncağları</span> </div>
-                </li>
-                <li><i class="fas fa-fish"></i>
-                    <div class="category-name"><a class="" href="#">Balıqlar</a><span>Lorem ipsum dolor sit amet
-                            consectetur.</span> </div>
-                </li>
-                <li><i class="fas fa-dove"></i>
-                    <div class="category-name"><a class="" href="#">Quşlar</a><span>Lorem ipsum dolor sit amet
-                            consectetur.</span> </div>
-                </li>
-                <li><i class="fas fa-horse"></i>
-                    <div class="category-name"><a class="" href="#">Atlar</a><span>Lorem ipsum dolor sit amet
-                            consectetur.</span> </div>
-                </li>
-                <li><i class="fas fa-prescription-bottle-alt"></i>
-                    <div class="category-name"><a class="" href="#">Biscuits &amp; Snacks</a><span>Lorem ipsum dolor sit
-                            amet consectetur.</span> </div>
-                </li>
-                <li><i class="fas fa-prescription-bottle-alt"></i>
-                    <div class="category-name"><a class="" href="#">Biscuits &amp; Snacks</a><span>Lorem ipsum dolor sit
-                            amet consectetur.</span> </div>
-                </li>
-                <li><i class="fas fa-prescription-bottle-alt"></i>
-                    <div class="category-name"><a class="" href="#">Biscuits &amp; Snacks</a><span>ipsum dolor sit amet
-                            consectetur.</span> </div>
-                </li>
-                <li><i class="fas fa-prescription-bottle-alt"></i>
-                    <div class="category-name"><a class="" href="#">Biscuits &amp; Snacks</a><span>Lorem sit amet
-                            consectetur.</span> </div>
-                </li>
-                <li><i class="fas fa-prescription-bottle-alt"></i>
-                    <div class="category-name"><a class="" href="#">Biscuits &amp; Snacks</a><span>Lorem ipsum dolor sit
-                            amet consectetur.</span> </div>
-                </li>
+            <ul class="categories posr h-100 mt-3" id="mobilcategories">
+
             </ul>
 
 
-            <div class="subcategories">
-                <div class="sub-header">
-                    <div class="back"><i class='bx bx-left-arrow-alt'></i></div>
-                    <div class="parent-name">Parent Name</div>
-                </div>
-                <ul class="categories posr h-100 mt-3">
-                    <li><a class="" href="#">Pişiklər</a></li>
-                    <li><a class="" href="#">İtlər</a></li>
-                    <li><a class="" href="#">Balıqlar</a></li>
-                    <li><a class="" href="#">Quşlar</a></li>
-                    <li><a class="" href="#">Atlar</a></li>
-                    <li><a class="" href="#">Biscuits &amp; Snacks</a></li>
-                    <li><a class="" href="#">Biscuits &amp; Snacks</a></li>
-                    <li><a class="" href="#">Biscuits &amp; Snacks</a></li>
-                    <li><a class="" href="#">Biscuits &amp; Snacks</a></li>
-                    <li><a class="" href="#">Biscuits &amp; Snacks</a></li>
-                </ul>
+            <div class="subcategories" id="mobilesubCategoriesMenuList">
+
+
+
             </div>
         </div>
     </div>
@@ -407,7 +368,178 @@
     <script src="/site/js/plugin.js"></script>
     <script src="/site/toastr-notification/toastr.min.js"></script>
 
-    <script src="/site/js/scripts.js"></script>
+    <script src="/site/js/_scripts.js"></script>
+
+
+
+
+    <script>
+
+        $(document).ready(function(){
+
+            let allcategories = {!!json_encode(\App\Models\Category::all(), JSON_UNESCAPED_UNICODE)!!}
+
+            parentCategoriesJson = allcategories.filter(c => c.parent_id == null)
+
+            for (var i = 0; i < parentCategoriesJson.length; i++) {
+                let category = parentCategoriesJson[i];
+                let li = `<li class="px-3 categoruItem" data-id="${category.id}">
+                        <a class="dropdown-item dropdown-toggle" href="#"> <img style="width: 33px" src="${category
+                    .icon}" alt="">
+                          ${category.name}</a> </li>`;
+                $('#categories').append(li)
+            }
+
+            $(".categoruItem").mouseenter(function () {
+                dataId = $(this).attr('data-id')
+
+                subCategoriesJson = allcategories.filter(sc => sc.parent_id == dataId)
+
+                subCartegoriesHTML = '';
+                if(subCategoriesJson.length != 0 ){
+
+                    for (var i = 0; i < subCategoriesJson.length; i++) {
+                        let category = subCategoriesJson[i];
+
+                        //console.log( category.name)
+                        subCartegoriesHTML +=' <div class="sub_menu_list mb-2" style="grid-row-end: span 3;">' +
+                            '<a href="" class="sub-menu-name font-xsss fw-600 text-current">'+category.name+'</a>' ;
+                        subCartegoriesHTML += '<ul class="sub-menu">';
+
+                        secondSubCategoriesJson = allcategories.filter(secondSC => secondSC.parent_id ==  category.id)
+                        for (var a = 0; a < secondSubCategoriesJson.length; a++) {
+                            let subcategory = secondSubCategoriesJson[a];
+
+                            //   console.log('---'+subcategory.name)
+                            url = '{{route('categoryProducts',':slug')}}';
+                            url = url.replace(':slug', subcategory.slug);
+                            subCartegoriesHTML +='<li class="lh-20">'+
+                                '<a href="'+url+'" ' +
+                                'class="font-xsssss fw-500 text-grey-700">'+subcategory.name+'</a></li>';
+
+                        }//end for (var a = 0; a < secondSubCategoriesJson.length; a++)
+                        subCartegoriesHTML += '</ul> </div>';
+                    }//end for (var i = 0; i < subCategoriesJson.length; i++)
+                }//end if
+
+                $('#subCategoriesMenuList').html(subCartegoriesHTML)
+                // console.log(subCartegoriesHTML)
+            });
+
+
+
+
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+                for (var i = 0; i < parentCategoriesJson.length; i++) {
+                    let category = parentCategoriesJson[i];
+
+                    subCategoriesJson = allcategories.filter(sc => sc.parent_id == category.id)
+                    subcategoryNames = '';
+                    for (var a = 0; a < subCategoriesJson.length; a++) {
+                        var subcategory = subCategoriesJson[a];
+                        if(a != subCategoriesJson.length-1){
+                            subcategoryNames+=subcategory.name+', ' ;
+                        }else{
+                            subcategoryNames+=subcategory.name  ;
+                        }
+
+                    }
+
+                    let li =`<li class="mobilCategoryItem" data-id="${category.id}"><img src="${category.icon}">
+                    <div class="category-name"><a class="" href="#">${category.name}</a>
+                    <span>${subcategoryNames}</span>
+                    </div></li>`;
+
+                    $('#mobilcategories').append(li)
+                }
+
+
+                $(".mobilCategoryItem").mouseenter(function () {
+                    dataId = $(this).attr('data-id')
+
+                    subCategoriesJson = allcategories.filter(sc => sc.parent_id == dataId)
+
+                    subCartegoriesHTML = ' <div class="back"><i class="bx bx-left-arrow-alt"> </i> Geri</div>';
+
+                    if(subCategoriesJson.length != 0 ){
+
+                        for (var b = 0; b < subCategoriesJson.length; b++) {
+                            let category = subCategoriesJson[b];
+
+                            subCartegoriesHTML+='<div class="sub-header">'+
+                                                '<div class="parent-name">'+category.name+'</div> </div>';
+                            subCartegoriesHTML += '<ul class="categories posr   mt-3">';
+
+                            secondSubCategoriesJson = allcategories.filter(secondSC => secondSC.parent_id ==  category.id)
+                            for (var c = 0; c < secondSubCategoriesJson.length; c++) {
+                                let subcategory = secondSubCategoriesJson[c];
+
+                                //   console.log('---'+subcategory.name)
+                                url = '{{route('categoryProducts',':slug')}}';
+                                url = url.replace(':slug', subcategory.slug);
+                                subCartegoriesHTML +='<li >'+
+                                    '<a href="'+url+'">'+subcategory.name+'</a></li>';
+
+                            }//end for (var a = 0; a < secondSubCategoriesJson.length; a++)
+                            subCartegoriesHTML += '</ul> </div>';
+                        }//end for (var i = 0; i < subCategoriesJson.length; i++)
+                    }//end if
+
+                    $('#mobilesubCategoriesMenuList').html(subCartegoriesHTML)
+                    $("#mobilesubCategoriesMenuList").addClass("active");
+                      console.log(subCartegoriesHTML)
+                });
+                $(document).on("click",'.back', function(){
+                    $("#mobilesubCategoriesMenuList").removeClass("active");
+                });
+            }//endmobiledevice
+
+
+
+
+
+
+
+            //     <div class="sub_menu_list mb-2" style="grid-row-end: span 3;">
+            //         <a href="" class="sub-menu-name font-xsss fw-600 text-current">Planşetlər</a>
+            //     <ul class="sub-menu">
+            //         <li class="lh-20"><a href="" class="font-xsssss fw-500 text-grey-700">Huawei</a>
+            //         </li>
+            //         <li class="lh-20"><a href="" class="font-xsssss fw-500 text-grey-700">Samsung</a>
+            //         </li>
+            //         <li class="lh-20"><a href="" class="font-xsssss fw-500 text-grey-700">Apple</a></li>
+            //         <li class="lh-20"><a href="" class="font-xsssss fw-500 text-grey-700">Xiaomi</a>
+            //         </li>
+            //         <li class="lh-20"><a href="" class="font-xsssss fw-500 text-grey-700">Xiaomi</a>
+            //         </li>
+            //         <li class="lh-20"><a href="" class="font-xsssss fw-500 text-grey-700">Xiaomi</a>
+            //         </li>
+            //         <li class="lh-20"><a href="" class="font-xsssss fw-500 text-grey-700">Xiaomi</a>
+            //         </li>
+            //     </ul>
+            // </div>
+
+
+
+
+
+
+            $(".my-menu").mouseenter(function () {
+                $(".overlay").addClass("active")
+            })
+
+            $(".my-menu").mouseleave(function () {
+                $(".overlay").removeClass("active")
+            })
+
+        })
+    </script>
+
+
+
+
+
 
 
     {{--<script type="text/javascript">--}}
@@ -440,48 +572,66 @@
     {{-- @endforeach--}}
     {{-- @endif--}}
     {{--</script>--}}
+
+
     @yield('js')
 
-    <script>
-        var myJson = $.getJSON("/site/data/db.json", function(data) {
-            $(".my-menu>ul>li:nth-child(1)").mouseenter(data, function() {
-                $(".overlay>ul>li").remove();
-                $.each(data[0].Children, function(i) {
-                    $(".overlay>ul").append(`<li><a href="">${data[0].Children[i].name}</a></li>`)
-                })
-                $(".sub-menu-name").text(data[0].name);
-                $(".overlay").css("background", data[0].background)
+    {{-- <script>--}}
+    {{-- var myJson = $.getJSON("/site/data/db.json", function(data) {--}}
+    {{-- $(".my-menu>ul>li:nth-child(1)").mouseenter(data, function() {--}}
+    {{-- $(".overlay>ul>li").remove();--}}
+    {{-- $.each(data[0].Children, function(i) {--}}
+    {{-- $(".overlay>ul").append(`<li><a href="">${data[0].Children[i].name}</a></li>`)--}}
+    {{-- })--}}
+    {{-- $(".sub-menu-name").text(data[0].name);--}}
+    {{-- $(".overlay").css("background", data[0].background)--}}
 
-            })
+    {{-- })--}}
 
-            $(".my-menu>ul>li:nth-child(2)").mouseenter(data, function() {
-                $(".overlay>ul>li").remove();
-                $.each(data[1].Children, function(i) {
-                    $(".overlay>ul").append(`<li><a href="">${data[1].Children[i].name}</a></li>`)
-                })
-                console.log(data[1].name)
-                $(".overlay").css("background", data[1].background)
-                $(".sub-menu-name").text(data[1].name);
+    {{-- $(".my-menu>ul>li:nth-child(2)").mouseenter(data, function() {--}}
+    {{-- $(".overlay>ul>li").remove();--}}
+    {{-- $.each(data[1].Children, function(i) {--}}
+    {{-- $(".overlay>ul").append(`<li><a href="">${data[1].Children[i].name}</a></li>`)--}}
+    {{-- })--}}
+    {{-- console.log(data[1].name)--}}
+    {{-- $(".overlay").css("background", data[1].background)--}}
+    {{-- $(".sub-menu-name").text(data[1].name);--}}
 
-            })
-        })
-    </script>
+    {{-- })--}}
+    {{-- })--}}
+    {{-- </script>--}}
 
-    <script>
-        var search = document.getElementById("search-input");
-        var suggestions = document.getElementById("suggestions");
 
-        search.addEventListener("focus", () => {
-            suggestions.classList.add("active");
-        });
 
-        search.addEventListener("blur", () => {
-            suggestions.classList.remove("active");
-        });
-        document.getElementById("clear_suggestions_box").addEventListener("click", () => {
-            document.getElementById("suggestions-box").innerHTML = "";
-        })
-    </script>
+
+{{--    AXtarilan sozler arasindan axtarilanlar siyahisi --}}
+{{--    <script>--}}
+{{--        var search = document.getElementById("search-input");--}}
+{{--        var suggestions = document.getElementById("suggestions");--}}
+
+{{--        search.addEventListener("focus", () => {--}}
+{{--            suggestions.classList.add("active");--}}
+{{--        });--}}
+
+{{--        search.addEventListener("blur", () => {--}}
+{{--            suggestions.classList.remove("active");--}}
+{{--        });--}}
+{{--        document.getElementById("clear_suggestions_box").addEventListener("click", () => {--}}
+{{--            document.getElementById("suggestions-box").innerHTML = "asasasa";--}}
+{{--        })--}}
+
+{{--        $(search).keyup((e) => {--}}
+{{--            let searchInput = e.currentTarget.value;--}}
+{{--            if(searchInput.length > 2){--}}
+{{--                console.log(searchInput);--}}
+{{--                $.getJSON( {{route('search')}},{'ajax':'query',page:mypage}, function( data ) {--}}
+{{--                    --}}
+
+{{--                });--}}
+{{--            }--}}
+
+{{--        });--}}
+{{--    </script>--}}
 
 </body>
 

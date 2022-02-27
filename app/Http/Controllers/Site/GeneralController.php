@@ -7,6 +7,7 @@ use App\Models\Contract;
 use App\Models\CorporativePages;
 use App\Models\Product;
 use App\Models\Setting;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
@@ -29,6 +30,14 @@ class GeneralController extends Controller
 
         $contracts = Contract::where('slug',$slug)->first();
         return view('site.pages.general.contract',compact('contracts'));
+    }
+
+    public function shops(){
+        $shops = Shop::join('shop_information','shops.id','=','shops_information.shop_id')
+            ->where('approvel',1)
+            ->select('shop_information.work_time','shops.shopname','shops.shopcategory','shops.shop_serialnumber')
+            ->paginate(10);
+        return view('site.pages.general.shops',compact(['shops']));
     }
 
 }

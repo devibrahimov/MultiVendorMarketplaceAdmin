@@ -11,8 +11,9 @@ use Illuminate\Support\Str;
 class ProductController extends Controller
 {
 
+
     public function index(){
-        $products = Product::where('shop_id',auth('shop')->user()->id)->paginate(3); //15;
+        $products = Product::where('shop_id',auth('shop')->user()->id)->paginate(10); //15;
         return view('site.pages.shop.product.index',compact(['products']));
     }
 
@@ -42,15 +43,20 @@ class ProductController extends Controller
             $informations = json_encode($information,JSON_UNESCAPED_UNICODE);
 
             $images = [] ;
-            foreach ($files as $file){
+            foreach ($files as $key => $file){
                 //$this->validate(request(), ['file' => 'image|mimes:jpg,jpeg,png']);
                 $filename = $file->getClientOriginalName();
                 $imageDestinationPath = 'uploads/';
                 $postImage = rand(0,12312312312). "." . $file->getClientOriginalExtension();
                 $file->move($imageDestinationPath, $postImage);
 
-                array_push($images,$postImage)  ;
-
+                if ($request->coverimage == $key){
+                    //cover olacaq image fayi arrayin ilk evveline qoyulur
+                    //0 ci index coverdir herzaman
+                    array_unshift($images , $postImage);
+                }else{
+                    array_push($images,$postImage);
+                }
             }
             $images = json_encode($images,JSON_UNESCAPED_UNICODE) ;
 
@@ -93,24 +99,19 @@ class ProductController extends Controller
            }else{
                return false;
            }
-
-
         }catch (\Exception $e){
 
-            return $e ;
+           // return $e ;
+            return false ;
 
         }
 
-
-
     }
 
-
-
-
-
-    public function edit($id){
-        $product = Product::find($id);
+    public function edit($id,$slug){
+        $shop_id = auth('shop')->user()->id;
+        $product = Product::where('shop_id',$shop_id)->where('key',$id)->where('slug',$slug)->first();
+        $product = json_encode($product, JSON_UNESCAPED_UNICODE) ;
         return view('site.pages.shop.product.edit',compact(['product']));
     }
 
@@ -122,20 +123,47 @@ class ProductController extends Controller
 
     public function active(Request $request){
         $id = $request->id;
+        $shop_id = auth('shop')->user()->id;
         $status = $request->status;
         var_dump($status);
-       $product =  Product::find($id);
+       $product =  Product::where('shop_id',$shop_id)->where('key',$id)->first();
 
        if ( $status == "true" ){
            $status = 1;
        }  if ( $status == "false" ){
            $status = 0;
        }
-
        $product->access = $status;
         $product->save();
-
-
     }
 
+
+
+    public function delete($key){
+        $shop_id = auth('shop')->user()->id;
+          Product::where('shop_id',$shop_id)->where('key',$key)->update(['access'=>0]) ;
+        $delete = Product::where('shop_id',$shop_id)->where('key',$key)->delete();
+        if ( $delete ){
+            $status = 1;
+        }  if ( $status == "false" ){
+            $status = 0;
+        }
+
+        return view('site.pages.shop.product.index' );
+    }
+
+
+    public function onlyTrashedProducs(){
+
+        $products = Product::where('shop_id',auth('shop')->user()->id)->onlyTrashed()->paginate(10); //15;
+        return view('site.pages.shop.product.index',compact(['products']));
+    }
+
+
+
 }
+
+
+
+
+

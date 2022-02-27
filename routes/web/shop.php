@@ -18,9 +18,13 @@ Route::group(['middleware'=> ['shop'] , 'prefix' => 'magaza'], function () {
     Route::get('/mehsullar',[ProductController::class ,'index']) ->name('shop.products') ;
     Route::get('/mehsul-elave-et',[ProductController::class ,'create']) ->name('shop.createproduct') ;
     Route::post('/mehsul-elave-et',[ProductController::class ,'store'])  ;
-    Route::post('/m-a-t-e',[ProductController::class ,'active'])  ->name('shop.productActive') ;//mehsul activliyini teyin et
+    Route::get('/m-a-t-e',[ProductController::class ,'active'])  ->name('shop.productActive') ;//mehsul activliyini
+    Route::get('m-sil-{key}',[ProductController::class,'delete'])->name('shop.productDelete');
+    Route::get('silinmis-mehsullar',[ProductController::class,'onlyTrashedProducs'])->name('shop.trashedproducts');
+    // teyin et
     Route::get('/mehsul-{id}-{slug}',[ProductController::class ,'edit'])->name('shop.editproduct') ;
-    Route::get('/mehsul-elave-et',[ProductController::class ,'create']) ->name('shop.createproduct') ;
+  //  Route::get('/mehsul-elave-et',[ProductController::class ,'create']) ->name('shop.createproduct') ;
 
-
+    Route::get('sifreni-yeniler',[AuthController::class,'changepassword'])->name('changepassword');
+    Route::post('sifreni-yeniler',[AuthController::class,'resetpassword']);
 });//middleware auth:apishop end

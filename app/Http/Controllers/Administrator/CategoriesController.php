@@ -27,7 +27,7 @@ class CategoriesController extends Controller
             $icon= null;
             $image = null;
             $icon = $request->file('icon');
-            $image = $request->file('image');
+//            $image = $request->file('image');
             $path = "/photos/site/categories";
             $imagepath = public_path() . $path;
 
@@ -38,12 +38,12 @@ class CategoriesController extends Controller
                 $icon = $imageurl;
             }
 
-            if ($image) {
-                $newimagename = env('APP_NAME').Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
-                $imageurl = $path . '/' . $newimagename; //for DB
-                $image->move($imagepath, $newimagename);
-                $image = $imageurl;
-            }
+//            if ($image) {
+//                $newimagename = env('APP_NAME').Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
+//                $imageurl = $path . '/' . $newimagename; //for DB
+//                $image->move($imagepath, $newimagename);
+//                $image = $imageurl;
+//            }
 
             $data = [
                 'parent_id' => $parentid,
@@ -51,7 +51,7 @@ class CategoriesController extends Controller
                 'slug' => Str::slug($request->name),
                 'description' => $request->description,
                 'icon' =>$icon,
-                'image' =>$image ,
+//                'image' =>$image ,
             ];
 
             $category= new Category();
@@ -83,7 +83,7 @@ class CategoriesController extends Controller
     public function update(int $id , Request $request){
         try{
             $icon = $request->file('icon');
-            $image = $request->file('image');
+//            $image = $request->file('image');
             $path = "/photos/site/categories";
             $parentid = $request->parentid;
             $imagepath = public_path() . $path;
@@ -102,13 +102,13 @@ class CategoriesController extends Controller
                 $data['icon'] = $imageurl;;
             }
 
-            if ($image ) {
-                $newimagename = env('APP_NAME').Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
-                $imageurl = $path . '/' . $newimagename; //for DB
-                $image->move($imagepath, $newimagename);
-
-                $data['image'] = $imageurl;
-            }
+//            if ($image ) {
+//                $newimagename = env('APP_NAME').Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
+//                $imageurl = $path . '/' . $newimagename; //for DB
+//                $image->move($imagepath, $newimagename);
+//
+//                $data['image'] = $imageurl;
+//            }
 
 
             $category=   Category::find($id);
