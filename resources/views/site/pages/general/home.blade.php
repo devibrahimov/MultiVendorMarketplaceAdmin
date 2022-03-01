@@ -89,145 +89,60 @@
         <div class="row">
             <div class="col-lg-12">
                 <h4 class="fw-700 font-sm mb-4 mt-2 d-flex lh-18">Həftənin Kateqoriyası
-                    <a href="#" class="ms-auto text-grey-500
-                fw-600 text-uppercase font-xsssss border-bottom ls-3">Hamısını gör</a></h4>
+                    <a href="{{route('trend')}}" class="ms-auto text-grey-500
+                fw-600 text-uppercase font-xsssss border-bottom ls-3">Trendlərin Hamısını gör</a></h4>
             </div>
         </div>
         <div class="border rounded-6 ovh bg-white">
             <div class="row">
                 <div class="col-lg-4 pe-md-0 ps-xs-0">
+                    <img src="{{$athomeCategory->image}}" style="height: 100%;object-fit: cover"
+                         alt="banner"
+                         class="w-100">
                     <div class="card w-100 border-0 rounded-0 shadow-none h-md-250">
-                        <div class="owl-carousel owl-theme product-banner owl-dot-nav owl-arrow-center owl-arrow-none overflow-visible">
-                            <div class="item"><img src="https://via.placeholder.com/351x665.png" alt="banner"
-                                                   class="w-100"></div>
-{{--                            <div class="item"><img src="https://via.placeholder.com/351x665.png" alt="banner"--}}
-{{--                                                   class="w-100"></div>--}}
-                        </div>
+
                         <div class="p-4 posa bottom-0 w-100 z-index-5">
                             <span class="fw-700 ls-3 text-white bg-current ps-2 pe-2 lh-24 rounded-6 d-inline-block font-xsssss">30% OFF</span>
-                            <h4 class="font-xs fw-700 lh-28 text-grey-900 mb-2 mt-2 ls-0">Daily <br>Meal Discount</h4>
+                            <h4 class="font-xs fw-700 lh-28 text-grey-900 mb-2 mt-2 ls-0">{{$athomeCategory->name}}</h4>
                             <a href="#" class="fw-700 ls-3 text-grey-900 font-xsssss border-bottom border-dark lh-22 d-inline-block">SHOP NOW</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
+                        @foreach($atHomeCatProducts as $product)
                         <div class="col-lg-4 col-md-4 col-xs-6 p-4 border-start border-bottom rounded-0 posr">
                             <span class="wish-list">
                                 <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                             </span>
                             <div class="clearfix"></div>
-                            <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                            <div class="star d-inline text-left">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                            </div>
+                            <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
+                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" class="d-block text-center">
+                                <img src="{{\GuzzleHttp\json_decode($product->images)[0]}}" alt="{{$product->name}}"
+                                     class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
+{{--                            <div class="star d-inline text-left">--}}
+{{--                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">--}}
+{{--                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">--}}
+{{--                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">--}}
+{{--                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">--}}
+{{--                                <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">--}}
+{{--                            </div>--}}
                             <div class="clearfix"></div>
-                            <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds Lightly Salted</a></h2>
-                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-xs-6 p-4 border-start border-bottom rounded-0 posr">
-                            <span class="ls-3 font-xsssss text-white text-uppercase bg-danger fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">DEAL</span>
-                            <span class="wish-list">
-                                <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
-                            </span>
-                            <div class="clearfix"></div>
-                            <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                            <div class="star d-inline text-left">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                            </div>
-                            <div class="clearfix"></div>
-                            <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Assorted Donuts Each Salted</a></h2>
+                            <h2 class="mt-2">
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
+                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">
+                                    {{$product->name}}
+                                </a></h2>
                             <div class="price">
-                                <span class="fw-bold colorSuccess"> 10₼ </span>
-                                <span class="text-decoration-line-through text-muted fw-bold">11</span>
+                                <span class="fw-bold colorSuccess"> {{$product->sale_price}}₼ </span>
+                                @if($product->sale_price < $product->price)
+                                    <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$product->price}}</span>
+                                @endif
                             </div>
 
                         </div>
-                        <div class="col-lg-4 col-md-4 col-xs-6 p-4 border-start border-bottom rounded-0 posr">
-                            <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30% off</span>
-                            <span class="wish-list">
-                                <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
-                            </span>
-                            <div class="clearfix"></div>
-                            <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                            <div class="star d-inline text-left">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                            </div>
-                            <div class="clearfix"></div>
-                            <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Natures Own 100% Wheat</a></h2>
-                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-xs-6 p-4 border-start rounded-0 posr border-bottom-xs">
-                            <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">15% off</span>
-                            <span class="wish-list">
-                                <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
-                            </span>
-                            <div class="clearfix"></div>
-                            <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-4 pt-1 pb-3"></a>
-                            <div class="star d-inline text-left">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                            </div>
-                            <div class="clearfix"></div>
-                            <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Tailgater Ham Sandwich Orgomart</a></h2>
-                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-xs-6  border-start rounded-0 posr">
-                            <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">20% off</span>
-                            <span class="wish-list">
-                                <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
-                            </span>
-                            <div class="clearfix"></div>
-                            <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-4 pt-1 pb-3"></a>
-                            <div class="star d-inline text-left">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                            </div>
-                            <div class="clearfix"></div>
-                            <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Kobita Almonds Lightly Salted</a></h2>
-                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-xs-6 p-4 border-start rounded-0 posr">
-                            <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30% off</span>
-                            <span class="wish-list">
-                                <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
-                            </span>
-                            <div class="clearfix"></div>
-                            <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-4 pt-1 pb-3"></a>
-                            <div class="star d-inline text-left">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                            </div>
-                            <div class="clearfix"></div>
-                            <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Apple Juice Orgomart <br> Food</a></h2>
-                            <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -632,8 +547,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

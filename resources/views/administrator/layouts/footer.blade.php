@@ -20,7 +20,7 @@
 <!-- Custom Js -->
 <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script src="/administrator/js/admin.js"></script>
-<script src="/administrator/js/pages/index.js"></script>
+
 
 <!-- Demo Js -->
 <script src="/administrator/js/demo.js"></script>

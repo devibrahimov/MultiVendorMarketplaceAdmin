@@ -25,6 +25,8 @@ Route::group(['middleware'=>'administrator' ,'prefix'=>'adminpanel'],function ()
         'categoryactivestatus'])->name('categoryactivestatus');
     Route::delete('/categorydelete/{id?}',[\App\Http\Controllers\Administrator\CategoriesController::class,'categorydelete'])
         ->name('categorydelete');
+    Route::get('/categoryathome',[\App\Http\Controllers\Administrator\CategoriesController::class,'categoryathome'])
+        ->name('categoryathome');
 
     //advertisment
     Route::get('/advertisment/{id?}',[\App\Http\Controllers\Administrator\AdvertismentController::class,'index'])->name

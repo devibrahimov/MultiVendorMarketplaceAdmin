@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Contract;
 use App\Models\CorporativePages;
 use App\Models\Product;
@@ -13,8 +14,22 @@ use Illuminate\Http\Request;
 class GeneralController extends Controller
 {
     public function index(){
-        $settings = Setting::query()->get();
-        return view('site.pages.general.home',compact('settings'));
+       $athomeCategory = Category::where('athome',1)->first();
+        $catlist= [];
+        foreach($athomeCategory->subCategories as $c){
+            array_push($catlist , $c->id);
+        }
+        $atHomeCatProducts = Product::whereIn('category_id',$catlist)
+            ->where('access',1)
+//            ->join('products','products.id','=','product_statistics.product_id')
+//            ->where('hit','>',0)
+//            ->orderBy('hit','DESC')
+            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+            ->take(6)
+            ->get();
+
+
+        return view('site.pages.general.home',compact(['atHomeCatProducts','athomeCategory']));
     }
 
 

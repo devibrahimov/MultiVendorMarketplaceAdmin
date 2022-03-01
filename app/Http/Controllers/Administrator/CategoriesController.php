@@ -130,7 +130,7 @@ class CategoriesController extends Controller
     public function categorydelete($id){
         try {
 
-        Category::find($id)->delete();
+            Category::find($id)->delete();
 
             $feedbackdata = ['title' => 'Uğurlu !',
                 'message' => 'Kategoriya uğurla silindi',
@@ -151,6 +151,16 @@ class CategoriesController extends Controller
         $category = Category::find($request->categoryid);
         $category->status = $request->status;
         $category->save();
+    }
+
+    public function categoryathome(Request $request)
+    {
+
+        $category = Category::find($request->categoryid);
+        Category::where('athome',1)->update(['athome' => 0]);
+        $category->athome =  1;
+        $category->save();
+
     }
 
 

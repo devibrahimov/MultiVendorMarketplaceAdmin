@@ -84,85 +84,117 @@
                         <div class="body">
                             <div class="row clearfix">
                                 <div class=" col-lg-4 col-md-4  col-sm-12">
+
                                     <form action="{{route('categorystore',$parentid)}}" method="post" enctype="multipart/form-data">
                                         @csrf
-                                       <div class="card">
+                                        <div class="card">
 
-                                        <div class="body table-responsive">
-                                    <div class="row clearfix">
-                                        <div class="col-sm-12">
-                                            <label class="card-inside-title">Kateqoriya adı</label>
-                                            <span>  </span>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="name"
-                                                           maxlength="25" required  />
+                                            <div class="body table-responsive">
+                                                <div class="row clearfix">
+                                                    <div class="col-sm-12">
+                                                        <label class="card-inside-title">Kateqoriya adı</label>
+                                                        <span>  </span>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="name"
+                                                                       maxlength="25" required  />
+                                                            </div>
+                                                            @error('name')
+                                                            <div class="alert alert-dismissible" role="alert" style="color: red!important">
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
+                                                                {{ $message }}
+                                                            </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <label class="card-inside-title">Kateqoriya Açıqlama Mətni</label>
+                                                        <span>  </span>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" class="form-control" name="description"
+                                                                       maxlength="50"   />
+                                                            </div>
+                                                            @error('description')
+                                                            <div class="alert alert-dismissible" role="alert" style="color: red!important">
+                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
+                                                                {{ $message }}
+                                                            </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    @if(!isset($parentid))
+                                                        <div class="col-sm-6">
+                                                            <label class="card-inside-title">Icon</label>
+                                                            <span> File type: image| width:100px ,height:100px</span>
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    <input type="file" class="form-control" name="icon"  required   />
+                                                                </div>
+                                                                @error('icon')
+                                                                <div class="alert alert-dismissible" role="alert" style="color: red!important">
+                                                                    <button type="button" class="close" data-dismiss="alert"
+                                                                            aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
+                                                                    {{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        {{--                                        <div class="col-sm-6">--}}
+                                                        {{--                                            <label class="card-inside-title">Fon Şəkili</label>--}}
+                                                        {{--                                            <span> File type: image| width:470px ,height:501px</span>--}}
+                                                        {{--                                            <div class="form-group">--}}
+                                                        {{--                                                <div class="form-line">--}}
+                                                        {{--                                                    <input type="file" class="form-control" name="image" required  />--}}
+                                                        {{--                                                </div>--}}
+                                                        {{--                                                @error('image')--}}
+                                                        {{--                                                <div class="alert alert-dismissible" role="alert" style="color: red!important">--}}
+                                                        {{--                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>--}}
+                                                        {{--                                                    {{ $message }}--}}
+                                                        {{--                                                </div>--}}
+                                                        {{--                                                @enderror--}}
+                                                        {{--                                            </div>--}}
+                                                        {{--                                        </div>--}}
+                                                    @endif
                                                 </div>
+                                                <button type="submit"  class="btn btn-success waves-effect">
+                                                    <i class="material-icons " style="color: white">save</i>
+                                                    <span>Yadda Saxla</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+
+                                       <div class="card" style="height: 324px;">
+                                       <div class="header">Ana Səhifədə olacaq Kateqoriya</div>
+                                        <div class="body table-responsive" style="height: 324px;">
+                                    <div class="row clearfix">
+                                        <div class="col-sm-12" style="height: 324px;">
+                                            <label class="card-inside-title">Kateqoriya seç</label>
+
+                                                <select class="form-group" id="categoryathome">
+                                                    @foreach($categories as $cat)
+                                                    <option value="{{$cat->id}}"
+                                                        {{$cat->athome ==1 ? 'selected':''}}>{{$cat->name}}</option>
+                                                    @endforeach
+                                                </select>
                                                 @error('name')
                                                 <div class="alert alert-dismissible" role="alert" style="color: red!important">
                                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
-                                            </div>
+
                                         </div>
-                                        <div class="col-sm-12">
-                                            <label class="card-inside-title">Kateqoriya Açıqlama Mətni</label>
-                                            <span>  </span>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="description"
-                                                           maxlength="50"   />
-                                                </div>
-                                                @error('description')
-                                                <div class="alert alert-dismissible" role="alert" style="color: red!important">
-                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    @if(!isset($parentid))
-                                        <div class="col-sm-6">
-                                            <label class="card-inside-title">Icon</label>
-                                            <span> File type: image| width:100px ,height:100px</span>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="file" class="form-control" name="icon"  required   />
-                                                </div>
-                                                @error('icon')
-                                                <div class="alert alert-dismissible" role="alert" style="color: red!important">
-                                                    <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close"><span aria-hidden="true" style="color: red!important">&times;</span></button>
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-{{--                                        <div class="col-sm-6">--}}
-{{--                                            <label class="card-inside-title">Fon Şəkili</label>--}}
-{{--                                            <span> File type: image| width:470px ,height:501px</span>--}}
-{{--                                            <div class="form-group">--}}
-{{--                                                <div class="form-line">--}}
-{{--                                                    <input type="file" class="form-control" name="image" required  />--}}
-{{--                                                </div>--}}
-{{--                                                @error('image')--}}
-{{--                                                <div class="alert alert-dismissible" role="alert" style="color: red!important">--}}
-{{--                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"style="color: red!important">&times;</span></button>--}}
-{{--                                                    {{ $message }}--}}
-{{--                                                </div>--}}
-{{--                                                @enderror--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                                    @endif
+
                                     </div>
-                                            <button type="submit"  class="btn btn-success waves-effect">
-                                                <i class="material-icons " style="color: white">save</i>
-                                                <span>Yadda Saxla</span>
-                                            </button>
+
                                 </div>
                                     </div>
-                                    </form>
+
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                     <div class="card">
@@ -233,6 +265,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                 </div>
@@ -268,6 +301,29 @@
                     "_token": "{{ csrf_token() }}",
                     'categoryid': dataid,
                     'status': status
+                },
+                success: function (response) {
+                    console.log(response.feedback)
+                    // You will get response from your PHP page (what you echo or print)
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        });
+
+
+
+        $(document).on('change', '#categoryathome', function () {
+
+            var dataid = $(this).val();
+
+
+            $.ajax({
+                url: "{{route('categoryathome')}}",
+                type: "get",
+                data: {
+                    'categoryid': dataid
                 },
                 success: function (response) {
                     console.log(response.feedback)

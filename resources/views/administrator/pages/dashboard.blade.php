@@ -318,25 +318,25 @@
 
 @section('js-libs')
     <!-- Jquery CountTo Plugin Js -->
-    <script src="/plugins/jquery-countto/jquery.countTo.js"></script>
+    <script src="/administrator/plugins/jquery-countto/jquery.countTo.js"></script>
 
     <!-- Morris Plugin Js -->
-    <script src="/plugins/raphael/raphael.min.js"></script>
-    <script src="/plugins/morrisjs/morris.js"></script>
+    <script src="/administrator/plugins/raphael/raphael.min.js"></script>
+    <script src="/administrator/plugins/morrisjs/morris.js"></script>
 
     <!-- ChartJs -->
-    <script src="/plugins/chartjs/Chart.bundle.js"></script>
+    <script src="/administrator/plugins/chartjs/Chart.bundle.js"></script>
 
     <!-- Flot Charts Plugin Js -->
-    <script src="/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="/plugins/flot-charts/jquery.flot.time.js"></script>
+    <script src="/administrator/plugins/flot-charts/jquery.flot.js"></script>
+    <script src="/administrator/plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="/administrator/plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="/administrator/plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="/administrator/plugins/flot-charts/jquery.flot.time.js"></script>
 
     <!-- Sparkline Chart Plugin Js -->
-    <script src="/plugins/jquery-sparkline/jquery.sparkline.js"></script>
-
+    <script src="/administrator/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+    <script src="/administrator/js/pages/index.js"></script>
 @endsection
 
 
