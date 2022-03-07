@@ -28,8 +28,13 @@ class GeneralController extends Controller
             ->take(6)
             ->get();
 
+        $atHomeRandProducts = Product::inRandomOrder()
+           // ->join('product_statistics','products.id','=','product_statistics.product_id')
+            ->where('access',1)
+            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+            ->take(9)->get();
 
-        return view('site.pages.general.home',compact(['atHomeCatProducts','athomeCategory']));
+        return view('site.pages.general.home',compact(['atHomeCatProducts','athomeCategory','atHomeRandProducts']));
     }
 
 

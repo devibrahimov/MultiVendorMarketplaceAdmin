@@ -174,6 +174,15 @@
                         <a href="{{route('shop.profil')}}" class="nav-icon p-0">
                             <img src="{{$avatar}}"  alt="user" class="w-40 mt-1"></a>
                     @endauth
+
+                    @guest('shop') @guest('user')
+                        <a href="{{route('user.login')}}" class="nav-icon" data-bs-toggle="modal"
+                           data-bs-target="#savedmodal"><i
+                                class="feather-heart text-grey-500"></i>
+                        </a>
+                        <a href="#" class="nav-icon" data-bs-toggle="modal" data-bs-target="#cartmodal"><i class="feather-shopping-bag text-grey-500"></i>
+                        </a>
+                    @endguest  @endguest
                 </div>
             </div>
 

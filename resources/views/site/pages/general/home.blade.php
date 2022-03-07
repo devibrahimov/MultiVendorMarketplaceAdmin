@@ -100,9 +100,8 @@
                          alt="banner"
                          class="w-100">
                     <div class="card w-100 border-0 rounded-0 shadow-none h-md-250">
-
                         <div class="p-4 posa bottom-0 w-100 z-index-5">
-                            <span class="fw-700 ls-3 text-white bg-current ps-2 pe-2 lh-24 rounded-6 d-inline-block font-xsssss">30% OFF</span>
+
                             <h4 class="font-xs fw-700 lh-28 text-grey-900 mb-2 mt-2 ls-0">{{$athomeCategory->name}}</h4>
                             <a href="#" class="fw-700 ls-3 text-grey-900 font-xsssss border-bottom border-dark lh-22 d-inline-block">SHOP NOW</a>
                         </div>
@@ -117,8 +116,11 @@
                             </span>
                             <div class="clearfix"></div>
                             <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
-                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" class="d-block text-center">
+                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" height="200px"
+                               class="d-block
+                                        text-center">
                                 <img src="{{\GuzzleHttp\json_decode($product->images)[0]}}" alt="{{$product->name}}"
+                                     style="object-fit: cover"
                                      class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
 {{--                            <div class="star d-inline text-left">--}}
 {{--                                <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">--}}
@@ -130,7 +132,8 @@
                             <div class="clearfix"></div>
                             <h2 class="mt-2">
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
-                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">
+                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}"
+                                   class="text-grey-700 fw-600 font-xss lh-22 d-block ls-0">
                                     {{$product->name}}
                                 </a></h2>
                             <div class="price">
@@ -175,17 +178,29 @@
 
 
             <div class="col-lg-12">
-                <h4 class="fw-700 font-xs mb-4 mt-2">Deal of the day</h4>
+                <h4 class="fw-700 font-xs mb-4 mt-2">Önə çıxan məhsullarımız</h4>
             </div>
 
             <div class="col-lg-12 mt-4">
                 <div class="product-wrap border rounded-6 ">
                     <div class="row m-0">
+
+
+
+
+
+
                         <div class="col col-xs-6 border-end p-0">
+
+
                             <div class="p-3 rounded-0 posr border-bottom">
-
                                 <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[4]->slug
+                                        .$atHomeRandProducts[4]->sku.$atHomeRandProducts[4]->barkode)),
+                                        'm'=>$atHomeRandProducts[4]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[4]->images)[0]}}"
+                                         alt="-{{$atHomeRandProducts[4]->name}}"
+                                         class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
                                 <div class="star d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
@@ -195,15 +210,31 @@
                                         float-start">
                                 </div>
                                 <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond
-                                        Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
+                                <h2 class="mt-2">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[4]->slug
+                                        .$atHomeRandProducts[4]->sku.$atHomeRandProducts[4]->barkode)),
+                                        'm'=>$atHomeRandProducts[4]->slug])}}" class="text-grey-700 fw-600 font-xsss
+                                        lh-22 d-block
+                                     ls-0">{{$atHomeRandProducts[4]->name}}</a></h2>
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[4]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[4]->sale_price < $atHomeRandProducts[4]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[4]->price}}</span>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="p-3 rounded-0 posr">
 
+
+
+                            <div class="p-3 rounded-0 posr border-bottom">
                                 <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[1]->slug
+                                        .$atHomeRandProducts[1]->sku.$atHomeRandProducts[1]->barkode)),
+                                        'm'=>$atHomeRandProducts[1]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[1]->images)[0]}}"
+                                         alt="-{{$atHomeRandProducts[1]->name}}"
+                                         class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
                                 <div class="star d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
@@ -213,18 +244,31 @@
                                         float-start">
                                 </div>
                                 <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond
-                                        Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
+                                <h2 class="mt-2">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[1]->slug
+                                        .$atHomeRandProducts[1]->sku.$atHomeRandProducts[1]->barkode)),
+                                        'm'=>$atHomeRandProducts[1]->slug])}}" class="text-grey-700 fw-600 font-xsss
+                                        lh-22 d-block
+                                     ls-0">{{$atHomeRandProducts[1]->name}}</a></h2>
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[1]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[1]->sale_price < $atHomeRandProducts[1]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[1]->price}}</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <div class="col col-xs-6 border-end p-0">
                             <div class="p-3 rounded-0 posr border-bottom">
                                 <span class="ls-3 font-xsssss text-white text-uppercase bg-danger fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">DEAL</span>
-
                                 <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[2]->slug
+                                        .$atHomeRandProducts[2]->sku.$atHomeRandProducts[2]->barkode)),
+                                        'm'=>$atHomeRandProducts[2]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[2]->images)[0]}}"
+                                         alt="-{{$atHomeRandProducts[2]->name}}"
+                                         class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
                                 <div class="star d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
@@ -234,40 +278,69 @@
                                         float-start">
                                 </div>
                                 <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Assorted
-                                        Donuts Each Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
+                                <h2 class="mt-2">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[2]->slug
+                                        .$atHomeRandProducts[2]->sku.$atHomeRandProducts[2]->barkode)),
+                                        'm'=>$atHomeRandProducts[2]->slug])}}" class="text-grey-700 fw-600 font-xsss
+                                        lh-22 d-block
+                                     ls-0">{{$atHomeRandProducts[2]->name}}</a></h2>
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[2]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[2]->sale_price < $atHomeRandProducts[2]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[2]->price}}</span>
+                                    @endif
+                                </div>
                             </div>
+
                             <div class="p-3 rounded-0 posr">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30%
-                                    off</span>
+
                                 <span class="wish-list">
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[3]->slug
+                                        .$atHomeRandProducts[3]->sku.$atHomeRandProducts[3]->barkode)),
+                                        'm'=>$atHomeRandProducts[3]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[3]->images)[0]}}"
+                                         alt="product-image"
+                                         class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0">
+                                </a>
                                 <div class="star d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1
-                                        float-start">
+                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
                                 </div>
                                 <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Natures Own
-                                        100% Wheat</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
+                                <h2 class="mt-2">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[3]->slug
+                                        .$atHomeRandProducts[3]->sku.$atHomeRandProducts[3]->barkode)),
+                                        'm'=>$atHomeRandProducts[3]->slug])}}"
+                                       class="text-grey-700 fw-600 font-xsss lh-22 d-block
+                                       ls-0">{{$atHomeRandProducts[3]->name}}</a></h2>
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[3]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[3]->sale_price < $atHomeRandProducts[3]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[3]->price}}</span>
+                                    @endif
+                                </div>
 
                             </div>
                         </div>
+
+
                         <div class="col-3 border-end p-0 d-none d-lg-block">
                             <div class="p-4 p-xl-5 rounded-0 posr">
                                 <span class="ls-3 font-xsssss text-white text-uppercase bg-warning fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">Trend</span>
 
                                 <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-5 mb-5 d-inline-block p-4"></a>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[0]->slug
+                                        .$atHomeRandProducts[0]->sku.$atHomeRandProducts[0]->barkode)),'m'=>$atHomeRandProducts[0]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[0]->images)[0]}}"
+                                         alt="product-image" class="w-100 mt-5 mb-5 d-inline-block p-4"></a>
                                 <div class="star d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
@@ -277,98 +350,178 @@
                                         float-start">
                                 </div>
                                 <div class="clearfix"></div>
-                                <h2 class="mt-3 mb-4"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond
-                                        Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
+                                <h2 class="mt-3 mb-4">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[0]->slug
+                                        .$atHomeRandProducts[0]->sku.$atHomeRandProducts[0]->barkode)),'m'=>$atHomeRandProducts[0]->slug])}}"
+                                       class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">{{$atHomeRandProducts[0]->name}}</a></h2>
+
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[0]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[0]->sale_price < $atHomeRandProducts[0]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[0]->price}}</span>
+                                    @endif
+                                </div>
+
                                 <div class="clearfix mt-5"></div>
-                                <a href="#" class="btn-lg mt-5 rounded-25 btn bg-current text-uppercase  text-white font-xsssss fw-700 ls-3 p-3 w-100 d-block">Add
-                                    to Cart</a>
-                                <a href="#" class="btn-lg mt-2 rounded-25 btn border-success text-uppercase text-success font-xsssss fw-700 ls-3 p-3 w-100 d-block">Add
-                                    to wishlist</a>
+                                <a href="#" class="btn-lg mt-5 rounded-25 btn bg-current text-uppercase  text-white
+                                font-xsssss fw-700 ls-3 p-3 w-100 d-block">
+                                    Səbətə At</a>
+                                <a href="#" class="btn-lg mt-2 rounded-25 btn border-success text-uppercase
+                                text-success font-xsssss fw-700 ls-3 p-3 w-100 d-block">
+                                  Favorilərə əlavə et</a>
 
                             </div>
                         </div>
+
+
                         <div class="col col-xs-6 border-end p-0">
                             <div class="p-3 rounded-0 posr border-bottom">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30%
-                                    off</span>
 
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1
-                                        float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond
-                                        Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
-                            </div>
-                            <div class="p-3 rounded-0 posr">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-warning fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">TREND</span>
-
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1
-                                        float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Assorted
-                                        Donuts Each Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-
-                            </div>
-                        </div>
-                        <div class="col col-xs-6 p-0">
-                            <div class="p-3 rounded-0 posr border-bottom">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-success fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">NEW</span>
                                 <span class="wish-list">
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[5]->slug
+                                        .$atHomeRandProducts[5]->sku.$atHomeRandProducts[5]->barkode)),
+                                        'm'=>$atHomeRandProducts[5]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[5]->images)[0]}}"
+                                         alt="product-image"
+                                         class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0">
+                                </a>
                                 <div class="star d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1
-                                        float-start">
+                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
                                 </div>
                                 <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Natures Own
-                                        100% Wheat</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
+                                <h2 class="mt-2">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[5]->slug
+                                        .$atHomeRandProducts[5]->sku.$atHomeRandProducts[5]->barkode)),
+                                        'm'=>$atHomeRandProducts[5]->slug])}}"
+                                       class="text-grey-700 fw-600 font-xsss lh-22 d-block
+                                       ls-0">{{$atHomeRandProducts[5]->name}}</a></h2>
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[5]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[5]->sale_price < $atHomeRandProducts[5]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[5]->price}}</span>
+                                    @endif
+                                </div>
+
+                            </div>
+
+                            <div class="p-3 rounded-0 posr">
+
+                                <span class="wish-list">
+                                    <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
+                                </span>
+                                <div class="clearfix"></div>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[6]->slug
+                                        .$atHomeRandProducts[6]->sku.$atHomeRandProducts[6]->barkode)),
+                                        'm'=>$atHomeRandProducts[6]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[6]->images)[0]}}"
+                                         alt="product-image"
+                                         class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0">
+                                </a>
+                                <div class="star d-inline text-left">
+                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
+                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
+                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
+                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
+                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
+                                </div>
+                                <div class="clearfix"></div>
+                                <h2 class="mt-2">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[6]->slug
+                                        .$atHomeRandProducts[6]->sku.$atHomeRandProducts[6]->barkode)),
+                                        'm'=>$atHomeRandProducts[6]->slug])}}"
+                                       class="text-grey-700 fw-600 font-xsss lh-22 d-block
+                                       ls-0">{{$atHomeRandProducts[6]->name}}</a></h2>
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[6]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[6]->sale_price < $atHomeRandProducts[6]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[6]->price}}</span>
+                                    @endif
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col col-xs-6 p-0">
+                            <div class="p-3 rounded-0 posr border-bottom">
+
+                                <span class="wish-list">
+                                    <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
+                                </span>
+                                <div class="clearfix"></div>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[7]->slug
+                                        .$atHomeRandProducts[7]->sku.$atHomeRandProducts[7]->barkode)),
+                                        'm'=>$atHomeRandProducts[7]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[7]->images)[0]}}"
+                                         alt="product-image"
+                                         class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0">
+                                </a>
+                                <div class="star d-inline text-left">
+                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
+                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
+                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
+                                    <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
+                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
+                                </div>
+                                <div class="clearfix"></div>
+                                <h2 class="mt-2">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[7]->slug
+                                        .$atHomeRandProducts[7]->sku.$atHomeRandProducts[7]->barkode)),
+                                        'm'=>$atHomeRandProducts[7]->slug])}}"
+                                       class="text-grey-700 fw-600 font-xsss lh-22 d-block
+                                       ls-0">{{$atHomeRandProducts[7]->name}}</a></h2>
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[7]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[7]->sale_price < $atHomeRandProducts[7]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[7]->price}}</span>
+                                    @endif
+                                </div>
 
                             </div>
                             <div class="p-3 rounded-0 posr">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">22%
-                                    off</span>
 
+                                <span class="wish-list">
+                                    <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
+                                </span>
                                 <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-4 pt-1 pb-3"></a>
+                                <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[8]->slug
+                                        .$atHomeRandProducts[8]->sku.$atHomeRandProducts[8]->barkode)),
+                                        'm'=>$atHomeRandProducts[8]->slug])}}" class="d-block text-center">
+                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[8]->images)[0]}}"
+                                         alt="product-image"
+                                         class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0">
+                                </a>
                                 <div class="star d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1
-                                        float-start">
+                                    <img src="/site/images/star-disable.png" alt="star" class="w-10 me-1 float-start">
                                 </div>
                                 <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Tailgater Ham
-                                        Sandwich Orgomart</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
+                                <h2 class="mt-2">
+                                    <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[8]->slug
+                                        .$atHomeRandProducts[8]->sku.$atHomeRandProducts[8]->barkode)),
+                                        'm'=>$atHomeRandProducts[8]->slug])}}"
+                                       class="text-grey-700 fw-600 font-xsss lh-22 d-block
+                                       ls-0">{{$atHomeRandProducts[8]->name}}</a></h2>
+                                <div class="price">
+                                    <span class="fw-bold colorSuccess"> {{$atHomeRandProducts[8]->sale_price}}₼ </span>
+                                    @if($atHomeRandProducts[8]->sale_price < $atHomeRandProducts[8]->price)
+                                        <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$atHomeRandProducts[8]->price}}</span>
+                                    @endif
+                                </div>
 
                             </div>
                         </div>
@@ -379,6 +532,7 @@
             <div class="col-lg-4 col-md-4 mt-4 ">
                 <h4 class="fw-700 font-xss mb-3 mt-2">Best Seller</h4>
                 <div class="card border rounded-6 border-light border-size-md">
+
                     <div class="card-content p-3 border-bottom border-light border-size-md">
                         <div class="row">
                             <div class="col-sm-4 col-xs-4">
@@ -392,6 +546,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card-content p-3 border-bottom border-light border-size-md">
                         <div class="row">
                             <div class="col-sm-4 col-xs-4">
@@ -405,6 +560,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card-content p-3 border-bottom border-light border-size-md">
                         <div class="row">
                             <div class="col-sm-4 col-xs-4">
@@ -418,6 +574,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="card-content p-3 border-bottom border-light border-size-md">
                         <div class="row">
                             <div class="col-sm-4 col-xs-4">
@@ -431,6 +588,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 mt-4 ">

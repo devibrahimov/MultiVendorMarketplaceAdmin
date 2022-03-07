@@ -76,19 +76,7 @@
                                     </table>
                                 </div>
 
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-end mt-4">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#"><i class="feather-chevrons-left"></i></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#"><i class="feather-chevrons-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                {{$products->links('vendor.pagination.mypagination')}}
 
                             </div>
                         </div>
