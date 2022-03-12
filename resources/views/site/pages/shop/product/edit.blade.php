@@ -362,7 +362,7 @@
             top: 0;
             height: 100vh;
             width: 100%;
-            background: #ebebeb88;
+            background: rgba(235, 235, 235, 0.47);
         }
     </style>
 @endsection
@@ -388,7 +388,9 @@
         </div>
 
         <div class="row ps-2 mt-3 ps-md-4 mb-3">
-            <a href="http://emagaza.baylaribrahimov.com/" class="fw-600 text-current font-md d-flex align-items-center"><i class='bx bx-chevron-left font-xl '></i> Geri</a>
+            <a href="{{url()->previous()}}" class="fw-600 text-current font-md d-flex align-items-center"><i class='bx
+            bx-chevron-left
+            font-xl '></i> Geri</a>
         </div>
         <div class="container ad-add my-2 ps-md-5 ps-4 ad-add">
 
@@ -405,18 +407,16 @@
                     <b class="font-xsss">Şəkilləri yükləyin</b>
                     <span class="font-xssss">(30 şəkilə qədər)</span>
                 </p>
-                <label for="file-input" class="ad-label ms-2 mt-1" role="button">
+                <label for="imageuploadinput" class="ad-label ms-2 mt-1" role="button">
                     <i class='feather-download me-2'></i>
                     <span class="text-center">Şəkil yüklə</span>
-                    <input type="file" id='file-input' onchange="updateInputFile(event)" multiple accept="image/png, image/jpeg, image/jpeg" />
+                    <input type="file" id='imageuploadinput' onchange="saveNewImages(event)" multiple accept="image/png,
+                    image/jpeg,image/jpeg" />
                     {{-- id="fronUpload"  class="d-none"--}}
                 </label>
 
-                <input id="imageuploadinput" class="d-none" name="images" type="file" multiple onchange="updateReferenceList()">
+
             </div>
-
-
-
 
             <div class="row mt-2">
                 <div class="imagelistdivrow  pe-0 " id='ad-images'>
@@ -427,32 +427,30 @@
             <style>
                 .category_overlay{
                     position: absolute;
+                    left: 0;
+                    top:0;
                     padding: 10px;
                     z-index: 222;
-                    border-radius: 5px;
-                    width: 68%;
-                    height: 20%;
+                    width: 100%;
+                    height: 100%;
                     background-color: #0e2231f2;
-                    margin-top: 20px;
                 }
                 .category_overlay span{
                     color: white;
                     border: 1px solid white;
                     padding: 8px;
-                    border-radius: 25px;
-                    float: left;
+                    border-radius: 6px;
                     margin-left: 10px;
-                    left: auto;
+                    margin-bottom: 5px;
                 }
                 .category_overlay button{
-                    ackground-color: #ffffff;
+                    margin-top: 10px;
+                    background-color: #ffffff;
                     color: #1a2e3b;
                     border: 1px solid white;
                     padding: 8px;
-                    border-radius: 25px;
-                    /*float: left;*/
-                    margin-left: 10px;
-                    left: auto;
+                    border-radius: 6px;
+                    width: 250px !important;
                 }
             </style>
 
@@ -461,28 +459,36 @@
                     <div class="row w-100 mb-3">
                         <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span style="color: red;">*</span> </h3>
 
-                        <input type="number" style="display: none" id="category_id" value="">
-                        <div @class('category_overlay')>
-                            <span> kategory 1  </span> <span> kategory 2 </span> <span> kategory 3  </span>
-                            <button><i @class('fas fa-list')> </i> Seçili Kategoriyanı dəyiş </button>
-                        </div>
-
-                        <div class="w-100">
-                            <div class="d-flex mt-2 ">
-                                {{-- Ana Katgoriyalar bu ashaqidaki ul icne siyahilanir--}}
-                                <div class="d-flex  image-uploader list_category">
-                                    {{-- <i class='bx bx-devices font-xxl text-grey-900'></i> <i class='bx bx-mobile font-xxl text-grey-900'></i>--}}
+                        <div class="posr">
+                            <input type="number" style="display: none" id="category_id" value="">
+                            <div @class('category_overlay')>
+                                <div class="d-flex justify-content-center align-items-center flex-wrap">
+                                    <span> Category 1</span>
+                                    <span> Category 2</span>
+                                    <span> Category 3</span>
                                 </div>
-
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <button id="change_category"><i @class('fas fa-list')> </i> Seçili kategoriyanı dəyiş
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="w-100">
+                                <div class="d-flex mt-2 ">
+                                    {{-- Ana Katgoriyalar bu ashaqidaki ul icne siyahilanir--}}
+                                    <ul class="d-flex  image-uploader list_category">
+                                        {{-- <i class='bx bx-devices font-xxl text-grey-900'></i> <i class='bx bx-mobile font-xxl text-grey-900'></i>--}}
+                                    </ul>
+
+                                </div>
+                            </div>
 
 
-                        <div class="row w-100 ps-2 mt-2 listSubCategory overflow-auto d-flex flex-nowrap
-                    align-items-center" style="border:1px solid #eeeeee;height: 230px;">
 
-
-                        </div>
+                            <div class="row w-100 ps-2 mt-2 listSubCategory overflow-auto d-flex flex-nowrap
+                        align-items-center" style="border:1px solid #eeeeee;height: 230px;">
+                            </div>
+                    </div>
                     </div>
 
                     <div class="form-group mb-2">
@@ -580,11 +586,11 @@
                                 <select class=" text-grey-700 form-control text-grey-700 font-xssss fw-600 bg-white
                             border   techvalue " id="select-country"
                                         data-live-search="true">
-                                    <option value="ch">Çin</option>
                                     <option value="tr">Türkiyə</option>
-                                    <option value="ru">Rusiya</option>
-                                    <option value="gb">England</option>
                                     <option value="aze">Azərbaycan</option>
+                                    <option value="ru">Rusiya</option>
+                                    <option value="ch">Çin</option>
+                                    <option value="gb">England</option>
                                     <option value="sng">Singapur</option>
                                     <option value="pk">Pakistan</option>
                                 </select>
@@ -669,103 +675,158 @@
 
 
 
-
     <script>
-        $(document).on('click', '#addnewoption1', function() {
-            let option = ` <div>
-                 <input type="text" class="form-control font-xssss fw-600 bg-white border text-grey-700" placeholder="varyant">
-                 <input type="text" class="form-control font-xssss fw-600 bg-white border text-grey-700" placeholder="stok sayisi">
-             </div> `;
-            $('.option1').append(option);
-        })
-    </script>
+        let productData = jQuery.parseJSON(JSON.stringify({!! $product !!}));
+        let imageJSONFiles = jQuery.parseJSON( productData.images);
 
-    <script>
+        var output = document.querySelector(".imagelistdivrow");
+
+        reqem =0;
+
         $(document).ready(function() {
 
+            console.log(productData)
 
+            $('#name').val(productData.name);
+            $('#description').val(productData.description);
+            $('#price').val(productData.price);
 
-            $("#variant-add").one("click", function() {
-                console.log($("#variant-select option:selected"))
-                $(".variant").append(`
-                <div class="variant2">
-                <h3 class="mt-5"> Rəng</h3>
+            if(productData.price > productData.sale_price ){
+                $('#sale_price').val(productData.sale_price);
+            }
 
-                <div class="size-variant d-flex mt-3 border rounded p-3">
+            $('#stock').val(productData.stock);
+            $('#sku').val(productData.sku);
+            $('#barkode').val(productData.barkode);
+            $('#warranty').val(productData.warranty);
+            $('#category_id').val(productData.category_id);
 
-                    <div class="size-box">
-                        <div class="sizes d-flex justify-content-center align-items-center">
-                            <span class="text-secondary">L</span>
-                        </div>
-                        <div class="size mr-2">
+            $('#change_category').on('click',function (){
+                $('#category_id').val('');
+                $('.category_overlay').hide();
 
-                            <input type="text" class="form-control mt-2 font-xssss fw-600 bg-white border text-grey-700 text-center" placeholder="varyant">
-                            <input type="text" class="form-control mt-2 font-xssss fw-600 bg-white border text-grey-700 text-center" placeholder="Stok Sayı">
-
-                        </div>
-                    </div>
-                    <button class="btn" id="size-add">
-                        <i class='bx bx-plus'></i>
-                    </button>
-
-                </div>
-                </div>
-            `)
-                $(".bx-x").on("click", function() {
-                    $(this).parent().parent().remove();
-                });
             });
 
+            for (var i = 0; i <  imageJSONFiles.length; ++i) {
+                let imageFile =imageJSONFiles[i]
 
+                if(i==0){
+                    Cover =` <button   class="do_main_photo posa btn bg-white
+                          text-secondary">Əsas şəkil</button>`;
+                }else{
+                    Cover =` <button data-id="${reqem}" class="do_main_photo posa btn bg-white
+                          text-secondary">Əsas şəkil et</button>`;
+                }
+                    var div = document.createElement("div");
+                    div.classList = `image_container d-flex justify-content-center position-relative
+                        mainPhoto${reqem}`;
+                    div.innerHTML = `<img id="image${reqem}" src="${imageFile}" >
+                            <span onclick="delRef(${reqem})" class=" psor delete_image position-absolute">&times;
+                            </span> ${Cover} ` ;
 
-            $(".size-variant #size-add").on('click', function() {
-                $(this).parent().children(".size-box").append(`<div class="size ml-2 mr-2">
+                    output.insertBefore(div, null);
+                    reqem++
+                } //end reader.onload
 
-                    <input type="text" class="form-control mt-2 font-xssss fw-600 bg-white border text-grey-700 text-center" placeholder="varyant">
-                    <input type="text" class="form-control mt-2 font-xssss fw-600 bg-white border text-grey-700 text-center" placeholder="Stok Sayı">
-                    <i class='bx bx-x'></i>
-                </div>`)
-                $(".bx-x").on("click", function() {
-                    $(this).parent(".size").remove();
-                });
-            })
-
-        })
-    </script>
-
-
-
-    <script>
-
-
-
-
+        });
         let coverimage = 0;
 
         function delRef(index) {
-            //  e.parentElement.parentElement.remove()
-            var filesa = $('#imageuploadinput')[0].files;
-
-
-            var dt = new DataTransfer()
-            var input = document.getElementById('imageuploadinput')
-            var {files} = input
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i]
-                if (index !== i) dt.items.add(file)
-                input.files = dt.files
-            }
 
             var resource = document.getElementById('image' + index);
-            resource.parentElement.remove()
-            var a = $('#imageuploadinput')[0].files;
+           // console.log(imageJSONFiles[index]);
+
+            $.ajax({
+                url: "{{route('shop.deletefile')}}",
+                method: "POST",
+                headers: {'X-CSRF-TOKEN': "{{ csrf_token() }}"},
+                data: {
+                    "file":imageJSONFiles[index],
+                    "product_key": productData.key
+                },
+                success: function(data) {
+                    //response gelen datamiz json oldugu ucun ellevce decode edirik
+                    if (data == true) {
+                        resource.parentElement.remove()
+                    }
+                }
+
+            }); //endajax
+
+
             //console.log(a)
         }
 
+       function saveNewImages(event) {
+           var form_data = new FormData();
+           form_data.append("_token", '{{ csrf_token() }}');
+           form_data.append("product_key", productData.key);
+           var files = $('#imageuploadinput')[0].files;
+           for (let i = 0; i < files.length; i++) {
+               let imageFile = document.getElementById('imageuploadinput').files[i]
+               //image faylimizi file[] adi ile formumuza elave ediirik.
+               form_data.append('file[]', imageFile);
+           } //endfor
+           $.ajax({
+               url: "{{route('shop.storeNewImages')}}",
+               method: "POST",
+               data: form_data,
+               contentType: false,
+               cache: false,
+               processData: false,
+               success: function(data) {
+                   //response gelen datamiz json oldugu ucun ellevce decode edirik
+                   data = $.parseJSON(data);
+                   console.log(data) ;
+                   if (data.status == true) {
+                       imagenewJSONFiles =  data.images
+
+                       for (var i = 0; i <  imagenewJSONFiles.length; ++i) {
+                           let imageFile =imagenewJSONFiles[i]
+
+                           if(i==0){
+                               Cover =` <button   class="do_main_photo posa btn bg-white
+                          text-secondary">Əsas şəkil</button>`;
+                           }else{
+                               Cover =` <button data-id="${reqem}" class="do_main_photo posa btn bg-white
+                          text-secondary">Əsas şəkil et</button>`;
+                           }
+                           var div = document.createElement("div");
+                           div.classList = `image_container d-flex justify-content-center position-relative
+                        mainPhoto${reqem}`;
+                           div.innerHTML = `<img id="image${reqem}" src="${imageFile}" >
+                            <span onclick="delRef(${reqem})" class=" psor delete_image position-absolute">&times;
+                            </span> ${Cover}`;
+
+                           output.insertBefore(div, null);
+                           reqem++
+                       } //end reader.onload
+
+
+                   }
+               }
+               //  console.log(data)
+               //
+               // //gelen datani jquerynin each functionu ile dondururuk
+               // $.each(data , function(k, v) {
+               //
+               //     //console.log('index:'+v.index + 'name:'+v.name);
+               //
+               //      $('#'+v.index).attr("src",v.link)
+               //   //  $('#'+imagefilecount).attr("src",v.link);
+               //     $('#'+v.index).next('#overlay').remove();
+               //
+               //
+               // });
+
+               // shekillerin yuklenmish oldugunu gostermek
+               // }
+           }); //endajax
+
+       }
 
         function coverImage(indx) {
             coverimage = indx;
-
         }
 
         $(document).on('click', '.do_main_photo', function(evt) {
@@ -780,100 +841,10 @@
             //  console.log(first)
         })
 
-        function updateReferenceList() {
-            var ref_input = document.getElementById('imageuploadinput');
-            var output = document.querySelector(".imagelistdivrow");
-            let reqem = 0;
 
-            var a = (ref_input.files.length - 1);
-            hasimagelist = document.getElementById('image' + a);
-            imageuploader = document.querySelector('.imagelistdivrow');
-            imageuploader.innerHTML = "";
-
-
-            for (var i = 0; i < ref_input.files.length; ++i) {
-                let imageFile = ref_input.files[i]
-
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var div = document.createElement("div");
-                    div.classList = `image_container d-flex justify-content-center position-relative
-                        mainPhoto${reqem}`;
-                    div.innerHTML = `<img id="image${reqem}" src="${e.target.result}" >
-                            <span onclick="delRef(${reqem})" class=" psor delete_image position-absolute">&times;</span>
-                          <button data-id="${reqem}" class="do_main_photo posa btn bg-white
-                          text-secondary">Əsas şəkil et</button>`;
-
-                    output.insertBefore(div, null);
-                    reqem++
-                } //end reader.onload
-                reader.readAsDataURL(imageFile);
-            }
-
-        }
-
-        function updateInputFile(event) {
-            var dt = new DataTransfer();
-            var input = document.getElementById('imageuploadinput');
-            var {
-                files
-            } = input;
-
-            //  if(files.length < 10){
-            for (var i = 0; i < files.length; i++) {
-
-                var file = files[i]
-
-                if (file.size < 103889) {
-                    dt.items.add(file)
-
-                    input.files = dt.files
-                } else {
-
-                    toastr.error(`secdiyiniz <img src="${file}" width="100px">`)
-                }
-            }
-
-
-            newfiles = event.target.files;
-
-            console.log(newfiles.length)
-
-            for (var q = 0; q < newfiles.length; q++) {
-
-                var newfile = newfiles[q]
-
-                let name = newfile.name;
-
-                if (newfile.type == 'image/jpg' || newfile.type == 'image/png' || newfile.type == 'image/jpeg' || newfile.type == 'image/webp') {
-
-
-                    if (newfile.size < 993889) {
-
-                        dt.items.add(newfile);
-
-                        input.files = dt.files;
-                        coverimage = 0;
-                    } else {
-                        toastr.warning(`secdiyiniz  ${name} adlı  Şəkilin ölçüləri standartdan böyükdür `);
-
-                    }
-
-                } else {
-                    toastr.warning('Şəkil Formatına uyğun olmayan ' + name + ' adlı Fayl yükləməyə çalışırsınız');
-                }
-
-            }
-
-
-            updateReferenceList()
-        }
 
         function  validateform(){
-            if( document.getElementById('imageuploadinput').files.length == 0 ){
-                toastr.error(`Məhsul Şəkillərini əlavə etməyi unutmusunuz !`);
-                return false;
-            }
+
             if($('#category_id').val() == ''){
                 toastr.error(`Məhsul Kateqoriyası seçməyi unutmusunuz !`);
                 return false;
@@ -931,15 +902,8 @@
                 form_data.append("warranty", $('#warranty').val());
                 form_data.append("category_id", $('#category_id').val());
                 form_data.append("description", $('#description').val());
-                form_data.append("coverimage", coverimage);
 
-                var files = $('#imageuploadinput')[0].files;
 
-                for (let i = 0; i < files.length; i++) {
-                    let imageFile = document.getElementById('imageuploadinput').files[i]
-                    //image faylimizi file[] adi ile formumuza elave ediirik.
-                    form_data.append('file[]', imageFile);
-                } //endfor
 
                 let informationtechvalue = $('#techniquelinputs .form-group .techvalue')
                 let informationtechkey = $('#techniquelinputs .form-group .techkey')
@@ -1090,27 +1054,70 @@
     </script>
 
 
+
+
+
+    <script>
+        $(document).on('click', '#addnewoption1', function() {
+            let option = ` <div>
+                 <input type="text" class="form-control font-xssss fw-600 bg-white border text-grey-700" placeholder="varyant">
+                 <input type="text" class="form-control font-xssss fw-600 bg-white border text-grey-700" placeholder="stok sayisi">
+             </div> `;
+            $('.option1').append(option);
+        })
+    </script>
+
     <script>
         $(document).ready(function() {
-            let productData = jQuery.parseJSON(JSON.stringify({!! $product !!}));
-            console.log(productData)
-
-            $('#name').val(productData.name);
-            $('#description').val(productData.description);
-            $('#price').val(productData.price);
-
-            if(productData.price > productData.sale_price ){
-                $('#sale_price').val(productData.sale_price);
-            }
-
-            $('#stock').val(productData.stock);
-            $('#sku').val(productData.sku);
-            $('#barkode').val(productData.barkode);
-            $('#warranty').val(productData.warranty);
-            $('#category_id').val(productData.category_id);
 
 
-        });
+
+            $("#variant-add").one("click", function() {
+                console.log($("#variant-select option:selected"))
+                $(".variant").append(`
+                <div class="variant2">
+                <h3 class="mt-5"> Rəng</h3>
+
+                <div class="size-variant d-flex mt-3 border rounded p-3">
+
+                    <div class="size-box">
+                        <div class="sizes d-flex justify-content-center align-items-center">
+                            <span class="text-secondary">L</span>
+                        </div>
+                        <div class="size mr-2">
+
+                            <input type="text" class="form-control mt-2 font-xssss fw-600 bg-white border text-grey-700 text-center" placeholder="varyant">
+                            <input type="text" class="form-control mt-2 font-xssss fw-600 bg-white border text-grey-700 text-center" placeholder="Stok Sayı">
+
+                        </div>
+                    </div>
+                    <button class="btn" id="size-add">
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                </div>
+                </div>
+            `)
+                $(".bx-x").on("click", function() {
+                    $(this).parent().parent().remove();
+                });
+            });
+
+
+
+            $(".size-variant #size-add").on('click', function() {
+                $(this).parent().children(".size-box").append(`<div class="size ml-2 mr-2">
+
+                    <input type="text" class="form-control mt-2 font-xssss fw-600 bg-white border text-grey-700 text-center" placeholder="varyant">
+                    <input type="text" class="form-control mt-2 font-xssss fw-600 bg-white border text-grey-700 text-center" placeholder="Stok Sayı">
+                    <i class='bx bx-x'></i>
+                </div>`)
+                $(".bx-x").on("click", function() {
+                    $(this).parent(".size").remove();
+                });
+            })
+
+        })
     </script>
 
 

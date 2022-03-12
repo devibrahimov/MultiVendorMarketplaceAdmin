@@ -51,11 +51,9 @@ class ShopController extends Controller
         $imageDestinationPath = 'uploads/shop/';
         $postImage = rand(0,12312312312). "." . $file->getClientOriginalExtension();
         $file->move($imageDestinationPath, $postImage);
-    //    $shop=  DB::table('shop_information')->where('shop_id',auth('shop')->user()->id)->first();
-        $shop=  DB::table('shop_information')->where('shop_id',auth('shop')->user()->id)->update(['avatar' => '/'.$imageDestinationPath.$postImage]);
-//        $shop->avatar = '/'.$imageDestinationPath.$filename ;
-//        $shop->update();
-       // $shop->update(['avatar' => '/'.$imageDestinationPath.$filename]);
+        $shop=  DB::table('shop_information')
+            ->where('shop_id',auth('shop')->user()->id)
+            ->update(['avatar' => '/'.$imageDestinationPath.$postImage]);
         return true;
 
 

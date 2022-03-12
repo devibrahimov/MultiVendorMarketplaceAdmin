@@ -8,7 +8,6 @@ use \App\Http\Controllers\Shop\ProductController;
 use \App\Http\Controllers\Shop\ShopController ;
 //middleware auth:apishop start
 Route::group(['middleware'=> ['shop'] , 'prefix' => 'magaza'], function () {
-
     Route::get('/profilim',[ShopController::class ,'profil'])->name('shop.profil') ;
     Route::get('/cixis-et',[AuthController::class ,'logout']) ->name('shop.logout') ;
 
@@ -24,6 +23,9 @@ Route::group(['middleware'=> ['shop'] , 'prefix' => 'magaza'], function () {
     // teyin et
     Route::get('/mehsul-{id}-{slug}',[ProductController::class ,'edit'])->name('shop.editproduct') ;
   //  Route::get('/mehsul-elave-et',[ProductController::class ,'create']) ->name('shop.createproduct') ;
+
+    Route::post('/shekil-sil',[ProductController::class ,'deletefile']) ->name('shop.deletefile') ;
+    Route::post('/shekil-elave-et',[ProductController::class ,'storeNewImages']) ->name('shop.storeNewImages') ;
 
     Route::get('sifreni-yeniler',[AuthController::class,'changepassword'])->name('changepassword');
     Route::post('sifreni-yeniler',[AuthController::class,'resetpassword']);

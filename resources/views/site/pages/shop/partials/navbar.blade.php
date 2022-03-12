@@ -2,11 +2,12 @@
     <div class="card-body text-center">
         <figure class="avatar ms-auto me-auto mb-0 mt-0 w100 posr">
             @php
-            $shop = \App\Models\Shopİnformation::where('shop_id',auth('shop')->user()->id)->select('avatar')->first();
-            if( $shop->avatar != null && file_exists($shop->avatar)){
-                  $avatar = $shop->avatar ;
+            $shop = \App\Models\ShopInformation::where('shop_id',auth('shop')->user()->id)->select('avatar')->first();
+            if( $shop->avatar == null || !file_exists(public_path() .$shop->avatar)){
+                  $avatar = '/uploads/shop/defaultavatar.png';
             }else{
-                $avatar = '/uploads/shop/shop-default-avatar.png';
+                 $avatar = $shop->avatar ;
+
             }
             @endphp
             <img src="{{$avatar}}" alt="product" id="avatarimage"

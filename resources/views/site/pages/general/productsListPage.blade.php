@@ -6,6 +6,18 @@
 
 
 @section('content')
+    <head>
+        <style>
+            .buy{
+            bottom: 19px !important;
+            padding: 3px 8px !important; 
+            border-radius: 5px !important;
+        }
+        .my-card{
+            height: 310px !important;
+        }
+        </style>
+    </head>
     <!-- LISTING WRAPPER -->
     <div class="listing-wrapper pt-3 pb-3 md-mt-6">
         <div class="container">
@@ -173,20 +185,20 @@
                                     <img src="{{\GuzzleHttp\json_decode($product->images)[0]}}"
                                          class="card-img-top" alt="{{$product->name}}" title="{{$product->name}}" >
                                 </div>
-                                <div class="cardBody px-2">
-                                    <h5 class="card-text py-2">
+                                <div class="cardBody px-2 pt-2">
+                                    <h5 class="card-text">
                                         <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
-                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}">
+                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" class="text-grey-700 fw-600 font-xss lh-22 d-block ls-0">
                                             {{$product->name}}</a>
                                     </h5>
-                                    <div class="price">
+                                    <div class="price mt-3 bottom-0 posr">
                                         <span class="fw-bold colorSuccess"> {{$product->sale_price}}₼ </span>
                                         @if($product->sale_price < $product->price)
                                         <span class="text-decoration-line-through text-muted
                                         fw-bold">{{$product->price}}</span>
                                         @endif
                                     </div>
-                                    <button class="buy"><i class='bx bx-cart me-1'></i> Səbətə at</button>
+                                    <button class="buy shadow-custom"><i class='bx bx-cart me-1'></i> Səbətə at</button>
                                 </div>
                             </div>
                             @endforeach

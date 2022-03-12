@@ -15204,7 +15204,7 @@ select.sort {
 }
 
 .header-wrapper .logo {
-    width: 145px;
+    /*width: 145px;*/
 }
 
 .header-wrapper .form-group input {

@@ -164,11 +164,11 @@
 {{--                            <span class="dot-count bg-warning"></span><i class="feather-bell text-grey-500"></i>--}}
 {{--                        </a>--}}
                         @php
-                            $shop = \App\Models\Shopİnformation::where('shop_id',auth('shop')->user()->id)->select('avatar')->first();
-                            if( $shop->avatar != null && file_exists($shop->avatar)){
+                            $shop = \App\Models\ShopInformation::where('shop_id',auth('shop')->user()->id)->select('avatar')->first();
+                            if( $shop->avatar != null && file_exists(public_path() .$shop->avatar)){
                                  $avatar = $shop->avatar ;
                             }else{
-                                $avatar = '/uploads/shop/shop-default-avatar.png';
+                                $avatar = '/uploads/shop/defaultavatar.png';
                             }
                         @endphp
                         <a href="{{route('shop.profil')}}" class="nav-icon p-0">

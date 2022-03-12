@@ -398,7 +398,7 @@
 
 
     <div class="row ps-2 mt-3 ps-md-4 mb-3">
-        <a href="http://emagaza.baylaribrahimov.com/" class="fw-600 text-current font-md d-flex align-items-center"><i class='bx bx-chevron-left font-xl '></i> Geri</a>
+        <a href="{{url()->previous()}}" class="fw-600 text-current font-md d-flex align-items-center"><i class='bx bx-chevron-left font-xl '></i> Geri</a>
     </div>
     <div class="container ad-add my-2 ps-md-5 ps-4 ad-add">
 
@@ -475,8 +475,7 @@
                 <div class="form-group w-100 mb-3">
                     <textarea maxlength="300" style="height: 100px ; line-height: 25px; resize: none"
                               id="description"
-                              class="form-control font-xssss fw-600 bg-white border" placeholder="Məhsul
-                              haqqında açıqlama mətni "></textarea>
+                              class="form-control font-xssss fw-600 bg-white border" placeholder="Məhsul haqqında açıqlama mətni "></textarea>
                 </div>
 
                 <div class="row w-100">

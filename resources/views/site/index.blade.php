@@ -123,6 +123,33 @@
         .anothernav li {
             margin-left: 10px;
         }
+
+        @media (max-width: 430px){
+            .price {
+                transform: scale(1) !important;
+                font-size: 14px;
+                bottom: 0 !important;
+                margin-top: 15px;
+            }
+            .buy{
+                bottom: 17px !important;
+                transform: scale(0.9) !important;
+            }
+        }
+        /* .card-text{
+            height: 50px !important;
+        } */
+
+        .shadow-custom {
+            box-shadow: 0.02rem 0.05rem 0.55rem rgb(0 0 0 / 12%) !important;
+        }
+
+        .buy{
+            bottom: 16px !important;
+            padding: 3px 8px !important;
+            border-radius: 5px !important;
+        }
+
     </style>
 </head>
 
@@ -288,7 +315,6 @@
 
     <!-- Category Menu for mobile and tablet  -->
 
-
     <!-- SINGLE PRODUCT MODAL -->
     <div class=" modal fade right modal-scrollable" id="productmodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 350px;">
@@ -384,7 +410,8 @@
             for (var i = 0; i < parentCategoriesJson.length; i++) {
                 let category = parentCategoriesJson[i];
                 let li = `<li class="px-3 categoruItem" data-id="${category.id}">
-                        <a class="dropdown-item dropdown-toggle" href="#"> <img style="width: 33px" src="${category
+                        <a class="dropdown-item dropdown-toggle" href="#"> <img style="width: 18px;height: 18px"
+                        src="${category
                     .icon}" alt="">
                           ${category.name}</a> </li>`;
                 $('#categories').append(li)

@@ -24,9 +24,6 @@ class ProductController extends Controller
 
 
     public function store(ShopCreateProduct $request){
-     // return $request->all();
-
-
 
         try {
             $files = request()->file('file');
@@ -159,6 +156,74 @@ class ProductController extends Controller
         return view('site.pages.shop.product.index',compact(['products']));
     }
 
+
+    public function deletefile(Request $request){
+
+        $file_path =  $request->file ;
+        $product_key = $request->product_key ;
+        $product =  Product::getFindProduct(['key'=>$product_key]);
+        $images = json_decode($product->images) ;
+        $newlist = [];
+        foreach ($images as $image){
+            if ($image != $file_path)
+                array_push($newlist,$image) ;
+        }
+        $product ->images = json_encode($newlist)  ;
+        $product ->save() ;
+        if(file_exists($file_path))
+        {
+            unlink($file_path);
+
+        }
+        return true ;
+    }
+
+
+    public function storeNewImages(Request $request){
+        $files = request()->file('file');
+        $product_key = $request->product_key ;
+        $newlist = [] ;
+
+        $product =  Product::getFindProduct(['key'=>$product_key]);
+
+        $images = json_decode($product->images) ;
+
+        foreach ($images as $image){
+                array_push($newlist,$image) ;
+        }
+
+        $newimages = [];
+        foreach ($files as $key => $file){
+            //$this->validate(request(), ['file' => 'image|mimes:jpg,jpeg,png']);
+            $filename = $file->getClientOriginalName();
+            $imageDestinationPath = 'uploads/';
+            $postImage = rand(0,12312312312). "." . $file->getClientOriginalExtension();
+            $file->move($imageDestinationPath, $postImage);
+            array_push($newlist,'/'.$imageDestinationPath. $postImage);
+            array_push($newimages,'/'.$imageDestinationPath. $postImage);
+        }
+        $newlist = json_encode($newlist,JSON_UNESCAPED_UNICODE) ;
+
+        $dbdata=[
+            'images' => $newlist,
+        ] ;
+
+        $product = $product->update($dbdata);
+
+        if($product){
+
+            return json_encode([
+                'status' => true ,
+                'images' => $newimages
+            ],JSON_UNESCAPED_UNICODE);
+        }else{
+
+            return json_encode([
+                'status' => false ,
+                'images' => null
+            ],JSON_UNESCAPED_UNICODE);
+        }
+    }
 
 
 }
