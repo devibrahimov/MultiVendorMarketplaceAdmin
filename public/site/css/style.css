@@ -12318,7 +12318,7 @@ fieldset:disabled .btn {
     }
 }
 
-@media (min-width: 1400) {
+@media (min-width: 1400px) {
     .float-xxl-start {
         float: left !important;
     }
