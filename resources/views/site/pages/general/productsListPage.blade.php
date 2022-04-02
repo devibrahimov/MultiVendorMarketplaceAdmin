@@ -65,7 +65,9 @@
                     </div>
                 </div>
                 <div class="col-lg-3 pe-lg-3">
+
                     <div class="side-wrap mb-4">
+                        <form action="{{route('site.filter')}}">
                         <div class="form-group mb-3">
                             <h6 class="fw-600 text-grey-800 font-xsss mb-0 text-capitalize">Məhsul Kategoriyası</h6>
                         </div>
@@ -90,6 +92,7 @@
                                                     @foreach($cat->subCategories as $c)
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="checkbox"
+                                                               name="category[]"
                                                                value="{{$c->id}}" id="{{\Illuminate\Support\Str::slug($c->name)}}">
                                                         <label class="form-check-label text-grey-800"
                                                                for="{{\Illuminate\Support\Str::slug($c->name)}}">{{$c->name}}</label>
@@ -111,10 +114,11 @@
                         </div>
                         <div class="filter_price form-group w-100 mb-3 row">
                             <div class="form-group w-50 mb-3">
-                                <input class="form-control text-grey-700" type="text" placeholder="0">
+                                <input class="form-control text-grey-700" type="text" placeholder="0" name="minprice">
                             </div>
                             <div class="form-group w-50 mb-3">
-                                <input class="form-control text-grey-700" type="text" placeholder="9999">
+                                <input class="form-control text-grey-700" type="text" placeholder="9999"
+                                       name="maxprice">
                             </div>
                         </div>
 
@@ -124,10 +128,10 @@
 
                         <div class="form-group mb-3">
 
-                            <select class="form-control text-grey-700">
-                                <option selected>Seçin</option>
+                            <select class="form-control text-grey-700" name="country">
+                                <option disabled selected>Seçin</option>
                                 @foreach(\Illuminate\Support\Facades\DB::table('countries')->get() as $country)
-                                <option value="1">{{$country->countries_name}}</option>
+                                <option value="{{$country->countries_iso_code}}">{{$country->countries_name}}</option>
                                 @endforeach
                             </select>
 
@@ -138,13 +142,15 @@
                           </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Drinks" id="flexCheckStock10">
+                            <input class="form-check-input" type="checkbox" name="warranty" value="warranty"
+                                   id="flexCheckStock10">
                             <label class="form-check-label text-grey-800" for="flexCheckStock10">Qarantiyalı</label>
                         </div>
 
-                        <button class="mt-5 btn shadow-custom btn-success" type="submit" name="filter"> Axtar </button>
-
+                        <button class="mt-5 btn shadow-custom btn-success" type="submit"  > Axtar </button>
+                        </form>
                     </div>
+
                 </div>
                 <div class="col-lg-9">
                     <div class="row m-0">

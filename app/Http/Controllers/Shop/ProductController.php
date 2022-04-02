@@ -99,7 +99,7 @@ class ProductController extends Controller
         }catch (\Exception $e){
 
            // return $e ;
-            return false ;
+            return $e->getMessage() ;
 
         }
 

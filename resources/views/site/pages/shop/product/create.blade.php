@@ -365,8 +365,6 @@
         background: #ebebeb88;
     }
 
-
-
 </style>
 @endsection
 
@@ -374,25 +372,10 @@
 
 @section('content')
 
-{{-- <div class="das-nav md-mt-6 p-0 bg-current-shade bg-image-bottomcenter bg-image-cover" style="background-image: url(https://via.placeholder.com/1900x250.jpg);">--}}
-{{-- <div class="container">--}}
-{{-- <div class="row">--}}
-{{-- <div class="col-lg-8 ps-4 offset-lg-4 d-flex align-items-start flex-column h-250">--}}
-{{-- <h1 class="mt-lg-auto mb-4 mt-5 display3-size display1-sm-size text-grey-900 fw-700">Dashboard</h1>--}}
-{{-- </div>--}}
-{{-- </div>--}}
-{{-- </div>--}}
-{{-- </div>--}}
-
 <div class="main-div pb-5 pt-2 posr">
 
-    <style>
-        .custom_overload{
-            display: none;
-        }
-    </style>
 
-    <div class="custom_overload">
+    <div class="custom_overload" style="display: none">
         <span class="fw-600 text-grey-900 font-lg mb-0 text-capitalize"> Loading . . .</span>
         <div class="tenor-gif-embed" data-postid="15270884" data-share-method="host" data-aspect-ratio="1" data-width="30%"><a href="https://tenor.com/view/doge-gif-15270884">Doge GIF</a>from <a href="https://tenor.com/search/doge-gifs">Doge GIFs</a></div>
 
@@ -618,8 +601,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 </div>
 
@@ -765,7 +746,6 @@
 
     function coverImage(indx) {
         coverimage = indx;
-
     }
 
     $(document).on('click', '.do_main_photo', function(evt) {
@@ -892,7 +872,7 @@
             toastr.error(`Məhsulun qiymətini yazmağı unutmusunuz !`);
             return false;
         }
-        if($('#price').val() < $('#sale_price').val()){
+        if($('#price').val() < $('#sale_price').val() ){
             toastr.error(`Məhsulun endirimli qiyməti ,Real qiymetindən çox ola bilməz !`);
             return false;
         }
@@ -922,7 +902,7 @@
     $(document).on('click', '#postbutton', function() {
         if(validateform() == true){
 
-            $('.custom_overload').css('display:block')
+            $('.custom_overload').css('display','block')
 
             var form_data = new FormData();
             form_data.append("_token", '{{ csrf_token() }}');

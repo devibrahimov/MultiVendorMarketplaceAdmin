@@ -17,7 +17,7 @@
                             @foreach(json_decode($product->images) as $image)
                             <div class="item  text-center d-block me-0" style="background-color: rgb(193 193 193/8%)
                             !important">
-                                <img  style="height: 400px;object-fit: contain" src="/uploads/{{$image}}"
+                                <img  style="height: 400px;object-fit: contain" src="{{$image}}"
                                       alt="{{$product->name}}"
                                      title="{{$product->name}}"
                             class="   d-inline-block">   </div>
@@ -25,15 +25,15 @@
                         </div>
                     </div>
 
-{{--                    <div class="card text-center border-0 w-100 mt-3 justify-content-center flex-row">--}}
-{{--                          @foreach(json_decode($product->images) as $image)--}}
-{{--                        <a href="#" class="d-inline-block m-1">--}}
-{{--                            <img src="/uploads/{{$image}}" alt="product"  style="width:60px;height:60px;object-fit:--}}
-{{--                            cover"--}}
-{{--                                 class="  border">--}}
-{{--                        </a>--}}
-{{--                     @endforeach--}}
-{{--                    </div>--}}
+                    <div class="card text-center border-0 w-100 mt-3 justify-content-center flex-row">
+                          @foreach(json_decode($product->images) as $image)
+                        <a href="#" class="d-inline-block m-1">
+                            <img src="{{$image}}" alt="product"  style="width:60px;height:60px;object-fit:
+                            cover"
+                                 class="  border">
+                        </a>
+                     @endforeach
+                    </div>
 
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">

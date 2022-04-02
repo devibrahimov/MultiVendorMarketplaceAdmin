@@ -6,7 +6,7 @@
 function compressImage($data) {
     $info = getimagesize($data['source']);
 
-    if ($info['mime'] == 'image/jpeg'){
+    if ($info['mime'] == 'image/jpeg' || $info['mime'] == 'image/jpg'){
         $image = imagecreatefromjpeg($data['source']);
 
         $imagesize = filesize($data['source']) ;

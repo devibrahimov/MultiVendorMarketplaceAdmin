@@ -103,7 +103,15 @@ class ProductController extends Controller
 
 
 
+    public function filter(Request $request){
 
+
+        $products = Product::filter()->where('access',1)
+            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+            ->paginate(20);
+        return view('site.pages.general.productsListPage', compact('products'));
+
+    }
 
 
 }

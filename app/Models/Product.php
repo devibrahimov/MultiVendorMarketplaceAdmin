@@ -103,4 +103,28 @@ class Product extends Model
        return Product::where('key',$key)->select(['key','id'])->first();
 
     }
+
+    public function scopeFilter($query)
+    {
+        if(\request('warranty') == 'warranty'){
+           $query->where('warranty' ,'>',0) ;
+        }
+
+
+          if( request('category') != null ){
+
+              foreach (\request('category') as $cat_id){
+                  $query->orWhere('category_id' ,$cat_id ) ;
+              }
+
+          }
+          if(\request('minprice') != ''){
+              $query->where('sale_price' ,'<',request('minprice') ) ;
+          }
+          if(\request('maxprice') != ''){
+              $query->where('sale_price' ,'>',request('maxprice')) ;
+          }
+        return $query ;
+
+    }
 }
