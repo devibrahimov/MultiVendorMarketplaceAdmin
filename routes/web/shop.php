@@ -22,6 +22,7 @@ Route::group(['middleware'=> ['shop'] , 'prefix' => 'magaza'], function () {
     Route::get('silinmis-mehsullar',[ProductController::class,'onlyTrashedProducs'])->name('shop.trashedproducts');
     // teyin et
     Route::get('/mehsul-{id}-{slug}',[ProductController::class ,'edit'])->name('shop.editproduct') ;
+    Route::post('/mehsul-{id}-{slug}',[ProductController::class ,'update']) ;
   //  Route::get('/mehsul-elave-et',[ProductController::class ,'create']) ->name('shop.createproduct') ;
 
     Route::post('/shekil-sil',[ProductController::class ,'deletefile']) ->name('shop.deletefile') ;

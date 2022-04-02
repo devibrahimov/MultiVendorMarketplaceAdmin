@@ -21,11 +21,26 @@ function thisproductcategorylist($category_id,$list = ''){
     }else{
         echo $list ;
     }
+}
+
+
+
+
+function  productcategorylist($category_id,$list = ''){
+
+    $category = \App\Models\Category::where('id',(int) $category_id)->first();
+
+    $list .= ' <span>'.$category->name.' </span> ' ;
+
+    if($category->parent_id != null){
+
+        productcategorylist($category->parent_id ,$list);
+
+    }else{
+        echo $list ;
+    }
 
 
 
 
 }
-
-
-

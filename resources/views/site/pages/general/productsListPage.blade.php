@@ -10,11 +10,42 @@
         <style>
             .buy{
             bottom: 19px !important;
-            padding: 3px 8px !important; 
+            padding: 3px 8px !important;
             border-radius: 5px !important;
         }
         .my-card{
             height: 310px !important;
+        }
+
+        .filter__listing{
+            height: 28px;
+            transition: 0.35s ease-out;
+            overflow: hidden;
+        }
+        .filter__listing.active{
+            height: auto;
+        }
+        .filter__listing .row{
+            --bs-gutter-x: 0.7rem;
+        }
+        .filter__header{
+            padding: 3px 0;
+            cursor: pointer;
+        }
+        .filter__listing .filter__header{
+            font-size: 13px   !important;
+            font-weight: 500  !important;
+            line-height: 24px !important;
+            cursor: pointer;
+        }
+        .filter__listing li{
+            line-height: 26px;
+        }
+        .filter__listing .feather-chevron-right{
+            transform: rotate(0);
+        }
+        .filter__listing.active > .filter__header > .feather-chevron-right{
+            transform: rotate(90deg);
         }
         </style>
     </head>
@@ -26,7 +57,7 @@
                     <div class="card d-flex flex-wrap flex-row w-100 p-lg-5 p-4 border-0 bg-image-cover bg-image-center mb-3"
                          style="background-image: url(https://via.placeholder.com/1070x260.jpg);">
                         <div class="col-lg-5 col-md-12">
-                            <h2 class="fw-700 display1-size display1-sm-size ls-0 text-grey-900 mb-0">Choose the
+                            <h2 class="fw-700 display1-size display1-sm-size ls-0 text-grey-800 mb-0">Choose the
                                 best <span class="text-current">healthier way</span> of life</h2>
                             <span class="text-grey-700 fw-500 font-xssss mt-1 d-block">All Natural Italian-Style
                                     Chicken Meatballs</span>
@@ -36,130 +67,83 @@
                 <div class="col-lg-3 pe-lg-3">
                     <div class="side-wrap mb-4">
                         <div class="form-group mb-3">
-                            <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Product Categoires</h6>
+                            <h6 class="fw-600 text-grey-800 font-xsss mb-0 text-capitalize">Məhsul Kategoriyası</h6>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Drinks" id="flexCheckDrinks1">
-                            <label class="form-check-label" for="flexCheckDrinks1">Drinks</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
+                        <div class="form-group">
+                        @foreach(\App\Models\Category::getcategories() as $category)
+                        <div class="filter__listing posr px-1 border-1">
+                            <div class="filter__header mb= d-flex align-items-start justify-content-between">
+                                <span class="text-grey-800 font-xsss">{{$category->name}}</span>
+                                <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
+                            </div>
+                            <div class="filter__elements pb-2 d-flex flex-column">
+                                <ul class="ps-2 mb-0">
+                                    @foreach($category->subCategories as $cat)
+                                    <li class="d-flex align-items-start justify-content-between">
+                                        <div class="filter__listing posr w-100 border-1">
+                                            <div class="filter__header mb= d-flex align-items-start justify-content-between">
+                                                <span class="text-grey-800 font-xsss">{{$cat->name}}</span>
+                                                <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
+                                            </div>
+                                            <div class="filter__elements pb-2 d-flex flex-column">
+                                                <ul class="ps-2 mb-0">
+                                                    @foreach($cat->subCategories as $c)
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox"
+                                                               value="{{$c->id}}" id="{{\Illuminate\Support\Str::slug($c->name)}}">
+                                                        <label class="form-check-label text-grey-800"
+                                                               for="{{\Illuminate\Support\Str::slug($c->name)}}">{{$c->name}}</label>
+                                                    </div>
+                                                   @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Snacks" id="flexCheckSnacks2">
-                            <label class="form-check-label" for="flexCheckSnacks2">Snacks & Biscuits</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Breads" id="flexCheckBreads3">
-                            <label class="form-check-label" for="flexCheckBreads3">Breads & Bakery</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Breakfast"
-                                   id="flexCheckBreakfast4">
-                            <label class="form-check-label" for="flexCheckBreakfast4">Breakfast & Dairy</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Frozen" id="flexCheckFrozen5">
-                            <label class="form-check-label" for="flexCheckFrozen5">Frozen Foods</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Fruits" id="flexCheckFruits6">
-                            <label class="form-check-label" for="flexCheckFruits6">Fruits & Vegetables</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Grocery" id="flexCheckGrocery7">
-                            <label class="form-check-label" for="flexCheckGrocery7">Grocery & Staples</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Household"
-                                   id="flexCheckHousehold8">
-                            <label class="form-check-label" for="flexCheckHousehold8">Household Needs</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Meats" id="flexCheckMeats9">
-                            <label class="form-check-label" for="flexCheckMeats9">Meats & Seafood</label>
-                            <i class="feather-chevron-right mt-1 font-xsss text-grey-500 ms-auto"></i>
+                        @endforeach
                         </div>
 
                         <div class="form-group mb-3 mt-5">
-                            <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Product Status</h6>
+                            <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Qiymət Aralığı</h6>
                         </div>
+                        <div class="filter_price form-group w-100 mb-3 row">
+                            <div class="form-group w-50 mb-3">
+                                <input class="form-control text-grey-700" type="text" placeholder="0">
+                            </div>
+                            <div class="form-group w-50 mb-3">
+                                <input class="form-control text-grey-700" type="text" placeholder="9999">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3 mt-5">
+                            <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">İstehsalatçı Ölkə</h6>
+                        </div>
+
+                        <div class="form-group mb-3">
+
+                            <select class="form-control text-grey-700">
+                                <option selected>Seçin</option>
+                                @foreach(\Illuminate\Support\Facades\DB::table('countries')->get() as $country)
+                                <option value="1">{{$country->countries_name}}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
+
+                          <div class="form-group mb-3 mt-5 ">
+                          <h6 class="fw-600 text-grey-800 font-xsss mb-0 text-capitalize">Məhsul Qarantiyası </h6>
+                          </div>
+
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="Drinks" id="flexCheckStock10">
-                            <label class="form-check-label" for="flexCheckStock10">In Stock</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Snacks" id="flexCheckSlae11">
-                            <label class="form-check-label" for="flexCheckSlae11">On Slae</label>
+                            <label class="form-check-label text-grey-800" for="flexCheckStock10">Qarantiyalı</label>
                         </div>
 
-                        <div class="form-group mb-3 mt-5">
-                            <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Product Brand</h6>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Drinks" id="flexCheckDrinks">
-                            <label class="form-check-label" for="flexCheckDrinks">Vegetarian</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(1233)</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Snacks" id="flexCheckSnacks">
-                            <label class="form-check-label" for="flexCheckSnacks">Vegan</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(2231)</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Breads" id="flexCheckBreads">
-                            <label class="form-check-label" for="flexCheckBreads">Green Food</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(754)</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Breakfast"
-                                   id="flexCheckBreakfast">
-                            <label class="form-check-label" for="flexCheckBreakfast">Milk Fess</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(27)</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Frozen" id="flexCheckFrozen">
-                            <label class="form-check-label" for="flexCheckFrozen">Frozen Foods</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(61)</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Fruits" id="flexCheckFruits">
-                            <label class="form-check-label" for="flexCheckFruits">Fruits & Vegetables</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(76)</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Grocery" id="flexCheckGrocery">
-                            <label class="form-check-label" for="flexCheckGrocery">Grocery & Staples</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(45)</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Household"
-                                   id="flexCheckHousehold">
-                            <label class="form-check-label" for="flexCheckHousehold">Household Needs</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(23)</span>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Meats" id="flexCheckMeats">
-                            <label class="form-check-label" for="flexCheckMeats">Meats & Seafood</label>
-                            <span class="mt-1 font-xssss fw-500 text-grey-500 ms-auto">(23)</span>
-                        </div>
-                        <div class="form-group mb-3 mt-5">
-                            <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Popular Tag</h6>
-                        </div>
-                        <a href="#" class="tag-name">Grocery</a>
-                        <a href="#" class="tag-name">Fruits</a>
-                        <a href="#" class="tag-name">Vegetables</a>
-                        <a href="#" class="tag-name">Milk</a>
-                        <a href="#" class="tag-name">Drinks</a>
-                        <a href="#" class="tag-name">Food</a>
-                        <a href="#" class="tag-name">Grocery</a>
-                        <a href="#" class="tag-name">Drinks</a>
-                        <a href="#" class="tag-name">Chiness</a>
+                        <button class="mt-5 btn shadow-custom btn-success" type="submit" name="filter"> Axtar </button>
+
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -244,5 +228,25 @@
         });
 
 
+
     </script>
+
+
+
+<script>
+$(".filter__header").on("click", function () {
+    $(this).parent().toggleClass("active");
+    var h1 = $(this).parent().find(".filter__elements").height();
+
+    // if ($(this).parent().hasClass("active"))
+    // {
+    //     $(this).parent().css("height", `${(42 + h1 + 26)}`);
+    //     //26 is padding and margin, 42 is old filter__lsiting height
+    // }
+    // else
+    // {
+    //     $(this).parent().css("height", "42");
+    // }
+});
+</script>
 @endsection

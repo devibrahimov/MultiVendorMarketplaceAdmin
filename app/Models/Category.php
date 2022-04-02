@@ -20,4 +20,9 @@ class Category extends Model
     public function  parent(){
         return $this->belongsTo(__CLASS__, 'parent_id')->withDefault();
     }
+
+
+    public static function getcategories(){
+        return Category::where('parent_id',null)->get();
+    }
 }

@@ -11,7 +11,7 @@
             }
             @endphp
             <img src="{{$avatar}}" alt="product" id="avatarimage"
-                 class="shadow-sm rounded-circle w-125" />
+                 class="shadow-sm rounded-circle w-125" style="height: 125px; object-fit: cover;"/>
 
             <form  enctype="multipart/form-data" method="post">
                 <label class="edit_photo bg-secondary btn posa" for="avatar">

@@ -149,6 +149,37 @@
             padding: 3px 8px !important;
             border-radius: 5px !important;
         }
+        .main-div li h4{
+            width: 100px;
+        }
+        .note_list{
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            width: 250px;
+            height: auto;
+            background-color: #fffbbe;
+            border-radius: 4px;
+        }
+
+        textarea::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #ddd;
+            outline: 1px solid transparent;
+        }
+        .ad-info .categoriya.getsubcat{
+            cursor: pointer;
+        }
+        .ad-info .form-control{
+            line-height: normal;
+        }
 
     </style>
 </head>
@@ -315,6 +346,7 @@
 
     <!-- Category Menu for mobile and tablet  -->
 
+
     <!-- SINGLE PRODUCT MODAL -->
     <div class=" modal fade right modal-scrollable" id="productmodal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 350px;">
@@ -429,7 +461,7 @@
                         let category = subCategoriesJson[i];
 
                         //console.log( category.name)
-                        subCartegoriesHTML +=' <div class="sub_menu_list mb-2" style="grid-row-end: span 3;">' +
+                        subCartegoriesHTML +=' <div class="sub_menu_list mb-2" style="grid-row-end: span 4;">' +
                             '<a href="" class="sub-menu-name font-xsss fw-600 text-current">'+category.name+'</a>' ;
                         subCartegoriesHTML += '<ul class="sub-menu">';
 

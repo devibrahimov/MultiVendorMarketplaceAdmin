@@ -426,7 +426,7 @@
         </div>
         <div class="container ad-add my-2 ps-md-5 ps-4 ad-add">
 
-                <div class="note_list shadow-sm px-3 py-2 d-flex flex-column" style="  top:100px;">
+                <div class="note_list shadow-sm px-3 py-2 d-flex flex-column">
                     <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>
                     <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>
                     <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>
@@ -463,28 +463,20 @@
             </div>
 
 
-            @php
-                $prod = json_decode($product) ;
-            @endphp
+
             <div class="ad-info row w-75 mt-5 posr">
-                <form action="{{route('shop.editproduct',['id'=> $prod->key, 'slug' =>$prod->slug])}}" method="post" >
-                    @csrf
-                    <input type="hidden" name="product_key" value="{{$prod->key}}">
                 <div class="col">
                     <div class="row w-100 mb-3">
                         <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span style="color: red;">*</span> </h3>
 
                         <div class="posr">
-                            <input type="number" style="display: none" id="category_id" name="category_id"
-                                   value="{{$prod->category_id}}">
+                            <input type="number" style="display: none" id="category_id" value="">
                             <div class="category_overlay ms-1">
                                 <div class="d-flex justify-content-center align-items-center flex-wrap">
-                                    {!! productcategorylist($prod->category_id) !!}
+                                    {!! productcategorylist(json_decode($product)->category_id) !!}
                                 </div>
                                 <div class="row d-flex justify-content-center align-items-center">
-                                    <button id="change_category" type="button"><i @class('fas fa-list')> </i> Seçili
-                                        kategoriyanı
-                                        dəyiş
+                                    <button id="change_category"><i @class('fas fa-list')> </i> Seçili kategoriyanı dəyiş
                                     </button>
                                 </div>
                             </div>
@@ -499,6 +491,8 @@
                                 </div>
                             </div>
 
+
+
                             <div class="row w-100 ms-1 ps-2 mt-2 listSubCategory overflow-auto d-flex flex-nowrap
                         align-items-center" style="border:1px solid #eeeeee;height: 230px; border-radius: 4px;">
                             </div>
@@ -510,7 +504,7 @@
                     </div>
                     <div class="form-group w-100 mb-4">
                         <input type="text" class="form-control text-grey-700 font-xssss fw-600 bg-white border"
-                               id="name"  value="{{$prod->name}}" name="name"  >
+                               id="name"   placeholder="Məsələn: İphone 13 Pro Max">
                     </div>
                     <div class="form-group mb-2 posr">
                         <div class="note_list shadow-sm px-3 py-2 d-flex flex-column" style="right: -270px; top: 0;">
@@ -524,7 +518,8 @@
                     <div class="form-group w-100 mb-3">
                     <textarea maxlength="300" style="height: 250px ; line-height: 25px; resize: none"
                               id="description"
-                              class="form-control font-xssss text-grey-700 fw-600 bg-white border"name="description">{!!$prod->description !!}</textarea>
+                              class="form-control font-xssss text-grey-700 fw-600 bg-white border" placeholder="Məhsul
+                              haqqında açıqlama mətni "></textarea>
                     </div>
 
                     <div class="row w-100">
@@ -534,8 +529,7 @@
                             </div>
 
                             <div class="form-group mb-3 w-100">
-                                <input type="number" class="form-control text-grey-700 font-xssss fw-600 bg-white
-                                border" maxlength="8" id="price"  value="{{$prod->price}}" name="price" required>
+                                <input type="number" class="form-control text-grey-700 font-xssss fw-600 bg-white border" maxlength="8" id="price" placeholder="100₼" required>
                             </div>
                         </div>
                         <div class="col-6">
@@ -543,9 +537,7 @@
                                 <h3 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Endirimli Qiymət </h3>
                             </div>
                             <div class="form-group mb-5 w-100">
-                                <input type="number" class="form-control text-grey-700 font-xssss fw-600 bg-white
-                                border" maxlength="8" id="sale_price" name="sale_price"  value="{{$prod->sale_price}}"
-                                       required>
+                                <input type="number" class="form-control text-grey-700 font-xssss fw-600 bg-white border" maxlength="8" id="sale_price" placeholder="123₼" required>
                             </div>
                         </div>
                     </div>
@@ -558,8 +550,7 @@
                             </div>
 
                             <div class="form-group mb-3 w-100">
-                                <input class="form-control font-xssss fw-600 text-grey-700 bg-white border"
-                                       type="number" maxlength="8" id="stock" name="stock" value="{{$prod->stock}}"  >
+                                <input class="form-control font-xssss fw-600 text-grey-700 bg-white border" type="number" maxlength="8" id="stock" placeholder="0">
                             </div>
                         </div>
                         <div class="col-6">
@@ -567,8 +558,7 @@
                                 <h3 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">SKU kodu <span style="color: red;">*</span> </h3>
                             </div>
                             <div class="form-group mb-5 w-100">
-                                <input type="text" class="form-control font-xssss text-grey-700 fw-600 bg-white border"
-                                       value="{{$prod->sku}}"  name="sku" max="8" id="sku" >
+                                <input type="text" class="form-control font-xssss text-grey-700 fw-600 bg-white border" max="8" id="sku" placeholder="EM90DT31012022">
                             </div>
                         </div>
                     </div>
@@ -582,8 +572,7 @@
                             </div>
 
                             <div class="form-group mb-3 w-100">
-                              <input type="number" class="form-control text-grey-700 font-xssss fw-600 bg-white border"
-                                     value="{{$prod->barkode}}" name="barkode" maxlength="8" id="barkode" >
+                                <input type="number" class="form-control text-grey-700 font-xssss fw-600 bg-white border" maxlength="8" id="barkode" placeholder="9786052998380">
                             </div>
                         </div>
 
@@ -592,14 +581,13 @@
                                 <h3 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Qaranti müddəti </h3>
                             </div>
                             <div class="form-group mb-5 w-100">
-                              <input type="number" class="form-control text-grey-700 font-xssss fw-600 bg-white border"
-                                     value="{{$prod->warranty}}" name="warranty" maxlength="8" id="warranty">
+                                <input type="number" class="form-control text-grey-700 font-xssss fw-600 bg-white border" maxlength="8" id="warranty" placeholder="Qarantiya müddəti Ay ilə">
                             </div>
                         </div>
                     </div>
 
                     <div class='row w-100 mt-3 mb-4 posr' id="techniquelinputs">
-                        <div class="note_list shadow-sm px-3 py-2 d-flex flex-column" style="right: -270px; top:0px;">
+                        <div class="note_list shadow-sm px-3 py-2 d-flex flex-column" style="right: -270px; top: 0;">
                             <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>
                             <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>
                             <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>
@@ -611,21 +599,17 @@
                             Məhsul Xüsusiyyətləri <span style="color: red;">*</span>
                         </h3>
 
-                        @php
-                        $information = json_decode($prod->informations)
-                        @endphp
                         <div class="row d-flex flex-row align-items-center w-100">
                             <div class="form-group w-50">
-                                <input type="text" maxlength="58" name="techkey[]"
-                                 class="techkey text-grey-700 form-control text-grey-700 font-xssss fw-600 bg-white
-                                 border" value="{{$information[0]->key}}" required  >
+                                <input type="text" maxlength="58" class="techkey text-grey-700 form-control text-grey-700 font-xssss fw-600 bg-white border" value="İstehsalatçı Ölkə" required disabled="">
                             </div>
 
                             <div class="form-group w-25">
                                 <select class=" text-grey-700 form-control text-grey-700 font-xssss fw-600 bg-white
-                            border   techvalue " id="select-country"   name="techvalue[]"  data-live-search="true">
+                            border   techvalue " id="select-country"
+                                        data-live-search="true">
                                     @foreach(\Illuminate\Support\Facades\DB::table('countries')->get() as $country)
-                                        <option {{$information[0]->value ==$country->countries_iso_code ? 'selected':'' }}
+                                        <option
                                             value="{{$country->countries_iso_code}}">
                                             {{$country->countries_name}}
                                         </option>
@@ -638,23 +622,6 @@
                             <button type="button" class="addtechbtn ms-1 p-0 btn font-xss text-white bg-current"><i class='bx bx-plus'></i></button>
                         </div>
 
-                        @foreach($information as $k => $info)
-                                @if($k > 0)
-                            <div class="row d-flex align-items-center mt-3">
-                                <div class="form-group w-50">
-                                    <input type="text" required maxlength="58" class="techkey text-grey-700 form-control font-xssss fw-600 bg-white border"
-                                           name="techkey[]"  value="{{$info->key}}"   >
-                                </div>
-
-                                <div class="form-group w-25">
-                                    <input type="text" class="form-control font-xssss fw-600 text-grey-700 border" required maxlength="58" class="techvalue"
-                                           name="techvalue[]"    value="{{$info->value}}"   >
-                                </div>
-                                <button type="button" class="removetechbtn ms-1 p-0 btn font-xss text-white bg-danger"><i class='bx bx-minus'></i></button>
-                            </div>
-                            @endif
-                        @endforeach
-
                     </div>
                     {{-- <div class=' p-5 mt-3' style=" width:40%; border:1px solid #e7e7e7" --}} {{-- id="techniquelinputs">--}}
                     {{-- <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">--}}
@@ -666,10 +633,8 @@
                     {{-- </div>--}}
                     {{-- </div>--}}
 
-                    <button type="submit" class="btn-lg px-3 rounded-5 font-xss text-white btn bg-current btnSubmit"
-                       id="postbutton">Yadda Saxla</button>
+                    <a href="#" class="btn-lg px-3 rounded-5 font-xss text-white btn bg-current btnSubmit" id="postbutton">Elanı dərc et</a>
                 </div>
-                </form>
             </div>
         </div>
 
@@ -692,8 +657,8 @@
                         <div class="size-variant d-flex mt-3 border rounded p-3">
                             <div class="size-box">
                                 <div class="size mr-2">
-                                    <input type="text" class="form-control text-grey-700 mt-2 text-center" >
-                                    <input type="text" class="form-control text-grey-700 mt-2 text-center" >
+                                    <input type="text" class="form-control text-grey-700 mt-2 text-center" placeholder="Varyant">
+                                    <input type="text" class="form-control text-grey-700 mt-2 text-center" placeholder="Stok Sayı">
                                 </div>
                             </div>
 
@@ -740,23 +705,23 @@
 
         $(document).ready(function() {
 
-           // console.log(productData)
+            console.log(productData)
 
-            // $('#name').val(productData.name);
-            // $('#description').val(productData.description);
-            // $('#price').val(productData.price);
+            $('#name').val(productData.name);
+            $('#description').val(productData.description);
+            $('#price').val(productData.price);
 
-            // if(productData.price > productData.sale_price ){
-            //
-            //     $('#sale_price').val(productData.sale_price);
-            //
-            // }
-            //
-            // $('#stock').val(productData.stock);
-            // $('#sku').val(productData.sku);
-            // $('#barkode').val(productData.barkode);
-            // $('#warranty').val(productData.warranty);
-            // $('#category_id').val(productData.category_id);
+            if(productData.price > productData.sale_price ){
+
+                $('#sale_price').val(productData.sale_price);
+
+            }
+
+            $('#stock').val(productData.stock);
+            $('#sku').val(productData.sku);
+            $('#barkode').val(productData.barkode);
+            $('#warranty').val(productData.warranty);
+            $('#category_id').val(productData.category_id);
 
             $('#change_category').on('click',function (){
                 $('#category_id').val('');
@@ -902,7 +867,10 @@
 
         function  validateform(){
 
-
+            if($('#category_id').val() == ''){
+                toastr.error(`Məhsul Kateqoriyası seçməyi unutmusunuz !`);
+                return false;
+            }
             if($('#name').val() == ''){
                 toastr.error(`Məhsul başlıqını yazmağı unutmusunuz !`);
                 return false;
@@ -941,52 +909,52 @@
         }
 
         $(document).on('click', '#postbutton', function() {
-            {{--if(validateform() == true){--}}
+            if(validateform() == true){
 
-            {{--    $('.custom_overload').css('display:block')--}}
+                $('.custom_overload').css('display:block')
 
-            {{--    --}}{{--var form_data = new FormData();--}}
-            {{--    --}}{{--form_data.append("_token", '{{ csrf_token() }}');--}}
-            {{--    --}}{{--form_data.append("price", $('#price').val());--}}
-            {{--    --}}{{--form_data.append("sale_price", $('#sale_price').val());--}}
-            {{--    --}}{{--form_data.append("stock", $('#stock').val());--}}
-            {{--    --}}{{--form_data.append("sku", $('#sku').val());--}}
-            {{--    --}}{{--form_data.append("name", $('#name').val());--}}
-            {{--    --}}{{--form_data.append("barkode", $('#barkode').val());--}}
-            {{--    --}}{{--form_data.append("warranty", $('#warranty').val());--}}
-            {{--    --}}{{--form_data.append("category_id", $('#category_id').val());--}}
-            {{--    --}}{{--form_data.append("description", $('#description').val());--}}
+                var form_data = new FormData();
+                form_data.append("_token", '{{ csrf_token() }}');
+                form_data.append("price", $('#price').val());
+                form_data.append("sale_price", $('#sale_price').val());
+                form_data.append("stock", $('#stock').val());
+                form_data.append("sku", $('#sku').val());
+                form_data.append("name", $('#name').val());
+                form_data.append("barkode", $('#barkode').val());
+                form_data.append("warranty", $('#warranty').val());
+                form_data.append("category_id", $('#category_id').val());
+                form_data.append("description", $('#description').val());
 
 
 
-            {{--    --}}{{--let informationtechvalue = $('#techniquelinputs .form-group .techvalue')--}}
-            {{--    --}}{{--let informationtechkey = $('#techniquelinputs .form-group .techkey')--}}
+                let informationtechvalue = $('#techniquelinputs .form-group .techvalue')
+                let informationtechkey = $('#techniquelinputs .form-group .techkey')
 
-            {{--    --}}{{--$(informationtechvalue).each(function(index) {--}}
-            {{--    --}}{{--    form_data.append("techvalue[]", $(this).val());--}}
-            {{--    --}}{{--});--}}
-            {{--    --}}{{--$(informationtechkey).each(function(index) {--}}
-            {{--    --}}{{--    form_data.append("techkey[]", $(this).val());--}}
-            {{--    --}}{{--});--}}
+                $(informationtechvalue).each(function(index) {
+                    form_data.append("techvalue[]", $(this).val());
+                });
+                $(informationtechkey).each(function(index) {
+                    form_data.append("techkey[]", $(this).val());
+                });
 
-            {{--    --}}{{--$.ajax({--}}
-            {{--    --}}{{--    url: "{{route('shop.createproduct')}}",--}}
-            {{--    --}}{{--    method: "POST",--}}
-            {{--    --}}{{--    data: form_data,--}}
-            {{--    --}}{{--    contentType: false,--}}
-            {{--    --}}{{--    cache: false,--}}
-            {{--    --}}{{--    processData: false,--}}
-            {{--    --}}{{--    success: function(data) {--}}
-            {{--    --}}{{--        //response gelen datamiz json oldugu ucun ellevce decode edirik--}}
-            {{--    --}}{{--        data = $.parseJSON(data);--}}
-            {{--    --}}{{--        if (data == true) {--}}
-            {{--    --}}{{--            window.location.href = "{{route('shop.products')}}";--}}
-            {{--    --}}{{--        }--}}
-            {{--    --}}{{--    }--}}
+                $.ajax({
+                    url: "{{route('shop.createproduct')}}",
+                    method: "POST",
+                    data: form_data,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(data) {
+                        //response gelen datamiz json oldugu ucun ellevce decode edirik
+                        data = $.parseJSON(data);
+                        if (data == true) {
+                            window.location.href = "{{route('shop.products')}}";
+                        }
+                    }
 
-            {{--    --}}{{--}); //endajax--}}
+                }); //endajax
 
-            {{--}--}}
+            }
 
         }); //endajax
 
@@ -997,12 +965,12 @@
             var thisIputHtmls = `<div class="row d-flex align-items-center mt-3">
                                                    <div class="form-group w-50">
                                                        <input type="text" required maxlength="58" class="techkey text-grey-700 form-control font-xssss fw-600 bg-white border"
-                                                         name="techkey[]"     >
+                                                              placeholder="Məsələn: Rəng">
                                                    </div>
 
                                                    <div class="form-group w-25">
                                                        <input type="text" class="form-control font-xssss fw-600 text-grey-700 border" required maxlength="58" class="techvalue"
-                                                       name="techvalue[]"     >
+                                                              placeholder="Yaşıl">
                                                    </div>
                                                     <button type="button" class="removetechbtn ms-1 p-0 btn font-xss text-white bg-danger"><i class='bx bx-minus'></i></button>
                                            </div>`;

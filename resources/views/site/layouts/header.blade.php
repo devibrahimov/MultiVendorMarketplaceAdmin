@@ -172,7 +172,7 @@
                             }
                         @endphp
                         <a href="{{route('shop.profil')}}" class="nav-icon p-0">
-                            <img src="{{$avatar}}"  alt="user" class="w-40 mt-1"></a>
+                            <img src="{{$avatar}}"  alt="user" class="w-40 mt-1" style="height: 40px; object-fit: cover; border-radius: 50%;"></a>
                     @endauth
 
                     @guest('shop') @guest('user')

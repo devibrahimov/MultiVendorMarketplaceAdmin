@@ -115,6 +115,7 @@
                                 <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                             </span>
                             <div class="clearfix"></div>
+
                             <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
                                         .$product->sku.$product->barkode)),'m'=>$product->slug])}}" height="200px"
                                class="d-block
@@ -159,7 +160,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mt-4">
-                <div class="card border-0 banner-wrap bg-image-cover bg-image-center" style="background-image: url(https://via.placeholder.com/795x220.png);">
+                <div class="card border-0 banner-wrap bg-image-cover bg-image-center" style="background-image: url('/photos/site/advertisment/reklambanner.jpg');">
                     <div class="slide-content style4 text-center w-100">
                         <span class="text-current">All natural products</span>
                         <h2 class="text-grey-900"><b class="d-block">SUMMER DISCOUNT </b>of the week</h2>
@@ -183,6 +184,8 @@
 
             <div class="col-lg-12 mt-4">
                 <div class="product-wrap border rounded-6 ">
+
+               @if(isset($atHomeRandProducts) && count($atHomeRandProducts) > )
                     <div class="row m-0">
 
                         <div class="col col-xs-6 border-end p-0">
@@ -193,10 +196,12 @@
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
+                                @if(@isset($atHomeRandProducts[4]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[4]->slug
                                         .$atHomeRandProducts[4]->sku.$atHomeRandProducts[4]->barkode)),
                                         'm'=>$atHomeRandProducts[4]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[4]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[4]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[4]->images)[0]:''}}"
                                          alt="-{{$atHomeRandProducts[4]->name}}"
                                          class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;"></a>
                                 <div class="star ms-2 d-inline text-left">
@@ -221,19 +226,19 @@
                                         fw-bold">{{$atHomeRandProducts[4]->price}}</span>
                                     @endif
                                 </div>
+                                    @endif
                             </div>
-
-
-
                             <div class="px-1 rounded-0 posr">
                             <span class="wish-list">
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
+                                @if(@isset($atHomeRandProducts[1]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[1]->slug
                                         .$atHomeRandProducts[1]->sku.$atHomeRandProducts[1]->barkode)),
                                         'm'=>$atHomeRandProducts[1]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[1]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[1]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[1]->images)[0]:''}}"
                                          alt="-{{$atHomeRandProducts[1]->name}}"
                                          class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;"></a>
                                 <div class="star ms-2 d-inline text-left">
@@ -258,6 +263,7 @@
                                         fw-bold">{{$atHomeRandProducts[1]->price}}</span>
                                     @endif
                                 </div>
+                                    @endif
                             </div>
                         </div>
                         <div class="col col-xs-6 border-end p-0">
@@ -268,12 +274,16 @@
 
                                 <span class="ls-3 font-xsssss text-white text-uppercase bg-danger fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">DEAL</span>
                                 <div class="clearfix"></div>
+                              @if(@isset($atHomeRandProducts[2]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[2]->slug
                                         .$atHomeRandProducts[2]->sku.$atHomeRandProducts[2]->barkode)),
                                         'm'=>$atHomeRandProducts[2]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[2]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[2]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[2]->images)[0]:''}}"
                                          alt="-{{$atHomeRandProducts[2]->name}}"
-                                         class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;"></a>
+                                         class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;">
+                                </a>
+
                                 <div class="star ms-2 d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
@@ -296,6 +306,7 @@
                                         fw-bold">{{$atHomeRandProducts[2]->price}}</span>
                                     @endif
                                 </div>
+                            @endif
                             </div>
 
                             <div class="px-1 rounded-0 posr">
@@ -304,10 +315,12 @@
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
+                                @if(@isset($atHomeRandProducts[3]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[3]->slug
                                         .$atHomeRandProducts[3]->sku.$atHomeRandProducts[3]->barkode)),
                                         'm'=>$atHomeRandProducts[3]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[3]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[3]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[3]->images)[0]:''}}"
                                          alt="product-image"
                                          class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;">
                                 </a>
@@ -332,7 +345,7 @@
                                         fw-bold">{{$atHomeRandProducts[3]->price}}</span>
                                     @endif
                                 </div>
-
+                                @endif
                             </div>
                         </div>
 
@@ -345,9 +358,11 @@
                                 <span class="ls-3 font-xsssss text-white text-uppercase bg-warning fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">Trend</span>
 
                                 <div class="clearfix"></div>
+                                @if(@isset($atHomeRandProducts[0]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[0]->slug
                                         .$atHomeRandProducts[0]->sku.$atHomeRandProducts[0]->barkode)),'m'=>$atHomeRandProducts[0]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[0]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[0]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[0]->images)[0]:''}}"
                                          alt="product-image" class="w-100 mt-2 mb-3 d-inline-block" style="height: 250px !important; object-fit: cover;"></a>
                                 <div class="star ms-2 d-inline text-left">
                                     <img src="/site/images/star.png" alt="star" class="w-10 me-1 float-start">
@@ -378,7 +393,7 @@
                                 <a href="#" class="btn-lg mt-2 rounded-25 btn border-success text-uppercase
                                 text-success font-xsssss fw-700 ls-3 p-3 w-100 d-block">
                                   Favorilərə əlavə et</a>
-
+                                @endif
                             </div>
                         </div>
 
@@ -390,10 +405,12 @@
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
+                                @if(@isset($atHomeRandProducts[5]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[5]->slug
                                         .$atHomeRandProducts[5]->sku.$atHomeRandProducts[5]->barkode)),
                                         'm'=>$atHomeRandProducts[5]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[5]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[5]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[5]->images)[0]:''}}"
                                          alt="product-image"
                                          class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;">
                                 </a>
@@ -418,7 +435,7 @@
                                         fw-bold">{{$atHomeRandProducts[5]->price}}</span>
                                     @endif
                                 </div>
-
+                            @endif
                             </div>
 
                             <div class="px-1 rounded-0 posr">
@@ -427,10 +444,12 @@
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
+                                @if(@isset($atHomeRandProducts[6]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[6]->slug
                                         .$atHomeRandProducts[6]->sku.$atHomeRandProducts[6]->barkode)),
                                         'm'=>$atHomeRandProducts[6]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[6]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[6]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[6]->images)[0]:''}}"
                                          alt="product-image"
                                          class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;">
                                 </a>
@@ -455,21 +474,21 @@
                                         fw-bold">{{$atHomeRandProducts[6]->price}}</span>
                                     @endif
                                 </div>
-
+                                @endif
                             </div>
                         </div>
-
                         <div class="col col-xs-6 p-0">
                             <div class="px-1 rounded-0 posr border-bottom">
-
                                 <span class="wish-list">
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
+                                @if(@isset($atHomeRandProducts[7]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[7]->slug
                                         .$atHomeRandProducts[7]->sku.$atHomeRandProducts[7]->barkode)),
                                         'm'=>$atHomeRandProducts[7]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[7]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[7]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[7]->images)[0]:''}}"
                                          alt="product-image"
                                          class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;">
                                 </a>
@@ -494,7 +513,7 @@
                                         fw-bold">{{$atHomeRandProducts[7]->price}}</span>
                                     @endif
                                 </div>
-
+                                @endif
                             </div>
                             <div class="px-1 rounded-0 posr">
 
@@ -502,10 +521,12 @@
                                     <i data-key="461f8702587b17e5d4cfc881f4e21f90" class="mywishproduct colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
+                                @if(@isset($atHomeRandProducts[8]))
                                 <a href="{{route('site.productdetail',['key'=>md5(md5($atHomeRandProducts[8]->slug
                                         .$atHomeRandProducts[8]->sku.$atHomeRandProducts[8]->barkode)),
                                         'm'=>$atHomeRandProducts[8]->slug])}}" class="d-block text-center">
-                                    <img src="{{\GuzzleHttp\json_decode($atHomeRandProducts[8]->images)[0]}}"
+                                    <img src="{{isset(\GuzzleHttp\json_decode($atHomeRandProducts[8]->images)[0])
+                                    ?\GuzzleHttp\json_decode($atHomeRandProducts[8]->images)[0]:''}}"
                                          alt="product-image"
                                          class="w-100 mt-2 mb-3 d-inline-block pt-0" style="object-fit: cover; width: 97% !important; height: 230px !important;">
                                 </a>
@@ -530,17 +551,17 @@
                                         fw-bold">{{$atHomeRandProducts[8]->price}}</span>
                                     @endif
                                 </div>
-
+@endif
                             </div>
                         </div>
                     </div>
+               @endif
                 </div>
             </div>
 
             <div class="col-lg-4 col-md-4 mt-4 ">
                 <h4 class="fw-700 font-xss mb-3 mt-2">Best Seller</h4>
                 <div class="card border rounded-6 border-light border-size-md">
-
                     <div class="card-content p-3 border-bottom border-light border-size-md">
                         <div class="row">
                             <div class="col-sm-4 col-xs-4">

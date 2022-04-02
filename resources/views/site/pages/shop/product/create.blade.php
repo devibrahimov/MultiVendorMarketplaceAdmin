@@ -364,6 +364,9 @@
         width: 100%;
         background: #ebebeb88;
     }
+
+
+
 </style>
 @endsection
 
@@ -438,6 +441,12 @@
 
 
         <div class="ad-info row w-75 mt-5">
+            <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column">
+                <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>
+                <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>
+                <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>
+                <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>
+            </div>
             <div class="col">
                 <div class="row w-100 mb-3">
                     <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span style="color: red;">*</span> </h3>
@@ -447,7 +456,7 @@
                     <div class="w-100">
                         <div class="d-flex mt-2 ">
                             {{-- Ana Katgoriyalar bu ashaqidaki ul icne siyahilanir--}}
-                            <div class="d-flex  image-uploader list_category">
+                            <div class="d-flex  flex-wrap image-uploader list_category">
                                 {{--                                <i class='bx bx-devices font-xxl text-grey-900'></i> <i class='bx bx-mobile font-xxl text-grey-900'></i>--}}
                             </div>
 
@@ -455,7 +464,7 @@
                     </div>
 
 
-                    <div class="row w-100 ps-2 mt-2 listSubCategory overflow-auto d-flex flex-nowrap
+                    <div class="row w-100 ms-1 ps-2 mt-2 listSubCategory overflow-auto d-flex flex-nowrap
                     align-items-center" style="border:1px solid #eeeeee;height: 230px;">
 
 
@@ -469,13 +478,23 @@
                     <input type="text" class="form-control text-grey-700 font-xssss fw-600 bg-white border"
                         id="name"   placeholder="Məsələn: İphone 13 Pro Max">
                 </div>
-                <div class="form-group mb-2">
+
+
+                <div class="form-group mb-2 posr">
                     <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Açıqlama</h6>
+
+                    <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column" style="right: -270px;">
+                        <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>
+                        <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>
+                        <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>
+                        <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>
+                    </div>
+
                 </div>
                 <div class="form-group w-100 mb-3">
-                    <textarea maxlength="300" style="height: 100px ; line-height: 25px; resize: none"
+                    <textarea maxlength="300" style="height: 250px ; line-height: 25px; resize: none"
                               id="description"
-                              class="form-control font-xssss fw-600 bg-white border" placeholder="Məhsul haqqında açıqlama mətni "></textarea>
+                              class="form-control font-xssss fw-600 text-grey-700F bg-white border" placeholder="Məhsul haqqında açıqlama mətni "></textarea>
                 </div>
 
                 <div class="row w-100">
@@ -543,7 +562,19 @@
                     </div>
                 </div>
 
-                <div class='row w-100 mt-3 mb-4' id="techniquelinputs">
+                <div class='row w-100 mt-3 mb-4 posr' id="techniquelinputs">
+
+                    <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column" style="right: -270px; top: 0;">
+                        <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>
+                        <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>
+                        <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>
+                        <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>
+                    </div>
+
+
+
+
+
                     <h3 class="fw-500 text-grey-900 font-xss mb-3 text-capitalize">
                         Məhsul Xüsusiyyətləri <span style="color: red;">*</span>
                     </h3>
@@ -557,13 +588,12 @@
                             <select class=" text-grey-700 form-control text-grey-700 font-xssss fw-600 bg-white
                             border   techvalue " id="select-country"
                                     data-live-search="true">
-                                <option value="ch">Çin</option>
-                                <option value="tr">Türkiyə</option>
-                                <option value="ru">Rusiya</option>
-                                <option value="gb">England</option>
-                                <option value="aze">Azərbaycan</option>
-                                <option value="sng">Singapur</option>
-                                <option value="pk">Pakistan</option>
+                                @foreach(\Illuminate\Support\Facades\DB::table('countries')->get() as $country)
+                                    <option
+                                        value="{{$country->countries_iso_code}}">
+                                        {{$country->countries_name}}
+                                    </option>
+                                @endforeach
                             </select>
 
 {{--                            <input type="text" required maxlength="58" class="techvalue text-grey-700 form-control text-grey-700 font-xssss fw-600 bg-white border">--}}
@@ -688,8 +718,6 @@
             });
         });
 
-
-
         $(".size-variant #size-add").on('click', function() {
             $(this).parent().children(".size-box").append(`<div class="size ml-2 mr-2">
 
@@ -798,7 +826,7 @@
 
             var file = files[i]
 
-            if (file.size < 103889) {
+            if (file.size < 993889) {
                 dt.items.add(file)
 
                 input.files = dt.files
@@ -880,10 +908,10 @@
             toastr.error(`Məhsulun barkodunu yazmağı unutmusunuz !`);
             return false;
         }
-        if($('#warranty').val() == ''){
-            toastr.error(`Məhsul Açıqlama Mətnini doldurmağı unutmusunuz !`);
-            return false;
-        }
+        // if($('#warranty').val() == ''){
+        //     toastr.error(`Məhsul Açıqlama Mətnini doldurmağı unutmusunuz !`);
+        //     return false;
+        // }
 
         //butun if leri kecib gelerse true donecek
         return true ;

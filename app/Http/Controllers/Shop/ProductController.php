@@ -43,7 +43,7 @@ class ProductController extends Controller
             foreach ($files as $key => $file){
                 //$this->validate(request(), ['file' => 'image|mimes:jpg,jpeg,png']);
                 $filename = $file->getClientOriginalName();
-                $imageDestinationPath = 'uploads/';
+                $imageDestinationPath = 'uploads/products/';
                 $postImage = rand(0,12312312312). "." . $file->getClientOriginalExtension();
                 $file->move($imageDestinationPath, $postImage);
 
@@ -109,12 +109,39 @@ class ProductController extends Controller
         $shop_id = auth('shop')->user()->id;
         $product = Product::where('shop_id',$shop_id)->where('key',$id)->where('slug',$slug)->first();
         $product = json_encode($product, JSON_UNESCAPED_UNICODE) ;
-        return view('site.pages.shop.product.edit',compact(['product']));
+        return view('site.pages.shop.product.edit',compact(['product']));//shop.editproduct
     }
 
 
-    public function update($id, Request $request){
+    public function update(Request $request){
+        //var_dump($request->all());exit;
+        $shop_id = auth('shop')->user()->id;
+        $key = $request->product_key ;
 
+        $techvalues = $request->techvalue ;
+        $techkeys = $request->techkey ;
+        $information = [];
+        foreach($techkeys as $k => $v){
+
+            $data =[ 'key' => $v,'value' => $techvalues[$k] ];
+            array_push($information ,$data  );
+
+        }
+
+        $informations = json_encode($information,JSON_UNESCAPED_UNICODE);
+         $content = [
+            'price' => $request->price ,
+            'sale_price' => $request->sale_price ,
+            'stock' => $request->stock ,
+            'sku' => $request->sku ,
+            'name' => $request->name ,
+            'barkode' => $request->barkode ,
+            'warranty' => $request->warranty ,
+            'category_id' => $request->category_id ,
+            'description' => $request->description,
+            'informations'  => $informations
+         ];
+        $product = Product::where('shop_id',$shop_id)->where('key',$key)->update($content) ;
     }
 
 
@@ -196,7 +223,7 @@ class ProductController extends Controller
         foreach ($files as $key => $file){
             //$this->validate(request(), ['file' => 'image|mimes:jpg,jpeg,png']);
             $filename = $file->getClientOriginalName();
-            $imageDestinationPath = 'uploads/';
+            $imageDestinationPath = 'uploads/products/';
             $postImage = rand(0,12312312312). "." . $file->getClientOriginalExtension();
             $file->move($imageDestinationPath, $postImage);
             array_push($newlist,'/'.$imageDestinationPath. $postImage);
