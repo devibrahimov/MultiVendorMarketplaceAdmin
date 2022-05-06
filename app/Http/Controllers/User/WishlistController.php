@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 class WishlistController extends Controller
 {
     public function wishlist(){
-        return view('site.pages.user.wishlist');
+        $user_id = auth('user')->user()->id;
+        $products = Wish::myWishList($user_id);
+        return view('site.pages.user.wishlist')->with(['products'=>$products]);
     }
 
 
@@ -54,5 +56,22 @@ class WishlistController extends Controller
     }
 
 
+    public function addtowishlist(Request $request){
+        $productkey = $request->productkey ;
+
+        $wish_id =  Wish::hasWish($productkey,auth('user')->user()->id) ;
+
+        if ( $wish_id != null){
+         $response =   Wish::removeWish($wish_id->id);
+            return $response ;
+        }else{
+
+        $item =  Wish::createnew($productkey,auth('user')->user()->id);
+        return 'beyendiklerime elave edildi';
+        }
+
+
+
+    }
 
 }

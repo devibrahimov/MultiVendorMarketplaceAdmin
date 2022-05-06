@@ -233,7 +233,4 @@
 
 
 @endsection
-
-@section('js')
-
-@endsection
+ 

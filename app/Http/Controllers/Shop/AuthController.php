@@ -75,4 +75,26 @@ class AuthController extends Controller
     }
 
 
+    public function changepassword(){
+        return view('site.pages.shop.profil.change_password');
+    }
+
+
+    public function resetpassword(Request $request){
+
+        $this->validate($request, [
+            'oldpassword' => 'required',
+            'password' => 'confirmed|min:6',
+        ]);
+
+        $user = Shop::find(\auth('shop')->id())  ;
+        if(Hash::check($request->oldpassword, $user->password)){
+            $user->fill([
+                'password' => Hash::make($request->password)
+            ])->save();
+        }
+
+        return back();
+    }
+
 }

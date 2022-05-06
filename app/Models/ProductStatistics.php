@@ -9,5 +9,5 @@ class ProductStatistics extends Model
 {
     use HasFactory;
     protected $primaryKey = 'static_id';
-
+    protected $guarded = [] ;
 }

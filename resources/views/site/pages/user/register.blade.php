@@ -7,137 +7,136 @@
 
 @section('content')
 
-    <div class="row min-vh-100">
-        <div class="col-xl-12 min-vh-100 align-items-center  bg-dark-black rounded-3 overflow-hidden py-5">
-            <div class="card shadow-lg border-0 ms-auto me-auto login-card mt-auto mb-auto zindex-100 rounded-10
+<div class="row min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-xl-7 min-vh-100 align-items-center  bg-dark-black rounded-3 overflow-hidden py-5">
+        <div class="card border-2 ms-auto me-auto login-card mt-auto mb-auto zindex-100 rounded-10
             theme-dark-bg" style="max-width: 860px;">
-                <div class="select-user">
-                    <button class="market bg-current" id="market-btn">İstifadəçi</button>
-                </div>
-                <div class="card-body rounded-0 text-start p-4">
-                    <h2 class="fw-700 display1-size display2-md-size mb-4 mt-0 white-text text-grey-900">Hesabını Yarat
-                    </h2>
-                    <form action="{{route('user.register')}}" method="post">
-                        <div class="row">
-                            <div class="form-group icon-input mb-3 w-50">
-                                <i class="font-sm ti-user text-grey-500 pe-0 ms-3"></i>
-                                <input type="text"  name="name"  class="style2-input ps-5 form-control text-grey-900 white-text
+            <div class="select-user">
+                <button class="market bg-current" id="market-btn">İstifadəçi</button>
+            </div>
+            <div class="card-body rounded-0 text-start p-4">
+                <h2 class="fw-700 font-xl display2-md-size mb-4 mt-0 white-text text-grey-900">Hesabını Yarat
+                </h2>
+                <form action="{{route('user.register')}}" method="post">
+                    <div class="row">
+                        <div class="form-group icon-input mb-3 w-50">
+                            <i class="font-sm ti-user text-grey-500 pe-0 ms-3"></i>
+                            <input type="text" name="name" class="style2-input ps-5 form-control text-grey-900 white-text
                                 font-xsss fw-600" placeholder="Ad" required>
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group icon-input mb-3 w-50">
-                                <i class="font-sm ti-user text-grey-500 pe-0 ms-3  "></i>
-                                <input type="text" name="surname" class="style2-input ps-5 form-control text-grey-900
+                            @if ($errors->has('name'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group icon-input mb-3 w-50">
+                            <i class="font-sm ti-user text-grey-500 pe-0 ms-3  "></i>
+                            <input type="text" name="surname" class="style2-input ps-5 form-control text-grey-900
                                 white-text
                                 font-xsss fw-600" placeholder="Soyad" required>
-                                @if ($errors->has('surname'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('surname') }}</strong>
-                                </span>
-                                @endif
-                            </div>
+                            @if ($errors->has('surname'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('surname') }}</strong>
+                            </span>
+                            @endif
                         </div>
-                        @csrf
-                        <div class="row">
+                    </div>
+                    @csrf
+                    <div class="row">
+                        <div class="form-group icon-input mb-3 w-50">
+                            <i class="font-sm ti-mobile text-grey-500 pe-0 ms-3"></i>
+                            <input type="number" name="number" class="style2-input ps-5 form-control text-grey-900 white-text
+                            font-xsss fw-600" placeholder="Telefon nömrəsi" required>
+                            @if ($errors->has('number'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('number') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        
+                        <div class="form-group icon-input mb-3 w-50">
+                            <i class="font-sm ti-email text-grey-500 pe-0 ms-3"></i>
+                            <input type="email" name="email" class="style2-input ps-5 form-control text-grey-900
+                            white-text font-xsss fw-600" placeholder="E-poçt ünvanı" required>
+                            @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                            @endif
+                        </div>
 
-                            <div class="form-group select-location icon-input mb-3 w-50">
-                                <i class="font-sm ti-location-pin text-grey-500 pe-0 ms-3"></i>
-                                <select name="region" class="style2-input ps-5 form-control text-grey-900 white-text
+                    </div>
+                    <div class="row">
+                        <div class="form-group select-location icon-input mb-3 w-100">
+                            <i class="font-sm ti-location-pin text-grey-500 pe-0 ms-3"></i>
+                            <select name="region" class="style2-input ps-5 form-control text-grey-900 white-text
                                 font-xsss
                                fw-600" required>
-                                    <option value="" selected>Yaşadığınız Ərazini Seçin</option>
-                                    <option value="1"  >Bakı</option>
-                                    @foreach($regions as $region)
-                                        <option value="{{$region->id}}">{{$region->name}}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('region'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('region') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-
-
-                            <div class="form-group icon-input mb-3 w-50">
-                                <i class="font-sm ti-mobile text-grey-500 pe-0 ms-3"></i>
-                                <input type="number" name="number" class="style2-input ps-5 form-control text-grey-900 white-text
-                            font-xsss fw-600" placeholder="Telefon nömrəsi" required>
-                                @if ($errors->has('number'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('number') }}</strong>
-                                </span>
-                                @endif
-                            </div>
+                                <option value="" selected>Yaşadığınız Ərazini Seçin</option>
+                                <option value="1">Bakı</option>
+                                @foreach($regions as $region)
+                                <option value="{{$region->id}}">{{$region->name}}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('region'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('region') }}</strong>
+                            </span>
+                            @endif
                         </div>
-                        <div class="row">
-                            <div class="form-group icon-input mb-3 w-100">
-                                <i class="font-sm ti-email text-grey-500 pe-0 ms-3"></i>
-                                <input type="email" name="email" class="style2-input ps-5 form-control text-grey-900
-                            white-text font-xsss fw-600" placeholder="E-poçt ünvanı" required>
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="row">
+                    <div class="row">
 
-                            <div class="form-group icon-input mb-3 w-50">
-                                <input type="Password"  name="password" class="style2-input ps-5 form-control text-grey-900
+                        <div class="form-group icon-input mb-3 w-50">
+                            <input type="Password" name="password" class="style2-input ps-5 form-control text-grey-900
                             white-text
                             font-xss ls-3" placeholder="Şifrə" required>
-                                <i class="font-sm ti-lock text-grey-500 pe-0 ms-3"></i>
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                            <div class="form-group icon-input mb-1 w-50">
-                                <input type="Password" name="password_confirmation"  class="style2-input ps-5 form-control
+                            <i class="font-sm ti-lock text-grey-500 pe-0 ms-3"></i>
+                            @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="form-group icon-input mb-1 w-50">
+                            <input type="Password" name="password_confirmation" class="style2-input ps-5 form-control
                             text-grey-900
                             white-text
                             font-xss ls-3" placeholder="Şifrə Təkrarı" required>
-                                <i class="font-sm ti-lock text-grey-500 pe-0 ms-3"></i>
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                </span>
-                                @endif
-                            </div>
+                            <i class="font-sm ti-lock text-grey-500 pe-0 ms-3"></i>
+                            @if ($errors->has('password_confirmation'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password_confirmation') }}</strong>
+                            </span>
+                            @endif
                         </div>
-                        {{--                        <div class="form-check text-start mb-3">--}}
-                        {{--                            <input type="checkbox" class="form-check-input mt-2" id="exampleCheck3">--}}
-                        {{--                            <label class="form-check-label font-xsss text-grey-500 white-text" --}}
-                        {{--                                   for="exampleCheck3">Təhlüsizlik Şərtlərini </label>--}}
-                        {{--                        </div>--}}
+                    </div>
+                    {{-- <div class="form-check text-start mb-3">--}}
+                    {{-- <input type="checkbox" class="form-check-input mt-2" id="exampleCheck3">--}}
+                    {{-- <label class="form-check-label font-xsss text-grey-500 white-text" --}}
+                    {{-- for="exampleCheck3">Təhlüsizlik Şərtlərini </label>--}}
+                    {{-- </div>--}}
 
-                        <div class="col-sm-12 p-0 text-start">
-                            <div class="form-group mb-1"><button type="submit" class="text-center style2-input
+                    <div class="col-sm-12 p-0 text-start">
+                        <div class="form-group mb-1"><button type="submit" class="text-center style2-input
                             text-white
-                            fw-600 bg-current border-0 p-0 ">Qeydiyyatdan keç</button>
-                            </div>
-                            <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32 white-text">Daha Əvvəlcədən
-                                hesabınız varsa
-                                <a href="{{route('shop.login')}}" class="fw-700 ms-1">Hesaba Giriş Et</a>
-                            </h6>
+                            fw-600 bg-current border-0 px-3" style="height: 50px !important; line-height: 0px !important;">Qeydiyyatdan keç</button>
                         </div>
-                    </form>
+                        <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32 white-text">Daha Əvvəlcədən
+                            hesabınız varsa
+                            <a href="{{route('shop.login')}}" class="fw-700 ms-1">Hesaba Giriş Et</a>
+                        </h6>
+                    </div>
+                </form>
 
 
-                </div>
             </div>
-
-
         </div>
+
+
     </div>
+</div>
 @endsection
 
 @section('js')

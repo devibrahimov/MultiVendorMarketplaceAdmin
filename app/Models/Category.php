@@ -13,11 +13,16 @@ class Category extends Model
     protected $table = 'categories';
     protected $dates = ['deleted_at'];
     protected $guarded = [] ;
+
     public function  subCategories(){
         return $this->hasMany(__CLASS__, 'parent_id');
     }
 
     public function  parent(){
         return $this->belongsTo(__CLASS__, 'parent_id')->withDefault();
+    }
+
+    public static function getcategories(){
+        return Category::where('parent_id',null)->get();
     }
 }

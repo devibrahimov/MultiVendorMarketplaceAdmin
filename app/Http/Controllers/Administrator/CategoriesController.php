@@ -27,7 +27,7 @@ class CategoriesController extends Controller
             $icon= null;
             $image = null;
             $icon = $request->file('icon');
-            $image = $request->file('image');
+//            $image = $request->file('image');
             $path = "/photos/site/categories";
             $imagepath = public_path() . $path;
 
@@ -51,7 +51,7 @@ class CategoriesController extends Controller
                 'slug' => Str::slug($request->name),
                 'description' => $request->description,
                 'icon' =>$icon,
-                'image' =>$image ,
+//                'image' =>$image ,
             ];
 
             $category= new Category();
@@ -101,15 +101,13 @@ class CategoriesController extends Controller
 
                 $data['icon'] = $imageurl;;
             }
-
-            if ($image ) {
+            if ($image) {
                 $newimagename = env('APP_NAME').Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
                 $imageurl = $path . '/' . $newimagename; //for DB
                 $image->move($imagepath, $newimagename);
 
                 $data['image'] = $imageurl;
             }
-
 
             $category=   Category::find($id);
             $category->update($data);
@@ -130,7 +128,7 @@ class CategoriesController extends Controller
     public function categorydelete($id){
         try {
 
-        Category::find($id)->delete();
+            Category::find($id)->delete();
 
             $feedbackdata = ['title' => 'Uğurlu !',
                 'message' => 'Kategoriya uğurla silindi',
@@ -151,6 +149,16 @@ class CategoriesController extends Controller
         $category = Category::find($request->categoryid);
         $category->status = $request->status;
         $category->save();
+    }
+
+    public function categoryathome(Request $request)
+    {
+
+        $category = Category::find($request->categoryid);
+        Category::where('athome',1)->update(['athome' => 0]);
+        $category->athome =  1;
+        $category->save();
+
     }
 
 

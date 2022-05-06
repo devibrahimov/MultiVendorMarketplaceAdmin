@@ -15,6 +15,7 @@ class Product extends Model
     protected $table = 'products';
     protected $dates = ['deleted_at'];
     protected $guarded = [] ;
+    protected $hidden = ['id'];
 
 
 
@@ -100,6 +101,30 @@ class Product extends Model
     public static function getFindProductID($key){
 
        return Product::where('key',$key)->select(['key','id'])->first();
+
+    }
+
+    public function scopeFilter($query)
+    {
+        if(\request('warranty') == 'warranty'){
+           $query->where('warranty' ,'>',0) ;
+        }
+
+
+          if( request('category') != null ){
+
+              foreach (\request('category') as $cat_id){
+                  $query->orWhere('category_id' ,$cat_id ) ;
+              }
+
+          }
+          if(\request('minprice') != ''){
+              $query->orWhere('sale_price' ,'>',request('minprice') ) ;
+          }
+          if(\request('maxprice') != ''){
+              $query->orWhere('sale_price' ,'<',request('maxprice')) ;
+          }
+        return $query ;
 
     }
 }

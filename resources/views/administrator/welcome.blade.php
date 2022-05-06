@@ -25,6 +25,8 @@
 
     <!-- Morris Chart Css-->
     <link href="/administrator/plugins/morrisjs/morris.css" rel="stylesheet" />
+    <!-- Bootstrap Select Css -->
+    <link href="/administrator/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link href="/administrator/css/style.css" rel="stylesheet">
@@ -67,11 +69,10 @@
 </div>
 <!-- #END# Search Bar -->
 <!-- Top Bar -->
+
 @include('administrator.layouts.header')
 <!-- #Top Bar -->
-
 @include('administrator.layouts.sidebar')
-
 <section class="content">
    @yield('content')
 </section>

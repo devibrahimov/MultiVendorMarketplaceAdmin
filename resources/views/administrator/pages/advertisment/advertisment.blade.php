@@ -125,7 +125,7 @@
                                                     <label class="card-inside-title">Səhifə</label>
 
                                                     <div class="form-group">
-                                                        <select name="page"  class="form-control"  id="">
+                                                        <select name="page"  class="form-group form-control"  id="">
                                                             <option value="home">Ana Səhifə</option>
                                                             <option value="products">Məsullar</option>
                                                             <option value="allpages">Bütün Səhifələr</option>
@@ -144,11 +144,7 @@
                                                     <div class="form-group">
                                                         <select name="type"  class="form-control"  id="">
                                                             <option value="header">Əsas</option>
-{{--                                                            @foreach($types as $type)--}}
-{{--                                                            <option {{$advertisment->type == \Illuminate\Support\Str::slug($type->name)? 'selected':'' }}--}}
-{{--                                                            value="{{\Illuminate\Support\Str::slug($type->name)--}}
-{{--                                                            }}">{{$type->name}}</option>--}}
-{{--                                                            @endforeach--}}
+
                                                         </select>
                                                         @error('page')
                                                         <div class="alert alert-dismissible" role="alert" style="color: red!important">

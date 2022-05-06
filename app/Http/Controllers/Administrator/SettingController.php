@@ -108,7 +108,7 @@ class SettingController extends Controller
             $path = "/photos/site";
             if ($logo_color !=null){
                 $request->validate([
-                    'logo_color' => 'required|mimes:png|dimensions:max_width=300,max_height=100',
+                    'logo_color' => 'required|mimes:png,jpeg,jpg',
                 ],
                 [
                     'logo_color.required' => '"Rengli Logo" Bölməsi boş buraxıla bilməz.Logo png formatında logo file yükləyin.',
@@ -127,7 +127,7 @@ class SettingController extends Controller
             }
             if ($logo_black !=null){
                 $request->validate([
-                    'logo_black' => 'required|mimes:png|dimensions:max_width=300,max_height=100',
+                    'logo_black' => 'required|mimes:png,jpeg,jpg',
                 ],
                 [
                  'logo_black.required' => ' "Qara Logo" Bölməsi boş buraxıla bilməz.Logo png formatında logo file yükləyin.',
@@ -148,7 +148,7 @@ class SettingController extends Controller
 
             if ($logo_white !=null){
                 $request->validate([
-                    'logo_white' => 'required|mimes:png|dimensions:max_width=300,max_height=100',
+                    'logo_white' => 'required|mimes:png,jpeg,jpg',
                 ],
                 [
                  'logo_white.required' => '"Ağ Logo" Bölməsi boş buraxıla bilməz.Logo png formatında logo file yükləyin.',
@@ -168,7 +168,7 @@ class SettingController extends Controller
             }
             if ($favicon !=null){
                 $request->validate([
-                    'favicon' => 'required|mimes:png|dimensions:max_width=100,max_height=100',
+                    'favicon' => 'required|mimes:png,jpeg,jpg',
                 ],
                 [
                  'favicon.required' => '"Favicon" Bölməsi boş buraxıla bilməz.Logo png formatında logo file yükləyin.',
@@ -178,7 +178,7 @@ class SettingController extends Controller
                 ]);
 
                 if ($favicon->isValid()) {
-                    $newimagename = env('APP_NAME') .'-logo' . '.' . $favicon->getClientOriginalExtension();
+                    $newimagename = env('APP_NAME') .'-favicon' . '.' . $favicon->getClientOriginalExtension();
                     $imageurl = $path . '/' . $newimagename; //for DB
 
                     $imagepath = public_path() . $path;

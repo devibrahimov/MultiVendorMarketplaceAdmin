@@ -29,13 +29,17 @@
                         <nav class="nav nav-pills nav-fill" style="background-color: whitesmoke;">
                             <a class="nav-link active" aria-current="page" href="{{route('shop.products')}}">Məhsullar</a>
                             <a class="nav-link  " href="{{route('shop.createproduct')}}">Yeni Məhsul Əlavə Et</a>
-                            <a class="nav-link" href="#">Deaktiv Məhsullar </a>
+                            <a class="nav-link" href="{{route('shop.trashedproducts')}}"> <i class="ti-trash font-xs ">
+                                </i>
+                                Silinmiş
+                                Məhsullar </a>
                         </nav>
                         <style>
                             .form-check-label {
                                 font-size: 14px
                             }
                         </style>
+                        @if(isset($products))
                         <div class="col-lg-12 ps-2 pe-2">
                             <div class="card border-0 mt-3">
                                 <div class="table-content table-responsive">
@@ -44,7 +48,10 @@
                                       @foreach($products as $product)
                                         <tr>
                                             <td class="product-thumbnail text-start ps-0">
-                                                <img src="/uploads/{{json_decode($product->images)[0]}}" alt="product-image" class="w-80 d-inline-block pt-3 pb-3 bg-greylight rounded-6">
+                                                <img src="{{isset(json_decode($product->images)[0])?json_decode
+                                                ($product->images)[0]:''}}"
+                                                     alt="product-image" class="w-80 d-inline-block
+                                                pt-3 pb-3 bg-greylight rounded-6">
                                             </td>
 
                                             <td class="product-p">
@@ -55,33 +62,28 @@
                                             </td>
                                             <td class="product-total-price">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" data-id="{{$product->id}}" {{$product->access == 1 ?'checked':''}} >
+                                                    <input class="form-check-input" type="checkbox"
+                                                           data-id="{{$product->key}}" {{$product->access == 1
+                                                           ?'checked':''}} >
                                                 </div>
                                             </td>
                                             <td class="product-remove text-right">
-                                                <a href="{{route('shop.editproduct',['id'=> $product->id, 'slug' =>$product->slug])}} "><i class="feather-edit me-1 font-xs text-grey-500"></i></a>
-                                                <a href="#"><i class="ti-trash font-xs text-grey-500"></i></a>
+                                                <a href="{{route('shop.editproduct',['id'=> $product->key, 'slug'
+                                                =>$product->slug])}} "><i class="feather-edit me-1 font-xs text-grey-500"></i></a>
+                                                <a href="{{route('shop.productDelete',$product->key)}}">
+                                                    <i class="ti-trash font-xs text-grey-500"></i> </a>
                                             </td>
                                         </tr>
                                       @endforeach
                                         </tbody>
                                     </table>
                                 </div>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-end mt-4">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#"><i class="feather-chevrons-left"></i></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#"><i class="feather-chevrons-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
+
+                                {{$products->links('vendor.pagination.mypagination')}}
+
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -102,7 +104,7 @@
 
             $.ajax({
                 url: "{{route('shop.productActive')}}/",
-                type: "post",
+                type: "get",
                 data: {
                     "_token": "{{ csrf_token() }}",
                     'id': dataid,
