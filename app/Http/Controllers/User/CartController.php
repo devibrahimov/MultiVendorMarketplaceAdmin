@@ -19,6 +19,7 @@ class CartController extends Controller
             'quantity' =>$quantity,
             'product_key' =>$productkey
         ];
+
         Cart::store($data);
 
     }

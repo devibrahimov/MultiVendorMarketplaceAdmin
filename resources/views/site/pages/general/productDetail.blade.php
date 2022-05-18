@@ -334,13 +334,11 @@
                 url: '{{route('user.addtocart')}}',
                 data:formData,
                 success:function(data){
-                    console.log("success");
-
-                    console.log(data);
+                    toastr.success(" Bu məhsulu Səbətə əlavə edildi " )
                 },
                 error: function(data){
-                    console.log("error");
-                    console.log(data);
+
+                    toastr.success(data.message )
                 }
             })
             @endauth
