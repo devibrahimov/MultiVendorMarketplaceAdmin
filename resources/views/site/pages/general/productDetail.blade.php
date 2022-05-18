@@ -145,11 +145,11 @@
                             <div class="cart-count float-end me-2">
                                 <div class="number">
                                     <span class="minus">-</span>
-                                    <input type="text" class="open-font cart-input" value="1">
+                                    <input type="text" id="quantity" class="open-font cart-input" value="1">
                                     <span class="plus">+</span>
                                 </div>
                             </div>
-                            <a href="#" class="bg-current text-white rounded-6 btn-cart">Səbətə At</a>
+                            <button  data-key="{{$product->key}}"  class="thisproductaddtocart bg-current text-white rounded-6 btn-cart">Səbətə At</button>
                         </div>
 
                     </div>
@@ -237,30 +237,33 @@
 
                             @foreach($similarProducts as $product)
 
-                                <div class="owl-items card rounded-0 border-0 p-3">
+                                <div class="owl-items my-card  ">
+                                    <span class="wish-list">
 
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
+{{--                                  <i data-key="{{$product->key}}" class='addtowish   colorSuccess bx bx-heart @auth('user'){{\App\Models\Wish::hasWish($product->key,auth('user')->id())  !=null? 'active': ''}} @endauth'></i>--}}
+                                  <i data-key="{{$product->key}}" class='addtowish   colorSuccess bx bx-heart @auth('user'){{!$product->hasWish->isEmpty() ? 'active': ''}} @endauth'></i>
+                              </span>
+                                    <div class="cardImg">
+                                        <img src="{{\GuzzleHttp\json_decode($product->images)[0]}}"
+                                             class="card-img-top" alt="{{$product->name}}" title="{{$product->name}}" >
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="cardBody px-2 pt-2">
+                                        <h5 class="card-text">
+                                            <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
+                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" class="text-grey-700 fw-600 font-xss lh-22 d-block ls-0">
+                                                {{$product->name}}</a>
+                                        </h5>
 
+                                        <div class="price mt-3 bottom-0 posr">
+                                            <span class="fw-bold colorSuccess"> {{$product->sale_price}}₼ </span>
+                                            @if($product->sale_price < $product->price)
+                                                <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$product->price}}</span>
+                                            @endif
+                                        </div>
+                                        <button data-key="{{$product->key}}"   class="addtocart buy shadow-custom"><i class='bx bx-cart me-1'></i> Səbətə at</button>
+                                    </div>
+                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -275,6 +278,39 @@
 @section('js')
     <script>
 
+        $(document).on('click','.thisproductaddtocart',function () {
+            let quantity = $('#quantity').val()
+            let productkey = $(this).attr('data-key') ;
+            @guest('user')
+            toastr.warning(" Bu məhsulu Səbətə əlavə edə bilmək üçün əvvəlcə istifadəçi " +
+                "olaraq Giriş etməlisiniz. Giriş üçün  <a href='{{route('user.login')}}'> <b> GİRİŞ ET </b></a> ")
+            @endguest
+
+            @auth('user')
+
+            // let productkey = $(this).attr('data-key') ;
+            // console.log(productkey)
+            formData = {
+                'productkey' : productkey ,
+                'quantity' : quantity,
+                '_token' : '{{csrf_token()}}'
+            }
+            $.ajax({
+                type:'POST',
+                url: '{{route('user.addtocart')}}',
+                data:formData,
+                success:function(data){
+                    console.log("success");
+
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log("error");
+                    console.log(data);
+                }
+            })
+            @endauth
+        })
         $(document).on('click','.addtocart',function () {
             let productkey = $(this).attr('data-key') ;
             console.log(productkey)
@@ -309,5 +345,7 @@
             })
             @endauth
         });
+
+
     </script>
 @endsection

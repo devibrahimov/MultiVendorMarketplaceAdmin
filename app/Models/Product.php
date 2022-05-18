@@ -129,25 +129,24 @@ class Product extends Model
     }
 
     public static function getSimilarProducts($category_id){
-        $Category = Category::select(['id','parent_id'])->find($category_id);
+        $Category = Category::select(['id','parent_id'])->with('parent')->find($category_id);
+        $ParentCategory = Category::select(['id','parent_id'])->with('children')->find($Category->parent->parent->id);
+
         $catlist= [];
 
-        var_dump($Category );exit;
 
-//        foreach($Category->subCategories as $c){
-//            foreach($c->subCategories as $ce){
-//                array_push($catlist , $ce->id);
-//            }
-//        }
-//
-//        return Product::whereIn('category_id',$catlist)//whereIn ile $catlist array icinde olanlardan
-//        // her hansi biri category_id ile uygundursa o productu getirir
-//        ->where('access',1)
-//            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
-//            ->take(6)
-//            ->get();
+        foreach($ParentCategory->children as $c){
+            foreach($c->children as $ce){
+                array_push($catlist , $ce->id);
+            }
+        }
 
-
+        return Product::whereIn('category_id',$catlist)//whereIn ile $catlist array icinde olanlardan
+        // her hansi biri category_id ile uygundursa o productu getirir
+        ->where('access',1)
+            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+            ->take(6)
+            ->get();
     }
 
     public function productStatistc(){
@@ -157,7 +156,13 @@ class Product extends Model
     }
 
     public   function hasWish(){
-        return $this->hasMany('App\Models\Wish','product_key','key')->where('user_id',auth('user')->user()->id);
+        if (isset(auth('user')->user()->id) ){
+            return $this
+                ->hasMany('App\Models\Wish','product_key','key')
+                ->where('user_id',auth('user')->user()->id);
+        }
 
+        return $this
+            ->hasMany('App\Models\Wish','product_key','key');
     }
 }
