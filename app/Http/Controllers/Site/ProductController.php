@@ -12,8 +12,11 @@ class ProductController extends Controller
 {
 
     public function allproducts(){
-        $products = Product::where('access',1)->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price',
-        'price',])->paginate(20);
+        $products = Product::where('access',1)
+                    ->orderBy('id','DESC')
+                    ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price'])
+                    ->with('hasWish')
+                    ->paginate(20);
          return view('site.pages.general.productsListPage',compact(['products']));
     }
 
@@ -23,23 +26,21 @@ class ProductController extends Controller
         $statistic->hit += 1 ;
         $statistic->save();
 
+        $similarProducts =Product::getSimilarProducts($product->category_id);
+
        if ($product ==null or $product == false or $product == false){
            return redirect()->route('site.products');
        }else{
-           return view('site.pages.general.productDetail',compact(['product']));
+           return view('site.pages.general.productDetail',compact(['product','similarProducts']));
        }
 
     }
 
     public function trend(){
-
-        $products = ProductStatistics::where('hit','>',0)
+        $products = Product::join('product_statistics','products.id','=','product_statistics.product_id')
             ->orderBy('hit','DESC')
-            ->join('products','products.id','=','product_statistics.product_id')
-            ->where('access',1)
-            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+            ->with('hasWish')
             ->paginate(20);
-
         return view('site.pages.general.productsListPage', compact( 'products'));
     }
 
@@ -50,11 +51,11 @@ class ProductController extends Controller
 
         $category = Category::where('slug',$slug)->select('id')->first();
 
-        $products = ProductStatistics::where('category_id','=',$category->id)
+        $products = Product::where('category_id','=',$category->id)
+            ->join('product_statistics','products.id','=','product_statistics.product_id')
             ->orderBy('hit','DESC')
-            ->join('products','products.id','=','product_statistics.product_id')
-            ->where('access',1)
-            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+            ->with('hasWish')
+            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price'])
             ->paginate(20);
 
         return view('site.pages.general.productsListPage', compact( 'products'));
@@ -66,10 +67,9 @@ class ProductController extends Controller
         $search = $request->input('search');
         $products = Product::where('name','LIKE',"%{$search}%")
                             ->orWhere('description','LIKE',"%{$search}%")
-//                             ->orWhere('price','LIKE',"%{$search}%")
-//                             ->orWhere('sale_price','LIKE',"%{$search}%")
                             ->where('access',1)
-                            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+                            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price'])
+                            ->with('hasWish')
                             ->paginate(20);
 
         return view('site.pages.general.productsListPage', compact('products'));
@@ -80,7 +80,8 @@ class ProductController extends Controller
 
         $products = Product::inRandomOrder()
                             ->where('access',1)
-                            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+                            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price'])
+                            ->with('hasWish')
                             ->paginate(15);
 
         return view('site.pages.general.productsListPage', compact('products'));
@@ -94,7 +95,8 @@ class ProductController extends Controller
                             ->where('hit','>',0)
                             ->where('access',1)
                             ->orderBy('hit','DESC')
-                            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+                            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price'])
+                            ->with('hasWish')
                             ->paginate(15);
 
         return view('site.pages.general.productsListPage', compact('products'));
@@ -104,10 +106,9 @@ class ProductController extends Controller
 
 
     public function filter(Request $request){
-
-
         $products = Product::filter()->where('access',1)
-            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price'])
+            ->with('hasWish')
             ->paginate(20);
         return view('site.pages.general.productsListPage', compact('products'));
 

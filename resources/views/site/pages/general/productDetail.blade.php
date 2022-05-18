@@ -229,12 +229,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="fw-700 font-xss mb-4 mt-2">Related Products</h4>
+                    <h4 class="fw-700 font-xss mb-4 mt-2">Oxşar Məhsullar</h4>
                 </div>
                 <div class="col-lg-12">
                     <div class="related-product-slider border">
                         <div class="banner-slider-5 owl-carousel owl-theme dot-none owl-nav-link owl-arrow-top">
-                            <div class="owl-items card rounded-0 border-0 p-3">
+
+                            @foreach($similarProducts as $product)
+
+                                <div class="owl-items card rounded-0 border-0 p-3">
 
                                 <a href="#" class="posa right-0 top-0 mt-3 me-3"><i class="ti-heart font-xs text-grey-500"></i></a>
                                 <div class="clearfix"></div>
@@ -258,125 +261,7 @@
                                 </div>
                             </div>
 
-                            <div class="owl-items card rounded-0 border-0 p-3">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30% off</span>
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="owl-items card rounded-0 border-0 p-3">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30% off</span>
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="owl-items card rounded-0 border-0 p-3">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30% off</span>
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="owl-items card rounded-0 border-0 p-3">
-                                <span class="ls-3 font-xsssss text-white text-uppercase bg-current fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">30% off</span>
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="owl-items card rounded-0 border-0 p-3">
-
-                                <a href="#" class="posa right-0 top-0 mt-3 me-3"><i class="ti-heart font-xs text-grey-500"></i></a>
-                                <div class="clearfix"></div>
-                                <a href="#" class="d-block text-center"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 mt-3 mb-3 d-inline-block p-2 pt-0"></a>
-                                <div class="star d-inline text-left">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star.png" alt="star" class="w-10 me-1 float-start">
-                                    <img src="images/star-disable.png" alt="star" class="w-10 me-1 float-start">
-                                </div>
-                                <div class="clearfix"></div>
-                                <h2 class="mt-2"><a href="single-product.html" class="text-grey-700 fw-600 font-xsss lh-22 d-block ls-0">Blue Diamond Almonds Lightly Salted</a></h2>
-                                <h6 class="font-xss ls-3 fw-700 text-current d-flex"><span class="font-xsssss text-grey-500">$</span>29 <span class="ms-auto text-grey-500 fw-500 mt-1 font-xsssss">500gm</span></h6>
-                                <div class="cart-count d-flex mt-4">
-                                    <div class="number">
-                                        <span class="minus">-</span>
-                                        <input type="text" class="open-font" value="1">
-                                        <span class="plus">+</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -388,5 +273,41 @@
 @endsection
 
 @section('js')
+    <script>
 
+        $(document).on('click','.addtocart',function () {
+            let productkey = $(this).attr('data-key') ;
+            console.log(productkey)
+
+            @guest('user')
+            toastr.warning(" Bu məhsulu Səbətə əlavə edə bilmək üçün əvvəlcə istifadəçi " +
+                "olaraq Giriş etməlisiniz. Giriş üçün  <a href='{{route('user.login')}}'> <b> GİRİŞ ET </b></a> ")
+            @endguest
+
+            @auth('user')
+
+            // let productkey = $(this).attr('data-key') ;
+            // console.log(productkey)
+            formData = {
+                'productkey' : productkey ,
+                'quantity' : 1,
+                '_token' : '{{csrf_token()}}'
+            }
+            $.ajax({
+                type:'POST',
+                url: '{{route('user.addtocart')}}',
+                data:formData,
+                success:function(data){
+                    console.log("success");
+
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log("error");
+                    console.log(data);
+                }
+            })
+            @endauth
+        });
+    </script>
 @endsection

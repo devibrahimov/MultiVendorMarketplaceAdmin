@@ -45,14 +45,14 @@ class Wish extends Model
 
     }
 
-
-    public static function hasWish(string $key,$user_id){
-        $data = [
-            'user_id' => $user_id ,
-            'product_key' => $key ,
-        ] ;
-      return   Wish::where($data)->select('id')->first();
-    }
+//
+//    public static function hasWish(string $key,$user_id){
+//        $data = [
+//            'user_id' => $user_id ,
+//            'product_key' => $key ,
+//        ] ;
+//      return   Wish::where($data)->select('id')->first();
+//    }
 
     public static function myWishList($user_id){
         return   Wish::where('user_id',$user_id)->get();

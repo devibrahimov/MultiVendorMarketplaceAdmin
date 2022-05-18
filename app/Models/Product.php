@@ -127,4 +127,37 @@ class Product extends Model
         return $query ;
 
     }
+
+    public static function getSimilarProducts($category_id){
+        $Category = Category::select(['id','parent_id'])->find($category_id);
+        $catlist= [];
+
+        var_dump($Category );exit;
+
+//        foreach($Category->subCategories as $c){
+//            foreach($c->subCategories as $ce){
+//                array_push($catlist , $ce->id);
+//            }
+//        }
+//
+//        return Product::whereIn('category_id',$catlist)//whereIn ile $catlist array icinde olanlardan
+//        // her hansi biri category_id ile uygundursa o productu getirir
+//        ->where('access',1)
+//            ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
+//            ->take(6)
+//            ->get();
+
+
+    }
+
+    public function productStatistc(){
+        return $this->belongsTo(ProductStatistics::class)
+        ->where('hit','>',0)
+        ->orderBy('hit','DESC');
+    }
+
+    public   function hasWish(){
+        return $this->hasMany('App\Models\Wish','product_key','key')->where('user_id',auth('user')->user()->id);
+
+    }
 }

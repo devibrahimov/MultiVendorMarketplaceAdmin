@@ -14,15 +14,17 @@ class Category extends Model
     protected $dates = ['deleted_at'];
     protected $guarded = [] ;
 
-    public function  subCategories(){
-        return $this->hasMany(__CLASS__, 'parent_id');
+    public   function  subCategories(){
+        return $this->hasMany(__CLASS__, 'id','parent_id')->with('subCategories');
     }
 
-    public function  parent(){
-        return $this->belongsTo(__CLASS__, 'parent_id')->withDefault();
+    public static function  parent(){
+        return (new Category)->belongsTo(__CLASS__,  'id','parent_id')->withDefault();
     }
-
+    public   function children() {
+        return $this->hasMany('App\Models\Category', 'parent_id', 'id') ;
+    }
     public static function getcategories(){
-        return Category::where('parent_id',null)->get();
+        return Category::where('parent_id',null)->with('subCategories')->get();
     }
 }

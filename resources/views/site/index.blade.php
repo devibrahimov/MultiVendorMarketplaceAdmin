@@ -10,178 +10,15 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{setting()->favicon}}">
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="/site/css/__style.css?v={{rand(0,9999999)}}">
+    <link rel="stylesheet" href="/site/css/style.css?v={{rand(0,9999999)}}">
     <link rel="stylesheet" href="/site/toastr-notification/toastr.min.css">
 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="/site/css/custom.css?v={{rand(0,9999999)}}">
     @yield('css')
 
-    <style>
-        body {
-            background-attachment: fixed !important;
-            background-position: center 10px !important;
-        }
 
-        @media (max-width: 768px) {
-            .form-group .style2-input[type="submit"] {
-                padding-left: 0 !important;
-            }
-        }
-
-        .main-wrapper {
-            max-width: 1150px !important;
-        }
-
-        .form-group .style2-input {
-            height: 55px !important;
-            line-height: normal;
-
-        }
-
-        .login-card .form-group.icon-input i {
-            top: 18px !important;
-        }
-
-        .select-location .form-control {
-            line-height: 50px !important;
-        }
-
-        @media (max-width:768px) {
-            .card .row {
-                --bs-gutter-x: 6px;
-            }
-
-            .form-group .style2-input {
-                padding-left: 42px !important;
-
-            }
-
-            .card .row .form-group.icon-input i {
-                left: 0px !important;
-            }
-        }
-
-
-        .suggestions {
-            display: flex;
-            flex-direction: column;
-            visibility: hidden;
-            opacity: 0;
-            padding-left: 20px;
-            position: absolute;
-            left: 0;
-            top: 48px;
-            width: 540px;
-            height: 320px;
-            background-color: white;
-            border-radius: 2px 2px 5px 5px;
-            border: 2px solid #1ca3012a;
-            transition: 0.3s ease;
-        }
-
-        .suggestions-box {
-            display: flex;
-            flex-direction: column;
-        }
-
-        #clear_suggestions_box {
-            cursor: pointer;
-            position: absolute;
-            top: 6px;
-            right: 15px;
-        }
-
-        .suggestions.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .header-wrapper {
-            z-index: 9999;
-        }
-
-        .header-wrapper .form-group input {
-            width: 540px !important;
-        }
-
-        .upper-header {
-            z-index: 9999999;
-        }
-
-        .anothernav {
-            font-size: 11px;
-            font-weight: 600;
-            margin-top: 5px;
-        }
-
-        .anothernav li a {
-            color: #6d6d6d;
-        }
-
-        .anothernav li {
-            margin-left: 10px;
-        }
-
-        @media (max-width: 430px){
-            .price {
-                transform: scale(1) !important;
-                font-size: 14px;
-                bottom: 0 !important;
-                margin-top: 15px;
-            }
-            .buy{
-                bottom: 17px !important;
-                transform: scale(0.9) !important;
-            }
-        }
-        /* .card-text{
-            height: 50px !important;
-        } */
-
-        .shadow-custom {
-            box-shadow: 0.02rem 0.05rem 0.55rem rgb(0 0 0 / 12%) !important;
-        }
-
-        .buy{
-            bottom: 16px !important;
-            padding: 3px 8px !important;
-            border-radius: 5px !important;
-        }
-        .main-div li h4{
-            width: 100px;
-        }
-        .note_list{
-            position: absolute;
-            top: 30px;
-            right: 50px;
-            width: 250px;
-            height: auto;
-            background-color: #fffbbe;
-            border-radius: 4px;
-        }
-
-        textarea::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        textarea::-webkit-scrollbar-track {
-            background-color: #f1f1f1;
-        }
-
-        textarea::-webkit-scrollbar-thumb {
-            background-color: #ddd;
-            outline: 1px solid transparent;
-        }
-        .ad-info .categoriya.getsubcat{
-            cursor: pointer;
-        }
-        .ad-info .form-control{
-            line-height: normal;
-        }
-
-    </style>
 </head>
 
 {{--<body class="color-theme-green mont-font" style="background-image: url(https://via.placeholder.com/1960x3000.jpg);">--}}
@@ -556,7 +393,7 @@
 
                 @guest('user')
                 toastr.warning(" Bu məhsulu Bəyəndiklərinizə əlavə edə bilmək üçün əvvəlcə istifadəçi " +
-                    "olaraq Giriş etməlisiniz. Giriş ucun  <a href='{{route('user.login')}}'> <b>GIRIŞ ET</b></a> ")
+                    "olaraq Giriş etməlisiniz. Giriş üçün  <a href='{{route('user.login')}}'> <b>GİRİŞ ET</b></a> ")
                 @endguest
 
                 @auth('user')
@@ -592,12 +429,45 @@
                 $(".overlay").removeClass("active")
             })
 
-        })
+        });
+
+
+
+        $(document).on('click','.addtocart',function () {
+            let productkey = $(this).attr('data-key') ;
+            console.log(productkey)
+
+            @guest('user')
+            toastr.warning(" Bu məhsulu Səbətə əlavə edə bilmək üçün əvvəlcə istifadəçi " +
+                "olaraq Giriş etməlisiniz. Giriş üçün  <a href='{{route('user.login')}}'> <b> GİRİŞ ET </b></a> ")
+            @endguest
+
+            @auth('user')
+
+            // let productkey = $(this).attr('data-key') ;
+            // console.log(productkey)
+            formData = {
+                'productkey' : productkey ,
+                'quantity' : 1,
+                '_token' : '{{csrf_token()}}'
+            }
+            $.ajax({
+                type:'POST',
+                url: '{{route('user.addtocart')}}',
+                data:formData,
+                success:function(data){
+                    console.log("success");
+
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log("error");
+                    console.log(data);
+                }
+            })
+            @endauth
+        });
     </script>
-
-
-
-
 
 
 

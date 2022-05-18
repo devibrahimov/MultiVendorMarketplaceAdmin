@@ -113,7 +113,7 @@
                         <div class="col-lg-4 col-md-4 col-xs-6 px-1 border-start border-bottom rounded-0 posr">
                             <span class="wish-list">
                                 <i data-key="{{md5(md5($product->slug.$product->sku.$product->barkode))}}" class="addtowish
-@auth('user'){{\App\Models\Wish::hasWish($product->key,auth('user')->id())  != null? 'active': ''}} @endauth colorSuccess bx bx-heart"></i>
+                        @auth('user'){{!$product->hasWish->isEmpty()? 'active': ''}} @endauth colorSuccess bx bx-heart"></i>
                             </span>
                             <div class="clearfix"></div>
 
@@ -194,7 +194,7 @@
                             <div class="px-1 rounded-0 posr border-bottom">
                             <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[4]->slug.$atHomeRandProducts[4]->sku.$atHomeRandProducts[4]->barkode))}}"
-                                       class="addtowish  @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[4]->key,auth('user')->id()) !=null? 'active': ''}} @endauth colorSuccess bx bx-heart"></i>
+                                       class="addtowish  @auth('user'){{!$atHomeRandProducts[4]->hasWish->isEmpty()? 'active': ''}} @endauth colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
                                 @if(@isset($atHomeRandProducts[4]))
@@ -232,7 +232,7 @@
                             <div class="px-1 rounded-0 posr">
                             <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[1]->slug.$atHomeRandProducts[1]->sku.$atHomeRandProducts[1]->barkode))}}"
-                                       class="addtowish   @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[1]->key,auth('user')->id()) !=null? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
+                                       class="addtowish   @auth('user'){{!$atHomeRandProducts[1]->hasWish->isEmpty()? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
                                 @if(@isset($atHomeRandProducts[1]))
@@ -272,7 +272,7 @@
                             <div class="px-1 rounded-0 posr border-bottom">
                                 <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[2]->slug.$atHomeRandProducts[2]->sku.$atHomeRandProducts[2]->barkode))}}"
-                                       class="addtowish   @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[2]->key,auth('user')->id()) !=null? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
+                                       class="addtowish   @auth('user'){{!$atHomeRandProducts[2]->hasWish->isEmpty()? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
                                 </span>
 
                                 <span class="ls-3 font-xsssss text-white text-uppercase bg-danger fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">DEAL</span>
@@ -316,7 +316,7 @@
 
                                 <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[3]->slug.$atHomeRandProducts[3]->sku.$atHomeRandProducts[3]->barkode))}}"
-                                       class="addtowish   @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[3]->key,auth('user')->id()) !=null? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
+                                       class="addtowish   @auth('user'){{!$atHomeRandProducts[3]->hasWish->isEmpty()? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
                                 @if(@isset($atHomeRandProducts[3]))
@@ -358,7 +358,7 @@
                             <div class="px-2 rounded-0 posr">
                                 <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[0]->slug.$atHomeRandProducts[0]->sku.$atHomeRandProducts[0]->barkode))}}"
-                                       class="addtowish   @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[0]->key,auth('user')->id()) !=null? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
+                                       class="addtowish   @auth('user'){{!$atHomeRandProducts[0]->hasWish->isEmpty()? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
                                 </span>
                                 <span class="ls-3 font-xsssss text-white text-uppercase bg-warning fw-700 p-2 lh-1 d-inline-block posa rounded-3 left-15 top-15">Trend</span>
 
@@ -412,7 +412,7 @@
 
                                 <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[5]->slug.$atHomeRandProducts[5]->sku.$atHomeRandProducts[5]->barkode))}}"
-                                       class="addtowish   @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[5]->key,auth('user')->id()) !=null? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
+                                       class="addtowish   @auth('user'){{!$atHomeRandProducts[5]->hasWish->isEmpty()? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
                                 @if(@isset($atHomeRandProducts[5]))
@@ -452,7 +452,7 @@
 
                                 <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[6]->slug.$atHomeRandProducts[6]->sku.$atHomeRandProducts[6]->barkode))}}"
-                                       class="addtowish   @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[6]->key,auth('user')->id()) !=null? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
+                                       class="addtowish   @auth('user'){{!$atHomeRandProducts[6]->hasWish->isEmpty()? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
                                 @if(@isset($atHomeRandProducts[6]))
@@ -492,7 +492,7 @@
                             <div class="px-1 rounded-0 posr border-bottom">
                                 <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[7]->slug.$atHomeRandProducts[7]->sku.$atHomeRandProducts[7]->barkode))}}"
-                                       class="addtowish   @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[7]->key,auth('user')->id()) !=null? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
+                                       class="addtowish   @auth('user'){{!$atHomeRandProducts[7]->hasWish->isEmpty()? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
                                 @if(@isset($atHomeRandProducts[7]))
@@ -531,7 +531,7 @@
 
                                 <span class="wish-list">
                                     <i data-key="{{md5(md5($atHomeRandProducts[8]->slug.$atHomeRandProducts[8]->sku.$atHomeRandProducts[8]->barkode))}}"
-                                       class="addtowish   @auth('user'){{\App\Models\Wish::hasWish($atHomeRandProducts[8]->key,auth('user')->id()) !=null? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
+                                       class="addtowish   @auth('user'){{!$atHomeRandProducts[8]->hasWish->isEmpty()? 'active': ''}} @endauth  colorSuccess bx bx-heart"></i>
                                 </span>
                                 <div class="clearfix"></div>
                                 @if(@isset($atHomeRandProducts[8]))

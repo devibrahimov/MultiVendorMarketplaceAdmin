@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\CartController;
 //    __________ USER ROUTES ____________
 
 Route::group(['middleware'=> ['user'],'prefix' => 'istifadeci'], function () {
@@ -23,6 +24,7 @@ Route::group(['middleware'=> ['user'],'prefix' => 'istifadeci'], function () {
     Route::post('user-changeAvatar',[UserController::class,'changeAvatar'])->name('user.changeAvatar');
 
 
+    Route::post('sebete-elave-et',[CartController::class,'addtocart'])->name('user.addtocart');
 
 
 

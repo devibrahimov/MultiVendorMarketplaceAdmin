@@ -1,14 +1,8 @@
 @extends('site.index')
 
 @section('css')
-
-@endsection
-
-
-@section('content')
-    <head>
-        <style>
-            .buy{
+    <style>
+        .buy{
             bottom: 19px !important;
             padding: 3px 8px !important;
             border-radius: 5px !important;
@@ -47,8 +41,12 @@
         .filter__listing.active > .filter__header > .feather-chevron-right{
             transform: rotate(90deg);
         }
-        </style>
-    </head>
+    </style>
+@endsection
+
+
+@section('content')
+
     <!-- LISTING WRAPPER -->
     <div class="listing-wrapper pt-3 pb-3 md-mt-6">
         <div class="container">
@@ -166,32 +164,36 @@
 {{--                    </div>--}}
                     <div class="row border rounded-6 m-0">
                         <div class="productList">
-                                @foreach($products as $product)
-                            <div class="my-card pb-4">
+
+                            @foreach($products  as $product )
+{{--                        @php $product = $product->product @endphp--}}
+                                <div class="my-card pb-4">
                               <span class="wish-list">
 
-                                  <i data-key="{{$product->key}}" class='addtowish   colorSuccess bx bx-heart @auth('user'){{\App\Models\Wish::hasWish($product->key,auth('user')->id())  !=null? 'active': ''}} @endauth'></i>
+{{--                                  <i data-key="{{$product->key}}" class='addtowish   colorSuccess bx bx-heart @auth('user'){{\App\Models\Wish::hasWish($product->key,auth('user')->id())  !=null? 'active': ''}} @endauth'></i>--}}
+                                  <i data-key="{{$product->key}}" class='addtowish   colorSuccess bx bx-heart @auth('user'){{!$product->hasWish->isEmpty() ? 'active': ''}} @endauth'></i>
                               </span>
-                                <div class="cardImg">
-                                    <img src="{{\GuzzleHttp\json_decode($product->images)[0]}}"
-                                         class="card-img-top" alt="{{$product->name}}" title="{{$product->name}}" >
-                                </div>
-                                <div class="cardBody px-2 pt-2">
-                                    <h5 class="card-text">
-                                        <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
-                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" class="text-grey-700 fw-600 font-xss lh-22 d-block ls-0">
-                                            {{$product->name}}</a>
-                                    </h5>
-                                    <div class="price mt-3 bottom-0 posr">
-                                        <span class="fw-bold colorSuccess"> {{$product->sale_price}}₼ </span>
-                                        @if($product->sale_price < $product->price)
-                                        <span class="text-decoration-line-through text-muted
-                                        fw-bold">{{$product->price}}</span>
-                                        @endif
+                                    <div class="cardImg">
+                                        <img src="{{\GuzzleHttp\json_decode($product->images)[0]}}"
+                                             class="card-img-top" alt="{{$product->name}}" title="{{$product->name}}" >
                                     </div>
-                                    <button class="buy shadow-custom"><i class='bx bx-cart me-1'></i> Səbətə at</button>
+                                    <div class="cardBody px-2 pt-2">
+                                        <h5 class="card-text">
+                                            <a href="{{route('site.productdetail',['key'=>md5(md5($product->slug
+                                        .$product->sku.$product->barkode)),'m'=>$product->slug])}}" class="text-grey-700 fw-600 font-xss lh-22 d-block ls-0">
+                                                {{$product->name}}</a>
+                                        </h5>
+
+                                        <div class="price mt-3 bottom-0 posr">
+                                            <span class="fw-bold colorSuccess"> {{$product->sale_price}}₼ </span>
+                                            @if($product->sale_price < $product->price)
+                                                <span class="text-decoration-line-through text-muted
+                                        fw-bold">{{$product->price}}</span>
+                                            @endif
+                                        </div>
+                                        <button data-key="{{$product->key}}"   class="addtocart buy shadow-custom"><i class='bx bx-cart me-1'></i> Səbətə at</button>
+                                    </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -225,6 +227,11 @@ $(".filter__header").on("click", function () {
     // {
     //     $(this).parent().css("height", "42");
     // }
+
+
+
+
 });
+
 </script>
 @endsection
