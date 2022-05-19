@@ -300,49 +300,16 @@
                 url: '{{route('user.addtocart')}}',
                 data:formData,
                 success:function(data){
-                    console.log("success");
-
-                    console.log(data);
+                    let quantity = $('#quantity').val(1)
+                    toastr.success(data.message)
                 },
                 error: function(data){
-                    console.log("error");
-                    console.log(data);
+                    toastr.warning(data.message)
                 }
             })
             @endauth
         })
-        $(document).on('click','.addtocart',function () {
-            let productkey = $(this).attr('data-key') ;
-            console.log(productkey)
 
-            @guest('user')
-            toastr.warning(" Bu məhsulu Səbətə əlavə edə bilmək üçün əvvəlcə istifadəçi " +
-                "olaraq Giriş etməlisiniz. Giriş üçün  <a href='{{route('user.login')}}'> <b> GİRİŞ ET </b></a> ")
-            @endguest
-
-            @auth('user')
-
-            // let productkey = $(this).attr('data-key') ;
-            // console.log(productkey)
-            formData = {
-                'productkey' : productkey ,
-                'quantity' : 1,
-                '_token' : '{{csrf_token()}}'
-            }
-            $.ajax({
-                type:'POST',
-                url: '{{route('user.addtocart')}}',
-                data:formData,
-                success:function(data){
-                    toastr.success(" Bu məhsulu Səbətə əlavə edildi " )
-                },
-                error: function(data){
-
-                    toastr.success(data.message )
-                }
-            })
-            @endauth
-        });
 
 
     </script>

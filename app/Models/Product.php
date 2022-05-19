@@ -128,6 +128,8 @@ class Product extends Model
 
     }
 
+
+
     public static function getSimilarProducts($category_id){
         $Category = Category::select(['id','parent_id'])->with('parent')->find($category_id);
         $ParentCategory = Category::select(['id','parent_id'])->with('children')->find($Category->parent->parent->id);
@@ -146,6 +148,7 @@ class Product extends Model
         ->where('access',1)
             ->select(['key','images', 'slug', 'sku', 'barkode', 'name', 'sale_price','price',])
             ->take(6)
+            ->with('hasWish')
             ->get();
     }
 

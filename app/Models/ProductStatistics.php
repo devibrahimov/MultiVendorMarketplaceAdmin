@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductStatistics extends Model
 {
     use HasFactory;
+
     protected $primaryKey = 'static_id';
     protected $guarded = [] ;
 
@@ -19,6 +20,7 @@ class ProductStatistics extends Model
             ->where('access',1);
 
     }
+
     public function hasWish()
     {
         return $this->belongsTo(Wish::class);

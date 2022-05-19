@@ -59,7 +59,6 @@ class SettingController extends Controller
                 $logo_whitename = $imageurl;
             }
 
-
             if ($favicon) {
                 $newimagename = env('APP_NAME').'-favicon' . '.' . $favicon->getClientOriginalExtension();
                 $imageurl = $path . '/' . $newimagename; //for DB
@@ -76,6 +75,7 @@ class SettingController extends Controller
                 'logo_white' =>$logo_whitename ,
                 'favicon' =>$faviconname
             ];
+
             $setting= new Setting();
             $setting->insert($data);
 
@@ -84,6 +84,7 @@ class SettingController extends Controller
                 'type' => 'success', ];
             return back()->with('feedback', $feedbackdata);
         }
+
         catch (Exception $exception){
             $feedbackdata = ['title' => 'Uğursuz !',
                 'message' => 'Sayt məlumatları yaddaşa yazılarkən xəta baş verdi. Xəta: '.$exception->getMessage(),
@@ -95,7 +96,6 @@ class SettingController extends Controller
 
 
     public function update(Request $request){
-
         try {
             $setting= Setting::first();
 

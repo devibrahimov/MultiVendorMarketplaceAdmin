@@ -79,7 +79,8 @@
                             <h4 class="fw-700 font-lg text-grey-900 text-start mb-3 mt-n2 d-block"> Səbətim</h4>
                             <div class="row mb-3">
                                 <div class="col-md-5 col-xs-5">
-                                    <a href="#" class="d-block text-center" data-bs-toggle="modal" data-bs-target="#productmodal"><img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a>
+                                    <a href="#" class="d-block text-center" data-bs-toggle="modal" data-bs-target="#productmodal">
+                                        <img src="https://via.placeholder.com/171x148.png" alt="product-image" class="w-100 d-inline-block pt-3 pb-3 bg-greylight rounded-6"></a>
                                 </div>
                                 <div class="col-md-7 col-xs-7 ps-0">
                                     <span class="ms-auto text-grey-500 fw-500 lh-1 font-xsssss mt-0 w-100 mb-2">500gm</span>
@@ -456,13 +457,12 @@
                 url: '{{route('user.addtocart')}}',
                 data:formData,
                 success:function(data){
-                    console.log("success");
 
-                    console.log(data);
+                    toastr.success(data.message)
+
                 },
                 error: function(data){
-                    console.log("error");
-                    console.log(data);
+                    toastr.warning(data.message)
                 }
             })
             @endauth
