@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li class="list-inline-item d-block me-0">
-                <a href="#" class="pt-2 pb-2 d-flex align-items-center">
+                <a href="{{route('user.cartlist')}}" class="pt-2 pb-2 d-flex align-items-center">
                     <i class="btn-round-sm bg-mini-gradiant text-white feather-hard-drive font-xss me-3"></i>
                     <h4 class="fw-600 font-xsss ls-0 text-grey-700 mb-0 mt-0">Səbətim</h4>
                     <i class="ti-angle-right font-xsssss text-grey-500 ms-auto mt-1"></i>

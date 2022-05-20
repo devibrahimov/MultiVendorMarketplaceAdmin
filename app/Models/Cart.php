@@ -14,7 +14,6 @@ class Cart extends Model
     use HasFactory;
 
 
-
     public static function mycartList($user_id){
         return Cart::where('user_id',$user_id)->with('product')->get();
     }

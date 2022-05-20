@@ -103,7 +103,7 @@
                         <div class="p-4 posa bottom-0 w-100 z-index-5" style="background-color: #eeeeeebd; backdrop-filter: blur(5px);">
 
                             <h4 class="font-xs fw-700 lh-28 text-grey-900 mb-2 mt-2 ls-0">{{$athomeCategory->name}}</h4>
-                            <a href="#" class="fw-700 ls-3 text-grey-900 font-xsssss border-bottom border-dark lh-22 d-inline-block">SHOP NOW</a>
+                            <a href="#" class="fw-700 ls-3 text-grey-900 font-xsssss border-bottom border-dark lh-22 d-inline-block">Bütün Məhsulları gör</a>
                         </div>
                     </div>
                 </div>

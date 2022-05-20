@@ -24,7 +24,7 @@ Route::group(['middleware'=> ['user'],'prefix' => 'istifadeci'], function () {
     Route::post('user-changeAvatar',[UserController::class,'changeAvatar'])->name('user.changeAvatar');
 
 
-    Route::get('sebetim',[CartController::class,'productlist'])->name('user.productlist');
+    Route::get('sebetim',[CartController::class,'productlist'])->name('user.cartlist');
     Route::post('sebete-elave-et',[CartController::class,'addtocart'])->name('user.addtocart');
 
 

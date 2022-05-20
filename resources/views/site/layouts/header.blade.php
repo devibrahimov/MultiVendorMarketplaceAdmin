@@ -154,7 +154,7 @@
                     <a href="{{route('user.wishlist')}}" class="nav-icon" data-bs-toggle="modal" data-bs-target="#savedmodal"><i
                             class="feather-heart text-grey-500"></i>
                     </a>
-                    <a href="{{route('user.productlist')}}" class="nav-icon"  ><i class="feather-shopping-bag text-grey-500"></i>
+                    <a href="{{route('user.cartlist')}}" class="nav-icon"  ><i class="feather-shopping-bag text-grey-500"></i>
                     </a>
 
                      @endauth
