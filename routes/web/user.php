@@ -33,6 +33,11 @@ Route::group(['middleware'=> ['user'],'prefix' => 'istifadeci'], function () {
 
 
 
+    Route::get('reset-password', [ResetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [ResetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+
+
 
 });//middleware auth:apiuser stop
 

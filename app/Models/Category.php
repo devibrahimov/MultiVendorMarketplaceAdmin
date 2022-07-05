@@ -32,4 +32,9 @@ class Category extends Model
     public static function getcategories(){
         return Category::where('parent_id',null)->get();
     }
+
+
+    public static function getcategories(){
+        return Category::where('parent_id',null)->get();
+    }
 }
