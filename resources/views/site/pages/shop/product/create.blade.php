@@ -374,18 +374,14 @@
 
 <div class="main-div pb-5 pt-2 posr">
 
-
     <div class="custom_overload" style="display: none">
         <span class="fw-600 text-grey-900 font-lg mb-0 text-capitalize"> Yüklənir . . .</span>
         <div class="tenor-gif-embed" data-postid="15270884" data-share-method="host" data-aspect-ratio="1"
              data-width="30%"><a href="https://ticaretmerkezi.az/site/images/492329d446c422b0483677d0318ab4fa
-             .gif?v=asdasdasd">Loding</a>from <a href="https://ticaretmerkezi
+             .gif?v=asdasdasd">Yüklənir</a>from <a href="https://ticaretmerkezi
              .az/site/images/492329d446c422b0483677d0318ab4fa
-             .gif?v=asdasdasd">loding</a></div>
-
+             .gif?v=asdasdasd">Yüklənir</a></div>
     </div>
-
-
 
     <div class="row ps-2 mt-3 ps-md-4 mb-3">
         <a href="{{url()->previous()}}" class="fw-600 text-current font-md d-flex align-items-center"><i class='bx bx-chevron-left font-xl '></i> Geri</a>
@@ -417,15 +413,11 @@
         </div>
 
 
-
-
         <div class="row mt-2">
             <div class="imagelistdivrow  pe-0 " id='ad-images'>
 
             </div>
         </div>
-
-
 
         <div class="ad-info row w-75 mt-5">
             <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column">

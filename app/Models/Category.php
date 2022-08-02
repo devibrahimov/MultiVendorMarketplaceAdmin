@@ -28,13 +28,13 @@ class Category extends Model
         return Category::where('parent_id',null)->select(['id','parent_id','name'])->with('subCategories')->get();
     }
 
-
-    public static function getcategories(){
-        return Category::where('parent_id',null)->get();
-    }
-
-
-    public static function getcategories(){
-        return Category::where('parent_id',null)->get();
-    }
+//
+//    public static function getcategories(){
+//        return Category::where('parent_id',null)->get();
+//    }
+//
+//
+//    public static function getcategories(){
+//        return Category::where('parent_id',null)->get();
+//    }
 }
