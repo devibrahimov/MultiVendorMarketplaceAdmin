@@ -13,14 +13,14 @@ class AdvertismentController extends Controller
 {
     public function  index(){
          $advertisments = Advertisement::all();
-        return view('administrator.pages.advertisment.advertisment',compact('advertisments'));
+        return view('administrator.pages.carousel.carousel',compact('advertisments'));
     }
     public function store(AdvertismentRequest $request){
         try{
 
 
             $image = $request->file('image');
-            $path = "/photos/site/advertisment";
+            $path = "/photos/site/carousel";
             $imagepath = public_path() . $path;
 
 
@@ -62,13 +62,13 @@ class AdvertismentController extends Controller
     public function edit(int $id){
         $advertisment = Advertisement::find($id) ;
         $advertisments = Advertisement::all();
-        return view('administrator.pages.advertisment.editadvertisment',compact(['advertisment','advertisments']));
+        return view('administrator.pages.carousel.editadvertisment',compact(['advertisment','advertisments']));
     }
     public function update(int $id , Request $request){
         try{
 
             $image = $request->file('image');
-            $path = "/photos/site/advertisment";
+            $path = "/photos/site/carousel";
             $imagepath = public_path() . $path;
 
 

@@ -428,12 +428,12 @@
 
 
         <div class="ad-info row w-75 mt-5">
-            <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column">
-                <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>
-                <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>
-                <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>
-                <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>
-            </div>
+{{--            <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column">--}}
+{{--                <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>--}}
+{{--                <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>--}}
+{{--                <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>--}}
+{{--                <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>--}}
+{{--            </div>--}}
             <div class="col">
                 <div class="row w-100 mb-3">
                     <h3 class="fw-600 text-grey-900 font-xss mb-0 text-capitalize">Kateqoriya <span style="color: red;">*</span> </h3>
@@ -459,7 +459,7 @@
                 </div>
 
                 <div class="form-group mb-2">
-                    <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Elanın adı</h6>
+                    <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Məhsulun adı</h6>
                 </div>
                 <div class="form-group w-100 mb-4">
                     <input type="text" class="form-control text-grey-700 font-xssss fw-600 bg-white border"
@@ -470,12 +470,12 @@
                 <div class="form-group mb-2 posr">
                     <h6 class="fw-600 text-grey-900 font-xsss mb-0 text-capitalize">Açıqlama</h6>
 
-                    <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column" style="right: -270px;">
-                        <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>
-                        <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>
-                        <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>
-                        <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>
-                    </div>
+{{--                    <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column" style="right: -270px;">--}}
+{{--                        <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>--}}
+{{--                        <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>--}}
+{{--                        <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>--}}
+{{--                        <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>--}}
+{{--                    </div>--}}
 
                 </div>
                 <div class="form-group w-100 mb-3">
@@ -552,12 +552,12 @@
 
                 <div class='row w-100 mt-3 mb-4 posr' id="techniquelinputs">
 
-                    <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column" style="right: -270px; top: 0;">
-                        <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>
-                        <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>
-                        <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>
-                        <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>
-                    </div>
+{{--                    <div class="note_list shadow-sm ps-3 py-2 d-flex flex-column" style="right: -270px; top: 0;">--}}
+{{--                        <span class="font-xssss text-grey-700">1. Maksimum 30 şəkil yükləyin.</span>--}}
+{{--                        <span class="font-xssss text-grey-700">2. Minimum 3 şəkil olmalıdır.</span>--}}
+{{--                        <span class="font-xssss text-grey-700">3. Ölçüsü 5 Mb-dan kiçik şəkillərdən istifadə edin.</span>--}}
+{{--                        <span class="font-xssss text-grey-700">4. Keyfiyyəti və əlaqəli şəkillər yükləyin.</span>--}}
+{{--                    </div>--}}
 
 
 
@@ -629,7 +629,6 @@
                             </div>
                         </div>
 
-
                         <button class="btn  " id="size-add">
                             <i class='bx bx-plus'></i>
                         </button>
@@ -651,11 +650,7 @@
 
 @endsection
 
-
-
 @section('js')
-
-
 <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 <script>
@@ -670,8 +665,6 @@
 
 <script>
     $(document).ready(function() {
-
-
 
         $("#variant-add").one("click", function() {
             console.log($("#variant-select option:selected"))
@@ -724,8 +717,6 @@
 <script>
 
 
-
-
     let coverimage = 0;
 
     function delRef(index) {
@@ -765,8 +756,6 @@
 
       //  console.log(first)
     })
-
-
 
     function updateReferenceList() {
         var ref_input = document.getElementById('imageuploadinput');

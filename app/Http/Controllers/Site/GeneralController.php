@@ -57,9 +57,16 @@ class GeneralController extends Controller
     public function shops(){
         $shops = Shop::join('shop_information','shops.id','=','shop_information.shop_id')
             ->where('aprovel',1)
-            ->select('shop_information.work_time','shops.shopname','shops.shopcategory','shops.shop_serialnumber')
+            ->select('shop_information.work_time','shops.shopname','shops.shopcategory','shops.shop_serialnumber','shop_information.avatar')
             ->paginate(10);
         return view('site.pages.general.shops',compact(['shops']));
+    }
+    public function shopDetail($serialnumber){
+        $shop = Shop::join('shop_information','shops.id','=','shop_information.shop_id')
+            ->where('aprovel',1)->where('shop_serialnumber' , $serialnumber)
+            ->select('shop_information.work_time','shops.shopname','shops.shopcategory','shops.shop_serialnumber')
+            ->first();
+        return view('site.pages.general.shop_detail',compact(['shop']));
     }
 
 }

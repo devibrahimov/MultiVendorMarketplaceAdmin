@@ -137,11 +137,14 @@ class Product extends Model
         $catlist= [];
 
 
-        foreach($ParentCategory->children as $c){
-            foreach($c->children as $ce){
-                array_push($catlist , $ce->id);
+        if ($ParentCategory !=null ){
+            foreach($ParentCategory->children as $c){
+                foreach($c->children as $ce){
+                    array_push($catlist , $ce->id);
+                }
             }
         }
+
 
         return Product::whereIn('category_id',$catlist)//whereIn ile $catlist array icinde olanlardan
         // her hansi biri category_id ile uygundursa o productu getirir

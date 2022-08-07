@@ -45,10 +45,10 @@
            @include('site.partials.categories')
             <div class="col-lg-6">
                 <div class="owl-carousel slider-banner banner-wrap owl-theme ovh nav-none owl-arrow-center arrow-container" style="height: 400px;">
-                    <div class="item rounded-6 bg-image-cover ovh style3 d-flex justify-content-start" style="background-image: url('/photos/site/advertisment/56955552319916953170.jpg');  height: 400px;object-fit: cover;">
+                    <div class="item rounded-6 bg-image-cover ovh style3 d-flex justify-content-start" style="background-image: url('/photos/site/carousel/56955552319916953170.jpg');  height: 400px;object-fit: cover;">
 
                     </div>
-                    <div class="item rounded-6 bg-image-cover ovh style3 d-flex justify-content-start" style="background-image: url('/photos/site/advertisment/7490921857081625191.webp');
+                    <div class="item rounded-6 bg-image-cover ovh style3 d-flex justify-content-start" style="background-image: url('/photos/site/carousel/7490921857081625191.webp');
                              height: 400px;object-fit: cover;">
 
                     </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="col-lg-3 ps-lg-0 d-none d-lg-block d-xs-block sm-mt-3">
                 <div class="card w-100 border-0 shadow-none mb-0 ovh rounded-6 hover-zoom-image">
-                    <img src="/photos/site/advertisment/67263602817816347316.jpg" style="height: 400px;object-fit: cover;" alt="" class="w-100">
+                    <img src="/photos/site/carousel/67263602817816347316.jpg" style="height: 400px;object-fit: cover;" alt="" class="w-100">
 
                 </div>
             </div>
@@ -64,17 +64,17 @@
 
         <div class="row">
             <div class="col-lg-4 col-md-4 pe-2">
-                <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4" style="background-image: url('/photos/site/advertisment/25526083225695925704.jpg'); height: 250px;object-fit: cover;">
+                <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4" style="background-image: url('/photos/site/carousel/25526083225695925704.jpg'); height: 250px;object-fit: cover;">
 
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 ps-2 pe-2">
-                <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4" style="background-image: url('/photos/site/advertisment/88491380093258218572.webp');">
+                <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4" style="background-image: url('/photos/site/carousel/88491380093258218572.webp');">
 
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 pe-2 ps-2">
-                <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4" style="background-image: url('/photos/site/advertisment/14570210466170451914.webp');">
+                <div class="card d-flex align-items-end flex-column border-0 h-200 w-100 rounded-6 mt-3 bg-image-cover p-4" style="background-image: url('/photos/site/carousel/14570210466170451914.webp');">
 
                 </div>
             </div>

@@ -101,17 +101,17 @@
                                         <label class="mont-font fw-600 font-xssss mb-2 white-text">
                                             Mağaza İş saatları </label>
                                         <input type="text" name="work_time" class="form-control theme-black-bg
-                                        rounded-10"      placeholder="09:30-21:00 / B.e - B"
+                                        rounded-10" placeholder="09:30-21:00 / B.e - B"
                                                value="{{$shop->work_time}}">
                                     </div>
                                 </div>
 
-{{--                                <div class="col-lg-6 mb-3">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label class="mont-font fw-600 font-xssss mb-2 white-text">Profil</label>--}}
-{{--                                        <input type="text" class="form-control theme-black-bg rounded-10">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label class="mont-font fw-600 font-xssss mb-2 white-text   ">Mağaza İş saatları (Nümunə)</label>
+                                        <span  class="  white-text   form-control  rounded-10 "> 09:30-21:00 / B.e - B </span>
+                                    </div>
+                                </div>
 
                                 <div class="col-lg-12">
                                     <div class="form-check mb-2">

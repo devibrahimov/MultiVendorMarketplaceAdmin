@@ -28,15 +28,15 @@ Route::group(['middleware'=>'administrator' ,'prefix'=>'adminpanel'],function ()
     Route::get('/categoryathome',[\App\Http\Controllers\Administrator\CategoriesController::class,'categoryathome'])
         ->name('categoryathome');
 
-    //advertisment
-    Route::get('/advertisment/{id?}',[\App\Http\Controllers\Administrator\AdvertismentController::class,'index'])->name
+    //carousel
+    Route::get('/carousel/{id?}',[\App\Http\Controllers\Administrator\AdvertismentController::class,'index'])->name
     ('advertisments');
-    Route::post('/advertisment/store',[\App\Http\Controllers\Administrator\AdvertismentController::class,'store'])->name
+    Route::post('/carousel/store',[\App\Http\Controllers\Administrator\AdvertismentController::class,'store'])->name
     ('advertismentstore');
-    Route::get('/advertisment/edit/{id}',[\App\Http\Controllers\Administrator\AdvertismentController::class , 'edit'])
+    Route::get('/carousel/edit/{id}',[\App\Http\Controllers\Administrator\AdvertismentController::class , 'edit'])
         ->name
     ('advertismentedit');
-    Route::post('/advertisment/update/{id}',[\App\Http\Controllers\Administrator\AdvertismentController::class , 'update'])
+    Route::post('/carousel/update/{id}',[\App\Http\Controllers\Administrator\AdvertismentController::class , 'update'])
         ->name
     ('advertismentupdate');
     Route::delete('/advertismentdelete/{id?}',[\App\Http\Controllers\Administrator\AdvertismentController::class,'advertismentdelete'])->name('advertismentdelete');
@@ -78,8 +78,6 @@ Route::group(['middleware'=>'administrator' ,'prefix'=>'adminpanel'],function ()
         ->name
         ('contractsupdate');
     Route::delete('/contracts/{id?}',[\App\Http\Controllers\Administrator\ContractsController::class,'contractdelete'])->name('contractdelete');
-
-
 
     //users
     Route::resource('users', \App\Http\Controllers\Administrator\UserController::class);

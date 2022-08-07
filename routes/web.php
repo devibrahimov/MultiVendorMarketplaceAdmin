@@ -22,6 +22,7 @@ Route::post('/istifadeci-girisi',[App\Http\Controllers\User\AuthController::clas
 
 
 Route::get('/magazalar',[GeneralController::class,'shops'])->name('site.shops');
+Route::get('/magazalar/{slug}',[GeneralController::class,'shopDetail'])->name('site.shopDetail');
 Route::get('/mehsullar',[ProductController::class,'allproducts'])->name('site.products');
 Route::get('/mehsul-m={m}&key={key}',[ProductController::class,'productdetail'])->name('site.productdetail');
 Route::get('/korporativ/{slug}',[GeneralController::class,'corporativ'])->name('site.corporativ');
